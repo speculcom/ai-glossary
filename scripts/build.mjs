@@ -664,7 +664,7 @@ if (fs.existsSync(learnDir)) {
   <meta property="og:url" content="https://learn.specul.com/term/${ENC(slug)}/" />
   <meta property="og:title" content="${esc(t.zh)} · 学 AI" />
   <meta property="og:description" content="${esc(metaDesc(t))}" />
-  <meta name="theme-color" content="#05080f" />
+  <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="${FAVICON}" />
   <link rel="stylesheet" href="../../brand.css" />
   <link rel="stylesheet" href="../../learn.css" />
