@@ -5,7 +5,7 @@ purpose: "量化档位的数值表示：平均每个权重占几个比特。"
 def: ["衡量量化程度的指标。本站按 bpw 分成五档：极限压缩 / 长上下文优先 / 平衡档 / 保守档 / 近似无损。", "数值越低，模型体积越小。"]
 why: "它把「Q4、Q8、Q3」这些各家不同的叫法统一成可比较的数字，是选型时最实用的标尺。"
 refs:
-  - ["五种量化档位的取舍", "https://models.specul.com/"]
+  - ["量化档位横向对比（千问 3.8）", "https://models.specul.com/series/qwen3-8/#c0", "Quant tiers side by side (Qwen3.8)"]
 domain: "infra"
 purposeTag: "judge"
 level: 5
