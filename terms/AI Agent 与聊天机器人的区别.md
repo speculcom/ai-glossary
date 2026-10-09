@@ -5,7 +5,7 @@ purpose: "聊天的终点是回答，Agent 的终点是做完。"
 def: ["聊天机器人是「一问一答」；Agent 会自己规划步骤、调工具、检查结果、循环直到完成。"]
 why: "判断一个工具是哪种，决定了它值不值得你花时间配置。"
 refs:
-  - ["Agent 框架对照", "https://agent.specul.com/"]
+  - ["Agent 框架对照", "https://agent.specul.com/", "Agent profiles & comparisons"]
 domain: "concept"
 purposeTag: "judge"
 level: 1
