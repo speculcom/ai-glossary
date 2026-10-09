@@ -95,7 +95,7 @@ tools: >-
 
 ---
 
-## MCP 赛道专项
+## MCP 分区专项
 
 MCP server 本身就是"工具"，所以这个维度要换成：
 
@@ -114,5 +114,5 @@ MCP server 本身就是"工具"，所以这个维度要换成：
 ## 关联维度
 
 - [维度 7 · 权限与限制](./permissions.md) — 工具边界决定权限风险
-- [MCP 传输方式](../tracks/mcp/taxonomy/transport.md) — MCP 赛道的工具接入方式
+- [MCP 传输方式](../tracks/mcp/taxonomy/transport.md) — MCP 分区的工具接入方式
 - [维度 1 · 模型与开放条件](./model-access.md) — 有连接器不等于有模型额度
