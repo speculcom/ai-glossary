@@ -4,6 +4,8 @@ en: "API"
 purpose: "不自己搞模型，按用量付钱调用别人的。"
 def: ["通过网络接口把提示词发给模型服务方，返回结果。"]
 why: "这是绝大多数人用 AI 的实际方式。不需要显卡，按量付费，代价是数据外发和长期成本。"
+refs:
+  - ["OpenAI API 快速开始", "https://platform.openai.com/docs/quickstart", "OpenAI API Quickstart"]
 domain: "choice"
 purposeTag: "judge"
 level: 6
