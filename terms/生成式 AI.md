@@ -4,6 +4,9 @@ en: "Generative AI"
 purpose: "能凭空产出新内容的 AI——文字、图片、音频、视频都算。"
 def: ["从已有数据分布中采样并生成新内容的 AI，与「判别式」（只做判断分类）相对。"]
 why: "你现在接触的绝大多数 AI 都是生成式。它和「识别」「分类」类AI 的能力边界很不一样。"
+refs:
+  - ["Google 生成式 AI 入门指南", "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/overview", "Google Cloud: Generative AI beginner's guide"]
+  - ["生成式 AI 论文（arXiv）", "https://arxiv.org/abs/2309.07930", "Generative AI (arXiv:2309.07930)"]
 domain: "concept"
 purposeTag: "learn"
 level: 1
