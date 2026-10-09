@@ -1,5 +1,7 @@
 # 学 AI · 术语图谱（ai-glossary）
 
+> English version: [README.en.md](./README.en.md)
+
 > 这些名词是什么、为什么要知道它？
 
 面向**刚开始接触 AI 的人**：术语按「先学什么后学什么」排成六层，每词给出处、不给总分排名。（数量见下方实测规模）
