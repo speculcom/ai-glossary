@@ -40,7 +40,8 @@ var TERMS = [
     "defEn": [
      "A broad field: making machines behave in ways we recognise as intelligent. It is not one technology but many, and today's chatbots are only a branch of it."
     ],
-    "whyEn": "People often use \"AI\" to mean a chat model. Strictly speaking a large language model is one approach inside AI, not AI itself — most claims about \"AI\" are really claims about one kind of model."
+    "whyEn": "People often use \"AI\" to mean a chat model. Strictly speaking a large language model is one approach inside AI, not AI itself — most claims about \"AI\" are really claims about one kind of model.",
+    "slug": "人工智能"
    },
    {
     "zh": "机器学习",
@@ -73,7 +74,8 @@ var TERMS = [
     "defEn": [
      "A method where a system improves at a task by fitting parameters to examples, rather than following rules a programmer wrote."
     ],
-    "whyEn": "It is the foundation under essentially everything called AI today. Knowing where the rules came from tells you what the system can and cannot do."
+    "whyEn": "It is the foundation under essentially everything called AI today. Knowing where the rules came from tells you what the system can and cannot do.",
+    "slug": "机器学习"
    },
    {
     "zh": "深度学习",
@@ -106,7 +108,8 @@ var TERMS = [
     "defEn": [
      "Machine learning using multi-layer neural networks, where representations are learned from raw data rather than hand-designed."
     ],
-    "whyEn": "It is what made image, speech and language tasks leap forward. Understanding it helps you judge which claims about \"deep learning\" are real."
+    "whyEn": "It is what made image, speech and language tasks leap forward. Understanding it helps you judge which claims about \"deep learning\" are real.",
+    "slug": "深度学习"
    },
    {
     "zh": "神经网络",
@@ -139,7 +142,8 @@ var TERMS = [
     "defEn": [
      "Layers of connected units, each applying a small transformation, whose overall behaviour is learned from data rather than specified."
     ],
-    "whyEn": "It is the mechanism behind deep learning. You do not need the maths to use it, but it explains both what it can do and why it fails in particular ways."
+    "whyEn": "It is the mechanism behind deep learning. You do not need the maths to use it, but it explains both what it can do and why it fails in particular ways.",
+    "slug": "神经网络"
    },
    {
     "zh": "大模型 / 大语言模型",
@@ -176,7 +180,8 @@ var TERMS = [
     "defEn": [
      "The trained artefact: parameters plus the architecture that produced them. \"Loading a model\" means loading these, not running a program."
     ],
-    "whyEn": "Model and product are different things. Many misunderstandings about AI products come from treating a model as if it were an application."
+    "whyEn": "Model and product are different things. Many misunderstandings about AI products come from treating a model as if it were an application.",
+    "slug": "大模型 - 大语言模型"
    },
    {
     "zh": "参数",
@@ -204,7 +209,8 @@ var TERMS = [
     "defEn": [
      "Weights and biases inside the network. Model size usually refers to how many there are, and larger counts generally mean more capacity."
     ],
-    "whyEn": "It grounds abstract claims: a \"7B model\" is a statement about parameter count, not about being better than everything else."
+    "whyEn": "It grounds abstract claims: a \"7B model\" is a statement about parameter count, not about being better than everything else.",
+    "slug": "参数"
    },
    {
     "zh": "训练",
@@ -237,7 +243,8 @@ var TERMS = [
     "defEn": [
      "Fitting parameters so predictions match targets, usually by minimising a loss over many examples."
     ],
-    "whyEn": "Training determines what the model knows. It is also where cost and bias enter — training data is not neutral."
+    "whyEn": "Training determines what the model knows. It is also where cost and bias enter — training data is not neutral.",
+    "slug": "训练"
    },
    {
     "zh": "推理",
@@ -265,7 +272,8 @@ var TERMS = [
     "defEn": [
      "Running a trained model to produce an answer. Often confused with \"reasoning\", but inference simply means using the model."
     ],
-    "whyEn": "Training and inference have different cost structures. It explains why a model can be cheap to make and expensive to serve."
+    "whyEn": "Training and inference have different cost structures. It explains why a model can be cheap to make and expensive to serve.",
+    "slug": "推理"
    },
    {
     "zh": "提示词",
@@ -300,7 +308,8 @@ var TERMS = [
     "defEn": [
      "The input text shaping the model's behaviour. In a chat interface it is what you type; in an API it is part of the request."
     ],
-    "whyEn": "For using models, prompt quality often matters more than model choice — the same model behaves very differently under different phrasing."
+    "whyEn": "For using models, prompt quality often matters more than model choice — the same model behaves very differently under different phrasing.",
+    "slug": "提示词"
    },
    {
     "zh": "Token",
@@ -331,7 +340,8 @@ var TERMS = [
      "The pieces a model splits text into. One token is roughly a quarter of an English word, or one to two Chinese characters.",
      "Context length and API pricing are both denominated in tokens."
     ],
-    "whyEn": "The most easily overlooked word that most affects your bill. \"Is my context enough\" and \"why is this so expensive\" are both answered here."
+    "whyEn": "The most easily overlooked word that most affects your bill. \"Is my context enough\" and \"why is this so expensive\" are both answered here.",
+    "slug": "Token"
    },
    {
     "zh": "上下文窗口",
@@ -367,7 +377,8 @@ var TERMS = [
     "defEn": [
      "The token budget for one request: system prompt, documents, conversation history and the reply all draw from it."
     ],
-    "whyEn": "It sets a hard ceiling on what can be asked. \"It forgot what I told it\" is usually a context-window limit, not a memory bug."
+    "whyEn": "It sets a hard ceiling on what can be asked. \"It forgot what I told it\" is usually a context-window limit, not a memory bug.",
+    "slug": "上下文窗口"
    },
    {
     "zh": "词表",
@@ -401,7 +412,8 @@ var TERMS = [
      "The set of characters or pieces a model can use when producing output.",
      "The larger the vocabulary, the more concepts the model must learn, and usually the better support for rare languages and code."
     ],
-    "whyEn": "It explains a common observation: small models get markedly worse at Chinese and code — there simply are not enough pieces in the vocabulary."
+    "whyEn": "It explains a common observation: small models get markedly worse at Chinese and code — there simply are not enough pieces in the vocabulary.",
+    "slug": "词表"
    },
    {
     "zh": "AI 产品 vs AI 模型",
@@ -430,7 +442,8 @@ var TERMS = [
      "The model is the underlying capability; the product wraps it with interface, billing, collaboration features and permission management.",
      "One model can appear inside many products, and the experience varies widely."
     ],
-    "whyEn": "It explains why \"top of the model leaderboard\" does not mean \"the tool you use is the best\"."
+    "whyEn": "It explains why \"top of the model leaderboard\" does not mean \"the tool you use is the best\".",
+    "slug": "AI 产品 vs AI 模型"
    },
    {
     "zh": "生成式 AI",
@@ -462,7 +475,8 @@ var TERMS = [
     "defEn": [
      "AI that samples from an existing data distribution to generate new content, as opposed to discriminative AI which only judges or classifies."
     ],
-    "whyEn": "Nearly all AI you encounter is generative. Its capability boundary differs sharply from recognition and classification."
+    "whyEn": "Nearly all AI you encounter is generative. Its capability boundary differs sharply from recognition and classification.",
+    "slug": "生成式 AI"
    },
    {
     "zh": "AI Agent 与聊天机器人的区别",
@@ -489,7 +503,8 @@ var TERMS = [
     "defEn": [
      "A chatbot is question and answer. An agent plans its own steps, calls tools, checks results and loops until finished."
     ],
-    "whyEn": "Which of the two you are looking at decides whether it is worth your time to configure."
+    "whyEn": "Which of the two you are looking at decides whether it is worth your time to configure.",
+    "slug": "AI Agent 与聊天机器人的区别"
    },
    {
     "zh": "开源生态",
@@ -516,7 +531,8 @@ var TERMS = [
     "defEn": [
      "A collaborative system built on public code and community contribution, especially active around models and quantisations."
     ],
-    "whyEn": "When choosing local deployment, this ecosystem's activity directly determines how many ready-made solutions you can get."
+    "whyEn": "When choosing local deployment, this ecosystem's activity directly determines how many ready-made solutions you can get.",
+    "slug": "开源生态"
    },
    {
     "zh": "能力边界",
@@ -548,7 +564,8 @@ var TERMS = [
     "defEn": [
      "The region outside the range in which a system reliably produces correct output for a given input."
     ],
-    "whyEn": "It is core literacy for using AI — keep important tasks inside the reliable range."
+    "whyEn": "It is core literacy for using AI — keep important tasks inside the reliable range.",
+    "slug": "能力边界"
    },
    {
     "zh": "权限",
@@ -587,7 +604,8 @@ var TERMS = [
      "The permitted action scope of a tool. A wider scope is easier to use and easier to get into trouble with.",
      "Good tools authorise in tiers: reading needs approval, writing needs approval, deleting needs confirmation."
     ],
-    "whyEn": "It is the first gate on AI tool safety. **Giving a tool that writes files and runs commands no permission limits is handing over the machine.**"
+    "whyEn": "It is the first gate on AI tool safety. **Giving a tool that writes files and runs commands no permission limits is handing over the machine.**",
+    "slug": "权限"
    }
   ]
  },
@@ -630,7 +648,8 @@ var TERMS = [
     "defEn": [
      "Output that is fluent and confident but factually wrong. It comes from producing likely-sounding text rather than retrieving verified facts."
     ],
-    "whyEn": "It is the single biggest practical risk with language models, and the reason fact-checking matters more than ever."
+    "whyEn": "It is the single biggest practical risk with language models, and the reason fact-checking matters more than ever.",
+    "slug": "幻觉"
    },
    {
     "zh": "多模态",
@@ -664,7 +683,8 @@ var TERMS = [
     "defEn": [
      "A model that takes or produces more than one kind of input or output, so images and text can be reasoned about together."
     ],
-    "whyEn": "It is what makes document Q&A, screenshot understanding and video generation practical rather than staged pipelines."
+    "whyEn": "It is what makes document Q&A, screenshot understanding and video generation practical rather than staged pipelines.",
+    "slug": "多模态"
    },
    {
     "zh": "推理模型",
@@ -701,7 +721,8 @@ var TERMS = [
      "A model that produces intermediate reasoning before its conclusion — typically one with a thinking or reasoning mode.",
      "The cost is slower responses and more output tokens."
     ],
-    "whyEn": "The single most important attribute when choosing a model: reasoning models for coding, arithmetic and planning; ordinary models for speed and cost."
+    "whyEn": "The single most important attribute when choosing a model: reasoning models for coding, arithmetic and planning; ordinary models for speed and cost.",
+    "slug": "推理模型"
    },
    {
     "zh": "温度",
@@ -733,7 +754,8 @@ var TERMS = [
     "defEn": [
      "A sampling parameter controlling how often the highest-probability token is chosen. A temperature of 0 gives the most deterministic output."
     ],
-    "whyEn": "Low temperature for code and extraction; high temperature for naming and copywriting. It is one of the few parameters you can adjust directly."
+    "whyEn": "Low temperature for code and extraction; high temperature for naming and copywriting. It is one of the few parameters you can adjust directly.",
+    "slug": "温度"
    },
    {
     "zh": "采样 / 采样参数",
@@ -767,7 +789,8 @@ var TERMS = [
      "A collective term for parameters controlling generation: temperature, Top-p, Top-k and so on.",
      "They affect only how a token is chosen, not the intelligence of the model itself."
     ],
-    "whyEn": "Once you know these parameters, unstable output has an explainable cause instead of \"it was feeling odd today\"."
+    "whyEn": "Once you know these parameters, unstable output has an explainable cause instead of \"it was feeling odd today\".",
+    "slug": "采样 - 采样参数"
    },
    {
     "zh": "系统提示",
@@ -799,7 +822,8 @@ var TERMS = [
     "defEn": [
      "Instructions preset by the application developer, outside the user's input, constraining behaviour and output format."
     ],
-    "whyEn": "It is why the same model behaves so differently across applications. Every AI product you use has one behind it."
+    "whyEn": "It is why the same model behaves so differently across applications. Every AI product you use has one behind it.",
+    "slug": "系统提示"
    },
    {
     "zh": "微调",
@@ -832,7 +856,8 @@ var TERMS = [
     "defEn": [
      "Further training of an already-trained model on task-specific data, changing its weights rather than its instructions."
     ],
-    "whyEn": "It can beat prompting for a narrow task, but it costs more and is harder to maintain. Prompting first is usually the right order."
+    "whyEn": "It can beat prompting for a narrow task, but it costs more and is harder to maintain. Prompting first is usually the right order.",
+    "slug": "微调"
    },
    {
     "zh": "偏好对齐",
@@ -859,7 +884,8 @@ var TERMS = [
     "defEn": [
      "Training a model on human rankings of several candidate answers so it tends to be helpful, harmless and honest."
     ],
-    "whyEn": "It explains why a model sometimes refuses or is excessively agreeable — that is trained behaviour, not a technical limit."
+    "whyEn": "It explains why a model sometimes refuses or is excessively agreeable — that is trained behaviour, not a technical limit.",
+    "slug": "偏好对齐"
    },
    {
     "zh": "知识截止",
@@ -891,7 +917,8 @@ var TERMS = [
     "defEn": [
      "The cut-off date of the training corpus. Information later than that was never learned."
     ],
-    "whyEn": "Ask it about recent events, today's news or current prices and it either does not know or makes something up. Anything current needs search."
+    "whyEn": "Ask it about recent events, today's news or current prices and it either does not know or makes something up. Anything current needs search.",
+    "slug": "知识截止"
    },
    {
     "zh": "联网 / 检索增强",
@@ -932,7 +959,8 @@ var TERMS = [
     "defEn": [
      "Retrieval-augmented generation: fetch relevant passages first, then have the model answer using them, ideally with citations."
     ],
-    "whyEn": "It is the most practical way to reduce hallucination and give a model private or current knowledge."
+    "whyEn": "It is the most practical way to reduce hallucination and give a model private or current knowledge.",
+    "slug": "联网 - 检索增强"
    },
    {
     "zh": "向量 / 嵌入",
@@ -960,7 +988,8 @@ var TERMS = [
     "defEn": [
      "Turning text into a list of numbers where closer vectors mean closer meaning. It is how semantic search and retrieval work."
     ],
-    "whyEn": "Most retrieval systems are built on it. It also explains why keyword search still matters alongside vector search."
+    "whyEn": "Most retrieval systems are built on it. It also explains why keyword search still matters alongside vector search.",
+    "slug": "向量 - 嵌入"
    },
    {
     "zh": "向量数据库",
@@ -992,7 +1021,8 @@ var TERMS = [
     "defEn": [
      "Storage engines designed for similarity search — a query traditional databases cannot serve."
     ],
-    "whyEn": "If you are building RAG this is a must-have. Understanding it tells you why an approach is fast or slow."
+    "whyEn": "If you are building RAG this is a must-have. Understanding it tells you why an approach is fast or slow.",
+    "slug": "向量数据库"
    },
    {
     "zh": "分块",
@@ -1019,7 +1049,8 @@ var TERMS = [
     "defEn": [
      "The step in a RAG pipeline that splits a document into passages. Too small loses context; too large does not fit the context window."
     ],
-    "whyEn": "The most overlooked yet most consequential step in RAG. Many \"the AI answered wrongly\" cases trace back to bad chunking."
+    "whyEn": "The most overlooked yet most consequential step in RAG. Many \"the AI answered wrongly\" cases trace back to bad chunking.",
+    "slug": "分块"
    },
    {
     "zh": "扩散模型",
@@ -1048,7 +1079,8 @@ var TERMS = [
      "A generative model that starts from random noise and produces an image through many denoising steps.",
      "Almost every image-generation tool today, including the open-source Stable Diffusion family, is built on it."
     ],
-    "whyEn": "It is the technical base of image generation. Understanding it explains why generation takes a moment and why \"steps\" is a parameter."
+    "whyEn": "It is the technical base of image generation. Understanding it explains why generation takes a moment and why \"steps\" is a parameter.",
+    "slug": "扩散模型"
    },
    {
     "zh": "潜空间",
@@ -1075,7 +1107,8 @@ var TERMS = [
     "defEn": [
      "An encoder first compresses an image into a lower-dimensional space; generation happens there and a decoder restores it."
     ],
-    "whyEn": "It explains why image models need to load a VAE, and why that compression affects fine detail."
+    "whyEn": "It explains why image models need to load a VAE, and why that compression affects fine detail.",
+    "slug": "潜空间"
    },
    {
     "zh": "CLIP",
@@ -1102,7 +1135,8 @@ var TERMS = [
     "defEn": [
      "Maps images and text into the same space, so the phrase \"a cat\" lands near the visual features of cats."
     ],
-    "whyEn": "Nearly every text-to-image tool ships it. It sets the ceiling on how well a model understands a prompt."
+    "whyEn": "Nearly every text-to-image tool ships it. It sets the ceiling on how well a model understands a prompt.",
+    "slug": "CLIP"
    },
    {
     "zh": "ControlNet",
@@ -1129,7 +1163,8 @@ var TERMS = [
     "defEn": [
      "A control network attached to a diffusion model, constraining the shape and pose of what gets generated."
     ],
-    "whyEn": "The most practical control mechanism in image generation, and essential when you need an exact composition."
+    "whyEn": "The most practical control mechanism in image generation, and essential when you need an exact composition.",
+    "slug": "ControlNet"
    },
    {
     "zh": "语音识别",
@@ -1164,7 +1199,8 @@ var TERMS = [
     "defEn": [
      "Technology converting an audio signal into text, also called speech-to-text."
     ],
-    "whyEn": "It is the entry point for all voice interaction, and transcription quality directly caps how well the rest of the system understands."
+    "whyEn": "It is the entry point for all voice interaction, and transcription quality directly caps how well the rest of the system understands.",
+    "slug": "语音识别"
    },
    {
     "zh": "语音合成",
@@ -1199,7 +1235,8 @@ var TERMS = [
     "defEn": [
      "Technology converting text into natural-sounding speech."
     ],
-    "whyEn": "It is the output side of any voice feature. It can now produce tone and emotion close to a real person."
+    "whyEn": "It is the output side of any voice feature. It can now produce tone and emotion close to a real person.",
+    "slug": "语音合成"
    },
    {
     "zh": "数字人",
@@ -1231,7 +1268,8 @@ var TERMS = [
     "defEn": [
      "A virtual human form combining speech synthesis, image generation and animation."
     ],
-    "whyEn": "It is a combined application of multimodal capability, and a category of its own in this directory."
+    "whyEn": "It is a combined application of multimodal capability, and a category of its own in this directory.",
+    "slug": "数字人"
    },
    {
     "zh": "AI 搜索",
@@ -1263,7 +1301,8 @@ var TERMS = [
     "defEn": [
      "Search products that understand natural-language queries and generate an answer instead of returning links."
     ],
-    "whyEn": "It changes how you look things up, and partly replaces conventional search engines."
+    "whyEn": "It changes how you look things up, and partly replaces conventional search engines.",
+    "slug": "AI 搜索"
    },
    {
     "zh": "视频生成",
@@ -1290,7 +1329,8 @@ var TERMS = [
     "defEn": [
      "Producing video content conditioned on a text prompt or a still image."
     ],
-    "whyEn": "It is the next step beyond image generation, and the gap between a striking demo and controllable output is still wide."
+    "whyEn": "It is the next step beyond image generation, and the gap between a striking demo and controllable output is still wide.",
+    "slug": "视频生成"
    },
    {
     "zh": "具身智能",
@@ -1317,7 +1357,8 @@ var TERMS = [
     "defEn": [
      "A technology system extending AI into the physical world, covering perception, control and planning."
     ],
-    "whyEn": "It is the branch of AI furthest from everyday life, and also the largest category in this directory (87 entries)."
+    "whyEn": "It is the branch of AI furthest from everyday life, and also the largest category in this directory (87 entries).",
+    "slug": "具身智能"
    },
    {
     "zh": "机器视觉",
@@ -1349,7 +1390,8 @@ var TERMS = [
     "defEn": [
      "Technology that extracts and understands information from images and video."
     ],
-    "whyEn": "The technical foundation of autonomous driving, security and medical imaging — two stages along the same direction as multimodal models."
+    "whyEn": "The technical foundation of autonomous driving, security and medical imaging — two stages along the same direction as multimodal models.",
+    "slug": "机器视觉"
    },
    {
     "zh": "自动驾驶",
@@ -1376,7 +1418,8 @@ var TERMS = [
     "defEn": [
      "A technology system for autonomous driving using sensor fusion and AI decision-making."
     ],
-    "whyEn": "The most mature application of embodied AI, and the one with clear established grading levels."
+    "whyEn": "The most mature application of embodied AI, and the one with clear established grading levels.",
+    "slug": "自动驾驶"
    },
    {
     "zh": "AI 芯片",
@@ -1405,7 +1448,8 @@ var TERMS = [
     "defEn": [
      "Processors optimised for matrix computation, usually referring to AI-specific accelerator hardware of various kinds."
     ],
-    "whyEn": "It determines how large a model you can fit onto a device at a given price."
+    "whyEn": "It determines how large a model you can fit onto a device at a given price.",
+    "slug": "AI 芯片"
    }
   ]
  },
@@ -1426,7 +1470,7 @@ var TERMS = [
      "给模型配上目标、工具和循环，让它自主执行多步骤任务的一套做法。",
      "关键区别：普通问答是「你问一句它答一句」，Agent 是「给它一件事，它自己走到完成」。"
     ],
-    "why": "这是本站 harness 赛道存在的全部理由。如果你只需要问答，不需要 Agent。",
+    "why": "这是本站 harness 分区存在的全部理由。如果你只需要问答，不需要 Agent。",
     "refs": [
      [
       "10 份 Agent 框架档案",
@@ -1448,7 +1492,8 @@ var TERMS = [
     "defEn": [
      "A system where a model plans, calls tools, reads results and repeats until the task is done, rather than replying once."
     ],
-    "whyEn": "It is the difference between \"it tells you how\" and \"it does it for you\". Most of the practical value in agents comes from tool use, not conversation."
+    "whyEn": "It is the difference between \"it tells you how\" and \"it does it for you\". Most of the practical value in agents comes from tool use, not conversation.",
+    "slug": "智能体 - Agent"
    },
    {
     "zh": "工具调用",
@@ -1481,7 +1526,8 @@ var TERMS = [
     "defEn": [
      "A mechanism where the model emits a structured request for a function, the system runs it, and the result goes back into the conversation."
     ],
-    "whyEn": "It is what turns a language model into a usable assistant. It also introduces real risk: the model can act wrongly, not just speak wrongly."
+    "whyEn": "It is what turns a language model into a usable assistant. It also introduces real risk: the model can act wrongly, not just speak wrongly.",
+    "slug": "工具调用"
    },
    {
     "zh": "MCP",
@@ -1494,7 +1540,7 @@ var TERMS = [
      "Anthropic 提出的开放协议，用统一规范描述「AI 可以调哪些工具、可以读哪些资源」。",
      "它的作用类似 AI 世界的 USB-C：接什么设备都能用同一套接口。"
     ],
-    "why": "如果你要给 AI 接数据，这是当前最省事、最通用的做法。本站 mcp 赛道专讲这个。",
+    "why": "如果你要给 AI 接数据，这是当前最省事、最通用的做法。本站 MCP 分区专讲这个。",
     "refs": [
      [
       "MCP 是什么·9 份 server 档案",
@@ -1522,7 +1568,8 @@ var TERMS = [
      "An open protocol proposed by Anthropic describing, in one specification, which tools an AI may call and which resources it may read.",
      "It plays the role of USB-C for AI: whatever device you plug in, the interface is the same."
     ],
-    "whyEn": "If you want to connect data to an AI, this is the least-effort and most general approach today. This site's MCP track covers it."
+    "whyEn": "If you want to connect data to an AI, this is the least-effort and most general approach today. This site's MCP track covers it.",
+    "slug": "MCP"
    },
    {
     "zh": "多 Agent 协作",
@@ -1556,7 +1603,8 @@ var TERMS = [
      "Multiple agents with different tools and prompts working together — the classic pattern is planner plus executor plus reviewer.",
      "The cost is that token consumption and latency both multiply."
     ],
-    "whyEn": "Not everything needs multiple agents. On simple tasks one agent with tools is faster and more reliable."
+    "whyEn": "Not everything needs multiple agents. On simple tasks one agent with tools is faster and more reliable.",
+    "slug": "多 Agent 协作"
    },
    {
     "zh": "工作流编排",
@@ -1588,7 +1636,8 @@ var TERMS = [
     "defEn": [
      "Writing the step order and branch conditions explicitly in code, rather than leaving every decision to the model."
     ],
-    "whyEn": "Reliable production systems are mostly human-in-the-loop workflows, not fully autonomous agents. This is the key design decision for controlling risk."
+    "whyEn": "Reliable production systems are mostly human-in-the-loop workflows, not fully autonomous agents. This is the key design decision for controlling risk.",
+    "slug": "工作流编排"
    },
    {
     "zh": "记忆",
@@ -1617,7 +1666,8 @@ var TERMS = [
      "Persisting historical information so later sessions can retrieve it.",
      "Two approaches: store it in the program (controllable), or in external storage the model can reach (flexible, but then permissions matter)."
     ],
-    "whyEn": "\"The AI forgets everything every time\" is the most common complaint in use, and the answer is a memory layer."
+    "whyEn": "\"The AI forgets everything every time\" is the most common complaint in use, and the answer is a memory layer.",
+    "slug": "记忆"
    },
    {
     "zh": "长时任务",
@@ -1649,7 +1699,8 @@ var TERMS = [
     "defEn": [
      "Tasks exceeding a single context window or session, requiring external progress storage and staged resumption."
     ],
-    "whyEn": "This is the ceiling on agent capability. For a framework claiming long-running tasks, check how it stores progress."
+    "whyEn": "This is the ceiling on agent capability. For a framework claiming long-running tasks, check how it stores progress.",
+    "slug": "长时任务"
    },
    {
     "zh": "人机协作",
@@ -1676,7 +1727,8 @@ var TERMS = [
     "defEn": [
      "Inserting human review at specific points in a flow, so a person decides whether to continue or how to change it."
     ],
-    "whyEn": "Anything that writes files, sends requests, spends money or modifies a database should have a human checkpoint. This is the main lever against accidents."
+    "whyEn": "Anything that writes files, sends requests, spends money or modifies a database should have a human checkpoint. This is the main lever against accidents.",
+    "slug": "人机协作"
    },
    {
     "zh": "护栏",
@@ -1703,7 +1755,8 @@ var TERMS = [
     "defEn": [
      "A layer of checks on the input and output side — keywords, permissions, or another model's judgement."
     ],
-    "whyEn": "If you give an agent the ability to write files and run commands, you must give it guardrails. This is a direct trade of capability for risk."
+    "whyEn": "If you give an agent the ability to write files and run commands, you must give it guardrails. This is a direct trade of capability for risk.",
+    "slug": "护栏"
    },
    {
     "zh": "沙箱",
@@ -1735,7 +1788,8 @@ var TERMS = [
     "defEn": [
      "An isolated execution environment — a container or restricted directory — limiting which files and commands it can touch."
     ],
-    "whyEn": "When judging whether an agent tool is trustworthy, first check whether it runs sandboxed by default."
+    "whyEn": "When judging whether an agent tool is trustworthy, first check whether it runs sandboxed by default.",
+    "slug": "沙箱"
    },
    {
     "zh": "评估",
@@ -1767,7 +1821,8 @@ var TERMS = [
     "defEn": [
      "A fixed set of questions plus scoring criteria, to compare models, prompts or approaches quantitatively."
     ],
-    "whyEn": "Without evaluation there is no basis for improvement. It is the dividing line between a product built seriously and one that merely sounds good."
+    "whyEn": "Without evaluation there is no basis for improvement. It is the dividing line between a product built seriously and one that merely sounds good.",
+    "slug": "评估"
    },
    {
     "zh": "可观测性",
@@ -1799,7 +1854,8 @@ var TERMS = [
     "defEn": [
      "Recording the call chain, each step's input and output, token usage and latency so problems can be traced."
     ],
-    "whyEn": "Model behaviour is probabilistic; without records you can never diagnose a problem. This is what separates a demo from a production system."
+    "whyEn": "Model behaviour is probabilistic; without records you can never diagnose a problem. This is what separates a demo from a production system.",
+    "slug": "可观测性"
    },
    {
     "zh": "代码补全",
@@ -1826,7 +1882,8 @@ var TERMS = [
     "defEn": [
      "Inferring and inserting the code that follows, from the cursor position and what is already written."
     ],
-    "whyEn": "The earliest and most basic AI coding capability — every IDE-class tool started here."
+    "whyEn": "The earliest and most basic AI coding capability — every IDE-class tool started here.",
+    "slug": "代码补全"
    },
    {
     "zh": "仓库级理解",
@@ -1853,7 +1910,8 @@ var TERMS = [
     "defEn": [
      "The AI builds an index and structural model of the entire codebase, so it can answer across files and reason about blast radius."
     ],
-    "whyEn": "This is the dividing line between Copilot-class tools and simple completion. Refactoring tasks require it."
+    "whyEn": "This is the dividing line between Copilot-class tools and simple completion. Refactoring tasks require it.",
+    "slug": "仓库级理解"
    },
    {
     "zh": "终端 Agent",
@@ -1880,7 +1938,8 @@ var TERMS = [
     "defEn": [
      "An AI agent running in the terminal, able to operate the development environment directly."
     ],
-    "whyEn": "It suits automation and scripting better than IDE-class tools, and is the only option in scripted or CI environments."
+    "whyEn": "It suits automation and scripting better than IDE-class tools, and is the only option in scripted or CI environments.",
+    "slug": "终端 Agent"
    },
    {
     "zh": "差异对比",
@@ -1907,7 +1966,8 @@ var TERMS = [
     "defEn": [
      "Comparing before and after line by line, the basic means of reviewing AI output."
     ],
-    "whyEn": "A pattern that recurs in official guidance: keep AI changes under version control, diffable and revertible. That is a precondition for safety."
+    "whyEn": "A pattern that recurs in official guidance: keep AI changes under version control, diffable and revertible. That is a precondition for safety.",
+    "slug": "差异对比"
    },
    {
     "zh": "App Server",
@@ -1939,7 +1999,8 @@ var TERMS = [
     "defEn": [
      "A design where AI session state lives in a standalone service that several front ends can attach to."
     ],
-    "whyEn": "It explains why some tools let you close the terminal and carry on in another interface: the session lives in a service, not in the terminal."
+    "whyEn": "It explains why some tools let you close the terminal and carry on in another interface: the session lives in a service, not in the terminal.",
+    "slug": "App Server"
    },
    {
     "zh": "ACP",
@@ -1966,7 +2027,8 @@ var TERMS = [
     "defEn": [
      "A protocol agreement that lets an editor load agent implementations from any vendor."
     ],
-    "whyEn": "It is the same idea as MCP — a standard interface instead of per-vendor integration."
+    "whyEn": "It is the same idea as MCP — a standard interface instead of per-vendor integration.",
+    "slug": "ACP"
    },
    {
     "zh": "配对编程",
@@ -1993,7 +2055,8 @@ var TERMS = [
     "defEn": [
      "The practice of two people writing code together, extended to a human plus AI collaboration model."
     ],
-    "whyEn": "It is the original concept behind every AI coding tool — they all automate this pattern to different degrees."
+    "whyEn": "It is the original concept behind every AI coding tool — they all automate this pattern to different degrees.",
+    "slug": "配对编程"
    },
    {
     "zh": "浏览 / 网页操作",
@@ -2025,7 +2088,8 @@ var TERMS = [
     "defEn": [
      "Technology controlling a browser programmatically, used by many agents to collect information."
     ],
-    "whyEn": "It is both one of the most useful capabilities and one of the most security-sensitive, because it can operate real accounts."
+    "whyEn": "It is both one of the most useful capabilities and one of the most security-sensitive, because it can operate real accounts.",
+    "slug": "浏览 - 网页操作"
    },
    {
     "zh": "参考服务器",
@@ -2057,7 +2121,8 @@ var TERMS = [
     "defEn": [
      "Minimal implementations published by the MCP project — not for end users, but for developers to reference and test against."
     ],
-    "whyEn": "Reading the official implementation is the fastest way to understand a protocol — far quicker than the documentation."
+    "whyEn": "Reading the official implementation is the fastest way to understand a protocol — far quicker than the documentation.",
+    "slug": "参考服务器"
    },
    {
     "zh": "版本控制",
@@ -2086,7 +2151,8 @@ var TERMS = [
     "defEn": [
      "A mechanism tracking the history of file changes, supporting collaboration and rollback."
     ],
-    "whyEn": "AI makes mistakes and deletes the wrong file. Without version control you cannot afford to let it act."
+    "whyEn": "AI makes mistakes and deletes the wrong file. Without version control you cannot afford to let it act.",
+    "slug": "版本控制"
    },
    {
     "zh": "持续集成",
@@ -2118,7 +2184,8 @@ var TERMS = [
     "defEn": [
      "An automated verification pipeline that triggers a build and tests on commit."
     ],
-    "whyEn": "It decides whether AI output can be verified automatically — and verifiable output is what makes batch use safe."
+    "whyEn": "It decides whether AI output can be verified automatically — and verifiable output is what makes batch use safe.",
+    "slug": "持续集成"
    },
    {
     "zh": "提示注入",
@@ -2146,7 +2213,8 @@ var TERMS = [
     "defEn": [
      "An attack where instructions hidden in retrieved documents, tool output or a web page hijack the model's behaviour."
     ],
-    "whyEn": "It is the single most important thing to understand before deploying an agent that reads untrusted content."
+    "whyEn": "It is the single most important thing to understand before deploying an agent that reads untrusted content.",
+    "slug": "提示注入"
    },
    {
     "zh": "远程执行",
@@ -2173,7 +2241,8 @@ var TERMS = [
     "defEn": [
      "Moving execution to a remote server, with the local machine acting only as a viewer."
     ],
-    "whyEn": "It is the basis for long-running tasks and the core difference between hosted and self-hosted setups."
+    "whyEn": "It is the basis for long-running tasks and the core difference between hosted and self-hosted setups.",
+    "slug": "远程执行"
    },
    {
     "zh": "技能 / Skills",
@@ -2205,7 +2274,8 @@ var TERMS = [
     "defEn": [
      "Wrapping a set of prompts, tool configuration and execution steps so they can be called across many tasks."
     ],
-    "whyEn": "It is the mechanism that moves you from re-explaining every time to configuring once and reusing."
+    "whyEn": "It is the mechanism that moves you from re-explaining every time to configuring once and reusing.",
+    "slug": "技能 - Skills"
    },
    {
     "zh": "结构化输出",
@@ -2237,7 +2307,8 @@ var TERMS = [
     "defEn": [
      "Constraining the model to output machine-parsable structure that a program can consume directly."
     ],
-    "whyEn": "A precondition for tool calling. Without it a model cannot reliably tell a program what to call or which arguments to pass."
+    "whyEn": "A precondition for tool calling. Without it a model cannot reliably tell a program what to call or which arguments to pass.",
+    "slug": "结构化输出"
    }
   ]
  },
@@ -2278,7 +2349,8 @@ var TERMS = [
      "A neural network structure built around the attention mechanism, handling the relationships across a whole passage of text.",
      "It processes a sentence in parallel rather than one word at a time — which is why it scales to trillions of parameters."
     ],
-    "whyEn": "It is the root of large models. Understand it and the origin of context windows, hallucination and the KV cache becomes clear."
+    "whyEn": "It is the root of large models. Understand it and the origin of context windows, hallucination and the KV cache becomes clear.",
+    "slug": "Transformer"
    },
    {
     "zh": "注意力机制",
@@ -2312,7 +2384,8 @@ var TERMS = [
      "Computing how related each word is to every other word, and aggregating information weighted by that.",
      "\"Attention\" inside a Transformer and \"the model isn't paying attention\" in everyday speech are the same word meaning different things."
     ],
-    "whyEn": "It explains why models can resolve references across a long sentence — and is one technical root of the context length limit."
+    "whyEn": "It explains why models can resolve references across a long sentence — and is one technical root of the context length limit.",
+    "slug": "注意力机制"
    },
    {
     "zh": "位置编码",
@@ -2344,7 +2417,8 @@ var TERMS = [
     "defEn": [
      "Attaching a set of numbers to each position so the model can tell \"the cat chased the dog\" from \"the dog chased the cat\"."
     ],
-    "whyEn": "It explains why comprehension of long passages degrades noticeably once you exceed the context window."
+    "whyEn": "It explains why comprehension of long passages degrades noticeably once you exceed the context window.",
+    "slug": "位置编码"
    },
    {
     "zh": "嵌入层",
@@ -2371,7 +2445,8 @@ var TERMS = [
     "defEn": [
      "The layer mapping each token to a high-dimensional vector inside the model — the origin of vector retrieval."
     ],
-    "whyEn": "It connects the conceptual layer to the applied one: the embedding you use in practice is this."
+    "whyEn": "It connects the conceptual layer to the applied one: the embedding you use in practice is this.",
+    "slug": "嵌入层"
    },
    {
     "zh": "KV 缓存",
@@ -2405,7 +2480,8 @@ var TERMS = [
      "Caching the attention intermediates already computed, so only new tokens need incremental work.",
      "The cost is that it **occupies VRAM continuously** — which directly caps how long a context you can afford."
     ],
-    "whyEn": "It is the most common cause of OOM when deploying locally. Raise the context size and you hit this first."
+    "whyEn": "It is the most common cause of OOM when deploying locally. Raise the context size and you hit this first.",
+    "slug": "KV 缓存"
    },
    {
     "zh": "上下文窗口的代价",
@@ -2432,7 +2508,8 @@ var TERMS = [
     "defEn": [
      "A bigger window means attention computation and KV cache memory both grow."
     ],
-    "whyEn": "It explains a counter-intuitive result: pasting in everything at once is often worse than retrieving in batches with RAG."
+    "whyEn": "It explains a counter-intuitive result: pasting in everything at once is often worse than retrieving in batches with RAG.",
+    "slug": "上下文窗口的代价"
    },
    {
     "zh": "预训练",
@@ -2464,7 +2541,8 @@ var TERMS = [
     "defEn": [
      "The first training run, with a single objective: continue the text. It costs hundreds of millions."
     ],
-    "whyEn": "It explains why a model \"knows a bit about everything\": that is the result of reading widely, not learning for your task."
+    "whyEn": "It explains why a model \"knows a bit about everything\": that is the result of reading widely, not learning for your task.",
+    "slug": "预训练"
    },
    {
     "zh": "训练算力",
@@ -2491,7 +2569,8 @@ var TERMS = [
     "defEn": [
      "Training needs many GPUs and a lot of time; inference is far cheaper but costs continuously."
     ],
-    "whyEn": "It explains why large-model companies burn money, and why running one locally means doing the VRAM arithmetic first."
+    "whyEn": "It explains why large-model companies burn money, and why running one locally means doing the VRAM arithmetic first.",
+    "slug": "训练算力"
    },
    {
     "zh": "推理成本",
@@ -2525,7 +2604,8 @@ var TERMS = [
      "Usually priced separately for input and output tokens, with output more expensive.",
      "The same model can cost an order of magnitude more depending on how you phrase the question."
     ],
-    "whyEn": "The easiest trap to fall into when using AI day to day, and a cost item any model choice has to account for."
+    "whyEn": "The easiest trap to fall into when using AI day to day, and a cost item any model choice has to account for.",
+    "slug": "推理成本"
    }
   ]
  },
@@ -2567,7 +2647,8 @@ var TERMS = [
     "defEn": [
      "A processor built for large-scale parallel computation, originally designed for graphics rendering and now the workhorse of model training and inference."
     ],
-    "whyEn": "It decides whether a model runs and how fast. On the same card, VRAM capacity matters more than the compute tier."
+    "whyEn": "It decides whether a model runs and how fast. On the same card, VRAM capacity matters more than the compute tier.",
+    "slug": "GPU"
    },
    {
     "zh": "显存",
@@ -2596,7 +2677,8 @@ var TERMS = [
      "High-speed memory on the GPU. Model weights and the KV cache both live there, and overflowing means it cannot run.",
      "VRAM is the first hard threshold for local deployment — not a performance question but a can-it-run-at-all question."
     ],
-    "whyEn": "It is the only budget you must settle before running a model locally. Choosing a quantisation tier is essentially about fitting inside VRAM."
+    "whyEn": "It is the only budget you must settle before running a model locally. Choosing a quantisation tier is essentially about fitting inside VRAM.",
+    "slug": "显存"
    },
    {
     "zh": "量化",
@@ -2625,7 +2707,8 @@ var TERMS = [
      "Representing each weight value with fewer bits. The common unit is bpw — average bits per weight.",
      "Fewer bits saves more but loses more quality."
     ],
-    "whyEn": "The core technique in local deployment. For the same model, choosing the right quantisation tier often decides whether it runs at all."
+    "whyEn": "The core technique in local deployment. For the same model, choosing the right quantisation tier often decides whether it runs at all.",
+    "slug": "量化"
    },
    {
     "zh": "bpw",
@@ -2654,7 +2737,8 @@ var TERMS = [
      "A measure of how aggressively a model is quantised. This site groups them into five tiers: extreme compression, long context first, balanced, conservative and near-lossless.",
      "Lower numbers mean a smaller model."
     ],
-    "whyEn": "It unifies vendor-specific names like Q4, Q8 and Q3 into one comparable number — the most practical yardstick when choosing."
+    "whyEn": "It unifies vendor-specific names like Q4, Q8 and Q3 into one comparable number — the most practical yardstick when choosing.",
+    "slug": "bpw"
    },
    {
     "zh": "GGUF",
@@ -2683,7 +2767,8 @@ var TERMS = [
      "The model file format defined by the llama.cpp project, packaging the model structure together with its quantisation parameters.",
      "The vast majority of community quantisations ship in this format."
     ],
-    "whyEn": "If you run models locally, this is what you download. Other formats usually need an extra conversion step."
+    "whyEn": "If you run models locally, this is what you download. Other formats usually need an extra conversion step.",
+    "slug": "GGUF"
    },
    {
     "zh": "llama.cpp",
@@ -2712,7 +2797,8 @@ var TERMS = [
      "An inference engine written in C/C++ that emphasises lightness and cross-platform support, with mixed CPU and GPU inference.",
      "It is the foundation of the local deployment ecosystem — many quantisations exist specifically for it."
     ],
-    "whyEn": "The default choice for local deployment. Picking it means access to the largest set of quantisations and community support."
+    "whyEn": "The default choice for local deployment. Picking it means access to the largest set of quantisations and community support.",
+    "slug": "llama.cpp"
    },
    {
     "zh": "vLLM",
@@ -2739,7 +2825,8 @@ var TERMS = [
     "defEn": [
      "A production-oriented high-throughput inference engine that improves concurrency via techniques such as continuous batching."
     ],
-    "whyEn": "You will not need it for a personal local setup, but you do need something like it to offer an API to others."
+    "whyEn": "You will not need it for a personal local setup, but you do need something like it to offer an API to others.",
+    "slug": "vLLM"
    },
    {
     "zh": "GPU 层卸载",
@@ -2768,7 +2855,8 @@ var TERMS = [
      "Assigning layers across devices: whatever fits in VRAM goes to the GPU, the rest runs on the CPU backed by system memory.",
      "In llama.cpp this is usually controlled with the `-ngl` flag."
     ],
-    "whyEn": "It lets models that \"almost\" fit run at all, at a clear cost in speed. A trade-off, not a free lunch."
+    "whyEn": "It lets models that \"almost\" fit run at all, at a clear cost in speed. A trade-off, not a free lunch.",
+    "slug": "GPU 层卸载"
    },
    {
     "zh": "张量并行",
@@ -2802,7 +2890,8 @@ var TERMS = [
     "defEn": [
      "Partitioning model weights across multiple GPUs by dimension, each computing part, with inter-card communication required."
     ],
-    "whyEn": "The main technique for multi-GPU deployment. Prefer a single card when VRAM allows — communication overhead slows things down."
+    "whyEn": "The main technique for multi-GPU deployment. Prefer a single card when VRAM allows — communication overhead slows things down.",
+    "slug": "张量并行"
    },
    {
     "zh": "专家卸载",
@@ -2829,7 +2918,8 @@ var TERMS = [
     "defEn": [
      "A mixture-of-experts (MoE) model activates only a few experts per inference, so the remaining weights can sit on slower storage and be fetched as needed."
     ],
-    "whyEn": "It explains why some very large models run on a single card: not all weights participate at once."
+    "whyEn": "It explains why some very large models run on a single card: not all weights participate at once.",
+    "slug": "专家卸载"
    },
    {
     "zh": "首字延迟",
@@ -2861,7 +2951,8 @@ var TERMS = [
     "defEn": [
      "The time taken to produce the first token, driven mainly by prompt length and whether prefill is needed."
     ],
-    "whyEn": "The key metric for perceived speed. A model that generates fast per token but waits three seconds for the first one still feels slow."
+    "whyEn": "The key metric for perceived speed. A model that generates fast per token but waits three seconds for the first one still feels slow.",
+    "slug": "首字延迟"
    },
    {
     "zh": "吞吐",
@@ -2896,7 +2987,8 @@ var TERMS = [
     "defEn": [
      "Tokens produced per second. Higher throughput means faster long-form generation."
     ],
-    "whyEn": "It is a separate metric from time-to-first-token, and the two must be read together — looking at only one misleads the actual experience."
+    "whyEn": "It is a separate metric from time-to-first-token, and the two must be read together — looking at only one misleads the actual experience.",
+    "slug": "吞吐"
    },
    {
     "zh": "预填充",
@@ -2928,7 +3020,8 @@ var TERMS = [
     "defEn": [
      "The stage where the model processes the input portion. Longer input means slower prefill and higher time to first token."
     ],
-    "whyEn": "It explains a common observation: after you paste a long document the model \"thinks\" for a long time before answering — that is prefill computing."
+    "whyEn": "It explains a common observation: after you paste a long document the model \"thinks\" for a long time before answering — that is prefill computing.",
+    "slug": "预填充"
    },
    {
     "zh": "Prompt Cache",
@@ -2963,7 +3056,8 @@ var TERMS = [
     "defEn": [
      "Reusing processing already done for an identical prefix so it is not computed twice."
     ],
-    "whyEn": "System prompts in agent work are usually long, so caching meaningfully lowers cost. It is also why this site does not host models itself."
+    "whyEn": "System prompts in agent work are usually long, so caching meaningfully lowers cost. It is also why this site does not host models itself.",
+    "slug": "Prompt Cache"
    }
   ]
  },
@@ -2999,7 +3093,8 @@ var TERMS = [
     "defEn": [
      "Models whose parameter weights are published. Note that open code and open weights are different things — only open weights mean you can self-host."
     ],
-    "whyEn": "It decides whether you can work offline, whether you can fine-tune, and whether private data has to leave."
+    "whyEn": "It decides whether you can work offline, whether you can fine-tune, and whether private data has to leave.",
+    "slug": "开源模型"
    },
    {
     "zh": "闭源模型",
@@ -3031,7 +3126,8 @@ var TERMS = [
     "defEn": [
      "Models whose weights are not published, usable only through the provider's API or product."
     ],
-    "whyEn": "Usually stronger and updated faster, but data leaves your machine, you pay per use, and you carry outage risk."
+    "whyEn": "Usually stronger and updated faster, but data leaves your machine, you pay per use, and you carry outage risk.",
+    "slug": "闭源模型"
    },
    {
     "zh": "许可证",
@@ -3060,7 +3156,8 @@ var TERMS = [
      "The licence terms attached to a model; providers vary widely in strictness.",
      "The points to check: commercial use allowed? Redistribution allowed? Do derivatives inherit the original licence?"
     ],
-    "whyEn": "A hard legal constraint. However good the technology is, if the licence forbids it, you cannot use it."
+    "whyEn": "A hard legal constraint. However good the technology is, if the licence forbids it, you cannot use it.",
+    "slug": "许可证"
    },
    {
     "zh": "API / 接口调用",
@@ -3087,7 +3184,8 @@ var TERMS = [
     "defEn": [
      "Send the prompt to a model provider over a network interface and get the result back."
     ],
-    "whyEn": "This is how most people actually use AI. No graphics card needed and you pay as you go; the cost is that data leaves your machine and the bill keeps going."
+    "whyEn": "This is how most people actually use AI. No graphics card needed and you pay as you go; the cost is that data leaves your machine and the bill keeps going.",
+    "slug": "API - 接口调用"
    },
    {
     "zh": "本地部署",
@@ -3119,7 +3217,8 @@ var TERMS = [
     "defEn": [
      "Running model inference on your own hardware or server, without going through a third-party API."
     ],
-    "whyEn": "Usually the better choice when data is sensitive, when you need a specific quantisation, or when calling at high volume long-term."
+    "whyEn": "Usually the better choice when data is sensitive, when you need a specific quantisation, or when calling at high volume long-term.",
+    "slug": "本地部署"
    },
    {
     "zh": "数据不出网",
@@ -3151,7 +3250,8 @@ var TERMS = [
     "defEn": [
      "All data processed on machines you control, never uploaded to an external service."
     ],
-    "whyEn": "Where contracts, personal data or source code are involved, this is the line between usable and not — not a nice-to-have."
+    "whyEn": "Where contracts, personal data or source code are involved, this is the line between usable and not — not a nice-to-have.",
+    "slug": "数据不出网"
    },
    {
     "zh": "基准测试",
@@ -3183,7 +3283,8 @@ var TERMS = [
     "defEn": [
      "Scores from standardised evaluation suites such as MMLU or HumanEval."
     ],
-    "whyEn": "Important but not to be trusted blindly — public leaderboards go stale and may have little relation to your actual task."
+    "whyEn": "Important but not to be trusted blindly — public leaderboards go stale and may have little relation to your actual task.",
+    "slug": "基准测试"
    },
    {
     "zh": "总分 / 综合评测",
@@ -3215,7 +3316,8 @@ var TERMS = [
     "defEn": [
      "A weighted aggregate across several evaluation dimensions. Weighting differs substantially between providers."
     ],
-    "whyEn": "When you see \"an overall score of X\", ask first: how was it weighted, which question set, and when was the data collected."
+    "whyEn": "When you see \"an overall score of X\", ask first: how was it weighted, which question set, and when was the data collected.",
+    "slug": "总分 - 综合评测"
    },
    {
     "zh": "供应商锁定",
@@ -3247,7 +3349,8 @@ var TERMS = [
     "defEn": [
      "Depending on a vendor's proprietary prompt formats, tool-calling conventions or fine-tuning formats, so migrating costs a lot."
     ],
-    "whyEn": "The long-term cost most easily missed during selection. The test: how much code changes if you swap models?"
+    "whyEn": "The long-term cost most easily missed during selection. The test: how much code changes if you swap models?",
+    "slug": "供应商锁定"
    },
    {
     "zh": "模型评测的局限",
@@ -3279,7 +3382,8 @@ var TERMS = [
     "defEn": [
      "Public evaluations struggle to cover your specific task, and suffer from data contamination and staleness."
     ],
-    "whyEn": "The right approach is a small-scale test with your own real tasks rather than reading leaderboards alone."
+    "whyEn": "The right approach is a small-scale test with your own real tasks rather than reading leaderboards alone.",
+    "slug": "模型评测的局限"
    },
    {
     "zh": "隐私与合规",
@@ -3306,7 +3410,8 @@ var TERMS = [
     "defEn": [
      "Constraints around personal information, commercial secrets and industry regulation."
     ],
-    "whyEn": "This is a **veto item** in selection rather than a bonus — a non-compliant option cannot be used however good it is."
+    "whyEn": "This is a **veto item** in selection rather than a bonus — a non-compliant option cannot be used however good it is.",
+    "slug": "隐私与合规"
    },
    {
     "zh": "单次调用成本",
@@ -3338,7 +3443,8 @@ var TERMS = [
     "defEn": [
      "Unit price times the tokens actually consumed. Consumption can differ by orders of magnitude between tasks."
     ],
-    "whyEn": "Choosing a model on unit price alone is easy to get wrong. Two models can cost the same per token and end up in the opposite order overall."
+    "whyEn": "Choosing a model on unit price alone is easy to get wrong. Two models can cost the same per token and end up in the opposite order overall.",
+    "slug": "单次调用成本"
    },
    {
     "zh": "缓存策略",
@@ -3365,7 +3471,8 @@ var TERMS = [
     "defEn": [
      "Caching repeated inputs and results to avoid duplicate calls and computation."
     ],
-    "whyEn": "Its effect on cost is often larger than choosing a cheaper model."
+    "whyEn": "Its effect on cost is often larger than choosing a cheaper model.",
+    "slug": "缓存策略"
    },
    {
     "zh": "路由",
@@ -3397,7 +3504,8 @@ var TERMS = [
     "defEn": [
      "Mechanism that picks a model automatically based on task complexity."
     ],
-    "whyEn": "The most effective way to control cost and quality together, and standard practice in current product design."
+    "whyEn": "The most effective way to control cost and quality together, and standard practice in current product design.",
+    "slug": "路由"
    },
    {
     "zh": "自托管成本",
@@ -3424,7 +3532,8 @@ var TERMS = [
     "defEn": [
      "The total of hardware purchase, power, VRAM expansion and the ongoing maintenance work."
     ],
-    "whyEn": "It makes the common assumption \"local is always cheaper than an API\" testable — compute it against your actual usage."
+    "whyEn": "It makes the common assumption \"local is always cheaper than an API\" testable — compute it against your actual usage.",
+    "slug": "自托管成本"
    },
    {
     "zh": "服务中断风险",
@@ -3456,7 +3565,8 @@ var TERMS = [
     "defEn": [
      "The risk that an unavailable third-party service blocks your work."
     ],
-    "whyEn": "If a critical process depends entirely on one provider, this is a very real operational risk."
+    "whyEn": "If a critical process depends entirely on one provider, this is a very real operational risk.",
+    "slug": "服务中断风险"
    },
    {
     "zh": "可替换性",
@@ -3488,7 +3598,8 @@ var TERMS = [
     "defEn": [
      "How dependent a design is on a particular provider. Open protocols and formats raise substitutability substantially."
     ],
-    "whyEn": "The most easily overlooked item in long-term cost, and the basis of resilience when something breaks."
+    "whyEn": "The most easily overlooked item in long-term cost, and the basis of resilience when something breaks.",
+    "slug": "可替换性"
    },
    {
     "zh": "社区与文档",
@@ -3515,7 +3626,8 @@ var TERMS = [
     "defEn": [
      "Non-technical factors: project activity, documentation quality, responsiveness to issues."
     ],
-    "whyEn": "It carries heavy weight in selection while being the easiest to overlook — poor documentation consumes your time for a long time."
+    "whyEn": "It carries heavy weight in selection while being the easiest to overlook — poor documentation consumes your time for a long time.",
+    "slug": "社区与文档"
    },
    {
     "zh": "迭代速度",
@@ -3547,7 +3659,8 @@ var TERMS = [
     "defEn": [
      "Release frequency and stability. Frequent updates mean faster improvement but also possible breaking changes."
     ],
-    "whyEn": "It decides whether you are chasing something moving quickly or using a tool that is settling down."
+    "whyEn": "It decides whether you are chasing something moving quickly or using a tool that is settling down.",
+    "slug": "迭代速度"
    },
    {
     "zh": "退出成本",
@@ -3579,7 +3692,8 @@ var TERMS = [
     "defEn": [
      "The cost of moving your data and workflow elsewhere when you abandon a given approach."
     ],
-    "whyEn": "Two sides of the same coin as substitutability. Invisible at selection time, most painful when something breaks."
+    "whyEn": "Two sides of the same coin as substitutability. Invisible at selection time, most painful when something breaks.",
+    "slug": "退出成本"
    },
    {
     "zh": "成本",
@@ -3613,7 +3727,8 @@ var TERMS = [
      "The real expense once costs are amortised across a task.",
      "It comprises unit price times actual consumption (token count, duration, concurrency)."
     ],
-    "whyEn": "**Choosing a model on unit price alone is easy to get wrong** — two models with identical prices can invert once real consumption differs."
+    "whyEn": "**Choosing a model on unit price alone is easy to get wrong** — two models with identical prices can invert once real consumption differs.",
+    "slug": "成本"
    },
    {
     "zh": "传输方式",
@@ -3647,7 +3762,8 @@ var TERMS = [
      "The channel data moves through between components. In-process local transfer and cross-network transfer have very different safety properties.",
      "The two common forms: local inter-process communication, and remote HTTP requests."
     ],
-    "whyEn": "It is the first question to ask when deciding whether your data can leak. **Anything sent to a remote service is inherently unsuitable for sensitive material.**"
+    "whyEn": "It is the first question to ask when deciding whether your data can leak. **Anything sent to a remote service is inherently unsuitable for sensitive material.**",
+    "slug": "传输方式"
    }
   ]
  }
