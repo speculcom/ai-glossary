@@ -4,6 +4,8 @@ en: "Product vs Model"
 purpose: "区分「模型本身」和「你实际用的那个软件」。"
 def: ["模型是底层的计算能力，产品是包装它的应用：界面、计费、协作功能、权限管理。", "同一个模型可以出现在很多不同产品里，体验差别很大。"]
 why: "这解释了为什么「模型排行榜第一」不等于「你用的那个工具最好用」。"
+refs:
+  - ["OpenAI Model Spec（官方）", "https://model-spec.openai.com/", "OpenAI Model Spec"]
 domain: "concept"
 purposeTag: "learn"
 level: 1
