@@ -6,7 +6,7 @@ purpose: "专门做 AI 运算的芯片，比通用 GPU 更高效但生态更封�
 def: ["为矩阵运算优化的处理器，通常指各类 AI 专用加速硬件。"]
 why: "它决定了你能把多大的模型塞进多少钱的设备里。"
 refs:
-  - ["导航站的算力与芯片分类", "https://nav.specul.com/"]
+  - ["导航站的算力与芯片分类", "https://nav.specul.com/", "Nav directory: compute & chips"]
 domain: "infra"
 purposeTag: "learn"
 level: 2
