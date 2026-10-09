@@ -90,9 +90,9 @@ local_files: >-
 
 ---
 
-## 赛道路径差异
+## 分区路径差异
 
-| 赛道 | 关注重点 |
+| 分区 | 关注重点 |
 |---|---|
 | IDE | 索引策略、大仓库表现、LSP 集成 |
 | CLI | 文件操作能力、Git 友好度、diff 输出 |
@@ -118,4 +118,4 @@ local_files: >-
 
 - [维度 2 · 运行位置](./runtime.md) — 索引在本地还是云端
 - [维度 7 · 权限与限制](./permissions.md) — 目录授权与沙箱边界
-- [MCP · 权限范围](../tracks/mcp/taxonomy/scope.md) — MCP 赛道在此维度有专门细化
+- [MCP · 权限范围](../tracks/mcp/taxonomy/scope.md) — MCP 分区在此维度有专门细化
