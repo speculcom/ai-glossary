@@ -4,6 +4,8 @@ en: "vLLM"
 purpose: "在服务器上高并发跑模型的服务引擎。"
 def: ["面向生产的高吞吐推理引擎，通过连续批处理等手段提升并发效率。"]
 why: "个人本地部署用不上它，但如果你要给别人提供 API，就需要这一类工具。"
+refs:
+  - ["vLLM 官方文档", "https://docs.vllm.ai/en/latest/", "vLLM documentation"]
 domain: "infra"
 purposeTag: "learn"
 level: 5
