@@ -5,7 +5,8 @@ purpose: "让模型逐字生成时不用每一步都重算整段话，生成速�
 def: ["把已经算过的注意力中间结果缓存起来，只为新 token 计算增量。", "代价是它**持续占用显存**——这直接决定了你的显存能撑多长的上下文。"]
 why: "这是本地部署时最常见的 OOM（显存不够）原因。上下文开大就先撞它。"
 refs:
-  - ["显存与上下文的关系", "https://models.specul.com/"]
+  - ["vLLM 前缀缓存设计", "https://docs.vllm.ai/en/stable/design/prefix_caching/", "Automatic Prefix Caching – vLLM design docs"]
+  - ["vLLM KV 缓存管理", "https://docs.vllm.ai/en/latest/design/hybrid_kv_cache_manager/", "Hybrid KV Cache Manager – vLLM design docs"]
 domain: "infra"
 purposeTag: "learn"
 level: 4
