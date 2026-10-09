@@ -162,5 +162,5 @@ fit: >-
 ## 关联
 
 - `pitfalls` 字段（见 [SCHEMA.md](../SCHEMA.md#25-判断与标签)）
-- 实测记录（本赛道 `runs/`）
-- 任务集（本赛道 `tasks/`）
+- 实测记录（本分区 `runs/`）
+- 任务集（本分区 `tasks/`）
