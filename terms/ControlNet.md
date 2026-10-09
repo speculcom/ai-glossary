@@ -4,6 +4,8 @@ en: "ControlNet"
 purpose: "让你用线稿、深度图、姿态图精确控制生成结果。"
 def: ["附加在扩散模型上的控制网络，用结构图约束生成内容的形状和姿态。"]
 why: "它是图像生成里最实用的控制手段，做精确构图时的必需品。"
+refs:
+  - ["ControlNet 原论文（Stanford）", "https://arxiv.org/abs/2302.05543", "Adding Conditional Control to Text-to-Image Diffusion Models"]
 domain: "media"
 purposeTag: "apply"
 level: 2
