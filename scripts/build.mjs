@@ -505,6 +505,7 @@ if (fs.existsSync(learnDir)) {
         <span class="brand-dot" aria-hidden="true"></span>
         <span class="brand-text">
           <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
         </span>
       </a>
       <nav class="nav-links" aria-label="站点导航">
