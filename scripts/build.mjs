@@ -560,7 +560,10 @@ if (fs.existsSync(learnDir)) {
           <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
           <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
           <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-          <a href="https://github.com/speculcom/learn" target="_blank" rel="noopener">GitHub</a>
+          <!-- 2026-10-10 用户定案：页脚不再叫「GitHub」，叫「开源」；
+               链接指向 **markdown 内容仓** speculcom/ai-glossary，不是部署仓 speculcom/learn
+               （部署仓是构建产物，内容仓才是「原创」）。 -->
+          <a href="https://github.com/speculcom/ai-glossary" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
       </nav>
       <nav class="foot-legal-links" aria-label="法律">
         <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
@@ -569,6 +572,19 @@ if (fs.existsSync(learnDir)) {
       </nav>
     </div>
   </footer>`;
+
+/* 底部 tab bar —— 手机端「像 App 一样」的固定导航（2026-10-10 用户要求：分站也要有）。
+   与共享 shell.mjs / www 首页同一份标记；样式在 brand.css（默认 none，≤768px 显示），
+   行为在 brand.js（它已监听 .nav-tabbar [aria-controls] 当「更多」按钮），此处不需要新脚本。
+   ⚠ 本份与 _sites/_template/shell.mjs 的 tabbar() 是同一实现的两个副本 ——
+     learn 的外壳不走共享 shell（词条页要按 ../../ 相对路径引资源），只能各存一份。 */
+const TABBAR = `<nav class="nav-tabbar" aria-label="快捷导航">
+  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="https://learn.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
+  <a href="https://agent.specul.com/"><span class="ti" aria-hidden="true">◈</span>Agent</a>
+  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
+  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
+</nav>`;
 
   /* 词条页自带的一小段样式：只用 brand.css 的变量（带兜底值），
    * 不依赖抽屉（.drawer）作用域下的类，避免「类名在别的容器里没样式」。 */
@@ -677,7 +693,7 @@ ${TP_CSS}
   <!-- B5：词条页的结构性数据（DefinedTerm） -->
   <script type="application/ld+json">${termJsonLd(t, slug, layer.name)}</script>
 </head>
-<body class="brand-ambient" style="--accent:var(--cyan)">
+<body class="brand-ambient has-tabbar" style="--accent:var(--cyan)">
 ${HEADER('learn')}
   <main id="main">
     <div class="container">
@@ -731,6 +747,7 @@ ${next ? `          <a href="../${ENC(slugOf(next.t))}/" style="text-align:right
     </div>
   </main>
 ${FOOTER}
+${TABBAR}
   <script src="../../brand.js"></script>
 </body>
 </html>
