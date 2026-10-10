@@ -515,11 +515,12 @@ if (fs.existsSync(learnDir)) {
         <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
         <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
         <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-        <span class="nav-tools">
-          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-        </span>
       </nav>
+      <!-- 2026-10-10：.nav-tools 移到 <nav> 外（放里面时窄屏按钮组会被链接挤到第三条）。 -->
+      <span class="nav-tools">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+      </span>
       <!-- B6（2026-10-09）：窄屏导航入口（样式与行为在共享 brand.css / brand.js）。 -->
       <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
         <i></i><i></i><i></i>
