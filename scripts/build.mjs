@@ -575,7 +575,9 @@ if (fs.existsSync(learnDir)) {
 .tp-wrap{max-width:52rem;margin:0 auto}
 .tp-crumbs{font-size:.82rem;opacity:.7;margin:1.6rem 0 .4rem;display:flex;gap:.5rem;flex-wrap:wrap}
 .tp-crumbs a{text-decoration:none;border-bottom:1px dotted currentColor}
-.tp h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;margin:.6rem 0 .3rem}
+/* ⚠ 2026-10-10：删掉本地的 clamp(1.6rem,4vw,2.3rem) —— 词条页主标因此只有 36.8px，
+   比全站其余页面小近 10px。现一律继承 brand.css 的 h1（--display-sub / --lh-tight / 800）。 */
+.tp h1{margin:.6rem 0 .3rem}
 .tp-en{opacity:.65;font-size:1rem;margin:0 0 .9rem}
 .tp-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 1.8rem;padding:0;list-style:none}
 .tp-tag{border:1px solid var(--line,rgba(127,127,127,.28));border-radius:999px;padding:.14rem .62rem;font-size:.76rem;opacity:.9}
