@@ -21,12 +21,26 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '..');
 const termsDir = path.join(repoRoot, 'terms');
 const metaPath = path.join(repoRoot, 'meta.js');
+
+/* 外壳（顶栏/抽屉/页脚/tab bar）—— 共享 shell 的 vendored 副本（2026-10-10）。
+ * 此前 learn 在本文件里手抄了 87 行外壳模板，是全站第四份副本；
+ * 副本已经跟丢过（body 漏 has-tabbar、nav-tools 留在 <nav> 内部）。
+ * 现在六站共用 _sites/_template/shell.mjs 一处实现，
+ * 改一处全站生效 —— 用户要的「统一管理」。 */
+const SHELL_PATH = path.join(repoRoot, 'brand', 'shell.mjs');
+if (!fs.existsSync(SHELL_PATH)) {
+  throw new Error(
+    `glossary 仓缺少 vendored 外壳：${SHELL_PATH}\n` +
+    `主仓执行 node _tmp/vendor-brand.mjs 可补齐；本仓单独构建时它必须随仓库提交。`
+  );
+}
+const SHELL = await import(pathToFileURL(SHELL_PATH).href);
 /* 词条释义英文（2026-10-04 起分批补），键 = md 文件名（不含扩展名）。
  * 缺键 → 页面英文态回退中文（可接受降级）。 */
 let TERMS_EN = {};
@@ -498,93 +512,28 @@ if (fs.existsSync(learnDir)) {
 
   const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E";
 
+  /* 顶栏 + 抽屉：共享实现。learn 的词条页在 term/xxx/ 子目录，
+     资源相对路径由 shell() 的 assetPrefix 处理，这里只用标记部分。 */
   const HEADER = (cur) => `  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"${cur === 'learn' ? ' aria-current="page"' : ''}><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
-        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
-        <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 移到 <nav> 外（放里面时窄屏按钮组会被链接挤到第三条）。 -->
-      <span class="nav-tools">
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏导航入口（样式与行为在共享 brand.css / brand.js）。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://vg.specul.com/"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>`;
+${SHELL.header(cur)}
+${SHELL.drawer(cur)}`;
 
-  const FOOTER = `  <footer class="site-footer">
-    <div class="container foot-row">
-      <div class="foot-brand">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="foot-copy">© 2026 Specul · <span data-zh>投机</span><span data-en>Specul</span> · <span data-zh>推演</span><span data-en>Speculate</span></span>
-      </div>
-      <nav class="foot-links" aria-label="页脚导航">
-          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
-          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
-          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
-          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-          <!-- 2026-10-10 用户定案：页脚不再叫「GitHub」，叫「开源」；
-               链接指向 **markdown 内容仓** speculcom/ai-glossary，不是部署仓 speculcom/learn
-               （部署仓是构建产物，内容仓才是「原创」）。 -->
-          <a href="https://github.com/speculcom/ai-glossary" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
-      </nav>
-      <nav class="foot-legal-links" aria-label="法律">
-        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
-        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
-      </nav>
-    </div>
-  </footer>`;
+  /* 页脚：共享实现，只传「内容仓地址」与「开源」文案。
+     learn 的内容仓是 ai-glossary（markdown 原文），不是部署仓 speculcom/learn。 */
+  const FOOTER = SHELL.footer('https://github.com/speculcom/ai-glossary', SHELL.OPEN_SOURCE_LABEL);
 
 /* 底部 tab bar —— 手机端「像 App 一样」的固定导航（2026-10-10 用户要求：分站也要有）。
    与共享 shell.mjs / www 首页同一份标记；样式在 brand.css（默认 none，≤768px 显示），
    行为在 brand.js（它已监听 .nav-tabbar [aria-controls] 当「更多」按钮），此处不需要新脚本。
    ⚠ 本份与 _sites/_template/shell.mjs 的 tabbar() 是同一实现的两个副本 ——
      learn 的外壳不走共享 shell（词条页要按 ../../ 相对路径引资源），只能各存一份。 */
-const TABBAR = `<nav class="nav-tabbar" aria-label="快捷导航">
-  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-  <a href="https://learn.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
-  <a href="https://agent.specul.com/"><span class="ti" aria-hidden="true">◈</span>Agent</a>
-  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
-</nav>`;
+/* 底部 tab bar / 顶栏 / 页脚 / 抽屉 —— 全部改用**共享 shell**。
+   ⚠ 2026-10-10：此前这里是 87 行手抄的模板串（HEADER 48 行 + FOOTER 25 行 + TABBAR 7 行），
+     是共享 shell 的第四份副本。副本意味着「改骨架要跟四次」，
+     而且已经跟丢过：learn 的 <body> 迟迟没加 has-tabbar（页脚被 tab bar 盖住），
+     nav-tools 也曾长时间留在 <nav> 内部。
+     现在 learn 与其余五站共用 _sites/_template/shell.mjs 一处实现。 */
+const TABBAR = SHELL.tabbar('learn');
 
   /* 词条页自带的一小段样式：只用 brand.css 的变量（带兜底值），
    * 不依赖抽屉（.drawer）作用域下的类，避免「类名在别的容器里没样式」。 */
