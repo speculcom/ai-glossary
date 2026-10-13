@@ -74,7 +74,7 @@ ai-glossary/
 
 ## 内容索引
 
-<!-- INDEX:BEGIN 由 _audit/gen-repo-docs.mjs 生成，勿手改 -->
+<!-- INDEX:BEGIN generated, do not edit -->
 
 ## 内容索引
 
@@ -269,7 +269,7 @@ ai-glossary/
 
 ## 实测规模（A8）
 
-<!-- STATS:BEGIN 由 _audit/gen-repo-docs.mjs 生成，勿手改 -->
+<!-- STATS:BEGIN generated, do not edit -->
 | 项 | 实测值 |
 |---|---|
 | 词条 | 116 词 |
