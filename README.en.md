@@ -103,7 +103,7 @@ inconsistent skeleton gets caught by the validator.
 | [Machine Learning, ML](terms/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.md) | Instead of writing rules by hand, let the machine find patt… | Concept | Learn |
 | [Deep Learning](terms/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.md) | Stack many layers so the network learns its own features in… | Concept | Learn |
 | [Neural Network](terms/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md) | A network of simple units whose combined output can approxi… | Concept | Learn |
-| [Large Language Model, LLM](terms/%E5%A4%A7%E6%A8%A1%E5%9E%8B%20-%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) | — | Concept | Learn |
+| [Large Language Model, LLM](terms/%E5%A4%A7%E6%A8%A1%E5%9E%8B%20-%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) | After training, the learned parameters that let a system ge… | Concept | Learn |
 | [Parameter](terms/%E5%8F%82%E6%95%B0.md) | The numbers the training process adjusts; everything the mo… | Concept | Learn |
 | [Training](terms/%E8%AE%AD%E7%BB%83.md) | Let the system learn its parameters from data by repeated e… | Concept | Learn |
 | [Inference](terms/%E6%8E%A8%E7%90%86.md) | The model you trained is now answering real queries — a dif… | Concept | Learn |
@@ -128,13 +128,13 @@ inconsistent skeleton gets caught by the validator.
 | [Multimodal](terms/%E5%A4%9A%E6%A8%A1%E6%80%81.md) | Handle text, images, audio and video in one system rather t… | Model | Learn |
 | [Reasoning Model](terms/%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B.md) | Works through a chain of internal steps before answering, w… | Model | Choose |
 | [Temperature](terms/%E6%B8%A9%E5%BA%A6.md) | Controls how random the output is. Lower is steadier; highe… | Model | Build |
-| [Sampling](terms/%E9%87%87%E6%A0%B7%20-%20%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0.md) | — | Model | Build |
+| [Sampling](terms/%E9%87%87%E6%A0%B7%20-%20%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0.md) | How the model picks among candidate tokens — this determine… | Model | Build |
 | [System Prompt](terms/%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA.md) | The role and rules set for a model, which determine the ton… | Model | Build |
 | [Fine-tuning](terms/%E5%BE%AE%E8%B0%83.md) | Teach an existing model a specific task or style, rather th… | Model | Build |
 | [RLHF / Alignment](terms/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90.md) | Makes a model's output match human preference, rather than … | Concept | Learn |
 | [Knowledge Cutoff](terms/%E7%9F%A5%E8%AF%86%E6%88%AA%E6%AD%A2.md) | The date boundary of a model's training data. Anything afte… | Model | Avoid |
-| [Retrieval-Augmented Generation, RAG](terms/%E8%81%94%E7%BD%91%20-%20%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA.md) | — | Data | Build |
-| [Embedding / Vector](terms/%E5%90%91%E9%87%8F%20-%20%E5%B5%8C%E5%85%A5.md) | — | Data | Learn |
+| [Retrieval-Augmented Generation, RAG](terms/%E8%81%94%E7%BD%91%20-%20%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA.md) | Let the model look things up before answering, instead of a… | Data | Build |
+| [Embedding / Vector](terms/%E5%90%91%E9%87%8F%20-%20%E5%B5%8C%E5%85%A5.md) | Represent text as coordinates, so meaning can be compared b… | Data | Learn |
 | [Vector Database](terms/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93.md) | A database built to store and search those numeric arrays, … | Data | Build |
 | [Chunking](terms/%E5%88%86%E5%9D%97.md) | Cut a long document into pieces before feeding it to the mo… | Data | Build |
 | [Diffusion Model](terms/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B.md) | The dominant method for image generation: "wipe" an image o… | Media | Learn |
@@ -157,7 +157,7 @@ inconsistent skeleton gets caught by the validator.
 
 | Term | In one line | Domain | Use |
 |---|---|---|---|
-| [Agent](terms/%E6%99%BA%E8%83%BD%E4%BD%93%20-%20Agent.md) | — | Agent | Build |
+| [Agent](terms/%E6%99%BA%E8%83%BD%E4%BD%93%20-%20Agent.md) | Stop answering and start acting: let the model take multi-s… | Agent | Build |
 | [Tool Calling / Function Calling](terms/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8.md) | Let the model actually do things — search, run code, edit f… | Agent | Build |
 | [Model Context Protocol](terms/MCP.md) | A standard interface for connecting AI to external tools an… | Agent | Build |
 | [Multi-Agent](terms/%E5%A4%9A%20Agent%20%E5%8D%8F%E4%BD%9C.md) | Split a complex job across several roles, each strong at so… | Agent | Build |
@@ -176,13 +176,13 @@ inconsistent skeleton gets caught by the validator.
 | [App Server](terms/App%20Server.md) | Let one AI session hand off between terminal, editor and we… | Development | Learn |
 | [Agent Client Protocol](terms/ACP.md) | Let AI coding tools from different vendors plug into the sa… | Development | Build |
 | [Pair Programming](terms/%E9%85%8D%E5%AF%B9%E7%BC%96%E7%A8%8B.md) | AI as a programming partner taking part in development in r… | Development | Learn |
-| [Browser Automation](terms/%E6%B5%8F%E8%A7%88%20-%20%E7%BD%91%E9%A1%B5%E6%93%8D%E4%BD%9C.md) | — | Agent | Build |
+| [Browser Automation](terms/%E6%B5%8F%E8%A7%88%20-%20%E7%BD%91%E9%A1%B5%E6%93%8D%E4%BD%9C.md) | Let the AI click pages, fill forms and take screenshots to … | Agent | Build |
 | [Reference Server](terms/%E5%8F%82%E8%80%83%E6%9C%8D%E5%8A%A1%E5%99%A8.md) | Official "reference" implementations showing how the protoc… | Agent | Learn |
 | [Version Control](terms/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md) | Record every change and roll back at will — the safety foun… | Development | Avoid |
 | [Continuous Integration, CI](terms/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.md) | Tests and checks run automatically as soon as code is commi… | Development | Avoid |
 | [Prompt Injection](terms/%E6%8F%90%E7%A4%BA%E6%B3%A8%E5%85%A5.md) | The main security risk in agent systems: content that talks… | Agent | Avoid |
 | [Remote Execution](terms/%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C.md) | A cloud agent runs tasks on your machine, so closing the la… | Agent | Build |
-| [Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) | — | Agent | Build |
+| [Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) | Package a repetitive workflow into a reusable capability. | Agent | Build |
 | [Structured Output](terms/%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA.md) | Make the model's answer a strict format (JSON and the like)… | Agent | Build |
 
 </details>
@@ -231,11 +231,11 @@ inconsistent skeleton gets caught by the validator.
 | [Open-weight Model](terms/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B.md) | The weights are public: you can download them, run them on … | Choice | Choose |
 | [Closed / Proprietary Model](terms/%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B.md) | You do not get the weights; you can only call it through th… | Choice | Choose |
 | [License](terms/%E8%AE%B8%E5%8F%AF%E8%AF%81.md) | What you may do with it: use, modify, or commercialise. The… | Choice | Avoid |
-| [API](terms/API%20-%20%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8.md) | — | Choice | Choose |
+| [API](terms/API%20-%20%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8.md) | Do not run a model yourself — pay per use for someone else'… | Choice | Choose |
 | [Local Deployment](terms/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2.md) | Download the model and run it on your own machine, so data … | Infrastructure | Choose |
 | [Data Sovereignty](terms/%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%87%BA%E7%BD%91.md) | Your material never passes through a third party. This is a… | Choice | Avoid |
 | [Benchmark](terms/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95.md) | Compare models head to head using a shared question set. | Choice | Choose |
-| [Aggregate Score](terms/%E6%80%BB%E5%88%86%20-%20%E7%BB%BC%E5%90%88%E8%AF%84%E6%B5%8B.md) | — | Choice | Choose |
+| [Aggregate Score](terms/%E6%80%BB%E5%88%86%20-%20%E7%BB%BC%E5%90%88%E8%AF%84%E6%B5%8B.md) | Collapse several benchmark scores into one number for quick… | Choice | Choose |
 | [Vendor Lock-in](terms/%E4%BE%9B%E5%BA%94%E5%95%86%E9%94%81%E5%AE%9A.md) | The deeper you go, the harder it is to switch models or pro… | Choice | Avoid |
 | [Evaluation Limits](terms/%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B%E7%9A%84%E5%B1%80%E9%99%90.md) | A leaderboard score is not the same as your actual result —… | Choice | Choose |
 | [Privacy & Compliance](terms/%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84.md) | Which machines data passes through, how long it is retained… | Choice | Avoid |
