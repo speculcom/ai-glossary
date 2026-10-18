@@ -353,9 +353,9 @@ inconsistent skeleton gets caught by the validator.
 | Terms | 185 |
 | Stations | Getting In 30 · Hands On 35 · Going Deeper 35 · Under the Hood 30 · Running It 25 · Choosing Right 30 |
 | Learning paths | 3 curated ordered routes, each with a checkpoint |
-| Short guides | 2 guides of 5-10 minutes each (English coverage 2/2) |
+| Short guides | 20 guides of 5-10 minutes each (English coverage 20/20) |
 | Domain | concept 52 · choice 33 · infra 29 · agent 25 · model 14 · media 14 · dev 10 · data 8 |
 | Purpose (purposeTag) | learn 74 · apply 44 · guard 35 · judge 32 |
-| Source entries (refs) | 285 |
+| Source entries (refs) | 314 |
 | English coverage | 185 / 185 |
 <!-- STATS:END -->

@@ -978,10 +978,11 @@ ${TABBAR}
   const DEPLOY_GUIDE = path.join(learnDir, 'guide');
   const wantGuideSlugs = new Set();
   let guidePages = 0;
-  /* meta description 与 pathDesc 同一套路：lead → 第一条要点/误区 → 站名，拼到够长为止。 */
+  /* meta description 与 pathDesc 同一套路：lead → 第一条要点/结论 → 站名，拼到够长为止。
+     myth 类拼 fact 而不是 myth：搜索摘要该说本页的结论，不该把误区原文当成本站主张。 */
   const guideDesc = (g) => {
     let out = plainTxt(g.lead);
-    const first = g.kind === 'guide' ? (g.points[0] || '') : plainTxt(g.myth);
+    const first = g.kind === 'guide' ? (g.points[0] || '') : plainTxt(g.fact);
     const parts = [first, `学 AI 第${g.station}站微型指南`];
     for (const x of parts) { if (!x) continue; out += ' ' + x; if (esc(out).length >= 70) break; }
     if (esc(out).length > 158) out = out.slice(0, 120).replace(/[\s,，、;；:：\-—]+$/, '') + '…';

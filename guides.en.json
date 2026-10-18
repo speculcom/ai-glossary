@@ -19,5 +19,95 @@
       "Self-review catches only a fraction of errors; cross-checking (different source, different tool) is what works.",
       "The more specific the domain (local law, your own data), the more a human must check — general models don't have these facts."
     ]
+  },
+  "AI 真的读懂了你的话吗": {
+    "lead": "A fitting answer is not understanding — it is doing something else.",
+    "myth": "It answers aptly and keeps up with the conversation, so it must have understood what you meant.",
+    "fact": "It predicts the next word by probability. An apt answer shows it saw similar patterns in training, not that it grasps your situation."
+  },
+  "参数越多就越聪明": {
+    "lead": "Parameter count is one variable, not a dial for intelligence.",
+    "myth": "Parameter count decides how smart a model is — bigger is always stronger.",
+    "fact": "The quality and amount of training data decide performance just as much; small models match larger ones on suitable tasks."
+  },
+  "通用人工智能快到了": {
+    "lead": "\"Soon\" is a claim, not a verifiable milestone.",
+    "myth": "Everyone says AGI is near, so there must be a checkable date when it arrives.",
+    "fact": "There is no agreed definition of AGI; the houses mean different things. Without a definition, \"arrived\" has no test."
+  },
+  "它说得笃定，所以可信": {
+    "lead": "Fluency and correctness are separate; a confident tone adds no reliability.",
+    "myth": "A confident tone and a tidy structure mean the content is trustworthy.",
+    "fact": "In the hallucination surveys, most recorded errors are exactly this kind of smoothly written fabrication."
+  },
+  "温度调高会更聪明": {
+    "lead": "Temperature changes randomness only, not how much the model knows.",
+    "myth": "Raising temperature makes the model more imaginative, therefore smarter.",
+    "fact": "Temperature only changes how randomly it picks tokens; raising it adds drift and errors while the model knows no more."
+  },
+  "它记得你之前说过的": {
+    "lead": "What it can see is the context window; anything outside is not in its input.",
+    "myth": "Within one conversation it always remembers everything said earlier.",
+    "fact": "It only sees what fits the context window; anything beyond it is simply not in the input, which has nothing to do with remembering."
+  },
+  "榜单分数高就是好用": {
+    "lead": "A benchmark covers only what it measures — your task is a different question.",
+    "myth": "A model that scores high on the leaderboards must also be good at your task.",
+    "fact": "HELM concludes precisely that a single leaderboard is incomplete; a high score only means strength on the items tested."
+  },
+  "上下文窗口越大越好": {
+    "lead": "Window size has a price; enough beats maximum.",
+    "myth": "The larger the context window, the better long documents get handled.",
+    "fact": "A larger window raises VRAM and latency. In a long input, the middle is used unevenly. Choosing by need beats choosing the maximum."
+  },
+  "它拒绝，是因为做不到": {
+    "lead": "Most refusals are a trained choice, not a capability ceiling.",
+    "myth": "When it says \"I cannot do that\", it lacks the capability.",
+    "fact": "Most refusals come from alignment training; having the capability and being willing to output it are different things."
+  },
+  "它逐字读懂你的文字": {
+    "lead": "What it sees is not characters but ids from a vocabulary.",
+    "myth": "It reads your input word by word, the way you do.",
+    "fact": "The input is first cut into token ids from a vocabulary. An uncommon word may be split into pieces. What it works on is the ids, not the characters."
+  },
+  "它在一步步推理": {
+    "lead": "The steps it writes are not guaranteed to be the path that produced the answer.",
+    "myth": "The reasoning it shows you is the reasoning it actually performed.",
+    "fact": "It generates word by word by probability; the intermediate steps it writes need not match the path that produced the answer."
+  },
+  "注意力就是它注意到重点": {
+    "lead": "Attention is a weighted computation, not the model paying heed.",
+    "myth": "\"Attention mechanism\" means it picks out what matters, like a person would.",
+    "fact": "Attention weights positions by relatedness; a high weight does not mean it judged that part important."
+  },
+  "量化会让模型变笨一半": {
+    "lead": "The impact varies by tier; the ruler is bits per weight.",
+    "myth": "Quantising cuts model quality in half.",
+    "fact": "The impact varies by tier and by model. The ruler is bpw, meaning bits per weight. The differences between tiers have to be read item by item."
+  },
+  "显存不够就跑不了": {
+    "lead": "Whether it runs and how fast it runs are two questions.",
+    "myth": "If it does not fit in VRAM, the only option is a better graphics card.",
+    "fact": "Some layers can be moved to system memory or to the CPU. The price is speed. Whether it runs at all and how fast it runs are separate questions."
+  },
+  "接口兼容就等于行为一致": {
+    "lead": "Compatibility guarantees the shape of requests and responses, nothing more.",
+    "myth": "If the API is OpenAI-compatible, switching over gives the same behaviour.",
+    "fact": "Compatibility covers the shape of requests and responses; parameter defaults, error behaviour and output quality differ between implementations."
+  },
+  "预览版不能用于生产": {
+    "lead": "Judge it by the terms and the timeline, not by the word \"preview\".",
+    "myth": "Anything labelled \"preview\" is an experiment and cannot go to production.",
+    "fact": "Lifecycle and support policies differ between providers. The basis is that provider's terms and deprecation schedule. Whether the name says \"preview\" is not evidence."
+  },
+  "开源模型一定更省钱": {
+    "lead": "Open guarantees the right to use and modify, not that it is free.",
+    "myth": "Once a model is open, running it is necessarily cheaper than calling an API.",
+    "fact": "Self-hosting costs hardware, operations and people; open concerns the right to use and modify, not price."
+  },
+  "换模型只是改个名字": {
+    "lead": "A compatible interface does not mean a zero-cost migration.",
+    "myth": "Switching models is just changing a name in the config.",
+    "fact": "Switching means retesting behaviour, cost and compliance; a compatible interface does not make the migration free."
   }
 }
