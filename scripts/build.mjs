@@ -226,6 +226,54 @@ console.log(`  · 词条英文覆盖：${enRate}%（${enCovered} / ${enTotal} �
 
 const total = out.reduce((a, L) => a + L.terms.length, 0);
 
+/* ---------- 扁平顺序 + slug（S23 起提到主流程，词条页与路径页共用） ---------- */
+// out 已按 layer 排序、层内按 ord 排序 → 直接铺平就是「有序路径」
+const flat = [];
+for (const L of out) for (const t of L.terms) flat.push({ t, layer: L });
+const slugOf = (t) => t.slug || path.basename(t.__file || '').replace(/\.md$/, '');
+
+/* ═══ S23（2026-10-19）· 学习路径 ═══
+ * 真相源：`paths/*.json` —— 一条路径一个文件，steps 是**有序 slug 数组**。
+ * 为什么用 slug 而不是 zh：slug 是 URL 身份（见上方 B1 注释：9 个词条的 zh 与文件名不同）。
+ * 为什么是 JSON 而不是 md：路径没有正文散文，只有「顺序 + 检查点」——
+ *   它是数据，不是文章。顺序就是它的全部内容，所以顺序必须写在数组里、由门禁校验。
+ * 构建期校验（门禁 path-check 在产物层再查一遍）：
+ *   · 每个 step 必须是真实存在的 slug —— 防「路径链到不存在的词条」（anchor-check 的同类）
+ *   · steps 不得重复 —— 同一条路径里同一个词出现两次是编排错误
+ *   · id 唯一、双语字段齐（R2）、检查点中英各 3 条
+ */
+const pathsDir = path.join(repoRoot, 'paths');
+const slugSet = new Set(flat.map(({ t }) => slugOf(t)));
+const PATHS = [];
+if (fs.existsSync(pathsDir)) {
+  for (const f of fs.readdirSync(pathsDir).filter((f) => f.endsWith('.json')).sort()) {
+    let p;
+    try { p = JSON.parse(fs.readFileSync(path.join(pathsDir, f), 'utf8')); }
+    catch (e) { throw new Error(`paths/${f} 不是合法 JSON：${e.message}`); }
+    const tag = `paths/${f}`;
+    if (!p.id) throw new Error(`${tag}: 缺 id`);
+    if (!Array.isArray(p.steps) || p.steps.length < 3) throw new Error(`${tag}: steps 必须是 ≥3 项的数组`);
+    for (const [k, v] of [['zh', p.zh], ['en', p.en]]) if (!v) throw new Error(`${tag}: 缺 ${k}（R2 双语）`);
+    for (const k of ['lead', 'span']) if (!p[k] || !p[k].zh || !p[k].en) throw new Error(`${tag}: ${k} 必须中英齐`);
+    if (!p.checkpoint || !Array.isArray(p.checkpoint.zh) || !Array.isArray(p.checkpoint.en)) throw new Error(`${tag}: checkpoint 必须有中英两组`);
+    if (p.checkpoint.zh.length !== p.checkpoint.en.length) throw new Error(`${tag}: 检查点中英条数不等`);
+    const seen = new Set();
+    p.steps.forEach((s, i) => {
+      if (!slugSet.has(s)) throw new Error(`${tag}: 第 ${i + 1} 步「${s}」不是任何词条的 slug（路径会链到不存在的页面）`);
+      if (seen.has(s)) throw new Error(`${tag}: 第 ${i + 1} 步「${s}」重复`);
+      seen.add(s);
+    });
+    PATHS.push(p);
+  }
+  PATHS.sort((a, b) => (a.ord || 0) - (b.ord || 0) || a.id.localeCompare(b.id));
+  const idSeen = new Set();
+  for (const p of PATHS) {
+    if (idSeen.has(p.id)) throw new Error(`路径 id 重复：${p.id}`);
+    idSeen.add(p.id);
+  }
+}
+console.log(`  · 学习路径：${PATHS.length} 条（${PATHS.map((p) => `${p.zh} ${p.steps.length} 步`).join(' · ')}）`);
+
 /* ---------- 等价校验（硬门禁） ----------
  * 拿旧产物作基准逐字段比。**不等就退出，不写文件**——
  * 写出一个字段有差的产物，页面会静默少词或丢 refs，比构建失败更难查。
@@ -327,6 +375,13 @@ var TERMS = `;
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(outFile, header + JSON.stringify(out, null, 1) + ';\n', 'utf8');
 
+/* S23：路径产物（首页导览条读它；路径页本身已由 build 直接渲染成静态 HTML）。
+ * 与 terms.all.js 同理：这是产物，不手改；真相源是 paths/*.json。 */
+fs.writeFileSync(path.join(outDir, 'paths.js'),
+  `/* AI 名词地图 · 学习路径（S23）\n * **这是产物，不要手改。** 源在 paths/*.json。\n` +
+  ` * 每条：id / ord / zh / en / span / lead / steps（有序 slug）/ checkpoint。\n */\n` +
+  `var PATHS = ` + JSON.stringify(PATHS, null, 1) + ';\n', 'utf8');
+
 console.log('构建完成：' + total + ' 词 / ' + out.length + ' 层 → ' + path.relative(repoRoot, outFile));
 
 if (ACCEPT) {
@@ -367,6 +422,8 @@ if (fs.existsSync(path.dirname(deployDir))) {
     ['meta.js', path.join(repoRoot, 'meta.js')], // 元信息：仓内源 → 部署
     // dims.js 的真相源就是仓内这份（2026-10-03 从「两份无源手写副本」升为有源）。
     ['dims.js', path.join(repoRoot, 'dims.js')],
+    // S23：学习路径（paths/*.json 校验后合并成一份产物，首页导览条消费）
+    ['paths.js', path.join(outDir, 'paths.js')],
   ];
   const synced = [];
   let changed = 0;
@@ -469,10 +526,7 @@ if (fs.existsSync(learnDir)) {
     isPartOf: { '@type': 'WebSite', name: '学 AI', url: 'https://learn.specul.com/' },
   });
 
-  // 扁平顺序：out 已按 layer 排序、层内按 ord 排序 → 直接铺平就是「有序路径」
-  const flat = [];
-  for (const L of out) for (const t of L.terms) flat.push({ t, layer: L });
-  const slugOf = (t) => t.slug || path.basename(t.__file || '').replace(/\.md$/, '');
+  // 扁平顺序 flat / slugOf 已在主流程定义（S23 起词条页与路径页共用，不再各存一份）
 
   /* ═══ B3（2026-10-09）· 站间骨架 ═══
    * 每个词条页加两节：
@@ -724,11 +778,137 @@ ${TABBAR}
     }
   }
 
-  /* sitemap：1（地图）+ 116（词条）= 117 条。
+  /* ═══ S23（2026-10-19）· 路径页：learn.specul/path/<id>/index.html ═══
+   * 一条路径一个静态页（可分享、可被搜索引擎收录），步骤链到既有词条页。
+   * 版式类全部走共享层 brand.css 的 .t-path* / .t-check（宪章 1）——
+   * 本文件不写任何路径专属样式；TP_CSS 只服务词条页，路径页不碰它。
+   * ⚠ 孤儿清理与词条页同理：paths/ 删了一条，产物页必须一起删，
+   *   否则 sitemap 与门禁都会继续看见一条已退役的路径。 */
+  const DEPLOY_PATH = path.join(learnDir, 'path');
+  const wantPathIds = new Set();
+  let pathPages = 0;
+  /* 路径页的 meta description：与词条页的 metaDesc 同一套路 ——
+   * 把路径**自己已有的内容**（lead → 步数 → 第一条检查点）拼到够长为止，
+   * 不堆关键词。第一版只放 lead，实测 42–47 字符，被 seo-basics 判「过短」。 */
+  const pathDesc = (p) => {
+    let out = plainTxt(p.lead.zh);
+    const parts = [`${p.steps.length} 个词 · ${p.span.zh}`, plainTxt(p.checkpoint.zh[0])];
+    for (const x of parts) { if (!x) continue; out += ' ' + x; if (esc(out).length >= 70) break; }
+    if (esc(out).length > 158) out = out.slice(0, 120).replace(/[\s,，、;；:：\-—]+$/, '') + '…';
+    return out;
+  };
+  for (const p of PATHS) {
+    wantPathIds.add(p.id);
+    const stepsHtml = p.steps.map((s, i) => {
+      const t = flat.find((x) => slugOf(x.t) === s).t;
+      return `        <li><a href="../../term/${ENC(slugOf(t))}/">${esc(t.zh)}</a></li>`;
+    }).join('\n');
+    const ckZh = p.checkpoint.zh.map((c) => `          <li>${esc(c)}</li>`).join('\n');
+    const ckEn = p.checkpoint.en.map((c) => `          <li>${esc(c)}</li>`).join('\n');
+    const otherPaths = PATHS.filter((q) => q.id !== p.id)
+      .map((q) => `<a href="../${q.id}/">${bi(q.zh, q.en)}</a>`).join(' · ');
+    const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(p.zh)} · 学 AI 学习路径 | 投机取巧</title>
+  <meta name="description" content="${esc(pathDesc(p))}" />
+  <link rel="canonical" href="https://learn.specul.com/path/${p.id}/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="学 AI" />
+  <meta property="og:url" content="https://learn.specul.com/path/${p.id}/" />
+  <meta property="og:title" content="${esc(p.zh)} · 学 AI 学习路径" />
+  <meta property="og:description" content="${esc(pathDesc(p))}" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="${FAVICON}" />
+  <link rel="stylesheet" href="../../brand.css" />
+  <link rel="stylesheet" href="../../learn.css" />
+  <style>:root { --accent: var(--cyan); }</style>
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: p.zh,
+    description: plainTxt(p.lead.zh),
+    url: `https://learn.specul.com/path/${p.id}/`,
+    inLanguage: 'zh-Hans',
+    itemListOrder: 'ItemListOrderAscending',
+    numberOfItems: p.steps.length,
+    itemListElement: p.steps.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://learn.specul.com/term/${ENC(s)}/`,
+    })),
+  })}</script>
+</head>
+<body class="brand-ambient has-tabbar" style="--accent:var(--cyan)">
+${HEADER('learn')}
+  <main id="main">
+    <div class="container">
+      <article class="tp tp-wrap">
+        <nav class="tp-crumbs" aria-label="面包屑">
+          <a href="../../"><span data-zh>← 名词地图</span><span data-en>← Term map</span></a>
+          <span aria-hidden="true">·</span>
+          <span>${bi('学习路径', 'Learning paths')}</span>
+        </nav>
+        <h1>${bi(p.zh, p.en)}</h1>
+        <p class="tp-en">${bi(p.span.zh, p.span.en)}</p>
+        <p class="tp-p"><span data-zh>${esc(p.lead.zh)}</span><span data-en>${esc(p.lead.en)}</span></p>
+
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('按这个顺序读', 'Read in this order')}</div>
+          <ol class="t-pathsteps">
+${stepsHtml}
+          </ol>
+        </div>
+
+        <div class="t-check">
+          <div class="t-check-h">${bi('学完自测', 'Checkpoint')}</div>
+<span data-zh>
+          <ol>
+${ckZh}
+          </ol>
+</span>
+<span data-en>
+          <ol>
+${ckEn}
+          </ol>
+</span>
+        </div>
+
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('其他路径', 'Other paths')}</div>
+          <p class="tp-p">${otherPaths}</p>
+        </div>
+      </article>
+    </div>
+  </main>
+${FOOTER}
+${TABBAR}
+  <script src="../../brand.js"></script>
+</body>
+</html>
+`;
+    const dir = path.join(DEPLOY_PATH, p.id);
+    const file = path.join(dir, 'index.html');
+    const old = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+    if (old !== html) { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(file, html, 'utf8'); pathPages++; }
+  }
+  let pathRemoved = 0;
+  if (fs.existsSync(DEPLOY_PATH)) {
+    for (const e of fs.readdirSync(DEPLOY_PATH, { withFileTypes: true })) {
+      if (!e.isDirectory() || wantPathIds.has(e.name)) continue;
+      fs.rmSync(path.join(DEPLOY_PATH, e.name), { recursive: true, force: true });
+      pathRemoved++;
+    }
+  }
+
+  /* sitemap：1（地图）+ 词条页 + 路径页。
    * ⚠ 不写 lastmod —— 它推不出来（与 www/llms.txt 同一个理由：不能从内容推导的日期
    *   会让「产物 == 数据」这类比对失去意义）。changefreq / priority 是声明性字段，可以写。 */
   const urls = ['https://learn.specul.com/'];
   for (const { t } of flat) urls.push(`https://learn.specul.com/term/${ENC(slugOf(t))}/`);
+  for (const p of PATHS) urls.push(`https://learn.specul.com/path/${p.id}/`);
   const sm = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u, i) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><priority>${i === 0 ? '1.0' : '0.7'}</priority></url>`).join('\n')}
@@ -737,5 +917,5 @@ ${urls.map((u, i) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><prio
   const smFile = path.join(learnDir, 'sitemap.xml');
   const smOld = fs.existsSync(smFile) ? fs.readFileSync(smFile, 'utf8') : null;
   if (smOld !== sm) { fs.writeFileSync(smFile, sm, 'utf8'); }
-  console.log(`词条页：${pageTotal} 个（写入 ${pageChanged} · 清理孤儿 ${removed}）· sitemap ${urls.length} 条${smOld === sm ? '（未变）' : '（已更新）'}`);
+  console.log(`词条页：${pageTotal} 个（写入 ${pageChanged} · 清理孤儿 ${removed}）· 路径页：${PATHS.length} 个（写入 ${pathPages} · 清理孤儿 ${pathRemoved}）· sitemap ${urls.length} 条${smOld === sm ? '（未变）' : '（已更新）'}`);
 }

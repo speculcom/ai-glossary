@@ -343,6 +343,7 @@ ai-glossary/
 |---|---|
 | 词条 | 185 词 |
 | 分站 | 进门 30 · 上手 35 · 用深 35 · 看懂 30 · 跑起来 25 · 选得对 30 |
+| 学习路径 | 3 条（精选有序路径 · 各带检查点） |
 | 领域（domain） | concept 52 · choice 33 · infra 29 · agent 25 · model 14 · media 14 · dev 10 · data 8 |
 | 用途（purposeTag） | learn 74 · apply 44 · guard 35 · judge 32 |
 | 出处条目（refs） | 281 条 |
