@@ -463,7 +463,7 @@ if (fs.existsSync(learnDir)) {
     inLanguage: 'zh-Hans',
     inDefinedTermSet: {
       '@type': 'DefinedTermSet',
-      name: `学 AI · 第${t.layer}层（${layerName}）`,
+      name: `学 AI · 第${t.layer}站（${layerName}）`,
       url: `https://learn.specul.com/#layer-${t.level}`,
     },
     isPartOf: { '@type': 'WebSite', name: '学 AI', url: 'https://learn.specul.com/' },
@@ -575,8 +575,11 @@ const TABBAR = SHELL.tabbar('learn');
 
     const prev = flat[i - 1], next = flat[i + 1];
     const lv = META.levels[String(t.level)] || {};
-    const tagZh = `第${t.layer || layer.num}层 · ${layer.name}`;
-    const tagEn = `Layer ${t.level} · ${lv.shortEn || lv.nameEn || layer.name}`;
+    /* v7 §1.3（2026-10-18）：六层→六站。layer.name 读的就是 meta.js 的 short（站名）。
+     * ⚠ 锚点 id 仍是 layer-N（anchor-check 守它 + 185 个页面的出链），名字改、锚点不改。
+     * 英文态保留 "Layer N"：v7 的更名是中文叙事命名，英文用 Layer 更自然（meta.js 注释同口径）。 */
+    const tagZh = `第${t.layer || layer.num}站 · ${layer.name}`;
+    const tagEn = `Station ${t.level} · ${lv.shortEn || lv.nameEn || layer.name}`;
 
     const refs = (t.refs || []).map((r) => {
       const lab = bi(r[0], r[2]);
@@ -598,7 +601,7 @@ const TABBAR = SHELL.tabbar('learn');
     const crossLink = `      <div class="tp-sec">
         <div class="tp-lab">${bi('现在能做什么', 'What you can do now')}</div>
         <p class="tp-p"><a href="${esc(act.href)}">${bi(act.zh, act.en)} ↗</a></p>
-        <p class="tp-p"><a href="../../#layer-${esc(String(t.level))}">${bi(`回到名词地图看第${t.level}层的其他 ${layerCount - 1} 个词 →`, `Back to the map: the other ${layerCount - 1} terms in layer ${t.level} →`)}</a></p>
+        <p class="tp-p"><a href="../../#layer-${esc(String(t.level))}">${bi(`回到名词地图看第${t.level}站的其他 ${layerCount - 1} 个词 →`, `Back to the map: the other ${layerCount - 1} terms in station ${t.level} →`)}</a></p>
       </div>
 `;
 

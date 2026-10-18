@@ -3,7 +3,7 @@
 > English version: [README.en.md](./README.en.md)
 
 AI 圈的黑话，一天不听十遍，听一百遍还是不知道人家在讲什么。
-这个仓把 116 个高频词拆开来讲：**它是什么、为什么需要知道、这话从哪来的**。
+这个仓把 185 个高频词拆开来讲：**它是什么、为什么需要知道、这话从哪来的**。
 
 **适合谁**：刚接触 AI、不想先啃论文的人。
 **不适合谁**：想找「哪个模型最强」的人 —— 这里没有排名，也不打算有。
@@ -18,7 +18,7 @@ AI 圈的黑话，一天不听十遍，听一百遍还是不知道人家在讲�
 
 | 你现在的处境 | 走哪条路 |
 |---|---|
-| 完全不懂，想从头开始 | 顺着**六层**一层层读。别跳 —— 第四层的词看不懂，多半是因为第三层没读 |
+| 完全不懂，想从头开始 | 顺着**六站**一站一站读。别跳 —— 第四站的词看不懂，多半是因为第三站没读 |
 | 只关心某一类东西 | 按 **8 个领域**查（概念 / 模型 / 开发 / 智能体 / 数据 / 多媒体 / 基建 / 选型） |
 | 带着具体问题来的 | 按 **4 种用途**查：学（搞懂）· 动手（要做）· 避坑（别踩）· 选型（挑） |
 
@@ -26,21 +26,21 @@ AI 圈的黑话，一天不听十遍，听一百遍还是不知道人家在讲�
 
 ---
 
-## 六层是怎么排的
+## 六站是怎么排的
 
 排的依据只有一条：**后面的词，需要前面的词做铺垫**。
 
-| 层 | 这层在解决什么 | 词数 |
+| 站 | 学完你能 | 词数 |
 |---|---|---|
-| 一 | 能跟人聊明白 AI 到底在干嘛 | 18 |
-| 二 | 知道它凭什么能做到 | 26 |
-| 三 | 看懂模型输出的好坏 | 27 |
-| 四 | 动手把它跑起来 | 9 |
-| 五 | 知道它哪儿不行 | 14 |
-| 六 | 拿它做决策 | 22 |
+| 一 · 进门 | 能跟人聊明白 AI 在做什么 | 30 |
+| 二 · 上手 | 知道它什么时候会出错，不被演示骗 | 35 |
+| 三 · 用深 | 判断一个方案靠不靠谱，而不是听服务商说 | 35 |
+| 四 · 看懂 | 看懂为什么会有这些表现，不再死记硬背 | 30 |
+| 五 · 跑起来 | 知道模型跑在自己机器上要吃多少显存 | 25 |
+| 六 · 选得对 | 把学到的东西变成一个能签字的决定 | 30 |
 
-有个真实的例子：第一层有「上下文窗口」，第二层才有「Transformer」。
-直接跳到第二层去读 Transformers 那篇，卡住不是你的问题，是铺垫没到位。
+有个真实的例子：第一站有「上下文窗口」，第四站才有「Transformer」。
+直接跳到第四站去读 Transformers 那篇，卡住不是你的问题，是铺垫没到位。
 
 ---
 
@@ -58,8 +58,8 @@ AI 圈的黑话，一天不听十遍，听一百遍还是不知道人家在讲�
 
 ```
 ai-glossary/
-├── terms/              116 个词条，一词一文件（frontmatter + 固定骨架正文）
-│   └── INDEX.md        构建产物 · 分层索引，不要手改
+├── terms/              185 个词条，一词一文件（frontmatter + 固定骨架正文）
+│   └── INDEX.md        构建产物 · 分站索引，不要手改
 ├── terms.en.json       英文正文（键 = 词条名）
 ├── meta.js             层级 / 领域 / 用途 三套分类的定义
 ├── dims.js             三个观察维度（模型接入 / 运行位置 / 传输方式）
@@ -78,18 +78,18 @@ ai-glossary/
 
 ## 内容索引
 
-### 按顺序读 —— 六层学习路径
+### 按顺序读 —— 六站学习路径
 
-| 层 | 这层在解决什么 | 词数 |
+| 站 | 学完你能 | 词数 |
 |---|---|---|
-| **一** | 能跟人聊明白 AI 在干嘛 | 18 |
-| **二** | 知道它凭什么能做到 | 26 |
-| **三** | 看懂模型输出的好坏 | 27 |
-| **四** | 动手把它跑起来 | 9 |
-| **五** | 知道它哪儿不行 | 14 |
-| **六** | 拿它做决策 | 22 |
+| **第一站 · 进门** | 能跟人聊明白 AI 在做什么 | 30 |
+| **第二站 · 上手** | 知道它什么时候会出错，不被演示骗 | 35 |
+| **第三站 · 用深** | 判断一个方案靠不靠谱，而不是听服务商说 | 35 |
+| **第四站 · 看懂** | 看懂为什么会有这些表现，不再死记硬背 | 30 |
+| **第五站 · 跑起来** | 知道模型跑在自己机器上要吃多少显存 | 25 |
+| **第六站 · 选得对** | 把学到的东西变成一个能签字的决定 | 30 |
 
-<details><summary><b>一层 · 18 词</b> —— 能跟人聊明白 AI 在干嘛（点击展开）</summary>
+<details><summary><b>第一站 · 进门 · 30 词</b> —— 能跟人聊明白 AI 在做什么（点击展开）</summary>
 
 | 词条 | 一句话说清 | 领域 | 用途 |
 |---|---|---|---|
@@ -111,10 +111,22 @@ ai-glossary/
 | [开源生态](terms/%E5%BC%80%E6%BA%90%E7%94%9F%E6%80%81.md) | 模型、工具、数据、文档都由社区维护，可自由组合。 | 概念 | 学 |
 | [能力边界](terms/%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C.md) | 知道模型明确做不到什么，比知道它能做什么更能避免踩坑。 | 概念 | 避坑 |
 | [权限](terms/%E6%9D%83%E9%99%90.md) | 决定这个工具能碰你的哪些东西：读文件、改代码、发请求、花钱。 | 智能体 | 避坑 |
+| [AGI（通用人工智能）](terms/AGI.md) | 「什么都能像人一样干」的假想 AI：实验室用来表述目标的词，目前还不存在。 | 概念 | 学 |
+| [强化学习](terms/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.md) | 靠奖励试错学习的范式，与监督、无监督并列的三大训练范式之一。 | 概念 | 学 |
+| [基础模型](terms/%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B.md) | 「大模型」的学术名称：在海量数据上预训练、能适配一大堆任务。 | 概念 | 学 |
+| [训练语料](terms/%E8%AE%AD%E7%BB%83%E8%AF%AD%E6%96%99.md) | 模型「读过」的海量文本汇编：它的来源和毛病，决定了模型的一切表现。 | 数据 | 学 |
+| [开放权重](terms/%E5%BC%80%E6%94%BE%E6%9D%83%E9%87%8D.md) | 权重可下载、但许可证未必算「开源」——介于开源与闭源之间的第三种形态。 | 选型 | 选型 |
+| [小语言模型](terms/%E5%B0%8F%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) | 1B–8B 参数级的小个子：便宜、快、能本地跑，能力未必弱。 | 模型 | 选型 |
+| [模型卡](terms/%E6%A8%A1%E5%9E%8B%E5%8D%A1.md) | 模型的「说明书」：用途、实测表现、已知短板，发布时该一起给。 | 选型 | 选型 |
+| [合成数据](terms/%E5%90%88%E6%88%90%E6%95%B0%E6%8D%AE.md) | 用程序或模型造出来喂训练的数据：省标注钱，但有自己的毛病。 | 数据 | 学 |
+| [文生图](terms/%E6%96%87%E7%94%9F%E5%9B%BE.md) | 打字变图片：扩散模型最出圈的应用，从像素空间搬进潜空间才变得可用。 | 多媒体 | 学 |
+| [越狱](terms/%E8%B6%8A%E7%8B%B1.md) | 绕过模型安全护栏的提示手法：对齐不是保险箱。 | 智能体 | 避坑 |
+| [AI 安全](terms/AI%20%E5%AE%89%E5%85%A8.md) | 研究通用 AI 能做什么、有什么风险、怎么缓解的领域，已有政府背书的国际综述。 | 概念 | 避坑 |
+| [图灵测试](terms/%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95.md) | 1950 年图灵提出的经典问题：聊不出你是机器，算不算机器会思考？ | 概念 | 学 |
 
 </details>
 
-<details><summary><b>二层 · 26 词</b> —— 知道它凭什么能做到（点击展开）</summary>
+<details><summary><b>第二站 · 上手 · 35 词</b> —— 知道它什么时候会出错，不被演示骗（点击展开）</summary>
 
 | 词条 | 一句话说清 | 领域 | 用途 |
 |---|---|---|---|
@@ -144,10 +156,19 @@ ai-glossary/
 | [机器视觉](terms/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89.md) | 让摄像头「看懂」画面——识别人、物体、文字、动作。 | 多媒体 | 学 |
 | [自动驾驶](terms/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6.md) | 车辆自己识别环境、规划路线并控制方向盘。 | 多媒体 | 学 |
 | [AI 芯片](terms/AI%20%E8%8A%AF%E7%89%87.md) | 专门做 AI 运算的芯片，比通用 GPU 更高效但生态更封闭。 | 基建 | 学 |
+| [校准](terms/%E6%A0%A1%E5%87%86.md) | 模型报出的自信程度，经常高于它的实际正确率：自信不等于对。 | 概念 | 选型 |
+| [LoRA](terms/LoRA.md) | 省钱的微调法：冻住原权重，只训练一小块「补丁」。 | 模型 | 动手 |
+| [流式输出](terms/%E6%B5%81%E5%BC%8F%E8%BE%93%E5%87%BA.md) | 回答边生成边推送：你看到逐字出现，而不是等全文算完。 | 基建 | 学 |
+| [拒答](terms/%E6%8B%92%E7%AD%94.md) | 模型对某些请求直接拒绝回答：安全对齐的直接产物。 | 概念 | 避坑 |
+| [红队测试](terms/%E7%BA%A2%E9%98%9F%E6%B5%8B%E8%AF%95.md) | 发布前雇人主动攻击模型找漏洞：安全声明背后的实际工序。 | 概念 | 避坑 |
+| [水印与内容凭证](terms/%E6%B0%B4%E5%8D%B0%E4%B8%8E%E5%86%85%E5%AE%B9%E5%87%AD%E8%AF%81.md) | 识别 AI 生成内容的两条路：嵌进内容的水印，和记录出处的元数据。 | 多媒体 | 避坑 |
+| [深度伪造](terms/%E6%B7%B1%E5%BA%A6%E4%BC%AA%E9%80%A0.md) | 用生成模型造出以假乱真的真人音视频：眼见不再为实。 | 多媒体 | 避坑 |
+| [偏见](terms/%E5%81%8F%E8%A7%81.md) | 模型在不同人群、语言、文化上的表现不均：源头在训练数据。 | 概念 | 避坑 |
+| [自动化偏见](terms/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%81%8F%E8%A7%81.md) | 人这头的毛病：AI 说得顺畅，人就懒得检查照单全收。 | 概念 | 避坑 |
 
 </details>
 
-<details><summary><b>三层 · 27 词</b> —— 看懂模型输出的好坏（点击展开）</summary>
+<details><summary><b>第三站 · 用深 · 35 词</b> —— 判断一个方案靠不靠谱，而不是听服务商说（点击展开）</summary>
 
 | 词条 | 一句话说清 | 领域 | 用途 |
 |---|---|---|---|
@@ -178,10 +199,18 @@ ai-glossary/
 | [远程执行](terms/%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C.md) | 云端 Agent 在你电脑上跑任务，关掉笔记本也不中断。 | 智能体 | 动手 |
 | [技能 / Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) | 把重复的工作流程打包成可复用的能力。 | 智能体 | 动手 |
 | [结构化输出](terms/%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA.md) | 让模型的回答是严格的格式（JSON 等），而不是一段散文。 | 智能体 | 动手 |
+| [上下文工程](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B.md) | 决定「哪些内容放进模型的有限窗口」这件事本身。 | 智能体 | 动手 |
+| [上下文压缩](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8E%8B%E7%BC%A9.md) | 对话长到快装不下时，把前面内容总结一遍再重新开始。 | 智能体 | 动手 |
+| [提示链](terms/%E6%8F%90%E7%A4%BA%E9%93%BE.md) | 把一件事拆成固定的几步，每步的输出喂给下一步。 | 智能体 | 动手 |
+| [Workflow 还是 Agent](terms/Workflow%20%E8%BF%98%E6%98%AF%20Agent.md) | 先判断这件事该不该做成自主体。 | 智能体 | 选型 |
+| [编排模式](terms/%E7%BC%96%E6%8E%92%E6%A8%A1%E5%BC%8F.md) | 几种被官方命名的固定协作结构。 | 智能体 | 动手 |
+| [工具定义](terms/%E5%B7%A5%E5%85%B7%E5%AE%9A%E4%B9%89.md) | 写给模型看的「这个工具是干什么的、参数怎么填」。 | 智能体 | 动手 |
+| [速率限制](terms/%E9%80%9F%E7%8E%87%E9%99%90%E5%88%B6.md) | API 对你单位时间能发多少请求的配额。 | 开发 | 学 |
+| [子代理隔离](terms/%E5%AD%90%E4%BB%A3%E7%90%86%E9%9A%94%E7%A6%BB.md) | 让子代理去搜，主对话只拿结论，不被细节塞满。 | 智能体 | 动手 |
 
 </details>
 
-<details><summary><b>四层 · 9 词</b> —— 动手把它跑起来（点击展开）</summary>
+<details><summary><b>第四站 · 看懂 · 30 词</b> —— 看懂为什么会有这些表现，不再死记硬背（点击展开）</summary>
 
 | 词条 | 一句话说清 | 领域 | 用途 |
 |---|---|---|---|
@@ -194,10 +223,31 @@ ai-glossary/
 | [预训练](terms/%E9%A2%84%E8%AE%AD%E7%BB%83.md) | 在海量文本上做「预测下一个词」，这是模型学到世界知识的阶段。 | 概念 | 学 |
 | [训练算力](terms/%E8%AE%AD%E7%BB%83%E7%AE%97%E5%8A%9B.md) | 训练和推理都要烧算力，这是 AI 最硬的资源门槛。 | 基建 | 学 |
 | [推理成本](terms/%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC.md) | 模型每回答一次要花的钱，由输入和输出的 token 量决定。 | 选型 | 选型 |
+| [多头注意力](terms/%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B.md) | 让模型同时从好几个角度去看一句话，而不是只盯一种关系。 | 概念 | 学 |
+| [前馈网络](terms/%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C.md) | Transformer 每层里的消化环节：注意力看完之后，由它加工。 | 概念 | 学 |
+| [残差连接](terms/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5.md) | 给网络留一条「直通通道」，让信号穿过很多层也不丢失。 | 概念 | 学 |
+| [层归一化](terms/%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96.md) | 给网络每一层的输出做一次「调平」，让深层训练不失控。 | 概念 | 学 |
+| [编码器与解码器](terms/%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8.md) | Transformer 的两种半机：一个读懂，一个生成。 | 概念 | 学 |
+| [子词分词](terms/%E5%AD%90%E8%AF%8D%E5%88%86%E8%AF%8D.md) | 把词切成更小的碎片，让模型遇到没见过的词也能拼出来。 | 概念 | 学 |
+| [训练三阶段](terms/%E8%AE%AD%E7%BB%83%E4%B8%89%E9%98%B6%E6%AE%B5.md) | 聊天模型是怎么练成的：先会续写，再学会好好回答。 | 概念 | 学 |
+| [知识蒸馏](terms/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F.md) | 用大模型的软输出训练小模型：能力保留大半，部署容易得多。 | 概念 | 学 |
+| [MoE（混合专家）](terms/MoE%20-%20%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6.md) | 一种模型结构：每层放很多「专家」，每个词只用到其中少数几个。 | 概念 | 学 |
+| [上下文学习](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%AD%A6%E4%B9%A0.md) | 在对话里现学现用：给几个例子，模型就会做新任务，不用重新训练。 | 概念 | 学 |
+| [长上下文](terms/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87.md) | 让模型一次读入几十万字的技术，和它为什么贵。 | 概念 | 学 |
+| [自回归生成](terms/%E8%87%AA%E5%9B%9E%E5%BD%92%E7%94%9F%E6%88%90.md) | 大模型「一个字一个字往外蹦」的生成方式，很多下游问题的根源。 | 概念 | 学 |
+| [logits 与概率分布](terms/logits%20%E4%B8%8E%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83.md) | 模型每一步输出的不是词，而是整个词表的分数表。采样参数都作用在这上面。 | 概念 | 学 |
+| [贪心解码与束搜索](terms/%E8%B4%AA%E5%BF%83%E8%A7%A3%E7%A0%81%E4%B8%8E%E6%9D%9F%E6%90%9C%E7%B4%A2.md) | 每步都选最可能词的解码方式，以及它为什么反而写出空洞重复的文本。 | 概念 | 学 |
+| [幻觉的成因](terms/%E5%B9%BB%E8%A7%89%E7%9A%84%E6%88%90%E5%9B%A0.md) | 为什么模型会一本正经地编：不是它想骗你，是训练目标使然。 | 概念 | 避坑 |
+| [困惑度](terms/%E5%9B%B0%E6%83%91%E5%BA%A6.md) | 语言模型最常用的内在评测指标：模型对测试文本有多「意外」。 | 概念 | 选型 |
+| [缩放定律](terms/%E7%BC%A9%E6%94%BE%E5%AE%9A%E5%BE%8B.md) | 损失随参数、数据、算力呈幂律下降的经验规律，大模型军备竞赛的理论依据。 | 概念 | 学 |
+| [涌现能力](terms/%E6%B6%8C%E7%8E%B0%E8%83%BD%E5%8A%9B.md) | 小模型没有、大模型突然会了的能力——以及它可能是评测假象的争论。 | 概念 | 选型 |
+| [思维链](terms/%E6%80%9D%E7%BB%B4%E9%93%BE.md) | 让模型先列推理步骤再给答案的提示方式，以及它对模型规模的依赖。 | 概念 | 动手 |
+| [数据污染](terms/%E6%95%B0%E6%8D%AE%E6%B1%A1%E6%9F%93.md) | 评测题混进训练数据，模型「考过原题」——评测分数因此失真。 | 概念 | 选型 |
+| [评测饱和](terms/%E8%AF%84%E6%B5%8B%E9%A5%B1%E5%92%8C.md) | 基准被刷到接近满分、失去区分度——榜单为什么需要持续更新。 | 概念 | 选型 |
 
 </details>
 
-<details><summary><b>五层 · 14 词</b> —— 知道它哪儿不行（点击展开）</summary>
+<details><summary><b>第五站 · 跑起来 · 25 词</b> —— 知道模型跑在自己机器上要吃多少显存（点击展开）</summary>
 
 | 词条 | 一句话说清 | 领域 | 用途 |
 |---|---|---|---|
@@ -215,10 +265,21 @@ ai-glossary/
 | [吞吐](terms/%E5%90%9E%E5%90%90.md) | 每秒能生成多少字。决定长文生成要等多久。 | 基建 | 选型 |
 | [预填充](terms/%E9%A2%84%E5%A1%AB%E5%85%85.md) | 把你输入的那一整段先读完，再开始生成回答的那一步。 | 基建 | 学 |
 | [Prompt Cache](terms/Prompt%20Cache.md) | 把重复的系统提示和资料缓存起来，重复问同一份上下文时省时间和钱。 | 基建 | 动手 |
+| [连续批处理](terms/%E8%BF%9E%E7%BB%AD%E6%89%B9%E5%A4%84%E7%90%86.md) | 让服务器把不同时刻到达的请求拼在一起算，而不是排队。 | 基建 | 学 |
+| [分块预填充](terms/%E5%88%86%E5%9D%97%E9%A2%84%E5%A1%AB%E5%85%85.md) | 把很长的输入切成小块处理，顺便和生成中的请求混在一起跑。 | 基建 | 学 |
+| [流水线并行](terms/%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%B9%B6%E8%A1%8C.md) | 把模型按层切成几段，分别放在不同显卡上接力算。 | 基建 | 学 |
+| [上下文并行](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B6%E8%A1%8C.md) | 把超长上下文拆到多张卡上分别处理。 | 基建 | 学 |
+| [投机解码](terms/%E6%8A%95%E6%9C%BA%E8%A7%A3%E7%A0%81.md) | 用小模型先猜几个词，大模型一次验证，生成更快。 | 基建 | 学 |
+| [FlashAttention](terms/FlashAttention.md) | 一种更省显存、更快的注意力算法，长上下文的基石。 | 基建 | 学 |
+| [PagedAttention](terms/PagedAttention.md) | 借操作系统的分页思路管理 KV 缓存，让显存几乎不浪费。 | 基建 | 学 |
+| [safetensors](terms/safetensors.md) | 一种更安全的模型权重文件格式。 | 数据 | 避坑 |
+| [MLX](terms/MLX.md) | 苹果芯片上的机器学习框架，由 Apple 研究团队开源。 | 基建 | 学 |
+| [OpenAI 兼容接口](terms/OpenAI%20%E5%85%BC%E5%AE%B9%E6%8E%A5%E5%8F%A3.md) | 本地跑的模型，用现成的 OpenAI 客户端就能连。 | 基建 | 动手 |
+| [CPU 推理](terms/CPU%20%E6%8E%A8%E7%90%86.md) | 没有显卡也能跑模型。 | 基建 | 选型 |
 
 </details>
 
-<details><summary><b>六层 · 22 词</b> —— 拿它做决策（点击展开）</summary>
+<details><summary><b>第六站 · 选得对 · 30 词</b> —— 把学到的东西变成一个能签字的决定（点击展开）</summary>
 
 | 词条 | 一句话说清 | 领域 | 用途 |
 |---|---|---|---|
@@ -244,26 +305,34 @@ ai-glossary/
 | [退出成本](terms/%E9%80%80%E5%87%BA%E6%88%90%E6%9C%AC.md) | 不用了，迁移走要付出多少。 | 选型 | 避坑 |
 | [成本](terms/%E6%88%90%E6%9C%AC.md) | 为一个AI 方案实际要花多少钱。除了单价，还有你消耗掉的数量。 | 选型 | 选型 |
 | [传输方式](terms/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F.md) | 你的数据用什么方式送到模型或工具那里：留在本机还是发到第三方。 | 数据 | 学 |
+| [模型退役](terms/%E6%A8%A1%E5%9E%8B%E9%80%80%E5%BD%B9.md) | 云端模型会被下线，这是选型时要算的风险。 | 选型 | 避坑 |
+| [预览版与正式版](terms/%E9%A2%84%E8%A7%88%E7%89%88%E4%B8%8E%E6%AD%A3%E5%BC%8F%E7%89%88.md) | 模型 API 的两种成熟度，决定能不能上生产。 | 选型 | 选型 |
+| [模型版本与变体](terms/%E6%A8%A1%E5%9E%8B%E7%89%88%E6%9C%AC%E4%B8%8E%E5%8F%98%E4%BD%93.md) | 同一个模型名后面那串日期和 mini、nano，含义不同。 | 选型 | 避坑 |
+| [区域可用性](terms/%E5%8C%BA%E5%9F%9F%E5%8F%AF%E7%94%A8%E6%80%A7.md) | 同一个模型，在你所在的区域可能根本没有。 | 选型 | 避坑 |
+| [数据驻留](terms/%E6%95%B0%E6%8D%AE%E9%A9%BB%E7%95%99.md) | 你的数据存在哪个区域，由谁决定。 | 选型 | 避坑 |
+| [训练内容摘要](terms/%E8%AE%AD%E7%BB%83%E5%86%85%E5%AE%B9%E6%91%98%E8%A6%81.md) | 欧盟要求通用模型公开「训练用了哪些内容」的摘要。 | 选型 | 避坑 |
+| [生成式 AI 合规义务](terms/%E7%94%9F%E6%88%90%E5%BC%8F%20AI%20%E5%90%88%E8%A7%84%E4%B9%89%E5%8A%A1.md) | 面向境内公众提供生成式 AI 服务要遵守的具体义务。 | 选型 | 避坑 |
+| [迁移评估](terms/%E8%BF%81%E7%A7%BB%E8%AF%84%E4%BC%B0.md) | 换模型时该怎么做决定，而不是等供应商推荐。 | 选型 | 动手 |
 
 </details>
 
 ### 按领域查 —— 「我只想搞懂某一类」
 
-- **选型**（23）：[API / 接口调用](terms/API%20-%20%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8.md) · [供应商锁定](terms/%E4%BE%9B%E5%BA%94%E5%95%86%E9%94%81%E5%AE%9A.md) · [单次调用成本](terms/%E5%8D%95%E6%AC%A1%E8%B0%83%E7%94%A8%E6%88%90%E6%9C%AC.md) · [可替换性](terms/%E5%8F%AF%E6%9B%BF%E6%8D%A2%E6%80%A7.md) · [可观测性](terms/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md) · [基准测试](terms/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95.md) · [开源模型](terms/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [总分 / 综合评测](terms/%E6%80%BB%E5%88%86%20-%20%E7%BB%BC%E5%90%88%E8%AF%84%E6%B5%8B.md) · [成本](terms/%E6%88%90%E6%9C%AC.md) · [推理成本](terms/%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC.md) · [数据不出网](terms/%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%87%BA%E7%BD%91.md) · [服务中断风险](terms/%E6%9C%8D%E5%8A%A1%E4%B8%AD%E6%96%AD%E9%A3%8E%E9%99%A9.md) · [模型评测的局限](terms/%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B%E7%9A%84%E5%B1%80%E9%99%90.md) · [社区与文档](terms/%E7%A4%BE%E5%8C%BA%E4%B8%8E%E6%96%87%E6%A1%A3.md) · [缓存策略](terms/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.md) · [自托管成本](terms/%E8%87%AA%E6%89%98%E7%AE%A1%E6%88%90%E6%9C%AC.md) · [许可证](terms/%E8%AE%B8%E5%8F%AF%E8%AF%81.md) · [评估](terms/%E8%AF%84%E4%BC%B0.md) · [路由](terms/%E8%B7%AF%E7%94%B1.md) · [迭代速度](terms/%E8%BF%AD%E4%BB%A3%E9%80%9F%E5%BA%A6.md) · [退出成本](terms/%E9%80%80%E5%87%BA%E6%88%90%E6%9C%AC.md) · [闭源模型](terms/%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [隐私与合规](terms/%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84.md)
-- **概念**（21）：[AI Agent 与聊天机器人的区别](terms/AI%20Agent%20%E4%B8%8E%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E5%8C%BA%E5%88%AB.md) · [AI 产品 vs AI 模型](terms/AI%20%E4%BA%A7%E5%93%81%20vs%20AI%20%E6%A8%A1%E5%9E%8B.md) · [Token](terms/Token.md) · [Transformer](terms/Transformer.md) · [人工智能](terms/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.md) · [位置编码](terms/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81.md) · [偏好对齐](terms/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90.md) · [参数](terms/%E5%8F%82%E6%95%B0.md) · [大模型 / 大语言模型](terms/%E5%A4%A7%E6%A8%A1%E5%9E%8B%20-%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) · [嵌入层](terms/%E5%B5%8C%E5%85%A5%E5%B1%82.md) · [开源生态](terms/%E5%BC%80%E6%BA%90%E7%94%9F%E6%80%81.md) · [推理](terms/%E6%8E%A8%E7%90%86.md) · [机器学习](terms/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.md) · [注意力机制](terms/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.md) · [深度学习](terms/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.md) · [生成式 AI](terms/%E7%94%9F%E6%88%90%E5%BC%8F%20AI.md) · [神经网络](terms/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md) · [能力边界](terms/%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C.md) · [训练](terms/%E8%AE%AD%E7%BB%83.md) · [词表](terms/%E8%AF%8D%E8%A1%A8.md) · [预训练](terms/%E9%A2%84%E8%AE%AD%E7%BB%83.md)
-- **基建**（18）：[AI 芯片](terms/AI%20%E8%8A%AF%E7%89%87.md) · [bpw](terms/bpw.md) · [GGUF](terms/GGUF.md) · [GPU 层卸载](terms/GPU%20%E5%B1%82%E5%8D%B8%E8%BD%BD.md) · [GPU](terms/GPU.md) · [KV 缓存](terms/KV%20%E7%BC%93%E5%AD%98.md) · [llama.cpp](terms/llama.cpp.md) · [Prompt Cache](terms/Prompt%20Cache.md) · [vLLM](terms/vLLM.md) · [专家卸载](terms/%E4%B8%93%E5%AE%B6%E5%8D%B8%E8%BD%BD.md) · [吞吐](terms/%E5%90%9E%E5%90%90.md) · [张量并行](terms/%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8C.md) · [显存](terms/%E6%98%BE%E5%AD%98.md) · [本地部署](terms/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2.md) · [训练算力](terms/%E8%AE%AD%E7%BB%83%E7%AE%97%E5%8A%9B.md) · [量化](terms/%E9%87%8F%E5%8C%96.md) · [预填充](terms/%E9%A2%84%E5%A1%AB%E5%85%85.md) · [首字延迟](terms/%E9%A6%96%E5%AD%97%E5%BB%B6%E8%BF%9F.md)
-- **智能体**（17）：[MCP](terms/MCP.md) · [人机协作](terms/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C.md) · [参考服务器](terms/%E5%8F%82%E8%80%83%E6%9C%8D%E5%8A%A1%E5%99%A8.md) · [多 Agent 协作](terms/%E5%A4%9A%20Agent%20%E5%8D%8F%E4%BD%9C.md) · [工作流编排](terms/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%BC%96%E6%8E%92.md) · [工具调用](terms/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8.md) · [技能 / Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) · [护栏](terms/%E6%8A%A4%E6%A0%8F.md) · [提示注入](terms/%E6%8F%90%E7%A4%BA%E6%B3%A8%E5%85%A5.md) · [智能体 / Agent](terms/%E6%99%BA%E8%83%BD%E4%BD%93%20-%20Agent.md) · [权限](terms/%E6%9D%83%E9%99%90.md) · [沙箱](terms/%E6%B2%99%E7%AE%B1.md) · [浏览 / 网页操作](terms/%E6%B5%8F%E8%A7%88%20-%20%E7%BD%91%E9%A1%B5%E6%93%8D%E4%BD%9C.md) · [结构化输出](terms/%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA.md) · [记忆](terms/%E8%AE%B0%E5%BF%86.md) · [远程执行](terms/%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C.md) · [长时任务](terms/%E9%95%BF%E6%97%B6%E4%BB%BB%E5%8A%A1.md)
-- **模型**（12）：[AI 搜索](terms/AI%20%E6%90%9C%E7%B4%A2.md) · [上下文窗口](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3.md) · [上下文窗口的代价](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BB%A3%E4%BB%B7.md) · [多模态](terms/%E5%A4%9A%E6%A8%A1%E6%80%81.md) · [幻觉](terms/%E5%B9%BB%E8%A7%89.md) · [微调](terms/%E5%BE%AE%E8%B0%83.md) · [推理模型](terms/%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B.md) · [提示词](terms/%E6%8F%90%E7%A4%BA%E8%AF%8D.md) · [温度](terms/%E6%B8%A9%E5%BA%A6.md) · [知识截止](terms/%E7%9F%A5%E8%AF%86%E6%88%AA%E6%AD%A2.md) · [系统提示](terms/%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA.md) · [采样 / 采样参数](terms/%E9%87%87%E6%A0%B7%20-%20%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0.md)
-- **多媒体**（11）：[CLIP](terms/CLIP.md) · [ControlNet](terms/ControlNet.md) · [具身智能](terms/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD.md) · [扩散模型](terms/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B.md) · [数字人](terms/%E6%95%B0%E5%AD%97%E4%BA%BA.md) · [机器视觉](terms/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89.md) · [潜空间](terms/%E6%BD%9C%E7%A9%BA%E9%97%B4.md) · [自动驾驶](terms/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6.md) · [视频生成](terms/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90.md) · [语音合成](terms/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90.md) · [语音识别](terms/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB.md)
-- **开发**（9）：[ACP](terms/ACP.md) · [App Server](terms/App%20Server.md) · [仓库级理解](terms/%E4%BB%93%E5%BA%93%E7%BA%A7%E7%90%86%E8%A7%A3.md) · [代码补全](terms/%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8.md) · [差异对比](terms/%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94.md) · [持续集成](terms/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.md) · [版本控制](terms/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md) · [终端 Agent](terms/%E7%BB%88%E7%AB%AF%20Agent.md) · [配对编程](terms/%E9%85%8D%E5%AF%B9%E7%BC%96%E7%A8%8B.md)
-- **数据**（5）：[传输方式](terms/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F.md) · [分块](terms/%E5%88%86%E5%9D%97.md) · [向量 / 嵌入](terms/%E5%90%91%E9%87%8F%20-%20%E5%B5%8C%E5%85%A5.md) · [向量数据库](terms/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93.md) · [联网 / 检索增强](terms/%E8%81%94%E7%BD%91%20-%20%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA.md)
+- **概念**（52）：[AGI（通用人工智能）](terms/AGI.md) · [AI Agent 与聊天机器人的区别](terms/AI%20Agent%20%E4%B8%8E%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E5%8C%BA%E5%88%AB.md) · [AI 产品 vs AI 模型](terms/AI%20%E4%BA%A7%E5%93%81%20vs%20AI%20%E6%A8%A1%E5%9E%8B.md) · [AI 安全](terms/AI%20%E5%AE%89%E5%85%A8.md) · [logits 与概率分布](terms/logits%20%E4%B8%8E%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83.md) · [MoE（混合专家）](terms/MoE%20-%20%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6.md) · [Token](terms/Token.md) · [Transformer](terms/Transformer.md) · [上下文学习](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%AD%A6%E4%B9%A0.md) · [人工智能](terms/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.md) · [位置编码](terms/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81.md) · [偏好对齐](terms/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90.md) · [偏见](terms/%E5%81%8F%E8%A7%81.md) · [前馈网络](terms/%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C.md) · [参数](terms/%E5%8F%82%E6%95%B0.md) · [困惑度](terms/%E5%9B%B0%E6%83%91%E5%BA%A6.md) · [图灵测试](terms/%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95.md) · [基础模型](terms/%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B.md) · [多头注意力](terms/%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B.md) · [大模型 / 大语言模型](terms/%E5%A4%A7%E6%A8%A1%E5%9E%8B%20-%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) · [子词分词](terms/%E5%AD%90%E8%AF%8D%E5%88%86%E8%AF%8D.md) · [层归一化](terms/%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96.md) · [嵌入层](terms/%E5%B5%8C%E5%85%A5%E5%B1%82.md) · [幻觉的成因](terms/%E5%B9%BB%E8%A7%89%E7%9A%84%E6%88%90%E5%9B%A0.md) · [开源生态](terms/%E5%BC%80%E6%BA%90%E7%94%9F%E6%80%81.md) · [强化学习](terms/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.md) · [思维链](terms/%E6%80%9D%E7%BB%B4%E9%93%BE.md) · [拒答](terms/%E6%8B%92%E7%AD%94.md) · [推理](terms/%E6%8E%A8%E7%90%86.md) · [数据污染](terms/%E6%95%B0%E6%8D%AE%E6%B1%A1%E6%9F%93.md) · [机器学习](terms/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.md) · [校准](terms/%E6%A0%A1%E5%87%86.md) · [残差连接](terms/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5.md) · [注意力机制](terms/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.md) · [涌现能力](terms/%E6%B6%8C%E7%8E%B0%E8%83%BD%E5%8A%9B.md) · [深度学习](terms/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.md) · [生成式 AI](terms/%E7%94%9F%E6%88%90%E5%BC%8F%20AI.md) · [知识蒸馏](terms/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F.md) · [神经网络](terms/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md) · [红队测试](terms/%E7%BA%A2%E9%98%9F%E6%B5%8B%E8%AF%95.md) · [编码器与解码器](terms/%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8.md) · [缩放定律](terms/%E7%BC%A9%E6%94%BE%E5%AE%9A%E5%BE%8B.md) · [能力边界](terms/%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C.md) · [自动化偏见](terms/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%81%8F%E8%A7%81.md) · [自回归生成](terms/%E8%87%AA%E5%9B%9E%E5%BD%92%E7%94%9F%E6%88%90.md) · [训练](terms/%E8%AE%AD%E7%BB%83.md) · [训练三阶段](terms/%E8%AE%AD%E7%BB%83%E4%B8%89%E9%98%B6%E6%AE%B5.md) · [评测饱和](terms/%E8%AF%84%E6%B5%8B%E9%A5%B1%E5%92%8C.md) · [词表](terms/%E8%AF%8D%E8%A1%A8.md) · [贪心解码与束搜索](terms/%E8%B4%AA%E5%BF%83%E8%A7%A3%E7%A0%81%E4%B8%8E%E6%9D%9F%E6%90%9C%E7%B4%A2.md) · [长上下文](terms/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87.md) · [预训练](terms/%E9%A2%84%E8%AE%AD%E7%BB%83.md)
+- **选型**（33）：[API / 接口调用](terms/API%20-%20%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8.md) · [供应商锁定](terms/%E4%BE%9B%E5%BA%94%E5%95%86%E9%94%81%E5%AE%9A.md) · [区域可用性](terms/%E5%8C%BA%E5%9F%9F%E5%8F%AF%E7%94%A8%E6%80%A7.md) · [单次调用成本](terms/%E5%8D%95%E6%AC%A1%E8%B0%83%E7%94%A8%E6%88%90%E6%9C%AC.md) · [可替换性](terms/%E5%8F%AF%E6%9B%BF%E6%8D%A2%E6%80%A7.md) · [可观测性](terms/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md) · [基准测试](terms/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95.md) · [开放权重](terms/%E5%BC%80%E6%94%BE%E6%9D%83%E9%87%8D.md) · [开源模型](terms/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [总分 / 综合评测](terms/%E6%80%BB%E5%88%86%20-%20%E7%BB%BC%E5%90%88%E8%AF%84%E6%B5%8B.md) · [成本](terms/%E6%88%90%E6%9C%AC.md) · [推理成本](terms/%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC.md) · [数据不出网](terms/%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%87%BA%E7%BD%91.md) · [数据驻留](terms/%E6%95%B0%E6%8D%AE%E9%A9%BB%E7%95%99.md) · [服务中断风险](terms/%E6%9C%8D%E5%8A%A1%E4%B8%AD%E6%96%AD%E9%A3%8E%E9%99%A9.md) · [模型卡](terms/%E6%A8%A1%E5%9E%8B%E5%8D%A1.md) · [模型版本与变体](terms/%E6%A8%A1%E5%9E%8B%E7%89%88%E6%9C%AC%E4%B8%8E%E5%8F%98%E4%BD%93.md) · [模型评测的局限](terms/%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B%E7%9A%84%E5%B1%80%E9%99%90.md) · [模型退役](terms/%E6%A8%A1%E5%9E%8B%E9%80%80%E5%BD%B9.md) · [生成式 AI 合规义务](terms/%E7%94%9F%E6%88%90%E5%BC%8F%20AI%20%E5%90%88%E8%A7%84%E4%B9%89%E5%8A%A1.md) · [社区与文档](terms/%E7%A4%BE%E5%8C%BA%E4%B8%8E%E6%96%87%E6%A1%A3.md) · [缓存策略](terms/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.md) · [自托管成本](terms/%E8%87%AA%E6%89%98%E7%AE%A1%E6%88%90%E6%9C%AC.md) · [训练内容摘要](terms/%E8%AE%AD%E7%BB%83%E5%86%85%E5%AE%B9%E6%91%98%E8%A6%81.md) · [许可证](terms/%E8%AE%B8%E5%8F%AF%E8%AF%81.md) · [评估](terms/%E8%AF%84%E4%BC%B0.md) · [路由](terms/%E8%B7%AF%E7%94%B1.md) · [迁移评估](terms/%E8%BF%81%E7%A7%BB%E8%AF%84%E4%BC%B0.md) · [迭代速度](terms/%E8%BF%AD%E4%BB%A3%E9%80%9F%E5%BA%A6.md) · [退出成本](terms/%E9%80%80%E5%87%BA%E6%88%90%E6%9C%AC.md) · [闭源模型](terms/%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [隐私与合规](terms/%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84.md) · [预览版与正式版](terms/%E9%A2%84%E8%A7%88%E7%89%88%E4%B8%8E%E6%AD%A3%E5%BC%8F%E7%89%88.md)
+- **基建**（29）：[AI 芯片](terms/AI%20%E8%8A%AF%E7%89%87.md) · [bpw](terms/bpw.md) · [CPU 推理](terms/CPU%20%E6%8E%A8%E7%90%86.md) · [FlashAttention](terms/FlashAttention.md) · [GGUF](terms/GGUF.md) · [GPU 层卸载](terms/GPU%20%E5%B1%82%E5%8D%B8%E8%BD%BD.md) · [GPU](terms/GPU.md) · [KV 缓存](terms/KV%20%E7%BC%93%E5%AD%98.md) · [llama.cpp](terms/llama.cpp.md) · [MLX](terms/MLX.md) · [OpenAI 兼容接口](terms/OpenAI%20%E5%85%BC%E5%AE%B9%E6%8E%A5%E5%8F%A3.md) · [PagedAttention](terms/PagedAttention.md) · [Prompt Cache](terms/Prompt%20Cache.md) · [vLLM](terms/vLLM.md) · [上下文并行](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B6%E8%A1%8C.md) · [专家卸载](terms/%E4%B8%93%E5%AE%B6%E5%8D%B8%E8%BD%BD.md) · [分块预填充](terms/%E5%88%86%E5%9D%97%E9%A2%84%E5%A1%AB%E5%85%85.md) · [吞吐](terms/%E5%90%9E%E5%90%90.md) · [张量并行](terms/%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8C.md) · [投机解码](terms/%E6%8A%95%E6%9C%BA%E8%A7%A3%E7%A0%81.md) · [显存](terms/%E6%98%BE%E5%AD%98.md) · [本地部署](terms/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2.md) · [流式输出](terms/%E6%B5%81%E5%BC%8F%E8%BE%93%E5%87%BA.md) · [流水线并行](terms/%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%B9%B6%E8%A1%8C.md) · [训练算力](terms/%E8%AE%AD%E7%BB%83%E7%AE%97%E5%8A%9B.md) · [连续批处理](terms/%E8%BF%9E%E7%BB%AD%E6%89%B9%E5%A4%84%E7%90%86.md) · [量化](terms/%E9%87%8F%E5%8C%96.md) · [预填充](terms/%E9%A2%84%E5%A1%AB%E5%85%85.md) · [首字延迟](terms/%E9%A6%96%E5%AD%97%E5%BB%B6%E8%BF%9F.md)
+- **智能体**（25）：[MCP](terms/MCP.md) · [Workflow 还是 Agent](terms/Workflow%20%E8%BF%98%E6%98%AF%20Agent.md) · [上下文压缩](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8E%8B%E7%BC%A9.md) · [上下文工程](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B.md) · [人机协作](terms/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C.md) · [参考服务器](terms/%E5%8F%82%E8%80%83%E6%9C%8D%E5%8A%A1%E5%99%A8.md) · [多 Agent 协作](terms/%E5%A4%9A%20Agent%20%E5%8D%8F%E4%BD%9C.md) · [子代理隔离](terms/%E5%AD%90%E4%BB%A3%E7%90%86%E9%9A%94%E7%A6%BB.md) · [工作流编排](terms/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%BC%96%E6%8E%92.md) · [工具定义](terms/%E5%B7%A5%E5%85%B7%E5%AE%9A%E4%B9%89.md) · [工具调用](terms/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8.md) · [技能 / Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) · [护栏](terms/%E6%8A%A4%E6%A0%8F.md) · [提示注入](terms/%E6%8F%90%E7%A4%BA%E6%B3%A8%E5%85%A5.md) · [提示链](terms/%E6%8F%90%E7%A4%BA%E9%93%BE.md) · [智能体 / Agent](terms/%E6%99%BA%E8%83%BD%E4%BD%93%20-%20Agent.md) · [权限](terms/%E6%9D%83%E9%99%90.md) · [沙箱](terms/%E6%B2%99%E7%AE%B1.md) · [浏览 / 网页操作](terms/%E6%B5%8F%E8%A7%88%20-%20%E7%BD%91%E9%A1%B5%E6%93%8D%E4%BD%9C.md) · [结构化输出](terms/%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA.md) · [编排模式](terms/%E7%BC%96%E6%8E%92%E6%A8%A1%E5%BC%8F.md) · [记忆](terms/%E8%AE%B0%E5%BF%86.md) · [越狱](terms/%E8%B6%8A%E7%8B%B1.md) · [远程执行](terms/%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C.md) · [长时任务](terms/%E9%95%BF%E6%97%B6%E4%BB%BB%E5%8A%A1.md)
+- **模型**（14）：[AI 搜索](terms/AI%20%E6%90%9C%E7%B4%A2.md) · [LoRA](terms/LoRA.md) · [上下文窗口](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3.md) · [上下文窗口的代价](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BB%A3%E4%BB%B7.md) · [多模态](terms/%E5%A4%9A%E6%A8%A1%E6%80%81.md) · [小语言模型](terms/%E5%B0%8F%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) · [幻觉](terms/%E5%B9%BB%E8%A7%89.md) · [微调](terms/%E5%BE%AE%E8%B0%83.md) · [推理模型](terms/%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B.md) · [提示词](terms/%E6%8F%90%E7%A4%BA%E8%AF%8D.md) · [温度](terms/%E6%B8%A9%E5%BA%A6.md) · [知识截止](terms/%E7%9F%A5%E8%AF%86%E6%88%AA%E6%AD%A2.md) · [系统提示](terms/%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA.md) · [采样 / 采样参数](terms/%E9%87%87%E6%A0%B7%20-%20%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0.md)
+- **多媒体**（14）：[CLIP](terms/CLIP.md) · [ControlNet](terms/ControlNet.md) · [具身智能](terms/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD.md) · [扩散模型](terms/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B.md) · [数字人](terms/%E6%95%B0%E5%AD%97%E4%BA%BA.md) · [文生图](terms/%E6%96%87%E7%94%9F%E5%9B%BE.md) · [机器视觉](terms/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89.md) · [水印与内容凭证](terms/%E6%B0%B4%E5%8D%B0%E4%B8%8E%E5%86%85%E5%AE%B9%E5%87%AD%E8%AF%81.md) · [深度伪造](terms/%E6%B7%B1%E5%BA%A6%E4%BC%AA%E9%80%A0.md) · [潜空间](terms/%E6%BD%9C%E7%A9%BA%E9%97%B4.md) · [自动驾驶](terms/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6.md) · [视频生成](terms/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90.md) · [语音合成](terms/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90.md) · [语音识别](terms/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB.md)
+- **开发**（10）：[ACP](terms/ACP.md) · [App Server](terms/App%20Server.md) · [仓库级理解](terms/%E4%BB%93%E5%BA%93%E7%BA%A7%E7%90%86%E8%A7%A3.md) · [代码补全](terms/%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8.md) · [差异对比](terms/%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94.md) · [持续集成](terms/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.md) · [版本控制](terms/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md) · [终端 Agent](terms/%E7%BB%88%E7%AB%AF%20Agent.md) · [速率限制](terms/%E9%80%9F%E7%8E%87%E9%99%90%E5%88%B6.md) · [配对编程](terms/%E9%85%8D%E5%AF%B9%E7%BC%96%E7%A8%8B.md)
+- **数据**（8）：[safetensors](terms/safetensors.md) · [传输方式](terms/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F.md) · [分块](terms/%E5%88%86%E5%9D%97.md) · [合成数据](terms/%E5%90%88%E6%88%90%E6%95%B0%E6%8D%AE.md) · [向量 / 嵌入](terms/%E5%90%91%E9%87%8F%20-%20%E5%B5%8C%E5%85%A5.md) · [向量数据库](terms/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93.md) · [联网 / 检索增强](terms/%E8%81%94%E7%BD%91%20-%20%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA.md) · [训练语料](terms/%E8%AE%AD%E7%BB%83%E8%AF%AD%E6%96%99.md)
 
 ### 带着目的查 —— 「我现在想解决什么」
 
-- **学**（42）：[AI 产品 vs AI 模型](terms/AI%20%E4%BA%A7%E5%93%81%20vs%20AI%20%E6%A8%A1%E5%9E%8B.md) · [AI 芯片](terms/AI%20%E8%8A%AF%E7%89%87.md) · [App Server](terms/App%20Server.md) · [CLIP](terms/CLIP.md) · [GPU](terms/GPU.md) · [KV 缓存](terms/KV%20%E7%BC%93%E5%AD%98.md) · [Transformer](terms/Transformer.md) · [vLLM](terms/vLLM.md) · [专家卸载](terms/%E4%B8%93%E5%AE%B6%E5%8D%B8%E8%BD%BD.md) · [人工智能](terms/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.md) · [传输方式](terms/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F.md) · [位置编码](terms/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81.md) · [偏好对齐](terms/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90.md) · [具身智能](terms/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD.md) · [参数](terms/%E5%8F%82%E6%95%B0.md) · [参考服务器](terms/%E5%8F%82%E8%80%83%E6%9C%8D%E5%8A%A1%E5%99%A8.md) · [向量 / 嵌入](terms/%E5%90%91%E9%87%8F%20-%20%E5%B5%8C%E5%85%A5.md) · [多模态](terms/%E5%A4%9A%E6%A8%A1%E6%80%81.md) · [大模型 / 大语言模型](terms/%E5%A4%A7%E6%A8%A1%E5%9E%8B%20-%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) · [嵌入层](terms/%E5%B5%8C%E5%85%A5%E5%B1%82.md) · [开源生态](terms/%E5%BC%80%E6%BA%90%E7%94%9F%E6%80%81.md) · [张量并行](terms/%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8C.md) · [扩散模型](terms/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B.md) · [推理](terms/%E6%8E%A8%E7%90%86.md) · [数字人](terms/%E6%95%B0%E5%AD%97%E4%BA%BA.md) · [机器学习](terms/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.md) · [机器视觉](terms/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89.md) · [注意力机制](terms/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.md) · [深度学习](terms/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.md) · [潜空间](terms/%E6%BD%9C%E7%A9%BA%E9%97%B4.md) · [生成式 AI](terms/%E7%94%9F%E6%88%90%E5%BC%8F%20AI.md) · [神经网络](terms/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md) · [自动驾驶](terms/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6.md) · [视频生成](terms/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90.md) · [训练](terms/%E8%AE%AD%E7%BB%83.md) · [训练算力](terms/%E8%AE%AD%E7%BB%83%E7%AE%97%E5%8A%9B.md) · [词表](terms/%E8%AF%8D%E8%A1%A8.md) · [语音合成](terms/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90.md) · [语音识别](terms/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB.md) · [配对编程](terms/%E9%85%8D%E5%AF%B9%E7%BC%96%E7%A8%8B.md) …等 42 词
-- **动手**（34）：[ACP](terms/ACP.md) · [AI 搜索](terms/AI%20%E6%90%9C%E7%B4%A2.md) · [ControlNet](terms/ControlNet.md) · [GGUF](terms/GGUF.md) · [GPU 层卸载](terms/GPU%20%E5%B1%82%E5%8D%B8%E8%BD%BD.md) · [llama.cpp](terms/llama.cpp.md) · [MCP](terms/MCP.md) · [Prompt Cache](terms/Prompt%20Cache.md) · [Token](terms/Token.md) · [上下文窗口](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3.md) · [仓库级理解](terms/%E4%BB%93%E5%BA%93%E7%BA%A7%E7%90%86%E8%A7%A3.md) · [代码补全](terms/%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8.md) · [分块](terms/%E5%88%86%E5%9D%97.md) · [向量数据库](terms/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93.md) · [多 Agent 协作](terms/%E5%A4%9A%20Agent%20%E5%8D%8F%E4%BD%9C.md) · [工作流编排](terms/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%BC%96%E6%8E%92.md) · [工具调用](terms/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8.md) · [微调](terms/%E5%BE%AE%E8%B0%83.md) · [技能 / Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) · [提示词](terms/%E6%8F%90%E7%A4%BA%E8%AF%8D.md) · [智能体 / Agent](terms/%E6%99%BA%E8%83%BD%E4%BD%93%20-%20Agent.md) · [浏览 / 网页操作](terms/%E6%B5%8F%E8%A7%88%20-%20%E7%BD%91%E9%A1%B5%E6%93%8D%E4%BD%9C.md) · [温度](terms/%E6%B8%A9%E5%BA%A6.md) · [系统提示](terms/%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA.md) · [终端 Agent](terms/%E7%BB%88%E7%AB%AF%20Agent.md) · [结构化输出](terms/%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA.md) · [缓存策略](terms/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.md) · [联网 / 检索增强](terms/%E8%81%94%E7%BD%91%20-%20%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA.md) · [记忆](terms/%E8%AE%B0%E5%BF%86.md) · [路由](terms/%E8%B7%AF%E7%94%B1.md) · [远程执行](terms/%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C.md) · [采样 / 采样参数](terms/%E9%87%87%E6%A0%B7%20-%20%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0.md) · [量化](terms/%E9%87%8F%E5%8C%96.md) · [长时任务](terms/%E9%95%BF%E6%97%B6%E4%BB%BB%E5%8A%A1.md)
-- **选型**（21）：[AI Agent 与聊天机器人的区别](terms/AI%20Agent%20%E4%B8%8E%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E5%8C%BA%E5%88%AB.md) · [API / 接口调用](terms/API%20-%20%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8.md) · [bpw](terms/bpw.md) · [单次调用成本](terms/%E5%8D%95%E6%AC%A1%E8%B0%83%E7%94%A8%E6%88%90%E6%9C%AC.md) · [可观测性](terms/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md) · [吞吐](terms/%E5%90%9E%E5%90%90.md) · [基准测试](terms/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95.md) · [开源模型](terms/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [总分 / 综合评测](terms/%E6%80%BB%E5%88%86%20-%20%E7%BB%BC%E5%90%88%E8%AF%84%E6%B5%8B.md) · [成本](terms/%E6%88%90%E6%9C%AC.md) · [推理成本](terms/%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC.md) · [推理模型](terms/%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B.md) · [显存](terms/%E6%98%BE%E5%AD%98.md) · [本地部署](terms/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2.md) · [模型评测的局限](terms/%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B%E7%9A%84%E5%B1%80%E9%99%90.md) · [社区与文档](terms/%E7%A4%BE%E5%8C%BA%E4%B8%8E%E6%96%87%E6%A1%A3.md) · [自托管成本](terms/%E8%87%AA%E6%89%98%E7%AE%A1%E6%88%90%E6%9C%AC.md) · [评估](terms/%E8%AF%84%E4%BC%B0.md) · [迭代速度](terms/%E8%BF%AD%E4%BB%A3%E9%80%9F%E5%BA%A6.md) · [闭源模型](terms/%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [首字延迟](terms/%E9%A6%96%E5%AD%97%E5%BB%B6%E8%BF%9F.md)
-- **避坑**（19）：[上下文窗口的代价](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BB%A3%E4%BB%B7.md) · [人机协作](terms/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C.md) · [供应商锁定](terms/%E4%BE%9B%E5%BA%94%E5%95%86%E9%94%81%E5%AE%9A.md) · [可替换性](terms/%E5%8F%AF%E6%9B%BF%E6%8D%A2%E6%80%A7.md) · [差异对比](terms/%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94.md) · [幻觉](terms/%E5%B9%BB%E8%A7%89.md) · [护栏](terms/%E6%8A%A4%E6%A0%8F.md) · [持续集成](terms/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.md) · [提示注入](terms/%E6%8F%90%E7%A4%BA%E6%B3%A8%E5%85%A5.md) · [数据不出网](terms/%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%87%BA%E7%BD%91.md) · [服务中断风险](terms/%E6%9C%8D%E5%8A%A1%E4%B8%AD%E6%96%AD%E9%A3%8E%E9%99%A9.md) · [权限](terms/%E6%9D%83%E9%99%90.md) · [沙箱](terms/%E6%B2%99%E7%AE%B1.md) · [版本控制](terms/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md) · [知识截止](terms/%E7%9F%A5%E8%AF%86%E6%88%AA%E6%AD%A2.md) · [能力边界](terms/%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C.md) · [许可证](terms/%E8%AE%B8%E5%8F%AF%E8%AF%81.md) · [退出成本](terms/%E9%80%80%E5%87%BA%E6%88%90%E6%9C%AC.md) · [隐私与合规](terms/%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84.md)
+- **学**（74）：[AGI（通用人工智能）](terms/AGI.md) · [AI 产品 vs AI 模型](terms/AI%20%E4%BA%A7%E5%93%81%20vs%20AI%20%E6%A8%A1%E5%9E%8B.md) · [AI 芯片](terms/AI%20%E8%8A%AF%E7%89%87.md) · [App Server](terms/App%20Server.md) · [CLIP](terms/CLIP.md) · [FlashAttention](terms/FlashAttention.md) · [GPU](terms/GPU.md) · [KV 缓存](terms/KV%20%E7%BC%93%E5%AD%98.md) · [logits 与概率分布](terms/logits%20%E4%B8%8E%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83.md) · [MLX](terms/MLX.md) · [MoE（混合专家）](terms/MoE%20-%20%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6.md) · [PagedAttention](terms/PagedAttention.md) · [Transformer](terms/Transformer.md) · [vLLM](terms/vLLM.md) · [上下文学习](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%AD%A6%E4%B9%A0.md) · [上下文并行](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B6%E8%A1%8C.md) · [专家卸载](terms/%E4%B8%93%E5%AE%B6%E5%8D%B8%E8%BD%BD.md) · [人工智能](terms/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.md) · [传输方式](terms/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F.md) · [位置编码](terms/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81.md) · [偏好对齐](terms/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90.md) · [具身智能](terms/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD.md) · [分块预填充](terms/%E5%88%86%E5%9D%97%E9%A2%84%E5%A1%AB%E5%85%85.md) · [前馈网络](terms/%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C.md) · [参数](terms/%E5%8F%82%E6%95%B0.md) · [参考服务器](terms/%E5%8F%82%E8%80%83%E6%9C%8D%E5%8A%A1%E5%99%A8.md) · [合成数据](terms/%E5%90%88%E6%88%90%E6%95%B0%E6%8D%AE.md) · [向量 / 嵌入](terms/%E5%90%91%E9%87%8F%20-%20%E5%B5%8C%E5%85%A5.md) · [图灵测试](terms/%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95.md) · [基础模型](terms/%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B.md) · [多头注意力](terms/%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B.md) · [多模态](terms/%E5%A4%9A%E6%A8%A1%E6%80%81.md) · [大模型 / 大语言模型](terms/%E5%A4%A7%E6%A8%A1%E5%9E%8B%20-%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) · [子词分词](terms/%E5%AD%90%E8%AF%8D%E5%88%86%E8%AF%8D.md) · [层归一化](terms/%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96.md) · [嵌入层](terms/%E5%B5%8C%E5%85%A5%E5%B1%82.md) · [开源生态](terms/%E5%BC%80%E6%BA%90%E7%94%9F%E6%80%81.md) · [张量并行](terms/%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8C.md) · [强化学习](terms/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.md) · [扩散模型](terms/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B.md) …等 74 词
+- **动手**（44）：[ACP](terms/ACP.md) · [AI 搜索](terms/AI%20%E6%90%9C%E7%B4%A2.md) · [ControlNet](terms/ControlNet.md) · [GGUF](terms/GGUF.md) · [GPU 层卸载](terms/GPU%20%E5%B1%82%E5%8D%B8%E8%BD%BD.md) · [llama.cpp](terms/llama.cpp.md) · [LoRA](terms/LoRA.md) · [MCP](terms/MCP.md) · [OpenAI 兼容接口](terms/OpenAI%20%E5%85%BC%E5%AE%B9%E6%8E%A5%E5%8F%A3.md) · [Prompt Cache](terms/Prompt%20Cache.md) · [Token](terms/Token.md) · [上下文压缩](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8E%8B%E7%BC%A9.md) · [上下文工程](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B.md) · [上下文窗口](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3.md) · [仓库级理解](terms/%E4%BB%93%E5%BA%93%E7%BA%A7%E7%90%86%E8%A7%A3.md) · [代码补全](terms/%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8.md) · [分块](terms/%E5%88%86%E5%9D%97.md) · [向量数据库](terms/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93.md) · [多 Agent 协作](terms/%E5%A4%9A%20Agent%20%E5%8D%8F%E4%BD%9C.md) · [子代理隔离](terms/%E5%AD%90%E4%BB%A3%E7%90%86%E9%9A%94%E7%A6%BB.md) · [工作流编排](terms/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%BC%96%E6%8E%92.md) · [工具定义](terms/%E5%B7%A5%E5%85%B7%E5%AE%9A%E4%B9%89.md) · [工具调用](terms/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8.md) · [微调](terms/%E5%BE%AE%E8%B0%83.md) · [思维链](terms/%E6%80%9D%E7%BB%B4%E9%93%BE.md) · [技能 / Skills](terms/%E6%8A%80%E8%83%BD%20-%20Skills.md) · [提示词](terms/%E6%8F%90%E7%A4%BA%E8%AF%8D.md) · [提示链](terms/%E6%8F%90%E7%A4%BA%E9%93%BE.md) · [智能体 / Agent](terms/%E6%99%BA%E8%83%BD%E4%BD%93%20-%20Agent.md) · [浏览 / 网页操作](terms/%E6%B5%8F%E8%A7%88%20-%20%E7%BD%91%E9%A1%B5%E6%93%8D%E4%BD%9C.md) · [温度](terms/%E6%B8%A9%E5%BA%A6.md) · [系统提示](terms/%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA.md) · [终端 Agent](terms/%E7%BB%88%E7%AB%AF%20Agent.md) · [结构化输出](terms/%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA.md) · [缓存策略](terms/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.md) · [编排模式](terms/%E7%BC%96%E6%8E%92%E6%A8%A1%E5%BC%8F.md) · [联网 / 检索增强](terms/%E8%81%94%E7%BD%91%20-%20%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA.md) · [记忆](terms/%E8%AE%B0%E5%BF%86.md) · [路由](terms/%E8%B7%AF%E7%94%B1.md) · [迁移评估](terms/%E8%BF%81%E7%A7%BB%E8%AF%84%E4%BC%B0.md) …等 44 词
+- **避坑**（35）：[AI 安全](terms/AI%20%E5%AE%89%E5%85%A8.md) · [safetensors](terms/safetensors.md) · [上下文窗口的代价](terms/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BB%A3%E4%BB%B7.md) · [人机协作](terms/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C.md) · [供应商锁定](terms/%E4%BE%9B%E5%BA%94%E5%95%86%E9%94%81%E5%AE%9A.md) · [偏见](terms/%E5%81%8F%E8%A7%81.md) · [区域可用性](terms/%E5%8C%BA%E5%9F%9F%E5%8F%AF%E7%94%A8%E6%80%A7.md) · [可替换性](terms/%E5%8F%AF%E6%9B%BF%E6%8D%A2%E6%80%A7.md) · [差异对比](terms/%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94.md) · [幻觉](terms/%E5%B9%BB%E8%A7%89.md) · [幻觉的成因](terms/%E5%B9%BB%E8%A7%89%E7%9A%84%E6%88%90%E5%9B%A0.md) · [护栏](terms/%E6%8A%A4%E6%A0%8F.md) · [拒答](terms/%E6%8B%92%E7%AD%94.md) · [持续集成](terms/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.md) · [提示注入](terms/%E6%8F%90%E7%A4%BA%E6%B3%A8%E5%85%A5.md) · [数据不出网](terms/%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%87%BA%E7%BD%91.md) · [数据驻留](terms/%E6%95%B0%E6%8D%AE%E9%A9%BB%E7%95%99.md) · [服务中断风险](terms/%E6%9C%8D%E5%8A%A1%E4%B8%AD%E6%96%AD%E9%A3%8E%E9%99%A9.md) · [权限](terms/%E6%9D%83%E9%99%90.md) · [模型版本与变体](terms/%E6%A8%A1%E5%9E%8B%E7%89%88%E6%9C%AC%E4%B8%8E%E5%8F%98%E4%BD%93.md) · [模型退役](terms/%E6%A8%A1%E5%9E%8B%E9%80%80%E5%BD%B9.md) · [水印与内容凭证](terms/%E6%B0%B4%E5%8D%B0%E4%B8%8E%E5%86%85%E5%AE%B9%E5%87%AD%E8%AF%81.md) · [沙箱](terms/%E6%B2%99%E7%AE%B1.md) · [深度伪造](terms/%E6%B7%B1%E5%BA%A6%E4%BC%AA%E9%80%A0.md) · [版本控制](terms/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md) · [生成式 AI 合规义务](terms/%E7%94%9F%E6%88%90%E5%BC%8F%20AI%20%E5%90%88%E8%A7%84%E4%B9%89%E5%8A%A1.md) · [知识截止](terms/%E7%9F%A5%E8%AF%86%E6%88%AA%E6%AD%A2.md) · [红队测试](terms/%E7%BA%A2%E9%98%9F%E6%B5%8B%E8%AF%95.md) · [能力边界](terms/%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C.md) · [自动化偏见](terms/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%81%8F%E8%A7%81.md) · [训练内容摘要](terms/%E8%AE%AD%E7%BB%83%E5%86%85%E5%AE%B9%E6%91%98%E8%A6%81.md) · [许可证](terms/%E8%AE%B8%E5%8F%AF%E8%AF%81.md) · [越狱](terms/%E8%B6%8A%E7%8B%B1.md) · [退出成本](terms/%E9%80%80%E5%87%BA%E6%88%90%E6%9C%AC.md) · [隐私与合规](terms/%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84.md)
+- **选型**（32）：[AI Agent 与聊天机器人的区别](terms/AI%20Agent%20%E4%B8%8E%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E5%8C%BA%E5%88%AB.md) · [API / 接口调用](terms/API%20-%20%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8.md) · [bpw](terms/bpw.md) · [CPU 推理](terms/CPU%20%E6%8E%A8%E7%90%86.md) · [Workflow 还是 Agent](terms/Workflow%20%E8%BF%98%E6%98%AF%20Agent.md) · [单次调用成本](terms/%E5%8D%95%E6%AC%A1%E8%B0%83%E7%94%A8%E6%88%90%E6%9C%AC.md) · [可观测性](terms/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md) · [吞吐](terms/%E5%90%9E%E5%90%90.md) · [困惑度](terms/%E5%9B%B0%E6%83%91%E5%BA%A6.md) · [基准测试](terms/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95.md) · [小语言模型](terms/%E5%B0%8F%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.md) · [开放权重](terms/%E5%BC%80%E6%94%BE%E6%9D%83%E9%87%8D.md) · [开源模型](terms/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [总分 / 综合评测](terms/%E6%80%BB%E5%88%86%20-%20%E7%BB%BC%E5%90%88%E8%AF%84%E6%B5%8B.md) · [成本](terms/%E6%88%90%E6%9C%AC.md) · [推理成本](terms/%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC.md) · [推理模型](terms/%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B.md) · [数据污染](terms/%E6%95%B0%E6%8D%AE%E6%B1%A1%E6%9F%93.md) · [显存](terms/%E6%98%BE%E5%AD%98.md) · [本地部署](terms/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2.md) · [校准](terms/%E6%A0%A1%E5%87%86.md) · [模型卡](terms/%E6%A8%A1%E5%9E%8B%E5%8D%A1.md) · [模型评测的局限](terms/%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B%E7%9A%84%E5%B1%80%E9%99%90.md) · [涌现能力](terms/%E6%B6%8C%E7%8E%B0%E8%83%BD%E5%8A%9B.md) · [社区与文档](terms/%E7%A4%BE%E5%8C%BA%E4%B8%8E%E6%96%87%E6%A1%A3.md) · [自托管成本](terms/%E8%87%AA%E6%89%98%E7%AE%A1%E6%88%90%E6%9C%AC.md) · [评估](terms/%E8%AF%84%E4%BC%B0.md) · [评测饱和](terms/%E8%AF%84%E6%B5%8B%E9%A5%B1%E5%92%8C.md) · [迭代速度](terms/%E8%BF%AD%E4%BB%A3%E9%80%9F%E5%BA%A6.md) · [闭源模型](terms/%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B.md) · [预览版与正式版](terms/%E9%A2%84%E8%A7%88%E7%89%88%E4%B8%8E%E6%AD%A3%E5%BC%8F%E7%89%88.md) · [首字延迟](terms/%E9%A6%96%E5%AD%97%E5%BB%B6%E8%BF%9F.md)
 
 <!-- INDEX:END -->
 
@@ -272,10 +341,10 @@ ai-glossary/
 <!-- STATS:BEGIN generated, do not edit -->
 | 项 | 实测值 |
 |---|---|
-| 词条 | 116 词 |
-| 分层 | 一 18 · 二 26 · 三 27 · 四 9 · 五 14 · 六 22 |
-| 领域（domain） | choice 23 · concept 21 · infra 18 · agent 17 · model 12 · media 11 · dev 9 · data 5 |
-| 用途（purposeTag） | learn 42 · apply 34 · judge 21 · guard 19 |
-| 出处条目（refs） | 187 条 |
-| 英文覆盖 | 116 / 116 |
+| 词条 | 185 词 |
+| 分站 | 进门 30 · 上手 35 · 用深 35 · 看懂 30 · 跑起来 25 · 选得对 30 |
+| 领域（domain） | concept 52 · choice 33 · infra 29 · agent 25 · model 14 · media 14 · dev 10 · data 8 |
+| 用途（purposeTag） | learn 74 · apply 44 · guard 35 · judge 32 |
+| 出处条目（refs） | 281 条 |
+| 英文覆盖 | 185 / 185 |
 <!-- STATS:END -->

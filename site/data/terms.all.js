@@ -9,7 +9,7 @@
 var TERMS = [
  {
   "num": "一",
-  "name": "入门层",
+  "name": "进门",
   "desc": "不需要任何技术基础。先建立直觉，读完能跟人聊明白 AI 在做什么。",
   "terms": [
    {
@@ -119,7 +119,7 @@ var TERMS = [
      "由大量简单计算单元（神经元）分层连接、互相协作完成计算的结构。",
      "每个单元做的事很简单（加权求和 + 激活），难的是整体如何调参数。"
     ],
-    "why": "它是「原理层」的基础设施。理解了它，后面的 Transformer 才好理解——那是它的一个变种。",
+    "why": "它是「看懂站」的基础设施。理解了它，后面的 Transformer 才好理解——那是它的一个变种。",
     "refs": [
      [
       "CS231n：神经网络（一）讲义",
@@ -606,12 +606,429 @@ var TERMS = [
     ],
     "whyEn": "It is the first gate on AI tool safety. **Giving a tool that writes files and runs commands no permission limits is handing over the machine.**",
     "slug": "权限"
+   },
+   {
+    "zh": "AGI（通用人工智能）",
+    "en": "AGI (Artificial General Intelligence)",
+    "purpose": "「什么都能像人一样干」的假想 AI：实验室用来表述目标的词，目前还不存在。",
+    "def": [
+     "AGI 指在广泛任务上达到或超越人类水平的假想智能系统。",
+     "OpenAI 章程把它界定为「在多数具经济价值的工作上超越人类的高自主系统」。",
+     "同一份章程写明：通往 AGI 的时间线不确定；它是目标，不是现实。",
+     "Google DeepMind 提出按能力深度与任务广度给 AGI 进度分级的框架。"
+    ],
+    "why": "宣传常暗示「AGI 快到了」。知道它是假想目标、业界有分级框架，你才能判断「突破」说法在吹哪一级。",
+    "refs": [
+     [
+      "OpenAI Charter（官方章程，AGI 定义与使命）",
+      "https://openai.com/charter/",
+      "OpenAI Charter (official AGI definition and mission)"
+     ],
+     [
+      "Morris 等《Levels of AGI for Operationalizing Progress on the Path to AGI》（Google DeepMind，ICML 2024）",
+      "https://arxiv.org/abs/2311.02462",
+      "Morris et al., Levels of AGI (Google DeepMind, ICML 2024)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 19,
+    "alias": [],
+    "purposeEn": "The hypothetical 'capable of anything a human can' AI: a word labs use to state their goal — it does not exist yet.",
+    "defEn": [
+     "AGI refers to a hypothetical intelligent system reaching or exceeding human level across a wide range of tasks.",
+     "OpenAI's charter defines it as 'highly autonomous systems that outperform humans at most economically valuable work'.",
+     "The same charter states the timeline to AGI remains uncertain; it is a goal, not a reality.",
+     "Google DeepMind proposed a levels-of-AGI framework grading progress by depth of capability and breadth of generality."
+    ],
+    "whyEn": "Marketing often implies 'AGI is close'. Knowing it is a hypothetical goal with an industry grading framework lets you judge which level a 'breakthrough' claim is actually about.",
+    "slug": "AGI"
+   },
+   {
+    "zh": "强化学习",
+    "en": "Reinforcement Learning (RL)",
+    "purpose": "靠奖励试错学习的范式，与监督、无监督并列的三大训练范式之一。",
+    "def": [
+     "强化学习研究智能体如何与环境交互、靠最大化累计奖励学会决策。",
+     "它不同于监督学习（有标签答案）和无监督学习（无标签找结构）。",
+     "训练三阶段里的 RLHF，就是这个范式用在语言模型微调上。"
+    ],
+    "why": "聊天模型的「对齐」阶段用的就是它。懂「按奖励学」，才懂模型为什么被练得爱顺着人。",
+    "refs": [
+     [
+      "Sutton & Barto《Reinforcement Learning: An Introduction》第 2 版（MIT Press 官方页）",
+      "https://mitpress.mit.edu/9780262039246/reinforcement-learning/",
+      "Sutton & Barto, Reinforcement Learning: An Introduction, 2nd ed. (MIT Press)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 20,
+    "alias": [],
+    "purposeEn": "Learning by trial and error against rewards: one of the three training paradigms alongside supervised and unsupervised learning.",
+    "defEn": [
+     "Reinforcement learning studies how an agent learns to act by interacting with an environment and maximizing cumulative reward.",
+     "It differs from supervised learning (labeled answers) and unsupervised learning (finding structure without labels).",
+     "RLHF in the three-stage training recipe is this paradigm applied to fine-tuning language models."
+    ],
+    "whyEn": "The alignment stage of chat models runs on it. Understanding 'learning against rewards' explains why models are trained to please.",
+    "slug": "强化学习"
+   },
+   {
+    "zh": "基础模型",
+    "en": "Foundation Model",
+    "purpose": "「大模型」的学术名称：在海量数据上预训练、能适配一大堆任务。",
+    "def": [
+     "这个词由斯坦福 Bommasani 等人 2021 年提出。",
+     "指在大规模数据上预训练、可适配到广泛下游任务的模型。",
+     "作者用「基础」强调它们处于核心地位、但本身并不完整。"
+    ],
+    "why": "论文和监管文件常用「基础模型」而不是「大模型」。知道说的是同一类东西，就不会把两个词当成两件事。",
+    "refs": [
+     [
+      "Bommasani 等《On the Opportunities and Risks of Foundation Models》（Stanford HAI，2021）",
+      "https://arxiv.org/abs/2108.07258",
+      "Bommasani et al., On the Opportunities and Risks of Foundation Models (Stanford HAI, 2021)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 21,
+    "alias": [],
+    "purposeEn": "The academic name for 'large models': pre-trained on massive data, adaptable to a wide range of tasks.",
+    "defEn": [
+     "The term was proposed by Bommasani et al. at Stanford in 2021.",
+     "It refers to models pre-trained on broad data at scale and adaptable to a wide range of downstream tasks.",
+     "The authors chose 'foundation' to underscore their central yet incomplete character."
+    ],
+    "whyEn": "Papers and regulation say 'foundation model' where marketing says 'large model'. Knowing they name the same thing keeps you from treating them as two categories.",
+    "slug": "基础模型"
+   },
+   {
+    "zh": "训练语料",
+    "en": "Training Corpus",
+    "purpose": "模型「读过」的海量文本汇编：它的来源和毛病，决定了模型的一切表现。",
+    "def": [
+     "大模型的预训练语料是对海量公开网络文本的清洗汇编。",
+     "Common Crawl 是代表性来源：一家 2007 年成立、维护免费开放网页存档的非营利组织。",
+     "GPT-3 论文承认大规模网络语料带来方法学问题，语料构成细节见论文 §2.2。",
+     "语料里的偏见、错误、过时信息，都会原样带进模型。"
+    ],
+    "why": "「模型知道什么」上限就是语料。理解语料从哪来、有什么毛病，才理解模型为什么有知识截止和偏见。",
+    "refs": [
+     [
+      "Common Crawl 官网（free, open repository of web crawl data）",
+      "https://commoncrawl.org",
+      "Common Crawl (free, open repository of web crawl data)"
+     ],
+     [
+      "GPT-3 论文（语料与方法学问题见 §2.2）",
+      "https://arxiv.org/abs/2005.14165",
+      "GPT-3 paper (corpus and methodological issues, §2.2)"
+     ]
+    ],
+    "domain": "data",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 22,
+    "alias": [],
+    "purposeEn": "The massive text compilation a model has 'read': its sources and flaws shape everything the model does.",
+    "defEn": [
+     "A large model's pre-training corpus is a cleaned compilation of vast public web text.",
+     "Common Crawl is a representative source: a non-profit founded in 2007 maintaining a free, open repository of web crawl data.",
+     "The GPT-3 paper acknowledges methodological issues from training on large web corpora; corpus details are in §2.2.",
+     "Biases, errors, and outdated information in the corpus carry straight into the model."
+    ],
+    "whyEn": "What a model knows is capped by its corpus. Understanding where it comes from and what's wrong with it explains knowledge cutoffs and bias.",
+    "slug": "训练语料"
+   },
+   {
+    "zh": "开放权重",
+    "en": "Open Weights",
+    "purpose": "权重可下载、但许可证未必算「开源」——介于开源与闭源之间的第三种形态。",
+    "def": [
+     "开放权重指模型权重可公开下载，但许可证常附带限制条款。",
+     "「开源」的严格定义来自 OSI《开源定义》十条准则，含源码可得、不得限制使用领域。",
+     "OSI 官方明确认定 Llama 3.x 的社区许可证不符合开源定义。",
+     "学界与 OSI 通常把 Llama 这类许可称为开放权重（open weights）而非 open source。"
+    ],
+    "why": "「开源模型」的宣传经常实际是开放权重。两者商用条款差很多，选模型前要看许可证原文。",
+    "refs": [
+     [
+      "OSI《Open Source Definition》官方页（十条准则）",
+      "https://opensource.org/osd",
+      "OSI Open Source Definition (ten criteria)"
+     ],
+     [
+      "OSI 官方博客《Meta's Llama license is still not open source》",
+      "https://opensource.org/blog/metas-llama-license-is-still-not-open-source",
+      "OSI blog: Meta's Llama license is still not open source"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "judge",
+    "level": 1,
+    "layer": "一",
+    "ord": 23,
+    "alias": [],
+    "purposeEn": "Weights you can download, but a license that may not qualify as 'open source' — a third form between open and closed.",
+    "defEn": [
+     "Open weights means model weights are publicly downloadable, often with restrictive license terms.",
+     "The strict definition of 'open source' is OSI's ten-criterion Open Source Definition, including source availability and no field-of-use restrictions.",
+     "OSI has stated explicitly that the Llama 3.x community license does not meet the open source definition.",
+     "Researchers and OSI typically call such licenses 'open weights' rather than open source."
+    ],
+    "whyEn": "'Open-source model' marketing is often actually open weights. The commercial terms differ a lot — read the license before choosing.",
+    "slug": "开放权重"
+   },
+   {
+    "zh": "小语言模型",
+    "en": "Small Language Model (SLM)",
+    "purpose": "1B–8B 参数级的小个子：便宜、快、能本地跑，能力未必弱。",
+    "def": [
+     "小语言模型通常指约 1B–8B 参数级的模型，面向消费级硬件和边缘设备。",
+     "一篇覆盖约 160 篇研究的综述结论：这个参数段的模型可以追平甚至超过大模型。",
+     "它的优势在成本、延迟与本地部署，不是能力上限。"
+    ],
+    "why": "不是所有任务都需要旗舰大模型。知道小模型的存在和边界，才知道什么时候该用便宜的。",
+    "refs": [
+     [
+      "《Small Language Models (SLMs) Can Still Pack a Punch: A Survey》（综述，约 160 篇文献）",
+      "https://arxiv.org/abs/2501.05465",
+      "Small Language Models Can Still Pack a Punch: A Survey"
+     ]
+    ],
+    "domain": "model",
+    "purposeTag": "judge",
+    "level": 1,
+    "layer": "一",
+    "ord": 24,
+    "alias": [],
+    "purposeEn": "The 1B–8B parameter class: cheap, fast, runnable locally — and not necessarily weak.",
+    "defEn": [
+     "Small language models usually mean roughly 1B–8B parameters, aimed at consumer hardware and edge devices.",
+     "A survey of about 160 papers concludes models in this range can match or even outperform large models.",
+     "Their advantages are cost, latency, and local deployment — not capability ceilings."
+    ],
+    "whyEn": "Not every task needs a flagship model. Knowing small models exist and where their limits are tells you when the cheap option is the right one.",
+    "slug": "小语言模型"
+   },
+   {
+    "zh": "模型卡",
+    "en": "Model Card",
+    "purpose": "模型的「说明书」：用途、实测表现、已知短板，发布时该一起给。",
+    "def": [
+     "模型卡概念由 Mitchell 等人 2019 年提出：随模型发布的短文档。",
+     "它报告预期用途、在不同人群与条件下的实测表现、评测方法与已知局限。",
+     "提出动机：让模型在不适用的场景里少被误用。",
+     "如今主流模型发布普遍附带模型卡或同类文档。"
+    ],
+    "why": "选模型别只看名字和跑分。模型卡是官方自己承认的短板清单，比任何评测文章都诚实。",
+    "refs": [
+     [
+      "Mitchell 等《Model Cards for Model Reporting》（FAT* 2019）",
+      "https://arxiv.org/abs/1810.03993",
+      "Mitchell et al., Model Cards for Model Reporting (FAT* 2019)"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "judge",
+    "level": 1,
+    "layer": "一",
+    "ord": 25,
+    "alias": [],
+    "purposeEn": "A model's 'spec sheet': intended use, measured performance, known shortcomings — issued with the model.",
+    "defEn": [
+     "The model card concept was proposed by Mitchell et al. in 2019: short documents accompanying released models.",
+     "They report intended use, benchmarked performance across groups and conditions, evaluation procedures, and known limitations.",
+     "The motivation: reduce misuse of models in contexts they are not suited for.",
+     "Major model releases now commonly ship model cards or equivalent documentation."
+    ],
+    "whyEn": "When choosing a model, don't stop at the name and scores. The model card is the vendor's own admitted shortcoming list — more honest than any review.",
+    "slug": "模型卡"
+   },
+   {
+    "zh": "合成数据",
+    "en": "Synthetic Data",
+    "purpose": "用程序或模型造出来喂训练的数据：省标注钱，但有自己的毛病。",
+    "def": [
+     "合成数据指由仿真程序或模型生成、而非真人真事采集的训练数据。",
+     "它兴起于视觉领域：3D 场景渲染能造出像素级精确的标注，省下数十万美元人工。",
+     "核心难题是「合成到真实」的迁移：合成数据不完全像真实数据。",
+     "大模型时代，模型自己生成的文本也越来越多地用作训练数据。"
+    ],
+    "why": "模型用模型造的数据训练，效果与风险都在研究之中。听到「我们用了合成数据」，要问迁移验证做了没有。",
+    "refs": [
+     [
+      "Nikolenko《Synthetic Data for Deep Learning》（综述，156 页）",
+      "https://arxiv.org/abs/1909.11512",
+      "Nikolenko, Synthetic Data for Deep Learning (survey)"
+     ]
+    ],
+    "domain": "data",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 26,
+    "alias": [],
+    "purposeEn": "Data generated by programs or models to train on: saves labeling money, but has its own problems.",
+    "defEn": [
+     "Synthetic data is training data generated by simulation software or models rather than collected from real people and events.",
+     "It rose in computer vision: 3D-rendered scenes yield pixel-perfect labels at a fraction of manual cost.",
+     "The core problem is synthetic-to-real transfer: synthetic data does not fully resemble real data.",
+     "In the LLM era, model-generated text is increasingly used as training data."
+    ],
+    "whyEn": "Training models on model-made data is an active area of risk and benefit. When a vendor says 'we used synthetic data', ask whether transfer validation was done.",
+    "slug": "合成数据"
+   },
+   {
+    "zh": "文生图",
+    "en": "Text-to-Image Generation",
+    "purpose": "打字变图片：扩散模型最出圈的应用，从像素空间搬进潜空间才变得可用。",
+    "def": [
+     "早期扩散模型直接在像素空间去噪，训练要烧数百 GPU 天。",
+     "latent diffusion 论文把扩散搬进预训练自编码器的潜空间，训练与推理成本大幅下降。",
+     "加入交叉注意力后，文本等条件可以直接引导生成，文生图由此成立。",
+     "该论文（Stable Diffusion 的基础）2022 年发表于 CVPR。"
+    ],
+    "why": "「输入一句话出图」不是魔法，是这套架构组合。知道潜空间这步，才懂为什么它比早期方案便宜可用。",
+    "refs": [
+     [
+      "Rombach 等《High-Resolution Image Synthesis with Latent Diffusion Models》（CVPR 2022）",
+      "https://arxiv.org/abs/2112.10752",
+      "Rombach et al., High-Resolution Image Synthesis with Latent Diffusion Models (CVPR 2022)"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 27,
+    "alias": [],
+    "purposeEn": "Typing turns into pictures: diffusion's most visible application — practical only after moving from pixel space to latent space.",
+    "defEn": [
+     "Early diffusion models denoised directly in pixel space, costing hundreds of GPU-days to train.",
+     "The latent diffusion paper moved diffusion into the latent space of a pretrained autoencoder, slashing training and inference cost.",
+     "Adding cross-attention let text and other conditions guide generation — making text-to-image work.",
+     "That paper, the basis of Stable Diffusion, was published at CVPR 2022."
+    ],
+    "whyEn": "'Type a sentence, get a picture' is not magic but this architecture stack. Knowing the latent-space step explains why it is affordable where early approaches were not.",
+    "slug": "文生图"
+   },
+   {
+    "zh": "越狱",
+    "en": "Jailbreak",
+    "purpose": "绕过模型安全护栏的提示手法：对齐不是保险箱。",
+    "def": [
+     "越狱指让已对齐的模型产出它本应拒绝的内容的提示手法。",
+     "早期越狱靠人工设计、且脆弱易失效。",
+     "Zou 等人用自动搜索生成「对抗后缀」，一条后缀可通用于多种提问。",
+     "这些后缀能迁移到 ChatGPT、Bard、Claude 等黑箱产品，不止开源模型。"
+    ],
+    "why": "「这家模型很安全」的说法要打个问号：论文实测主流产品当时都能被同一后缀突破。护栏是持续攻防，不是一次性达标。",
+    "refs": [
+     [
+      "Zou 等《Universal and Transferable Adversarial Attacks on Aligned Language Models》",
+      "https://arxiv.org/abs/2307.15043",
+      "Zou et al., Universal and Transferable Adversarial Attacks on Aligned LMs"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "guard",
+    "level": 1,
+    "layer": "一",
+    "ord": 28,
+    "alias": [],
+    "purposeEn": "Prompting tricks that bypass a model's safety guardrails: alignment is not a safe.",
+    "defEn": [
+     "A jailbreak makes an aligned model produce content it is supposed to refuse.",
+     "Early jailbreaks were hand-crafted and brittle.",
+     "Zou et al. used automated search to generate 'adversarial suffixes' — one suffix working across many different queries.",
+     "These suffixes transferred to black-box products like ChatGPT, Bard, and Claude, not just open models."
+    ],
+    "whyEn": "'This model is safe' deserves skepticism: the paper showed major products were then breakable by one shared suffix. Guardrails are an ongoing offense-defense, not a one-time certification.",
+    "slug": "越狱"
+   },
+   {
+    "zh": "AI 安全",
+    "en": "AI Safety",
+    "purpose": "研究通用 AI 能做什么、有什么风险、怎么缓解的领域，已有政府背书的国际综述。",
+    "def": [
+     "国际 AI 安全报告由图灵奖得主 Yoshua Bengio 主持、百余位独立专家撰写。",
+     "它由 30 多个国家和国际组织背书，源自 2023 年布莱切利峰会 30 国的共识。",
+     "报告只汇总科学证据：能力、风险、缓解手段，不提政策建议。",
+     "2026 年 2 月发布第二期，另有面向决策者的扩展摘要。"
+    ],
+    "why": "讨论 AI 风险时，这份报告是目前最中立的共同事实基线。引用它比引用任何单一公司的安全声明可靠。",
+    "refs": [
+     [
+      "International AI Safety Report 官网（Bengio 主持，30+ 国背书）",
+      "https://internationalaisafetyreport.org",
+      "International AI Safety Report (chaired by Yoshua Bengio, backed by 30+ countries)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "guard",
+    "level": 1,
+    "layer": "一",
+    "ord": 29,
+    "alias": [],
+    "purposeEn": "The field studying what general-purpose AI can do, what risks it poses, and how to mitigate them — now with a government-backed international review.",
+    "defEn": [
+     "The International AI Safety Report is chaired by Turing Award winner Yoshua Bengio and written by over 100 independent experts.",
+     "It is backed by 30+ countries and international organizations, stemming from the 2023 Bletchley Summit consensus.",
+     "The report synthesizes scientific evidence only — capabilities, risks, mitigations — without policy recommendations.",
+     "Its second annual edition was published in February 2026, with an Extended Summary for Policymakers."
+    ],
+    "whyEn": "When debating AI risk, this report is the most neutral shared factual baseline available. Citing it beats citing any single company's safety statement.",
+    "slug": "AI 安全"
+   },
+   {
+    "zh": "图灵测试",
+    "en": "Turing Test",
+    "purpose": "1950 年图灵提出的经典问题：聊不出你是机器，算不算机器会思考？",
+    "def": [
+     "出自图灵 1950 年论文《Computing Machinery and Intelligence》，他原称「模仿游戏」。",
+     "玩法：评判者与机器和真人分别对话，分不清哪个是机器，机器即通过。",
+     "现代评测普遍不再把它当严格的能力指标。",
+     "但它是「AI 能否以假乱真」这一整条讨论的源头。"
+    ],
+    "why": "「通过图灵测试」仍是媒体爱用的说法。知道它 70 多年前就提出、今天已不被专业评测当真，你才对这类标题免疫。",
+    "refs": [
+     [
+      "Turing《Computing Machinery and Intelligence》（Mind, 1950，Oxford Academic 官方页）",
+      "https://doi.org/10.1093/mind/LIX.236.433",
+      "Turing, Computing Machinery and Intelligence (Mind, 1950)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 30,
+    "alias": [],
+    "purposeEn": "Turing's 1950 classic: if conversation can't tell machine from human, does that count as machine thinking?",
+    "defEn": [
+     "From Turing's 1950 paper 'Computing Machinery and Intelligence', where he called it the 'imitation game'.",
+     "Setup: a judge converses with a machine and a human; if the judge can't tell which is which, the machine passes.",
+     "Modern evaluation generally no longer treats it as a rigorous capability measure.",
+     "But it is the source of the whole 'can AI pass as real' discussion."
+    ],
+    "whyEn": "'Passed the Turing test' is still a media favorite. Knowing it dates to 1950 and is no longer taken seriously by professional evaluation inoculates you against such headlines.",
+    "slug": "图灵测试"
    }
   ]
  },
  {
   "num": "二",
-  "name": "使用层",
+  "name": "上手",
   "desc": "认清 AI 的能力与边界。知道它什么时候会出错，比知道它多强更重要。",
   "terms": [
    {
@@ -698,7 +1115,7 @@ var TERMS = [
      "先产生一段中间推理过程、再给结论的模型。典型代表是带 thinking / reasoning 档位的那种。",
      "代价是速度更慢、输出更多 token。"
     ],
-    "why": "选型时最该关注的一个属性：要写代码、算数、做规划，用推理模型；要快、成本低，用普通模型。",
+    "why": "选型时最该关注的一个属性。要写代码、算数、做规划，用推理模型；要快、成本低，用普通模型。",
     "refs": [
      [
       "OpenAI 推理模型指南",
@@ -866,7 +1283,7 @@ var TERMS = [
     "def": [
      "用人类对多个候选回答的排序来训练模型，让它更倾向于给出有帮助、无害、诚实的回答。"
     ],
-    "why": "它解释了为什么模型有时候会「不肯回答」或「过度客气」——那是训练出来的，不是技术限制。",
+    "why": "它解释了为什么模型有时候会「不肯回答」或「过度客气」。那是训练出来的，不是技术限制。",
     "refs": [
      [
       "InstructGPT（RLHF 论文）",
@@ -1450,12 +1867,333 @@ var TERMS = [
     ],
     "whyEn": "It determines how large a model you can fit onto a device at a given price.",
     "slug": "AI 芯片"
+   },
+   {
+    "zh": "校准",
+    "en": "Calibration",
+    "purpose": "模型报出的自信程度，经常高于它的实际正确率：自信不等于对。",
+    "def": [
+     "Guo 等人 2017 年的发现：现代神经网络普遍校准不佳。",
+     "表现是输出的置信度与实际正确率不符，常表现为过度自信。",
+     "大模型一本正经地自信说错，正是这个问题的直观呈现。",
+     "论文提出了温度缩放等事后校正手段。"
+    ],
+    "why": "模型说「我确定」不是统计保证。知道置信度普遍虚高，你对「自信地错」的答案会多一分警惕。",
+    "refs": [
+     [
+      "Guo 等《On Calibration of Modern Neural Networks》（ICML 2017）",
+      "https://arxiv.org/abs/1706.04599",
+      "Guo et al., On Calibration of Modern Neural Networks (ICML 2017)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 2,
+    "layer": "二",
+    "ord": 27,
+    "alias": [],
+    "purposeEn": "A model's stated confidence often exceeds its actual accuracy: confident is not the same as correct.",
+    "defEn": [
+     "Guo et al. 2017: modern neural networks are poorly calibrated.",
+     "The symptom: output confidence does not match real accuracy, usually overconfidence.",
+     "A large model confidently stating something wrong is this problem in plain view.",
+     "The paper proposed post-hoc fixes such as temperature scaling."
+    ],
+    "whyEn": "'I'm sure' from a model is not a statistical guarantee. Knowing confidence is generally inflated makes you more wary of confidently wrong answers.",
+    "slug": "校准"
+   },
+   {
+    "zh": "LoRA",
+    "en": "LoRA (Low-Rank Adaptation)",
+    "purpose": "省钱的微调法：冻住原权重，只训练一小块「补丁」。",
+    "def": [
+     "LoRA 冻结预训练权重，往每层注入可训练的低秩分解矩阵。",
+     "对比 GPT-3 175B 全量微调：可训练参数约少一万倍，显存需求约降三倍。",
+     "训练完可把低秩矩阵并入原权重，不增加推理延迟。",
+     "社区里大量消费级显卡上跑出来的微调模型用的就是它。"
+    ],
+    "why": "「在自家显卡上微调」从科幻变成日常，LoRA 是分水岭。选微调方案时它是默认起点。",
+    "refs": [
+     [
+      "Hu 等《LoRA: Low-Rank Adaptation of Large Language Models》（2021）",
+      "https://arxiv.org/abs/2106.09685",
+      "Hu et al., LoRA: Low-Rank Adaptation of Large Language Models (2021)"
+     ]
+    ],
+    "domain": "model",
+    "purposeTag": "apply",
+    "level": 2,
+    "layer": "二",
+    "ord": 28,
+    "alias": [],
+    "purposeEn": "Budget fine-tuning: freeze the original weights, train only a small 'patch'.",
+    "defEn": [
+     "LoRA freezes pre-trained weights and injects trainable low-rank decomposition matrices into each layer.",
+     "Versus full fine-tuning of GPT-3 175B: about 10,000x fewer trainable parameters and roughly 3x less GPU memory.",
+     "After training the low-rank matrices can be merged into the weights, adding no inference latency.",
+     "Many community fine-tunes trained on consumer GPUs use it."
+    ],
+    "whyEn": "LoRA is the watershed that made 'fine-tune on your own GPU' routine. It is the default starting point when choosing a fine-tuning approach.",
+    "slug": "LoRA"
+   },
+   {
+    "zh": "流式输出",
+    "en": "Streaming Output",
+    "purpose": "回答边生成边推送：你看到逐字出现，而不是等全文算完。",
+    "def": [
+     "自回归模型逐 token 生成，流式模式把每个 token 即时推送给客户端。",
+     "常见实现是 SSE（服务器推送事件流）：服务器以事件流持续下发。",
+     "价值在首字延迟：长回答不必等全部算完才开始读。",
+     "中途可停：取消请求即停止生成与计费。"
+    ],
+    "why": "聊天界面的逐字效果、为什么能中途打断、为什么按输出 token 计费——都来自这个机制。",
+    "refs": [
+     [
+      "MDN《Using server-sent events》（SSE 事件流机制的权威文档）",
+      "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events",
+      "MDN: Using server-sent events (SSE)"
+     ],
+     [
+      "GPT-3 论文（自回归逐 token 生成的定义）",
+      "https://arxiv.org/abs/2005.14165",
+      "GPT-3 paper (autoregressive token-by-token generation)"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 2,
+    "layer": "二",
+    "ord": 29,
+    "alias": [],
+    "purposeEn": "Answers stream out as they are generated: you read word by word instead of waiting for the full text.",
+    "defEn": [
+     "Autoregressive models generate token by token; streaming pushes each token to the client immediately.",
+     "A common implementation is SSE (server-sent events): the server delivers a continuous event stream.",
+     "The value is time-to-first-token: long answers don't wait for full computation before you start reading.",
+     "It can be stopped mid-way: canceling the request stops generation and billing."
+    ],
+    "whyEn": "The word-by-word effect in chat UIs, why you can interrupt, why output tokens are billed — all come from this mechanism.",
+    "slug": "流式输出"
+   },
+   {
+    "zh": "拒答",
+    "en": "Refusal",
+    "purpose": "模型对某些请求直接拒绝回答：安全对齐的直接产物。",
+    "def": [
+     "对齐训练的目标就是让模型拒绝产出不当内容。",
+     "Zou 等人的攻击研究以此为前提：他们的攻击目标是让模型「给出肯定回答而非拒绝」。",
+     "拒答是护栏起作用的信号，也是误伤正常请求时的摩擦来源。",
+     "同一个请求在不同家模型上拒与不拒差异很大，这是产品间的真实差异。"
+    ],
+    "why": "遇到拒答，你该知道这不是「模型坏了」而是对齐在工作；评估一家模型时，拒答边界松紧是选型维度。",
+    "refs": [
+     [
+      "Zou 等《Universal and Transferable Adversarial Attacks on Aligned Language Models》（对齐与拒答的表述出处）",
+      "https://arxiv.org/abs/2307.15043",
+      "Zou et al., Universal and Transferable Adversarial Attacks (alignment/refusal context)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "guard",
+    "level": 2,
+    "layer": "二",
+    "ord": 30,
+    "alias": [],
+    "purposeEn": "The model flatly declines certain requests: a direct product of safety alignment.",
+    "defEn": [
+     "Alignment training aims precisely at making models refuse to produce disallowed content.",
+     "Zou et al.'s attack research takes this as its premise: their attack aims for 'an affirmative response rather than refusing to answer'.",
+     "Refusal is a signal the guardrails are working — and a source of friction when legitimate requests get caught.",
+     "The same request refused by one vendor and answered by another is a real product difference."
+    ],
+    "whyEn": "When refused, you should know the model isn't 'broken' — alignment is working. When evaluating models, refusal boundaries are a selection dimension.",
+    "slug": "拒答"
+   },
+   {
+    "zh": "红队测试",
+    "en": "Red Teaming",
+    "purpose": "发布前雇人主动攻击模型找漏洞：安全声明背后的实际工序。",
+    "def": [
+     "红队测试指以对抗性方式测试系统、找出潜在漏洞。",
+     "Anthropic 官方表述：红队是提升 AI 安全的关键工具。",
+     "前沿实验室在部署前做内部评测，并引入外部红队（含众包平台）。",
+     "Anthropic 自己也承认：红队缺乏标准化实践，各家做法差异大。"
+    ],
+    "why": "「经过安全测试」的含金量取决于红队怎么做的。知道没有统一标准，你才会去问测试细节。",
+    "refs": [
+     [
+      "Anthropic 官方《Challenges in red teaming AI systems》",
+      "https://anthropic.com/news/challenges-in-red-teaming-ai-systems",
+      "Anthropic: Challenges in red teaming AI systems"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "guard",
+    "level": 2,
+    "layer": "二",
+    "ord": 31,
+    "alias": [],
+    "purposeEn": "Hiring people to attack a model before release to find holes: the real process behind safety claims.",
+    "defEn": [
+     "Red teaming means testing a system adversarially to identify potential vulnerabilities.",
+     "Anthropic's official framing: red teaming is a critical tool for improving AI safety.",
+     "Frontier labs run internal evaluations before deployment and bring in external red teamers, including crowdworker platforms.",
+     "Anthropic itself concedes red teaming lacks standardized practice; approaches differ widely."
+    ],
+    "whyEn": "'Tested for safety' is only as strong as how the red teaming was done. Knowing there is no uniform standard makes you ask for details.",
+    "slug": "红队测试"
+   },
+   {
+    "zh": "水印与内容凭证",
+    "en": "Watermarks and Content Credentials",
+    "purpose": "识别 AI 生成内容的两条路：嵌进内容的水印，和记录出处的元数据。",
+    "def": [
+     "DeepMind 的 SynthID 把不可见数字水印直接嵌入生成的图像、音频、文本或视频本身。",
+     "水印人眼不可察觉，但可被检测技术识别。",
+     "C2PA「内容凭证」走另一条路：用元数据记录内容的出处与编辑历史。",
+     "两者互补：一个改内容本身，一个改内容的说明书。"
+    ],
+    "why": "「这段内容是不是 AI 做的」目前没有万能答案。知道两条技术路线各自的强弱，才不会被「AI 检测器」的绝对承诺骗到。",
+    "refs": [
+     [
+      "Google DeepMind 官方 SynthID 页",
+      "https://deepmind.google/technologies/synthid/",
+      "Google DeepMind SynthID (official page)"
+     ],
+     [
+      "C2PA 官方（Coalition for Content Provenance and Authenticity）",
+      "https://c2pa.org",
+      "C2PA: Coalition for Content Provenance and Authenticity"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "guard",
+    "level": 2,
+    "layer": "二",
+    "ord": 32,
+    "alias": [],
+    "purposeEn": "Two routes to identify AI-generated content: watermarks embedded in the content, provenance metadata beside it.",
+    "defEn": [
+     "DeepMind's SynthID embeds invisible digital watermarks directly into generated images, audio, text, or video.",
+     "The watermarks are imperceptible to humans but detectable by matching technology.",
+     "C2PA 'Content Credentials' takes the other route: metadata recording the content's origin and edit history.",
+     "They complement each other: one changes the content itself, one changes its paperwork."
+    ],
+    "whyEn": "'Is this AI-made?' has no universal answer yet. Knowing each route's strengths keeps you from being sold absolute promises by 'AI detectors'.",
+    "slug": "水印与内容凭证"
+   },
+   {
+    "zh": "深度伪造",
+    "en": "Deepfake",
+    "purpose": "用生成模型造出以假乱真的真人音视频：眼见不再为实。",
+    "def": [
+     "深度伪造指用深度学习合成或篡改的图像、音频、视频，人难以辨真伪，常以真实人物为对象。",
+     "综述指出：deepfake 算法能造出与真实影像无法区分的假内容。",
+     "检测与生成是一场持续军备竞赛，检测器普遍滞后于生成器。",
+     "滥用场景包括冒充真人诈骗、伪造事件影像。"
+    ],
+    "why": "看到「实拍」视频先问一句有没有可能是合成的。涉及钱和决策的音视频，要换渠道二次确认。",
+    "refs": [
+     [
+      "Vasco 等《Deep Learning for Deepfakes Creation and Detection: A Survey》",
+      "https://arxiv.org/abs/1909.11573",
+      "Survey: Deep Learning for Deepfakes Creation and Detection"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "guard",
+    "level": 2,
+    "layer": "二",
+    "ord": 33,
+    "alias": [],
+    "purposeEn": "Generative models producing indistinguishable fake video and audio of real people: seeing is no longer believing.",
+    "defEn": [
+     "Deepfakes are deep-learning-synthesized or manipulated images, audio, or video that humans struggle to distinguish from authentic ones, often targeting real people.",
+     "Surveys: deepfake algorithms can create fake media indistinguishable from authentic media.",
+     "Detection and generation are an ongoing arms race; detectors generally lag generators.",
+     "Abuse scenarios include impersonation scams and fabricated footage of events."
+    ],
+    "whyEn": "When you see 'real footage', ask first whether it could be synthetic. For audio and video involving money or decisions, verify through a second channel.",
+    "slug": "深度伪造"
+   },
+   {
+    "zh": "偏见",
+    "en": "Bias",
+    "purpose": "模型在不同人群、语言、文化上的表现不均：源头在训练数据。",
+    "def": [
+     "国际 AI 安全报告指出：模型在训练数据里少见的语言与文化语境中表现下降。",
+     "表现的不均直接归因于训练数据的分布。",
+     "语料本身携带的刻板印象会被模型学到并复述。",
+     "人对 AI 建议不加检查就接受（自动化偏见）是另一层问题，别与模型偏见混为一谈。"
+    ],
+    "why": "同一个模型对不同的人不一定一样好。评估 AI 产品时，「对你所在的语境表现如何」是必问题。",
+    "refs": [
+     [
+      "International AI Safety Report 2026《Extended Summary for Policymakers》（能力与语境表现章节）",
+      "https://internationalaisafetyreport.org/publication/2026-report-extended-summary-policymakers",
+      "International AI Safety Report 2026, Extended Summary for Policymakers"
+     ],
+     [
+      "GPT-3 论文（大规模网络语料的方法学问题，§2.2）",
+      "https://arxiv.org/abs/2005.14165",
+      "GPT-3 paper (methodological issues of large web corpora, §2.2)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "guard",
+    "level": 2,
+    "layer": "二",
+    "ord": 34,
+    "alias": [],
+    "purposeEn": "Uneven model performance across groups, languages, and cultures — rooted in training data.",
+    "defEn": [
+     "The International AI Safety Report notes performance declines in languages and cultural contexts less common in training data.",
+     "The unevenness is attributed directly to the distribution of training data.",
+     "Stereotypes carried by the corpus are learned and reproduced by the model.",
+     "Humans accepting AI suggestions without checking (automation bias) is a separate layer — don't conflate it with model bias."
+    ],
+    "whyEn": "The same model is not equally good for everyone. When evaluating an AI product, 'how does it perform in your context' is a required question.",
+    "slug": "偏见"
+   },
+   {
+    "zh": "自动化偏见",
+    "en": "Automation Bias",
+    "purpose": "人这头的毛病：AI 说得顺畅，人就懒得检查照单全收。",
+    "def": [
+     "国际 AI 安全报告指出：人们会表现出自动化偏见——不加仔细检查就接受 AI 的建议。",
+     "它与模型偏见是两回事：一个错在模型，一个错在人的使用方式。",
+     "AI 输出越流畅自信、界面越权威，人越容易放松核查。",
+     "流程上的对策：高风险决定强制二次验证，而不是依赖「看起来靠谱」。"
+    ],
+    "why": "模型出错只是事故的一半，另一半是人不再核查。知道这个毛病，才会在关键流程里强制设检查点。",
+    "refs": [
+     [
+      "International AI Safety Report 2026《Extended Summary for Policymakers》（automation bias 表述）",
+      "https://internationalaisafetyreport.org/publication/2026-report-extended-summary-policymakers",
+      "International AI Safety Report 2026, Extended Summary for Policymakers"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "guard",
+    "level": 2,
+    "layer": "二",
+    "ord": 35,
+    "alias": [],
+    "purposeEn": "The human-side flaw: smooth AI output makes people skip checking and accept it wholesale.",
+    "defEn": [
+     "The International AI Safety Report notes people exhibit automation bias — accepting AI suggestions without checking them carefully.",
+     "It is distinct from model bias: one is the model being wrong, the other is how humans use it.",
+     "The more fluent and confident the output and the more authoritative the interface, the more people relax their checking.",
+     "Process countermeasure: mandatory second verification for high-stakes decisions, not reliance on seeming reliable."
+    ],
+    "whyEn": "Model error is only half of many incidents; the other half is humans no longer verifying. Knowing this flaw is why critical workflows need enforced checkpoints.",
+    "slug": "自动化偏见"
    }
   ]
  },
  {
   "num": "三",
-  "name": "应用层",
+  "name": "用深",
   "desc": "决定 AI 好不好用的那些具体做法。看完能判断一个方案靠不靠谱。",
   "terms": [
    {
@@ -1576,7 +2314,7 @@ var TERMS = [
     "en": "Multi-Agent",
     "purpose": "把一件复杂的事拆给多个各有所长的角色来分工完成。",
     "def": [
-     "让多个各自带不同工具和提示的 Agent 分工协作，典型模式是「规划者 + 执行者 + 审查者」。",
+     "让多个各自带不同工具和提示的 Agent 分工协作。典型模式是「规划者 + 执行者 + 审查者」。",
      "代价是 token 消耗和延迟都会成倍上升。"
     ],
     "why": "不是所有事都该多 Agent。任务简单时，一个 Agent 加工具更快也更可靠。",
@@ -1948,7 +2686,7 @@ var TERMS = [
     "def": [
      "逐行比较改动前后的差异，是审查 AI 产出的基本手段。"
     ],
-    "why": "官方资料里有个反复出现的模式：AI 的改动始终保持在版本控制里、可 diff 可撤销。这是安全前提。",
+    "why": "官方资料里有个反复出现的模式。AI 的改动始终保持在版本控制里、可 diff 可撤销。这是安全前提。",
     "refs": [
      [
       "Aider 的 Git 集成设计",
@@ -2309,13 +3047,277 @@ var TERMS = [
     ],
     "whyEn": "A precondition for tool calling. Without it a model cannot reliably tell a program what to call or which arguments to pass.",
     "slug": "结构化输出"
+   },
+   {
+    "zh": "上下文工程",
+    "en": "Context Engineering",
+    "purpose": "决定「哪些内容放进模型的有限窗口」这件事本身。",
+    "def": [
+     "Anthropic 把上下文称为「关键但有限的资源」。",
+     "核心工作是持续筛选：什么进窗口、什么留在外面。"
+    ],
+    "why": "窗口不是越大越好。会筛内容，才知道该塞什么、该删什么。",
+    "refs": [
+     [
+      "Anthropic《Effective context engineering for AI agents》",
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "Anthropic, Effective context engineering for AI agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "apply",
+    "level": 3,
+    "layer": "三",
+    "ord": 28,
+    "alias": [],
+    "purposeEn": "Deciding what goes into the model's limited window is itself a discipline.",
+    "defEn": [
+     "Anthropic calls context \"a critical but finite resource\" for agents.",
+     "The core work is curating what enters the window and what stays out."
+    ],
+    "whyEn": "Bigger windows are not free. Curating is how you decide what to include and what to drop.",
+    "slug": "上下文工程"
+   },
+   {
+    "zh": "上下文压缩",
+    "en": "Compaction",
+    "alias": [
+     "压缩",
+     "对话压缩"
+    ],
+    "purpose": "对话长到快装不下时，把前面内容总结一遍再重新开始。",
+    "def": [
+     "Anthropic 的定义：把接近窗口上限的对话做摘要，再用它开启新窗口。",
+     "官方同时把结构化笔记列为应对窗口限制的配套做法。"
+    ],
+    "why": "长任务跑一半「忘了前面」，多半是这一步没做好。",
+    "refs": [
+     [
+      "Anthropic《Effective context engineering for AI agents》",
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "Anthropic, Effective context engineering for AI agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "apply",
+    "level": 3,
+    "layer": "三",
+    "ord": 29,
+    "purposeEn": "When a conversation nearly fills the window, summarize it and start again.",
+    "defEn": [
+     "Anthropic's definition: summarize a conversation nearing the window limit, then reinitiate a new window with the summary.",
+     "Compaction loses detail, so it is usually paired with external notes."
+    ],
+    "whyEn": "A long task that \"forgets\" halfway is usually a compaction failure.",
+    "slug": "上下文压缩"
+   },
+   {
+    "zh": "提示链",
+    "en": "Prompt Chaining",
+    "alias": [
+     "链式提示",
+     "步骤链"
+    ],
+    "purpose": "把一件事拆成固定的几步，每步的输出喂给下一步。",
+    "def": [
+     "Anthropic 的定义：把任务分解成一系列步骤，上一步的输出作为下一步的输入。",
+     "官方指出它以延迟换准确性：准确性比延迟重要时更适用。"
+    ],
+    "why": "比「一句话让模型做完所有事」更可控。很多 Agent 其实就是提示链。",
+    "refs": [
+     [
+      "Anthropic《Building effective agents》",
+      "https://www.anthropic.com/engineering/building-effective-agents",
+      "Anthropic, Building effective agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "apply",
+    "level": 3,
+    "layer": "三",
+    "ord": 30,
+    "purposeEn": "Split a job into fixed steps, feeding each output into the next.",
+    "defEn": [
+     "Anthropic's definition: decompose a task into a sequence of steps, passing each output to the next.",
+     "Each step is testable on its own; the cost is a longer chain and more latency."
+    ],
+    "whyEn": "More controllable than asking for everything at once. Many \"agents\" are really chains.",
+    "slug": "提示链"
+   },
+   {
+    "zh": "Workflow 还是 Agent",
+    "en": "Workflow vs Agent",
+    "alias": [
+     "工作流与自主体"
+    ],
+    "purpose": "先判断这件事该不该做成自主体。",
+    "def": [
+     "Anthropic 的区分：workflow 用预定义代码路径编排模型与工具。",
+     "agent 则由模型动态决定自己的流程和工具使用。",
+     "官方建议从最简方案开始，够用就不必构建自主体系统。"
+    ],
+    "why": "选型的第一问。把 workflow 硬做成 Agent，只会更贵更不可靠。",
+    "refs": [
+     [
+      "Anthropic《Building effective agents》",
+      "https://www.anthropic.com/engineering/building-effective-agents",
+      "Anthropic, Building effective agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "judge",
+    "level": 3,
+    "layer": "三",
+    "ord": 31,
+    "purposeEn": "First decide whether the job should be agentic at all.",
+    "defEn": [
+     "Anthropic's distinction: workflows orchestrate models and tools through predefined code paths.",
+     "Agents are systems where the model dynamically directs its own process and tool use.",
+     "The official advice is to find the simplest solution and add complexity only when needed."
+    ],
+    "whyEn": "The first selection question. Forcing a workflow into an agent costs more and works worse.",
+    "slug": "Workflow 还是 Agent"
+   },
+   {
+    "zh": "编排模式",
+    "en": "Agentic Workflow Patterns",
+    "alias": [
+     "并行化",
+     "编排者—执行者",
+     "评估者—优化者"
+    ],
+    "purpose": "几种被官方命名的固定协作结构。",
+    "def": [
+     "并行化：多个子任务同时跑再汇总，适合可切分或要多视角的任务。",
+     "编排者—执行者：中心模型拆任务、派给执行模型、再综合结果。",
+     "评估者—优化者：一个模型生成，另一个给反馈，循环改进。"
+    ],
+    "why": "有现成的官方命名结构，不必从零发明一套。",
+    "refs": [
+     [
+      "Anthropic《Building effective agents》",
+      "https://www.anthropic.com/engineering/building-effective-agents",
+      "Anthropic, Building effective agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "apply",
+    "level": 3,
+    "layer": "三",
+    "ord": 32,
+    "purposeEn": "A few officially named collaboration structures you can reuse.",
+    "defEn": [
+     "Parallelization: run divided subtasks simultaneously and aggregate outputs.",
+     "Orchestrator-workers: a central LLM breaks down tasks, delegates to workers, then synthesizes results.",
+     "Evaluator-optimizer: one call generates, another critiques, in a loop."
+    ],
+    "whyEn": "Official patterns already exist; you do not have to invent one.",
+    "slug": "编排模式"
+   },
+   {
+    "zh": "工具定义",
+    "en": "Tool Definition",
+    "alias": [
+     "工具描述",
+     "工具规格"
+    ],
+    "purpose": "写给模型看的「这个工具是干什么的、参数怎么填」。",
+    "def": [
+     "Anthropic 指出：工具的说明与规格本身就是在做提示工程。",
+     "官方把「为 Agent 写好工具」当作一项独立的工程工作。"
+    ],
+    "why": "Agent 不好用，常见原因不在模型，在工具说明写得差。",
+    "refs": [
+     [
+      "Anthropic《Writing effective tools for agents》",
+      "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "Anthropic, Writing effective tools for agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "apply",
+    "level": 3,
+    "layer": "三",
+    "ord": 33,
+    "purposeEn": "The instructions you write for the model about what a tool does and how to fill it.",
+    "defEn": [
+     "Anthropic notes that tool descriptions and specs are themselves prompt engineering.",
+     "Vague descriptions lead the model to pick the wrong tool or fill wrong arguments."
+    ],
+    "whyEn": "When an agent misbehaves, the cause is often the tool description, not the model.",
+    "slug": "工具定义"
+   },
+   {
+    "zh": "速率限制",
+    "en": "Rate Limiting",
+    "alias": [
+     "限流",
+     "429"
+    ],
+    "purpose": "API 对你单位时间能发多少请求的配额。",
+    "def": [
+     "HTTP 429 表示「请求过多」，MDN 说明它通常由速率限制触发。",
+     "配额用尽时服务端拒绝请求，客户端需等待后重试。"
+    ],
+    "why": "跑批量任务时最先撞的是它，不是模型能力。",
+    "refs": [
+     [
+      "MDN：HTTP 429 Too Many Requests",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "MDN, HTTP 429 Too Many Requests"
+     ]
+    ],
+    "domain": "dev",
+    "purposeTag": "learn",
+    "level": 3,
+    "layer": "三",
+    "ord": 34,
+    "purposeEn": "The quota on how many requests you may send in a time window.",
+    "defEn": [
+     "HTTP 429 means \"Too Many Requests\"; MDN states it is commonly used for rate limiting.",
+     "When quota is exhausted the server rejects requests and the client must wait and retry."
+    ],
+    "whyEn": "Batch jobs hit this first, not model capability.",
+    "slug": "速率限制"
+   },
+   {
+    "zh": "子代理隔离",
+    "en": "Sub-agent Isolation",
+    "alias": [
+     "子代理架构"
+    ],
+    "purpose": "让子代理去搜，主对话只拿结论，不被细节塞满。",
+    "def": [
+     "Anthropic 的做法：搜索的细节上下文留在子代理内部。",
+     "主代理只负责综合结果，把窗口留给决策。"
+    ],
+    "why": "「窗口被搜索记录填满」是长任务的典型失败模式，这是它的解法。",
+    "refs": [
+     [
+      "Anthropic《Effective context engineering for AI agents》",
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "Anthropic, Effective context engineering for AI agents"
+     ]
+    ],
+    "domain": "agent",
+    "purposeTag": "apply",
+    "level": 3,
+    "layer": "三",
+    "ord": 35,
+    "purposeEn": "Let sub-agents do the searching so the main conversation keeps only the conclusions.",
+    "defEn": [
+     "Anthropic's pattern: detailed search context stays isolated inside sub-agents.",
+     "The lead agent focuses on synthesizing results, keeping the window for decisions."
+    ],
+    "whyEn": "\"The window filled up with search results\" is a classic long-task failure; this is the fix.",
+    "slug": "子代理隔离"
    }
   ]
  },
  {
   "num": "四",
-  "name": "原理层",
-  "desc": "理解为什么会有这些表现。看不懂这层，前面的词你都只能背。",
+  "name": "看懂",
+  "desc": "理解为什么会有这些表现。看不懂这一站，前面的词你都只能背。",
   "terms": [
    {
     "zh": "Transformer",
@@ -2427,7 +3429,7 @@ var TERMS = [
     "def": [
      "模型内部把每个 token 映射成高维向量的那一层，是向量检索技术的源头。"
     ],
-    "why": "它连接了「原理层」和「应用层」——你理解的 embedding 概念，和这里的实现是同一个东西。",
+    "why": "它连接「看懂站」和「用深站」。你理解的 embedding 概念，和这里的实现是同一个东西。",
     "refs": [
      [
       "Word2Vec（论文）",
@@ -2490,7 +3492,7 @@ var TERMS = [
     "def": [
      "窗口变大意味着注意力计算量和 KV 缓存占用同步上升。"
     ],
-    "why": "解释了一个反直觉现象：把所有资料一次性塞进去，往往不如做 RAG 分批检索。",
+    "why": "解释了一个反直觉现象。把所有资料一次性塞进去，往往不如做 RAG 分批检索。",
     "refs": [
      [
       "RAG server 的做法",
@@ -2606,12 +3608,770 @@ var TERMS = [
     ],
     "whyEn": "The easiest trap to fall into when using AI day to day, and a cost item any model choice has to account for.",
     "slug": "推理成本"
+   },
+   {
+    "zh": "多头注意力",
+    "en": "Multi-Head Attention",
+    "purpose": "让模型同时从好几个角度去看一句话，而不是只盯一种关系。",
+    "def": [
+     "把注意力计算重复多遍，每遍关注句子里不同种类的关系，最后把结果合在一起。",
+     "原论文用了 8 个「头」——相当于 8 个视角同时读同一句话。"
+    ],
+    "why": "单看一个词只有一种理解方式。多个头一起看，语法关系、指代关系、邻近关系才能同时被抓住。",
+    "refs": [
+     [
+      "Attention Is All You Need（论文 §3.2）",
+      "https://arxiv.org/abs/1706.03762",
+      "Attention Is All You Need §3.2 (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 10,
+    "alias": [],
+    "purposeEn": "Lets a model look at a sentence from several angles at once, instead of tracking only one kind of relation.",
+    "defEn": [
+     "Repeats the attention computation several times, each pass focusing on a different kind of relation, then combines the results.",
+     "The original paper used 8 heads — like 8 readers examining the same sentence simultaneously."
+    ],
+    "whyEn": "A single attention pass yields a single kind of understanding. Multiple heads capture grammar, coreference, and adjacency at the same time.",
+    "slug": "多头注意力"
+   },
+   {
+    "zh": "前馈网络",
+    "en": "Feed-Forward Network",
+    "purpose": "Transformer 每层里的消化环节：注意力看完之后，由它加工。",
+    "def": [
+     "一种基本的神经网络结构：信息一层一层往前传，每层做一次变换。",
+     "在 Transformer 里，每层先做注意力，再接一个前馈网络。",
+     "这个前馈网络逐位置处理，两者交替进行。"
+    ],
+    "why": "注意力负责「谁和谁相关」，前馈网络负责「把相关的东西加工成判断」。缺了它，模型只会连线，不会思考。",
+    "refs": [
+     [
+      "Attention Is All You Need（论文 §3.3）",
+      "https://arxiv.org/abs/1706.03762",
+      "Attention Is All You Need §3.3 (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 11,
+    "alias": [],
+    "purposeEn": "The digestion step inside every Transformer layer: attention looks around, then this part processes.",
+    "defEn": [
+     "A basic neural-network structure: information passes layer by layer, each layer applying one transformation.",
+     "In a Transformer, each layer runs attention first, then a feed-forward network.",
+     "This feed-forward network works position by position, alternating with attention."
+    ],
+    "whyEn": "Attention decides which words relate to each other; the feed-forward network turns those relations into judgments. Without it, a model can only draw lines, not think.",
+    "slug": "前馈网络"
+   },
+   {
+    "zh": "残差连接",
+    "en": "Residual Connection",
+    "purpose": "给网络留一条「直通通道」，让信号穿过很多层也不丢失。",
+    "def": [
+     "每一层除了输出加工后的结果，还把自己收到的原始输入原样加上去。",
+     "它来自图像识别里的 ResNet。",
+     "后来它成了 Transformer 能堆到几十层的前提之一。"
+    ],
+    "why": "网络越深越容易训不动——信号穿过几十层会走样。直通通道让模型「改一点、保留大部分」，深才可行。",
+    "refs": [
+     [
+      "ResNet 论文（Deep Residual Learning）",
+      "https://arxiv.org/abs/1512.03385",
+      "Deep Residual Learning for Image Recognition (paper)"
+     ],
+     [
+      "Attention Is All You Need（论文 §3.1）",
+      "https://arxiv.org/abs/1706.03762",
+      "Attention Is All You Need §3.1 (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 12,
+    "alias": [],
+    "purposeEn": "Gives the network a \"pass-through lane\" so the signal survives passing through many layers.",
+    "defEn": [
+     "Each layer adds its raw input back onto its processed output.",
+     "It came from ResNet in image recognition.",
+     "Later it became one of the prerequisites for Transformers stacking dozens of layers."
+    ],
+    "whyEn": "Deeper networks are harder to train — signals get distorted across dozens of layers. The pass-through lane lets the model \"change a bit, keep most of it,\" which is what makes depth feasible.",
+    "slug": "残差连接"
+   },
+   {
+    "zh": "层归一化",
+    "en": "Layer Normalization",
+    "purpose": "给网络每一层的输出做一次「调平」，让深层训练不失控。",
+    "def": [
+     "对单个样本在某一层里的全部数值做归一化（拉回统一的均值和方差），再往下传。",
+     "Transformer 的每个子层后面都跟着它，和残差连接搭配使用。"
+    ],
+    "why": "深层网络里数值容易越传越偏，一旦失控训练就崩。调平是「模型能稳定训到几十层」的幕后功臣之一。",
+    "refs": [
+     [
+      "Layer Normalization（论文）",
+      "https://arxiv.org/abs/1607.06450",
+      "Layer Normalization (paper)"
+     ],
+     [
+      "Attention Is All You Need（论文 §3.1）",
+      "https://arxiv.org/abs/1706.03762",
+      "Attention Is All You Need §3.1 (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 13,
+    "alias": [],
+    "purposeEn": "Levels out each layer's output so deep training doesn't spiral out of control.",
+    "defEn": [
+     "Normalizes all values of a single sample within one layer (back to a common mean and variance) before passing them on.",
+     "In Transformers it follows every sub-layer, paired with residual connections."
+    ],
+    "whyEn": "Values in deep networks drift as they propagate; once they spiral, training collapses. Leveling is one of the behind-the-scenes reasons models train stably at dozens of layers.",
+    "slug": "层归一化"
+   },
+   {
+    "zh": "编码器与解码器",
+    "en": "Encoder & Decoder",
+    "purpose": "Transformer 的两种半机：一个读懂，一个生成。",
+    "def": [
+     "编码器读入整段文本、建立理解；解码器一边读已生成的部分、一边往下写。",
+     "BERT 基于编码器。GPT 一类模型只用解码器这半边。",
+     "论文里对它的说法是「只看左侧上下文的 Transformer」。"
+    ],
+    "why": "「读懂型」和「生成型」模型的分野就在这。它决定了模型擅长什么：理解检索，还是续写生成。",
+    "refs": [
+     [
+      "Attention Is All You Need（论文 §3，完整结构）",
+      "https://arxiv.org/abs/1706.03762",
+      "Attention Is All You Need §3 (paper)"
+     ],
+     [
+      "BERT 论文（基于 Transformer 编码器）",
+      "https://arxiv.org/abs/1810.04805",
+      "BERT paper (Transformer encoder)"
+     ],
+     [
+      "GPT-1 论文（多层 Transformer 解码器）",
+      "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "GPT-1 paper (Transformer decoder)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 14,
+    "alias": [],
+    "purposeEn": "The two halves of a Transformer: one reads, one generates.",
+    "defEn": [
+     "The encoder reads a whole passage and builds understanding; the decoder reads what has been generated so far and keeps writing.",
+     "BERT is built on the encoder. GPT-style models use only the decoder half.",
+     "The papers call it \"a Transformer that attends only to left context\"."
+    ],
+    "whyEn": "The divide between \"understanding models\" and \"generation models\" sits right here. It decides what a model is good at: retrieval and comprehension, or continuation and generation.",
+    "slug": "编码器与解码器"
+   },
+   {
+    "zh": "子词分词",
+    "en": "Subword Tokenization",
+    "purpose": "把词切成更小的碎片，让模型遇到没见过的词也能拼出来。",
+    "def": [
+     "最常见的方案是 BPE：从字符出发，按出现频率反复合并相邻片段，得到一套子词。",
+     "「未登录词」问题由此缓解——整词不在词表里，它的碎片多半在。"
+    ],
+    "why": "你看到模型把生僻词拆成奇怪片段，不是「不认识」，是子词分词在工作。词表大小与合并规则共同决定模型对中文、代码的友好度。",
+    "refs": [
+     [
+      "BPE 原论文（Subword Units）",
+      "https://arxiv.org/abs/1508.07909",
+      "Neural Machine Translation of Rare Words with Subword Units (paper)"
+     ],
+     [
+      "Hugging Face 分词器课程",
+      "https://huggingface.co/learn/nlp-course/chapter2/4",
+      "Hugging Face NLP Course: Tokenizers chapter"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 15,
+    "alias": [],
+    "purposeEn": "Cuts words into smaller fragments so a model can still assemble words it has never seen.",
+    "defEn": [
+     "The dominant scheme is BPE: start from characters, repeatedly merge the most frequent adjacent pairs into a subword inventory.",
+     "It eases the out-of-vocabulary problem — a whole word may miss the vocabulary, but its fragments usually are in it."
+    ],
+    "whyEn": "When a model splits a rare word into odd fragments, it is not \"failing to recognize\" it — subword tokenization is at work. Vocabulary size and merge rules together decide how friendly a model is to Chinese and code.",
+    "slug": "子词分词"
+   },
+   {
+    "zh": "训练三阶段",
+    "en": "SFT → Reward Model → RL",
+    "purpose": "聊天模型是怎么练成的：先会续写，再学会好好回答。",
+    "def": [
+     "第一阶段是预训练：海量文本上学续写。",
+     "第二阶段训练奖励模型：人给多个回答排序，模型学会判断好坏。",
+     "第三阶段是强化学习：按奖励模型的打分继续优化。"
+    ],
+    "why": "ChatGPT 一类模型的「听话」来自后两阶段，不是预训练。较新的 DPO 把后两阶段合并成一步，不用单独训奖励模型。",
+    "refs": [
+     [
+      "InstructGPT 论文（三阶段见 §3.1）",
+      "https://arxiv.org/abs/2203.02155",
+      "InstructGPT paper (three stages, §3.1)"
+     ],
+     [
+      "DPO 论文（免 RL 的对齐方法）",
+      "https://arxiv.org/abs/2305.18290",
+      "Direct Preference Optimization (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 16,
+    "alias": [],
+    "purposeEn": "How chat models are trained: first they learn to continue text, then they learn to answer well.",
+    "defEn": [
+     "Stage one is pretraining: learning to continue text from massive corpora.",
+     "Stage two trains a reward model: humans rank candidate answers, and a model learns to judge quality.",
+     "Stage three is reinforcement learning: keep optimizing against the reward model's scores."
+    ],
+    "whyEn": "What makes ChatGPT-style models \"follow instructions\" comes from stages two and three, not pretraining. The newer DPO merges the last two stages into one, with no separate reward model.",
+    "slug": "训练三阶段"
+   },
+   {
+    "zh": "知识蒸馏",
+    "en": "Knowledge Distillation",
+    "purpose": "用大模型的软输出训练小模型：能力保留大半，部署容易得多。",
+    "def": [
+     "大模型带高温 softmax 输出「软目标」，小模型学这些概率分布。",
+     "通行的「教师 / 学生」叫法是后来的通俗命名。",
+     "原论文的用词是 cumbersome model 与 distilled model。"
+    ],
+    "why": "你能在本地跑的小模型，不少是蒸馏产物。模型名里带 -distill 或 - distilled，多半和它有关。",
+    "refs": [
+     [
+      "Hinton 等人《Distilling the Knowledge in a Neural Network》",
+      "https://arxiv.org/abs/1503.02531",
+      "Distilling the Knowledge in a Neural Network (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 17,
+    "alias": [],
+    "purposeEn": "Train a small model on a big model's soft outputs: keep most of the capability, deploy far more easily.",
+    "defEn": [
+     "The large model emits \"soft targets\" via a high-temperature softmax; the small model learns those probability distributions.",
+     "The popular \"teacher / student\" wording is a later community name; the original paper says cumbersome model and distilled model."
+    ],
+    "whyEn": "Many small models you can run locally are distilled products. Model names containing -distill or -distilled usually relate to this.",
+    "slug": "知识蒸馏"
+   },
+   {
+    "zh": "MoE（混合专家）",
+    "en": "Mixture of Experts (MoE)",
+    "purpose": "一种模型结构：每层放很多「专家」，每个词只用到其中少数几个。",
+    "def": [
+     "MoE 层由多个专家子网络加一个可训练的门控（路由）网络组成。",
+     "每个 token 只激活少数专家。",
+     "参数总量大增，但每 token 的计算量近似不变。",
+     "Switch Transformer 把路由简化成每 token 只选一个专家。"
+    ],
+    "why": "DeepSeek、Mixtral 这类大模型用的就是它。「总参数」和「激活参数」是两个数，看模型别被前者吓到或骗到。",
+    "refs": [
+     [
+      "Switch Transformer（论文）",
+      "https://arxiv.org/abs/2101.03961",
+      "Switch Transformers (paper)"
+     ],
+     [
+      "Shazeer 等《Sparsely-Gated Mixture-of-Experts Layer》",
+      "https://arxiv.org/abs/1701.06538",
+      "Outrageously Large Neural Networks: The Sparsely-Gated MoE Layer (paper)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 18,
+    "alias": [],
+    "purposeEn": "A model architecture: each layer holds many \"experts,\" but each word uses only a few of them.",
+    "defEn": [
+     "An MoE layer is several expert sub-networks plus a trainable gating (routing) network.",
+     "Each token activates only a few experts — total parameters grow hugely while per-token compute stays roughly constant.",
+     "Switch Transformer simplified routing to one expert per token."
+    ],
+    "whyEn": "DeepSeek and Mixtral use it. \"Total parameters\" and \"active parameters\" are two different numbers — do not let the first one intimidate or mislead you.",
+    "slug": "MoE - 混合专家"
+   },
+   {
+    "zh": "上下文学习",
+    "en": "In-context Learning",
+    "purpose": "在对话里现学现用：给几个例子，模型就会做新任务，不用重新训练。",
+    "def": [
+     "GPT-3 论文的核心论点：模型不更新权重。",
+     "它只靠提示里的任务说明和少量示例完成任务。",
+     "示例给 0 个、1 个还是几个，效果差别很大。",
+     "论文标题就是「Few-Shot Learners」。"
+    ],
+    "why": "你调提示词、给示例、贴一段参考——用的全是它。知道它的边界，才知道什么时候该考虑微调。",
+    "refs": [
+     [
+      "GPT-3 论文（Language Models are Few-Shot Learners）",
+      "https://arxiv.org/abs/2005.14165",
+      "GPT-3 paper (few-shot learners)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 19,
+    "alias": [],
+    "purposeEn": "Learning on the spot inside a conversation: give a few examples and the model does a new task, no retraining.",
+    "defEn": [
+     "The core claim of the GPT-3 paper: the model updates no weights, relying only on task instructions and a few examples in the prompt.",
+     "Whether you give 0, 1, or several examples changes results a lot — the paper's title is literally \"Few-Shot Learners.\""
+    ],
+    "whyEn": "Tweaking prompts, giving examples, pasting reference text — all of it uses this. Knowing its limits tells you when fine-tuning is the better route.",
+    "slug": "上下文学习"
+   },
+   {
+    "zh": "长上下文",
+    "en": "Long Context",
+    "purpose": "让模型一次读入几十万字的技术，和它为什么贵。",
+    "def": [
+     "注意力的计算量随文本长度平方增长——文本长十倍，计算多百倍。",
+     "各家靠改注意力、改位置编码、做缓存来压这个成本。",
+     "窗口从几千 token 走到百万级。",
+     "窗口长不等于读得准：超长文本里模型对中间部分的把握会下降。"
+    ],
+    "why": "「能塞进去」和「能用好」是两回事。选模型看窗口数字之前，先看你真需要多长、它长文实测怎么样。",
+    "refs": [
+     [
+      "Attention Is All You Need（复杂度表：自注意力每层 O(n²·d)）",
+      "https://arxiv.org/abs/1706.03762",
+      "Attention Is All You Need (complexity table)"
+     ],
+     [
+      "Google 官方博客：Gemini 1.5 宣布 100 万 token 窗口（私有预览）",
+      "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+      "Google blog: Gemini 1.5 1M-token context (private preview)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 20,
+    "alias": [],
+    "purposeEn": "The technology behind reading hundreds of thousands of words at once — and why it is expensive.",
+    "defEn": [
+     "Attention cost grows with the square of text length — 10x the text means 100x the compute.",
+     "Vendors tame the cost with modified attention, positional encoding, and caching; windows grew from thousands of tokens to millions.",
+     "A long window does not mean accurate reading: grasp of the middle of very long text drops."
+    ],
+    "whyEn": "\"Can fit it in\" and \"can use it well\" are different things. Before comparing window sizes, check how long you actually need and how the model performs on long text in practice.",
+    "slug": "长上下文"
+   },
+   {
+    "zh": "自回归生成",
+    "en": "Autoregressive Generation",
+    "purpose": "大模型「一个字一个字往外蹦」的生成方式，很多下游问题的根源。",
+    "def": [
+     "自回归模型逐 token 生成：每一步以已生成的文本为条件，预测下一个 token。",
+     "GPT 系列论文对自己的定义就是「自回归语言模型」。",
+     "生成质量取决于每一步的选择，错误也会顺着往下带。"
+    ],
+    "why": "流式输出为什么是一个字一个字出来的、为什么中途能停、为什么一步选歪后面会顺着歪——根源都在这。",
+    "refs": [
+     [
+      "GPT-3 论文（Brown et al. 2020，摘要自称 an autoregressive language model）",
+      "https://arxiv.org/abs/2005.14165",
+      "GPT-3 paper (Brown et al. 2020)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 21,
+    "alias": [],
+    "purposeEn": "How large models emit text one token at a time — the root of many downstream issues.",
+    "defEn": [
+     "An autoregressive model generates token by token: each step predicts the next token conditioned on what has already been generated.",
+     "The GPT papers define their own models as autoregressive language models.",
+     "Output quality depends on every single step; errors get carried forward."
+    ],
+    "whyEn": "Why streamed output arrives word by word, why it can be stopped mid-way, why one bad pick warps what follows — it all traces back to this.",
+    "slug": "自回归生成"
+   },
+   {
+    "zh": "logits 与概率分布",
+    "en": "Logits and Probability Distribution",
+    "purpose": "模型每一步输出的不是词，而是整个词表的分数表。采样参数都作用在这上面。",
+    "def": [
+     "每一步，模型给词表里每个候选 token 打一个分数，即 logits。",
+     "分数经 softmax 变成概率分布：所有候选的概率加起来为 1。",
+     "温度、top-k、top-p 都是在这张分布上做手脚。"
+    ],
+    "why": "理解了它，采样参数不再是玄学：它们改的是分布的形状，不是模型的「想法」。",
+    "refs": [
+     [
+      "Jurafsky & Martin《Speech and Language Processing》第 3 章（语言模型输出词表上的概率分布）",
+      "https://web.stanford.edu/~jurafsky/slp3/3.pdf",
+      "Jurafsky & Martin, Speech and Language Processing, ch. 3"
+     ],
+     [
+      "Holtzman 等《The Curious Case of Neural Text Degeneration》§3.3（温度采样的讨论）",
+      "https://arxiv.org/abs/1904.09751",
+      "Holtzman et al., The Curious Case of Neural Text Degeneration, §3.3"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 22,
+    "alias": [],
+    "purposeEn": "What the model outputs at each step is not a word but a score table over the whole vocabulary. All sampling parameters act on it.",
+    "defEn": [
+     "At each step the model assigns a score — a logit — to every candidate token in the vocabulary.",
+     "Softmax turns the scores into a probability distribution: all candidates sum to 1.",
+     "Temperature, top-k and top-p all reshape this distribution."
+    ],
+    "whyEn": "Once you get it, sampling parameters stop being mysticism: they change the shape of the distribution, not the model's 'mind'.",
+    "slug": "logits 与概率分布"
+   },
+   {
+    "zh": "贪心解码与束搜索",
+    "en": "Greedy Decoding and Beam Search",
+    "purpose": "每步都选最可能词的解码方式，以及它为什么反而写出空洞重复的文本。",
+    "def": [
+     "贪心解码每步取概率最高的 token。束搜索同时保留几条最优路径。",
+     "Holtzman 等人指出这类解码的问题。",
+     "以最大化为主的解码会产出平淡、空洞、陷入重复循环的文本。",
+     "对策之一是 nucleus sampling（top-p）：每步从累计概率首次达到 p 的最小候选集里采样。"
+    ],
+    "why": "「选最可能的词」听起来最稳，实测却最容易写得干瘪复读。这解释了为什么聊天模型默认带随机性。",
+    "refs": [
+     [
+      "Holtzman 等《The Curious Case of Neural Text Degeneration》（ICLR 2020）",
+      "https://arxiv.org/abs/1904.09751",
+      "Holtzman et al., The Curious Case of Neural Text Degeneration (ICLR 2020)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 23,
+    "alias": [],
+    "purposeEn": "Decoding that always picks the most likely token — and why it instead produces hollow, repetitive text.",
+    "defEn": [
+     "Greedy decoding takes the highest-probability token at each step; beam search keeps several best paths in parallel.",
+     "Holtzman et al. identified the problem with this class of decoding.",
+     "Maximization-based decoding yields text that is bland, incoherent, or stuck in repetitive loops.",
+     "One countermeasure is nucleus sampling (top-p): sample from the smallest candidate set whose cumulative probability first reaches p."
+    ],
+    "whyEn": "'Pick the most likely word' sounds safest but in practice writes the dullest, most repetitive prose. This is why chat models ship with randomness by default.",
+    "slug": "贪心解码与束搜索"
+   },
+   {
+    "zh": "幻觉的成因",
+    "en": "Why Hallucination Happens",
+    "purpose": "为什么模型会一本正经地编：不是它想骗你，是训练目标使然。",
+    "def": [
+     "语言模型本质是逐词概率预测器，训练要求它永远给出下一个词的猜测。",
+     "Anthropic 的研究页直言：训练鼓励幻觉，模型于是会编出貌似合理但不真的回答。",
+     "学界常把幻觉定义为「生成内容不被输入来源支持或与事实不符」。",
+     "流畅自然的表象与不忠实并存，这正是它难被发现的原因。"
+    ],
+    "why": "知道成因，才知道哪些缓解手段有效（给出处、允许说不知道）、哪些只是安慰。",
+    "refs": [
+     [
+      "Anthropic 官方研究页《Tracing the thoughts of a large language model》",
+      "https://www.anthropic.com/research/tracing-thoughts-language-model",
+      "Anthropic research: Tracing the thoughts of a large language model"
+     ],
+     [
+      "Ji 等《Hallucination in Large Language Models: A Survey》（ACM Computing Surveys 2023）",
+      "https://arxiv.org/abs/2202.03629",
+      "Ji et al., Hallucination Survey (ACM Computing Surveys 2023)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "guard",
+    "level": 4,
+    "layer": "四",
+    "ord": 24,
+    "alias": [],
+    "purposeEn": "Why models fabricate with a straight face: not deception, but the training objective.",
+    "defEn": [
+     "A language model is a word-by-word probability predictor; training requires it to always guess the next word.",
+     "Anthropic's research page states plainly that training incentivizes hallucination, so the model confabulates plausible-but-untrue responses.",
+     "The standard definition: generated content not supported by the input source or contrary to fact.",
+     "Fluent, natural surface coexists with unfaithfulness — that is exactly why it is hard to spot."
+    ],
+    "whyEn": "Knowing the cause tells you which mitigations actually work (provide sources, allow 'I don't know') and which are just reassurance.",
+    "slug": "幻觉的成因"
+   },
+   {
+    "zh": "困惑度",
+    "en": "Perplexity (PPL)",
+    "purpose": "语言模型最常用的内在评测指标：模型对测试文本有多「意外」。",
+    "def": [
+     "困惑度定义为模型对测试序列逐 token 平均负对数似然的指数。",
+     "等价于平均交叉熵损失的指数。困惑度越低，模型对文本预测越确信。",
+     "它对分词方式敏感：只宜在相同 tokenizer 的模型之间直接比较。",
+     "它适用于自回归模型，对 BERT 这类掩码模型定义不佳。"
+    ],
+    "why": "论文和模型卡常报这个数。知道它只跟同分词的模型可比，就不会被跨家的困惑度数字误导。",
+    "refs": [
+     [
+      "Hugging Face Transformers 官方文档《Perplexity of fixed-length models》",
+      "https://huggingface.co/docs/transformers/perplexity",
+      "Hugging Face docs: Perplexity of fixed-length models"
+     ],
+     [
+      "Jurafsky & Martin《Speech and Language Processing》§3.3 与 §7.7.1",
+      "https://web.stanford.edu/~jurafsky/slp3/3.pdf",
+      "Jurafsky & Martin, Speech and Language Processing, §3.3 and §7.7.1"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 4,
+    "layer": "四",
+    "ord": 25,
+    "alias": [],
+    "purposeEn": "The most common intrinsic metric for language models: how surprised the model is by test text.",
+    "defEn": [
+     "Perplexity is the exponentiated average negative log-likelihood of a sequence, token by token.",
+     "Equivalently, the exponent of the average cross-entropy loss; lower perplexity means the model predicts the text more confidently.",
+     "It is sensitive to tokenization: compare it directly only between models sharing the same tokenizer.",
+     "It applies to autoregressive models and is ill-defined for masked models like BERT."
+    ],
+    "whyEn": "Papers and model cards report this number. Knowing it is only comparable across same-tokenizer models keeps you from being misled by cross-vendor figures.",
+    "slug": "困惑度"
+   },
+   {
+    "zh": "缩放定律",
+    "en": "Scaling Laws",
+    "purpose": "损失随参数、数据、算力呈幂律下降的经验规律，大模型军备竞赛的理论依据。",
+    "def": [
+     "Kaplan 等人发现：损失随参数量、数据量、训练算力各自呈幂律变化，趋势跨越七个以上数量级。",
+     "该文主张固定算力下主要增大模型（并概括为「大模型可能比大数据更重要」）。",
+     "Hoffmann 等人（Chinchilla）基于 400 余个模型的实验反驳：算力最优时参数量与训练 token 数应等比放大。",
+     "他们据此指出现有大模型普遍训练不足。"
+    ],
+    "why": "「模型多大、喂多少数据」不是拍脑袋，背后有这两篇。各家训练配方转向海量数据，源头就在这。",
+    "refs": [
+     [
+      "Kaplan 等《Scaling Laws for Neural Language Models》",
+      "https://arxiv.org/abs/2001.08361",
+      "Kaplan et al., Scaling Laws for Neural Language Models"
+     ],
+     [
+      "Hoffmann 等《Training Compute-Optimal Large Language Models》（Chinchilla）",
+      "https://arxiv.org/abs/2203.15556",
+      "Hoffmann et al., Training Compute-Optimal LLMs (Chinchilla)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 26,
+    "alias": [],
+    "purposeEn": "The empirical power-law by which loss falls with parameters, data, and compute — the theory behind the scaling arms race.",
+    "defEn": [
+     "Kaplan et al. found loss follows power laws in model size, dataset size, and training compute, with trends spanning more than seven orders of magnitude.",
+     "That paper favored growing model size under a fixed compute budget, summarized as 'big models may be more important than big data'.",
+     "Hoffmann et al. (Chinchilla), from over 400 trained models, countered: compute-optimal training scales parameters and training tokens equally.",
+     "They concluded that existing large models were significantly undertrained."
+    ],
+    "whyEn": "'How big, how much data' is not guesswork — these two papers are behind it. The industry's shift to massive data diets traces to them.",
+    "slug": "缩放定律"
+   },
+   {
+    "zh": "涌现能力",
+    "en": "Emergent Abilities",
+    "purpose": "小模型没有、大模型突然会了的能力——以及它可能是评测假象的争论。",
+    "def": [
+     "Wei 等人把涌现定义为：小模型不具备、大模型具备的能力，无法由小模型的缩放曲线外推预测。",
+     "思维链提示就是文中举的涌现例子。",
+     "Schaeffer 等人提出相反解释：许多「涌现」源于评测指标的非连续选择。",
+     "改用连续指标后，性能随规模平滑变化；涌现未必是缩放的根本属性。"
+    ],
+    "why": "「大到某个规模突然会变聪明」是营销常用话术。正反两篇都读过，你才有判断依据。",
+    "refs": [
+     [
+      "Wei 等《Emergent Abilities of Large Language Models》（TMLR 2022）",
+      "https://arxiv.org/abs/2206.07682",
+      "Wei et al., Emergent Abilities of Large Language Models (TMLR 2022)"
+     ],
+     [
+      "Schaeffer 等《Are Emergent Abilities of Large Language Models a Mirage?》（NeurIPS 2023）",
+      "https://arxiv.org/abs/2304.15004",
+      "Schaeffer et al., Are Emergent Abilities a Mirage? (NeurIPS 2023)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 4,
+    "layer": "四",
+    "ord": 27,
+    "alias": [],
+    "purposeEn": "Abilities small models lack that large models suddenly have — and the dispute that they may be a metric artifact.",
+    "defEn": [
+     "Wei et al. define an emergent ability as one absent in smaller models but present in larger ones, unpredictable by extrapolating small-model scaling curves.",
+     "Chain-of-thought prompting is their flagship example.",
+     "Schaeffer et al. offered the opposite account: many apparent emergences come from discontinuous metric choices.",
+     "With continuous metrics, performance changes smoothly with scale; emergence may not be a fundamental property of scaling."
+    ],
+    "whyEn": "'Suddenly gets smart past some size' is a marketing staple. Read both sides before you judge the claim.",
+    "slug": "涌现能力"
+   },
+   {
+    "zh": "思维链",
+    "en": "Chain of Thought (CoT)",
+    "purpose": "让模型先列推理步骤再给答案的提示方式，以及它对模型规模的依赖。",
+    "def": [
+     "Wei 等人提出：在示例中给出若干中间推理步骤，可显著提升足够大的模型的推理表现。",
+     "PaLM 540B 仅用 8 个思维链示例，即在 GSM8K 数学题上达到当时最优。",
+     "该文同时指出思维链是规模的涌现能力：约 10B 以下的小模型上反而降低性能。",
+     "小模型会产出「流畅但无逻辑」的推理链。"
+    ],
+    "why": "「让模型一步步想」对小模型可能有害。知道规模门槛，才知道这招什么时候该用、什么时候是自我安慰。",
+    "refs": [
+     [
+      "Wei 等《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》",
+      "https://arxiv.org/abs/2201.11903",
+      "Wei et al., Chain-of-Thought Prompting (NeurIPS 2022)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "apply",
+    "level": 4,
+    "layer": "四",
+    "ord": 28,
+    "alias": [],
+    "purposeEn": "Prompting the model to lay out reasoning steps before answering — and its dependence on model scale.",
+    "defEn": [
+     "Wei et al. showed that a few chain-of-thought exemplars markedly improve reasoning in sufficiently large models.",
+     "PaLM 540B with just eight exemplars reached state-of-the-art accuracy on the GSM8K math benchmark.",
+     "The same paper shows CoT is an emergent ability of scale: it hurts models below roughly 10B parameters.",
+     "Small models produce fluent but illogical chains of thought."
+    ],
+    "whyEn": "'Make the model think step by step' can backfire on small models. Knowing the scale threshold tells you when the trick works and when it is self-comfort.",
+    "slug": "思维链"
+   },
+   {
+    "zh": "数据污染",
+    "en": "Data Contamination",
+    "purpose": "评测题混进训练数据，模型「考过原题」——评测分数因此失真。",
+    "def": [
+     "指评测集的内容在预训练阶段混进了训练数据，被模型提前见过。",
+     "GPT-3 论文自己就做过 n-gram 重叠检查，评估各评测集被污染的影响。",
+     "Magar 与 Schwartz 进一步把污染分成「记住」与「利用」两种行为并量化。",
+     "静态评测集公开可得，污染几乎不可避免。"
+    ],
+    "why": "榜单上「某模型在 X 基准特别高」，可能只是它见过原题。评测评判模型前先问：这个基准会不会已经漏进训练数据。",
+    "refs": [
+     [
+      "GPT-3 论文 §2.2 与 §4/附录 C（测试集污染的 n-gram 重叠研究）",
+      "https://arxiv.org/abs/2005.14165",
+      "GPT-3 paper §2.2 and §4/Appendix C (test set contamination studies)"
+     ],
+     [
+      "Magar & Schwartz《Data Contamination: From Memorization to Exploitation》（ACL 2022）",
+      "https://arxiv.org/abs/2203.08242",
+      "Magar & Schwartz, Data Contamination: From Memorization to Exploitation (ACL 2022)"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 4,
+    "layer": "四",
+    "ord": 29,
+    "alias": [],
+    "purposeEn": "Eval questions leaking into training data — models have 'seen the exam', so scores become distorted.",
+    "defEn": [
+     "Contamination means evaluation-set content was inadvertently seen during pre-training.",
+     "The GPT-3 paper itself ran n-gram overlap checks to assess contamination across eval sets.",
+     "Magar & Schwartz split contamination into memorization and exploitation, and quantified both.",
+     "With static eval sets publicly available, contamination is nearly unavoidable."
+    ],
+    "whyEn": "'Model X tops benchmark Y' may just mean it saw the questions. Before trusting a leaderboard slot, ask whether that benchmark has already leaked into training data.",
+    "slug": "数据污染"
+   },
+   {
+    "zh": "评测饱和",
+    "en": "Benchmark Saturation",
+    "purpose": "基准被刷到接近满分、失去区分度——榜单为什么需要持续更新。",
+    "def": [
+     "Ott 等人对 3765 个基准的实证研究显示：相当比例的基准迅速接近饱和。",
+     "饱和加上静态数据公开可得，导致过拟合评测集。",
+     "社区因此主张用持续更新的数据流做评测，替代一考定终身。",
+     "看榜单先看基准的发布日期和饱和程度。"
+    ],
+    "why": "「在 X 榜第一」的含金量取决于那个榜还剩多少区分度。饱和榜单上的名次差距可能毫无意义。",
+    "refs": [
+     [
+      "Ott 等《Mapping global dynamics of benchmark creation and saturation in AI》（Nature Communications 2022）",
+      "https://arxiv.org/abs/2203.04592",
+      "Ott et al., Benchmark creation and saturation in AI (Nature Communications 2022)"
+     ],
+     [
+      "HelloFresh：用持续数据流评测对抗污染与过拟合",
+      "https://arxiv.org/abs/2406.03428",
+      "HelloFresh: continuous data streams against contamination and overfitting"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 4,
+    "layer": "四",
+    "ord": 30,
+    "alias": [],
+    "purposeEn": "Benchmarks approach perfect scores and lose discriminating power — why leaderboards need constant renewal.",
+    "defEn": [
+     "Ott et al.'s study of 3,765 benchmarks found a large fraction quickly trended towards near-saturation.",
+     "Saturation plus publicly available static data leads to overfitting the eval set.",
+     "The community therefore advocates evaluation on continuously updated data streams instead of one-shot exams.",
+     "When reading a leaderboard, check the benchmark's release date and how saturated it is."
+    ],
+    "whyEn": "The value of 'number one on X' depends on how much headroom that benchmark still has. Rank gaps on a saturated board can be meaningless.",
+    "slug": "评测饱和"
    }
   ]
  },
  {
   "num": "五",
-  "name": "部署层",
+  "name": "跑起来",
   "desc": "让模型跑在自己机器上。你会关心显存够不够、跑得多快。",
   "terms": [
    {
@@ -2715,10 +4475,10 @@ var TERMS = [
     "en": "Bits Per Weight",
     "purpose": "量化档位的数值表示：平均每个权重占几个比特。",
     "def": [
-     "衡量量化程度的指标。本站按 bpw 分成五档：极限压缩 / 长上下文优先 / 平衡档 / 保守档 / 近似无损。",
+     "衡量量化程度的指标。本站按 bpw 分成五档：极限压缩、长上下文优先、平衡档、保守档、近似无损。",
      "数值越低，模型体积越小。"
     ],
-    "why": "它把「Q4、Q8、Q3」这些各家不同的叫法统一成可比较的数字，是选型时最实用的标尺。",
+    "why": "它把「Q4、Q8、Q3」这些各家不同的叫法统一成可比较的数字。这是选型时最实用的标尺。",
     "refs": [
      [
       "量化档位横向对比（千问 3.8）",
@@ -3058,12 +4818,363 @@ var TERMS = [
     ],
     "whyEn": "System prompts in agent work are usually long, so caching meaningfully lowers cost. It is also why this site does not host models itself.",
     "slug": "Prompt Cache"
+   },
+   {
+    "zh": "连续批处理",
+    "en": "Continuous Batching",
+    "purpose": "让服务器把不同时刻到达的请求拼在一起算，而不是排队。",
+    "def": [
+     "vLLM 官方把它列为核心加速手段：对到达的请求做连续批处理。",
+     "官方把它与分块预填充、前缀缓存一起列为让 vLLM 快的手段。"
+    ],
+    "why": "同一个模型，服务引擎不同，能扛的并发差好几倍。",
+    "refs": [
+     [
+      "vLLM 官方文档首页",
+      "https://docs.vllm.ai/en/latest/",
+      "vLLM documentation"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 15,
+    "alias": [],
+    "purposeEn": "The server batches requests that arrived at different moments instead of queueing them.",
+    "defEn": [
+     "vLLM lists it as a core acceleration technique: continuous batching of incoming requests.",
+     "Together with chunked prefill and prefix caching it forms the throughput base of a serving engine."
+    ],
+    "whyEn": "Same model, different serving engine: concurrency differs by multiples.",
+    "slug": "连续批处理"
+   },
+   {
+    "zh": "分块预填充",
+    "en": "Chunked Prefill",
+    "purpose": "把很长的输入切成小块处理，顺便和生成中的请求混在一起跑。",
+    "def": [
+     "vLLM 官方定义：允许把大的预填充拆成较小的块，并与解码请求一起批处理。",
+     "官方称它通过平衡计算密集与显存密集两类操作，同时改善吞吐和延迟。"
+    ],
+    "why": "长输入把首字延迟拖爆时，这是服务端最常用的缓解手段。",
+    "refs": [
+     [
+      "vLLM 优化配置文档",
+      "https://docs.vllm.ai/en/latest/configuration/optimization.html",
+      "vLLM optimization configuration"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 16,
+    "alias": [],
+    "purposeEn": "Process a long input in smaller chunks, mixing it with requests that are generating.",
+    "defEn": [
+     "vLLM's definition: process large prefills in smaller chunks and batch them with decode requests.",
+     "The docs say it improves both throughput and latency by balancing compute-bound and memory-bound work."
+    ],
+    "whyEn": "When a long input wrecks time-to-first-token, this is the standard server-side mitigation.",
+    "slug": "分块预填充"
+   },
+   {
+    "zh": "流水线并行",
+    "en": "Pipeline Parallelism",
+    "purpose": "把模型按层切成几段，分别放在不同显卡上接力算。",
+    "def": [
+     "vLLM 官方列出的分布式手段之一：张量、流水线、数据、专家、上下文并行。",
+     "含义是按层段把模型切到多张卡上接力计算。"
+    ],
+    "why": "多卡怎么分工，官方就这几种口径。选错方式，卡再多也快不起来。",
+    "refs": [
+     [
+      "vLLM 官方文档首页",
+      "https://docs.vllm.ai/en/latest/",
+      "vLLM documentation"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 17,
+    "alias": [],
+    "purposeEn": "Cut the model into layer ranges and run them on different GPUs in relay.",
+    "defEn": [
+     "One of vLLM's listed distributed techniques: tensor, pipeline, data, expert and context parallelism.",
+     "It lets a model larger than one GPU's memory run in pieces, at the cost of passing intermediate results."
+    ],
+    "whyEn": "These are the official ways to split work across cards. Pick wrong and extra cards do not help.",
+    "slug": "流水线并行"
+   },
+   {
+    "zh": "上下文并行",
+    "en": "Context Parallelism",
+    "purpose": "把超长上下文拆到多张卡上分别处理。",
+    "def": [
+     "vLLM 官方把它与张量、流水线、数据、专家并行并列为分布式推理手段。",
+     "它针对的是注意力开销随序列长度二次增长。"
+    ],
+    "why": "想要超长上下文靠的是这类技术，不是单卡显存更大。",
+    "refs": [
+     [
+      "vLLM 官方文档首页",
+      "https://docs.vllm.ai/en/latest/",
+      "vLLM documentation"
+     ],
+     [
+      "FlashAttention 论文",
+      "https://arxiv.org/abs/2205.14135",
+      "FlashAttention paper"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 18,
+    "alias": [],
+    "purposeEn": "Split a very long context across several cards for processing.",
+    "defEn": [
+     "vLLM lists it alongside tensor, pipeline, data and expert parallelism for distributed inference.",
+     "It targets the quadratic growth of attention cost with sequence length."
+    ],
+    "whyEn": "Very long contexts come from techniques like this, not from a single bigger card.",
+    "slug": "上下文并行"
+   },
+   {
+    "zh": "投机解码",
+    "en": "Speculative Decoding",
+    "alias": [
+     "推测解码"
+    ],
+    "purpose": "用小模型先猜几个词，大模型一次验证，生成更快。",
+    "def": [
+     "Leviathan 等人的定义：在不改变输出的前提下并行计算多个 token 的采样算法。",
+     "原论文在 T5-XXL 上报告 2–3 倍加速，且输出完全一致。",
+     "vLLM 已内置 n-gram、EAGLE 等多种投机解码实现。"
+    ],
+    "why": "本地跑大模型时，这是少数「白拿」的提速手段之一。",
+    "refs": [
+     [
+      "Leviathan 等《Fast Inference from Transformers via Speculative Decoding》",
+      "https://arxiv.org/abs/2211.17192",
+      "Speculative decoding paper (ICML 2023)"
+     ],
+     [
+      "vLLM 官方文档首页",
+      "https://docs.vllm.ai/en/latest/",
+      "vLLM documentation"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 19,
+    "purposeEn": "Guess several tokens cheaply, then have the big model verify them in one pass.",
+    "defEn": [
+     "Leviathan et al.'s definition: an algorithm to sample from autoregressive models faster, computing several tokens in parallel with no changes to the outputs.",
+     "The paper reports 2x-3x acceleration on T5-XXL with identical outputs.",
+     "vLLM ships n-gram, EAGLE and other speculative decoding implementations."
+    ],
+    "whyEn": "For local inference this is one of the few speedups you get for free.",
+    "slug": "投机解码"
+   },
+   {
+    "zh": "FlashAttention",
+    "en": "FlashAttention",
+    "purpose": "一种更省显存、更快的注意力算法，长上下文的基石。",
+    "def": [
+     "Dao 等人的定义：IO 感知的精确注意力算法，用分块减少显存与片上缓存之间的读写。",
+     "原论文指出自注意力的时间与空间复杂度随序列长度二次增长，这是长序列慢的根源。"
+    ],
+    "why": "「上下文开大就慢」的底层原因在这里；它也是各家推理库的标配内核。",
+    "refs": [
+     [
+      "Dao 等《FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness》",
+      "https://arxiv.org/abs/2205.14135",
+      "FlashAttention paper"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 20,
+    "alias": [],
+    "purposeEn": "A more memory-efficient, faster attention algorithm; the base of long contexts.",
+    "defEn": [
+     "Dao et al.'s definition: an IO-aware exact attention algorithm using tiling to cut reads and writes between GPU memory and on-chip SRAM.",
+     "The paper identifies quadratic cost in sequence length as why long sequences are slow."
+    ],
+    "whyEn": "This is the underlying reason bigger contexts are slower, and a standard kernel in serving stacks.",
+    "slug": "FlashAttention"
+   },
+   {
+    "zh": "PagedAttention",
+    "en": "PagedAttention",
+    "purpose": "借操作系统的分页思路管理 KV 缓存，让显存几乎不浪费。",
+    "def": [
+     "Kwon 等人的定义：受操作系统虚拟内存与分页技术启发的注意力算法。",
+     "论文称基于它构建的 vLLM 在 KV 缓存上接近零浪费，吞吐提升 2–4 倍。"
+    ],
+    "why": "vLLM 快的真正原因。理解了它，才明白显存要算的是缓存而不只是权重。",
+    "refs": [
+     [
+      "Kwon 等《Efficient Memory Management for LLM Serving with PagedAttention》",
+      "https://arxiv.org/abs/2309.06180",
+      "PagedAttention paper (SOSP 2023)"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 21,
+    "alias": [],
+    "purposeEn": "Manage the KV cache with OS paging ideas so memory is barely wasted.",
+    "defEn": [
+     "Kwon et al.'s definition: an attention algorithm inspired by classical virtual memory and paging in operating systems.",
+     "The paper reports vLLM achieving near-zero KV cache waste and 2-4x throughput."
+    ],
+    "whyEn": "The real reason vLLM is fast. Memory budgeting is about cache, not only weights.",
+    "slug": "PagedAttention"
+   },
+   {
+    "zh": "safetensors",
+    "en": "safetensors",
+    "purpose": "一种更安全的模型权重文件格式。",
+    "def": [
+     "官方描述：一种新的简单张量存储格式，安全（相对 pickle）且仍然快（零拷贝）。",
+     "官方指出 pickle 不安全、会执行任意代码；该格式支持懒加载。"
+    ],
+    "why": "加载不可信权重，等于运行别人写的代码。先看格式。",
+    "refs": [
+     [
+      "safetensors 官方仓库",
+      "https://github.com/safetensors/safetensors",
+      "safetensors repository"
+     ]
+    ],
+    "domain": "data",
+    "purposeTag": "guard",
+    "level": 5,
+    "layer": "五",
+    "ord": 22,
+    "alias": [],
+    "purposeEn": "A safer file format for model weights.",
+    "defEn": [
+     "The official description: a simple format for storing tensors safely (as opposed to pickle) that is still fast (zero-copy).",
+     "The docs state pickle is unsafe and runs arbitrary code; the format supports lazy loading."
+    ],
+    "whyEn": "Loading untrusted weights is running someone else's code. Check the format first.",
+    "slug": "safetensors"
+   },
+   {
+    "zh": "MLX",
+    "en": "MLX",
+    "purpose": "苹果芯片上的机器学习框架，由 Apple 研究团队开源。",
+    "def": [
+     "官方描述：面向 Apple silicon 的机器学习数组框架，由 Apple 机器学习研究团队出品。",
+     "特点是统一内存模型：数组驻留共享内存，CPU 与 GPU 上运算无需搬运数据。"
+    ],
+    "why": "用 Mac 跑模型时值得知道它存在。官方并未声称统一内存能让 Mac 跑大模型。",
+    "refs": [
+     [
+      "MLX 官方仓库",
+      "https://github.com/ml-explore/mlx",
+      "MLX repository"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "learn",
+    "level": 5,
+    "layer": "五",
+    "ord": 23,
+    "alias": [],
+    "purposeEn": "A machine learning framework for Apple silicon, open-sourced by Apple's research team.",
+    "defEn": [
+     "The official description: an array framework for machine learning on Apple silicon, from Apple machine learning research.",
+     "Its notable feature is the unified memory model: arrays live in shared memory, so CPU and GPU operations need no data transfer."
+    ],
+    "whyEn": "Worth knowing if you run models on a Mac. Note the docs do not claim unified memory runs large models.",
+    "slug": "MLX"
+   },
+   {
+    "zh": "OpenAI 兼容接口",
+    "en": "OpenAI-compatible API",
+    "alias": [
+     "OpenAI 兼容 API"
+    ],
+    "purpose": "本地跑的模型，用现成的 OpenAI 客户端就能连。",
+    "def": [
+     "vLLM 官方提供兼容 OpenAI Completions、Chat Completions、Embeddings 等接口的 HTTP 服务。",
+     "llama.cpp 的服务端同样以 OpenAI 兼容 API 方式启动。"
+    ],
+    "why": "换后端不用改代码，这是本地与云端之间最省事的切换方式。",
+    "refs": [
+     [
+      "vLLM OpenAI 兼容服务文档",
+      "https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html",
+      "vLLM OpenAI-compatible server"
+     ],
+     [
+      "llama.cpp 官方仓库",
+      "https://github.com/ggml-org/llama.cpp",
+      "llama.cpp repository"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "apply",
+    "level": 5,
+    "layer": "五",
+    "ord": 24,
+    "purposeEn": "Serve a local model so existing OpenAI clients can connect unchanged.",
+    "defEn": [
+     "vLLM provides an HTTP server compatible with OpenAI's Completions, Chat Completions and Embeddings APIs.",
+     "llama.cpp's server likewise launches as an OpenAI-compatible API server."
+    ],
+    "whyEn": "Swap backends without touching your code: the cheapest switch between local and cloud.",
+    "slug": "OpenAI 兼容接口"
+   },
+   {
+    "zh": "CPU 推理",
+    "en": "CPU Inference",
+    "purpose": "没有显卡也能跑模型。",
+    "def": [
+     "llama.cpp 官方称其目标是「以最少配置、在广泛硬件上实现 LLM（与 VLM）推理」。",
+     "官方列出 BLAS、ZenDNN、OpenVINO 等面向 CPU 的后端。"
+    ],
+    "why": "决定「没有显卡能不能玩」。能不能跑、跑多快，取决于后端与硬件。",
+    "refs": [
+     [
+      "llama.cpp 官方仓库",
+      "https://github.com/ggml-org/llama.cpp",
+      "llama.cpp repository"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "judge",
+    "level": 5,
+    "layer": "五",
+    "ord": 25,
+    "alias": [],
+    "purposeEn": "You can run models without a GPU; the cost is speed.",
+    "defEn": [
+     "llama.cpp states its goal is LLM (and VLM) inference with minimal setup and state-of-the-art performance on a wide range of hardware.",
+     "It lists CPU-facing backends such as BLAS, ZenDNN and OpenVINO."
+    ],
+    "whyEn": "Answers \"can I run this without a graphics card\". Yes, but expect tokens per second, not per millisecond.",
+    "slug": "CPU 推理"
    }
   ]
  },
  {
   "num": "六",
-  "name": "选型层",
+  "name": "选得对",
   "desc": "把前面学到的东西变成一个决定。这是这一页的终点。",
   "terms": [
    {
@@ -3293,7 +5404,7 @@ var TERMS = [
     "def": [
      "多个评测维度的加权汇总。不同机构的加权方式差别很大。"
     ],
-    "why": "看到「综合分 XX」要先问：怎么加权的、用的哪套题、什么时候的数据。",
+    "why": "看到「综合分 XX」要先问三件事：怎么加权？用的哪套题？什么时候的数据？",
     "refs": [
      [
       "HELM 论文",
@@ -3764,6 +5875,274 @@ var TERMS = [
     ],
     "whyEn": "It is the first question to ask when deciding whether your data can leak. **Anything sent to a remote service is inherently unsuitable for sensitive material.**",
     "slug": "传输方式"
+   },
+   {
+    "zh": "模型退役",
+    "en": "Model Retirement",
+    "alias": [
+     "模型下线",
+     "弃用与退役"
+    ],
+    "purpose": "云端模型会被下线，这是选型时要算的风险。",
+    "def": [
+     "微软官方区分两阶段：弃用后新客户不能再部署，已有部署仍可用。",
+     "退役后所有推理请求返回 410 Gone。",
+     "官方称标准生命周期约 18 个月，并在退役前至少提前 60 天通知。"
+    ],
+    "why": "「这家 API 会不会哪天关掉」有具体答案：会，而且有时间表。",
+    "refs": [
+     [
+      "Microsoft Foundry 模型生命周期与支持政策",
+      "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "Microsoft Foundry models lifecycle and support policy"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "guard",
+    "level": 6,
+    "layer": "六",
+    "ord": 23,
+    "purposeEn": "Cloud models get retired; treat it as a selection risk.",
+    "defEn": [
+     "Microsoft distinguishes two stages: once deprecated, new customers cannot deploy while existing deployments keep working.",
+     "Once retired, all inference requests return 410 Gone.",
+     "The docs describe a standard 18-month lifecycle with at least 60 days' notice before retirement."
+    ],
+    "whyEn": "\"Will this API shut down someday\" has a concrete answer: yes, on a published schedule.",
+    "slug": "模型退役"
+   },
+   {
+    "zh": "预览版与正式版",
+    "en": "Preview vs GA",
+    "alias": [
+     "Preview",
+     "GA"
+    ],
+    "purpose": "模型 API 的两种成熟度，决定能不能上生产。",
+    "def": [
+     "微软官方对 Preview 的定义：实验性，权重、运行时与 API 结构都可能变，不保证转为正式版。",
+     "官方明确不建议把预览模型用于生产负载。",
+     "正式版（GA）的权重与 API 固定。"
+    ],
+    "why": "选 API 先看这个标签。预览版更新，但随时会变。",
+    "refs": [
+     [
+      "Microsoft Foundry 模型生命周期与支持政策",
+      "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "Microsoft Foundry models lifecycle and support policy"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "judge",
+    "level": 6,
+    "layer": "六",
+    "ord": 24,
+    "purposeEn": "Two maturity levels of a model API, deciding whether it belongs in production.",
+    "defEn": [
+     "Microsoft defines Preview as experimental: weights, runtime and API schema might change, with no guarantee of reaching GA.",
+     "The docs state preview models are not recommended for production workloads.",
+     "GA means production-ready with fixed weights and APIs."
+    ],
+    "whyEn": "Check this label first. Preview is newer, but it can change at any time.",
+    "slug": "预览版与正式版"
+   },
+   {
+    "zh": "模型版本与变体",
+    "en": "Model Family, Version, Variant",
+    "alias": [
+     "模型家族",
+     "模型版本"
+    ],
+    "purpose": "同一个模型名后面那串日期和 mini、nano，含义不同。",
+    "def": [
+     "微软官方定义：模型家族是一代模型；版本是家族内带日期的发布。",
+     "变体是同一家族内的规模或能力档位，例如 mini、nano。"
+    ],
+    "why": "换「同名新版本」常常改变行为。写清版本日期，问题才可复现。",
+    "refs": [
+     [
+      "Microsoft Foundry 模型生命周期与支持政策",
+      "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "Microsoft Foundry models lifecycle and support policy"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "guard",
+    "level": 6,
+    "layer": "六",
+    "ord": 25,
+    "purposeEn": "The date and the mini/nano suffix in a model name mean different things.",
+    "defEn": [
+     "Microsoft's definition: a model family is a generation; a version is a dated release within it.",
+     "A variant is a size or capability tier in the same family, such as mini or nano."
+    ],
+    "whyEn": "Switching to a \"newer version of the same name\" often changes behavior. Pin the date to stay reproducible.",
+    "slug": "模型版本与变体"
+   },
+   {
+    "zh": "区域可用性",
+    "en": "Regional Availability",
+    "purpose": "同一个模型，在你所在的区域可能根本没有。",
+    "def": [
+     "微软官方：并非所有模型与版本组合都在所有区域可用。",
+     "相邻版本可能不会同时出现在同一区域。"
+    ],
+    "why": "跨区部署或换供应商前，先确认「这个区域有没有」。",
+    "refs": [
+     [
+      "Microsoft Foundry 模型生命周期与支持政策",
+      "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "Microsoft Foundry models lifecycle and support policy"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "guard",
+    "level": 6,
+    "layer": "六",
+    "ord": 26,
+    "alias": [],
+    "purposeEn": "A model may simply not exist in the region you are in.",
+    "defEn": [
+     "Microsoft states that not all model and version combinations are available in all regions.",
+     "Successive versions may not appear in the same region at the same time."
+    ],
+    "whyEn": "Before cross-region deployment or switching vendors, confirm \"is it here\".",
+    "slug": "区域可用性"
+   },
+   {
+    "zh": "数据驻留",
+    "en": "Data Residency",
+    "alias": [
+     "数据驻留地"
+    ],
+    "purpose": "你的数据存在哪个区域，由谁决定。",
+    "def": [
+     "AWS 官方：客户选择在哪个 AWS 区域存储客户内容。",
+     "官方称除提供服务所必需或依法要求外，不会把内容移出所选区域。"
+    ],
+    "why": "「数据不出网」在云端的具体形态。合规审查时这是要拿书面承诺的一项。",
+    "refs": [
+     [
+      "AWS 数据隐私常见问题",
+      "https://aws.amazon.com/compliance/data-privacy-faq/",
+      "AWS data privacy FAQs"
+     ],
+     [
+      "AWS 数字主权",
+      "https://aws.amazon.com/compliance/digital-sovereignty/",
+      "AWS digital sovereignty"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "guard",
+    "level": 6,
+    "layer": "六",
+    "ord": 27,
+    "purposeEn": "Which region your data sits in, and who decides.",
+    "defEn": [
+     "AWS states that the customer chooses the AWS Region(s) where customer content is stored.",
+     "AWS says it will not move or replicate content outside the chosen region(s) except as necessary to provide the service or comply with law."
+    ],
+    "whyEn": "The cloud form of \"data never leaves our network\", and a written commitment to collect during review.",
+    "slug": "数据驻留"
+   },
+   {
+    "zh": "训练内容摘要",
+    "en": "Training Content Summary",
+    "purpose": "欧盟要求通用模型公开「训练用了哪些内容」的摘要。",
+    "def": [
+     "欧盟《人工智能法》第 53(1)(d) 条：通用目的 AI 模型提供者须编制并公开「训练所用内容的足够详细摘要」。",
+     "摘要须按 AI Office 提供的模板发布。",
+     "法条用词是「训练所用内容」，不是「训练数据集」。"
+    ],
+    "why": "想知道一个模型用了什么数据，欧盟境内有法定线索可循。",
+    "refs": [
+     [
+      "AI Act Explorer 第 53 条（第三方镜像；正式文本见 EUR-Lex）",
+      "https://artificialintelligenceact.eu/article/53/",
+      "AI Act Explorer, Article 53 (third-party mirror; official text on EUR-Lex)"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "guard",
+    "level": 6,
+    "layer": "六",
+    "ord": 28,
+    "alias": [],
+    "purposeEn": "The EU requires general-purpose model providers to publish a summary of training content.",
+    "defEn": [
+     "Article 53(1)(d) requires providers to draw up and make publicly available a sufficiently detailed summary about the content used for training.",
+     "The summary must follow a template provided by the AI Office.",
+     "The wording is \"content used for training\", not \"training dataset\"."
+    ],
+    "whyEn": "Inside the EU there is now a legal trail for asking what a model was trained on.",
+    "slug": "训练内容摘要"
+   },
+   {
+    "zh": "生成式 AI 合规义务",
+    "en": "Generative AI Compliance Duties",
+    "alias": [
+     "生成式人工智能服务管理暂行办法"
+    ],
+    "purpose": "面向境内公众提供生成式 AI 服务要遵守的具体义务。",
+    "def": [
+     "《生成式人工智能服务管理暂行办法》第七条：训练数据处理须「使用具有合法来源的数据和基础模型」。",
+     "第十二条：图片、视频等生成内容须按深度合成管理规定标识。",
+     "第十七条：具有舆论属性或社会动员能力的服务须开展安全评估并履行算法备案。"
+    ],
+    "why": "在国内上线一个 AI 功能，这三条是最先要核对的。",
+    "refs": [
+     [
+      "《生成式人工智能服务管理暂行办法》全文（国家网信办）",
+      "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm",
+      "Interim Measures for Generative AI Services (CAC, full text)"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "guard",
+    "level": 6,
+    "layer": "六",
+    "ord": 29,
+    "purposeEn": "The specific duties when serving generative AI to the public in China.",
+    "defEn": [
+     "Article 7 requires using data and base models with lawful sources in training-data processing.",
+     "Article 12 requires labeling generated images and videos per the deep-synthesis rules.",
+     "Article 17 requires services with public-opinion or mobilization attributes to run a security assessment and complete algorithm filing."
+    ],
+    "whyEn": "These three are the first checks before shipping an AI feature domestically.",
+    "slug": "生成式 AI 合规义务"
+   },
+   {
+    "zh": "迁移评估",
+    "en": "Migration Evaluation",
+    "purpose": "换模型时该怎么做决定，而不是等供应商推荐。",
+    "def": [
+     "微软官方建议：不要等官方指定替代品才开始评估新模型。",
+     "官方约在退役前 90–120 天才选定替代品。",
+     "官方建议用自己的应用、提示词和代表性数据评估，把质量、延迟、成本放在一起比较。"
+    ],
+    "why": "这条把「模型评测的局限」落到操作层面：换模型要自己测。",
+    "refs": [
+     [
+      "Microsoft Foundry 模型生命周期与支持政策",
+      "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "Microsoft Foundry models lifecycle and support policy"
+     ]
+    ],
+    "domain": "choice",
+    "purposeTag": "apply",
+    "level": 6,
+    "layer": "六",
+    "ord": 30,
+    "alias": [],
+    "purposeEn": "How to decide on a new model instead of waiting for the vendor's recommendation.",
+    "defEn": [
+     "Microsoft advises not to wait for the official replacement before evaluating newer models.",
+     "The official replacement is selected roughly 90-120 days before retirement.",
+     "Evaluate candidates against your own application, prompts and representative data, comparing quality, latency and cost together."
+    ],
+    "whyEn": "This turns \"limits of benchmarks\" into practice: switching models means testing them yourself.",
+    "slug": "迁移评估"
    }
   ]
  }
