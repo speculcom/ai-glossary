@@ -1,0 +1,23 @@
+{
+  "_comment": "微型指南英文正文。键 = guides/<文件名> 去 .md（与 terms.en.json 同一套路）。值形如 {lead, points[], myth, fact}。",
+  "怎么向 AI 提问": {
+    "lead": "The same question asked differently produces very different answers. This guide covers the five things to state before you ask.",
+    "points": [
+      "State the goal and the done-criteria: not \"write an article\" but \"write a 300-word intro for absolute beginners\".",
+      "Give context: who you are, who the audience is, and what constraints apply — length, format, tone.",
+      "Paste the source text into the conversation; don't make the AI guess which passage you mean.",
+      "Ask for an outline first: have it list the structure, you approve it, then expand.",
+      "When unhappy, point out exactly what is wrong — more effective than a vague \"try again\"."
+    ]
+  },
+  "怎么验证 AI 的输出": {
+    "lead": "AI will state fabricated facts with full confidence. This guide turns \"what it said\" into \"what you can check\".",
+    "points": [
+      "Break the output into individual checkable claims: numbers, dates, names, citations.",
+      "For every citation (paper, statute, API name), verify at the original source — never trust the title it gives you.",
+      "Demand sources for key numbers; treat numbers without sources as assumptions.",
+      "Self-review catches only a fraction of errors; cross-checking (different source, different tool) is what works.",
+      "The more specific the domain (local law, your own data), the more a human must check — general models don't have these facts."
+    ]
+  }
+}

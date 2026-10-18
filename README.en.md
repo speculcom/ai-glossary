@@ -66,9 +66,12 @@ ai-glossary/
 ├── terms/              185 terms, one file each (frontmatter + a fixed body skeleton)
 │   └── INDEX.md        build output · station-grouped index, do not edit by hand
 ├── terms.en.json       English text (keyed by the Chinese term name)
+├── paths/              learning-path source of truth (ordered slugs + checkpoints, bilingual)
+├── guides/             short-guide source of truth (frontmatter discipline as terms; SCHEMA.md §8)
+├── guides.en.json      English guide bodies (keyed by file name)
 ├── meta.js             the three classification schemes: station / domain / purpose
 ├── dims.js             three observation dimensions (model access / runtime / transport)
-├── SCHEMA.md           term format spec
+├── SCHEMA.md           term format spec (§8 covers short guides)
 └── scripts/build.mjs   the build script (includes a field-by-field equivalence gate)
 ```
 
@@ -350,8 +353,9 @@ inconsistent skeleton gets caught by the validator.
 | Terms | 185 |
 | Stations | Getting In 30 · Hands On 35 · Going Deeper 35 · Under the Hood 30 · Running It 25 · Choosing Right 30 |
 | Learning paths | 3 curated ordered routes, each with a checkpoint |
+| Short guides | 2 guides of 5-10 minutes each (English coverage 2/2) |
 | Domain | concept 52 · choice 33 · infra 29 · agent 25 · model 14 · media 14 · dev 10 · data 8 |
 | Purpose (purposeTag) | learn 74 · apply 44 · guard 35 · judge 32 |
-| Source entries (refs) | 281 |
+| Source entries (refs) | 285 |
 | English coverage | 185 / 185 |
 <!-- STATS:END -->

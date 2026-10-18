@@ -61,9 +61,12 @@ ai-glossary/
 ├── terms/              185 个词条，一词一文件（frontmatter + 固定骨架正文）
 │   └── INDEX.md        构建产物 · 分站索引，不要手改
 ├── terms.en.json       英文正文（键 = 词条名）
+├── paths/              学习路径真相源（有序 slug + 检查点，中英双语）
+├── guides/             微型指南真相源（frontmatter 纪律同词条；见 SCHEMA.md §八）
+├── guides.en.json      指南英文正文（键 = 文件名）
 ├── meta.js             层级 / 领域 / 用途 三套分类的定义
 ├── dims.js             三个观察维度（模型接入 / 运行位置 / 传输方式）
-├── SCHEMA.md           词条格式规范
+├── SCHEMA.md           词条格式规范（§八 是微型指南 schema）
 └── scripts/build.mjs   构建脚本（含逐字段等价门禁）
 ```
 
@@ -344,8 +347,9 @@ ai-glossary/
 | 词条 | 185 词 |
 | 分站 | 进门 30 · 上手 35 · 用深 35 · 看懂 30 · 跑起来 25 · 选得对 30 |
 | 学习路径 | 3 条（精选有序路径 · 各带检查点） |
+| 微型指南 | 2 篇（5-10 分钟一篇 · 英文覆盖 2/2） |
 | 领域（domain） | concept 52 · choice 33 · infra 29 · agent 25 · model 14 · media 14 · dev 10 · data 8 |
 | 用途（purposeTag） | learn 74 · apply 44 · guard 35 · judge 32 |
-| 出处条目（refs） | 281 条 |
+| 出处条目（refs） | 285 条 |
 | 英文覆盖 | 185 / 185 |
 <!-- STATS:END -->

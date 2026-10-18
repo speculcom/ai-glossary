@@ -152,10 +152,85 @@ if (!fs.existsSync(enPath)) {
   if (stale.length) warnings.push(`terms.en.json 有 ${stale.length} 个已不存在的词条键（陈旧翻译）: ${stale.slice(0, 8).join(' ')}`);
 }
 
+/* ══ S24（2026-10-19）· 微型指南 guides/ 扩类校验 ══
+ * 与词条同一套 frontmatter 纪律，但字段不同（指南没有 def/why/ord 层内全局序）。
+ * kind=myth 是「常见误区」子类型（S25）：用 myth/fact 两段代替 points —— 不另起炉灶。
+ * ord 按「站 × kind」分别 1..n 连续（写误区不会挪动 guide 的序号）。 */
+const GUIDES = path.join(ROOT, 'guides');
+const GUIDE_KINDS = ['guide', 'myth'];
+const GUIDE_REQUIRED = { guide: ['zh', 'en', 'kind', 'station', 'ord', 'span', 'lead', 'points', 'refs'], myth: ['zh', 'en', 'kind', 'station', 'ord', 'span', 'lead', 'myth', 'fact', 'refs'] };
+const guideFiles = fs.existsSync(GUIDES) ? fs.readdirSync(GUIDES).filter((f) => f.endsWith('.md')).sort() : [];
+const guideSeen = new Set();
+const guideOrd = {};   // `${station}:${kind}` → [ord…]
+if (guideFiles.length) {
+  for (const f of guideFiles) {
+    const rel = `guides/${f}`;
+    const g = parse(fs.readFileSync(path.join(GUIDES, f), 'utf8'));
+    if (!g) { errors.push(`${rel} · 缺少 frontmatter`); continue; }
+    const kind = unq(g.scalars.kind);
+    if (!GUIDE_KINDS.includes(kind)) { errors.push(`${rel} · kind 枚举非法: ${kind}（允许 ${GUIDE_KINDS.join(' / ')}）`); continue; }
+    for (const k of GUIDE_REQUIRED[kind]) {
+      if (!g.scalars[k] || g.scalars[k] === '') errors.push(`${rel} · 缺必填字段 ${k}（${kind} 类要求）`);
+    }
+    const station = Number(g.scalars.station);
+    if (!Number.isInteger(station) || station < 1 || station > 6) errors.push(`${rel} · station 必须是 1-6 的整数，现为 ${g.scalars.station}`);
+    const span = Number(g.scalars.span);
+    if (!Number.isInteger(span) || span < 1 || span > 15) errors.push(`${rel} · span 必须是 1-15 的整数（分钟），现为 ${g.scalars.span}`);
+    const ord = Number(g.scalars.ord);
+    if (!Number.isInteger(ord) || ord < 1) errors.push(`${rel} · ord 必须是正整数，现为 ${g.scalars.ord}`);
+    else (guideOrd[`${station}:${kind}`] ||= []).push({ ord, rel });
+    const points = kind === 'guide' ? g.inlineArr('points') : null;
+    if (kind === 'guide' && (!points || points.length < 3 || points.length > 7)) {
+      errors.push(`${rel} · points 必须是 3-7 条的行内数组（现有 ${points ? points.length : 0}）`);
+    }
+    if (!g.refs.length) errors.push(`${rel} · refs 不能为空（R5：每条论断都要有可核对出处）`);
+    g.refs.forEach((line, i) => {
+      const parts = line.match(/"(?:[^"\\]|\\.)*"/g) || [];
+      if (parts.length !== 3) { errors.push(`${rel} · refs 第 ${i + 1} 条不是三段式（现有 ${parts.length} 段）：[${line}]`); return; }
+      const url = parts[1].slice(1, -1);
+      if (!/^https?:\/\//.test(url)) errors.push(`${rel} · refs 第 ${i + 1} 条的 url 不是 http(s): ${url}`);
+    });
+    // terms 互链（可选，但出现时必须是行内数组，且每个 slug 必须真实存在）
+    const linked = g.inlineArr('terms');
+    if (g.scalars.terms !== undefined && linked === null) warnings.push(`${rel} · terms 不是行内数组，建议写成 terms: ["a", "b"]`);
+    if (linked) for (const s of linked) if (!seen.has(s)) errors.push(`${rel} · terms 互链「${s}」不是任何词条的 slug（会链到不存在的页面）`);
+    if (!/^#\s+\S/m.test(g.body)) errors.push(`${rel} · 正文缺一级标题`);
+    guideSeen.add(f.replace(/\.md$/, ''));
+  }
+  for (const [key, arr] of Object.entries(guideOrd)) {
+    const ords = arr.map((x) => x.ord).sort((a, b) => a - b);
+    const dup = ords.filter((v, i) => i > 0 && v === ords[i - 1]);
+    if (dup.length) errors.push(`guides ${key} · ord 重复: ${[...new Set(dup)].join(', ')}`);
+    const max = ords[ords.length - 1];
+    if (max !== ords.length) {
+      const missing = [];
+      for (let i = 1; i <= max; i++) if (!ords.includes(i)) missing.push(i);
+      errors.push(`guides ${key} · ord 必须是 1..${max} 连续，缺 ${missing.join(', ')}`);
+    }
+  }
+  /* 英文覆盖（R2）：guides.en.json 与 guides/*.md 一一对应 */
+  const genPath = path.join(ROOT, 'guides.en.json');
+  if (!fs.existsSync(genPath)) {
+    errors.push('缺 guides.en.json —— 指南的英文正文无处可放（违反 R2 中英同步）');
+  } else {
+    const gen = JSON.parse(fs.readFileSync(genPath, 'utf8'));
+    const genKeys = Object.keys(gen).filter((k) => !k.startsWith('_'));
+    const missing = [...guideSeen].filter((k) => !genKeys.includes(k));
+    const stale = genKeys.filter((k) => !guideSeen.has(k));
+    if (missing.length) errors.push(`guides.en.json 缺 ${missing.length} 篇指南的英文: ${missing.slice(0, 8).join(' ')}`);
+    if (stale.length) warnings.push(`guides.en.json 有 ${stale.length} 个已不存在的指南键（陈旧翻译）: ${stale.slice(0, 8).join(' ')}`);
+    for (const k of genKeys) {
+      if (!guideSeen.has(k)) continue;
+      const v = gen[k];
+      if (!v || !v.lead) errors.push(`guides.en.json · 「${k}」缺英文 lead`);
+    }
+  }
+}
+
 /* ── 输出 ── */
 const total = files.length;
 const layerStat = LAYERS.map((l) => `${l} ${(byLayer[l] || []).length}`).join(' · ');
-console.log(`\n词条 ${total} · 分层 ${layerStat}`);
+console.log(`\n词条 ${total} · 分层 ${layerStat}` + (guideFiles.length ? ` · 指南 ${guideFiles.length} 篇` : ''));
 if (errors.length) { console.log(`\n错误 ${errors.length} 项：`); errors.forEach((e) => console.log('  ✗ ' + e)); }
 if (warnings.length) { console.log(`\n警告 ${warnings.length} 项：`); warnings.forEach((w) => console.log('  ! ' + w)); }
 console.log(`\n错误: ${errors.length}  警告: ${warnings.length}`);

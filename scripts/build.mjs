@@ -99,7 +99,7 @@ function parseValue(raw) {
   return s;
 }
 
-function parseTermFile(text, file) {
+function parseFmRaw(text, file) {
   const m = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/.exec(text);
   if (!m) throw new Error(file + ': 缺 frontmatter');
   const fmRaw = m[1];
@@ -122,6 +122,11 @@ function parseTermFile(text, file) {
     if (kv[2].trim() === '') { t[curKey] = []; continue; }  // 形如 'refs:' 的块头
     t[curKey] = parseValue(kv[2]);
   }
+  return t;
+}
+
+function parseTermFile(text, file) {
+  const t = parseFmRaw(text, file);
   t.level = Number(t.level);
   t.ord = Number(t.ord);
   if (!t.zh) throw new Error(file + ': 缺 zh');
@@ -274,6 +279,50 @@ if (fs.existsSync(pathsDir)) {
 }
 console.log(`  · 学习路径：${PATHS.length} 条（${PATHS.map((p) => `${p.zh} ${p.steps.length} 步`).join(' · ')}）`);
 
+/* ═══ S24（2026-10-19）· 微型指南 guides/*.md 加载 + 构建期校验 ═══
+ * 与词条同一套路：frontmatter 是页面渲染的真相源，正文只给 GitHub 上直接阅读的人。
+ * 英文正文在 guides.en.json（R2，与 terms.en.json 同一键规则）。
+ * 结构纪律的完整校验在 scripts/validate.mjs（扩类）；这里做**构建必需**的那部分：
+ * 缺了它页面会渲染出残缺（空 points / 链到不存在的词条），所以构建期也要拦。 */
+const guidesDir = path.join(repoRoot, 'guides');
+const GUIDES = [];
+if (fs.existsSync(guidesDir)) {
+  const enGuides = fs.existsSync(path.join(repoRoot, 'guides.en.json'))
+    ? JSON.parse(fs.readFileSync(path.join(repoRoot, 'guides.en.json'), 'utf8')) : {};
+  for (const f of fs.readdirSync(guidesDir).filter((f) => f.endsWith('.md')).sort()) {
+    const g = parseFmRaw(fs.readFileSync(path.join(guidesDir, f), 'utf8'), `guides/${f}`);
+    const tag = `guides/${f}`;
+    const kind = g.kind;
+    if (kind !== 'guide' && kind !== 'myth') throw new Error(`${tag}: kind 必须是 guide 或 myth`);
+    const station = Number(g.station);
+    if (!Number.isInteger(station) || station < 1 || station > 6) throw new Error(`${tag}: station 必须是 1-6 的整数（指南挂在第几站）`);
+    if (!g.lead) throw new Error(`${tag}: 缺 lead`);
+    if (kind === 'guide' && (!Array.isArray(g.points) || g.points.length < 3)) throw new Error(`${tag}: guide 类必须有 ≥3 条 points`);
+    if (kind === 'myth' && (!g.myth || !g.fact)) throw new Error(`${tag}: myth 类必须有 myth 与 fact 两段`);
+    if (!Array.isArray(g.refs) || !g.refs.length) throw new Error(`${tag}: refs 不能为空（R5）`);
+    for (const s of g.terms || []) {
+      if (!slugSet.has(s)) throw new Error(`${tag}: terms 互链「${s}」不是任何词条的 slug（会链到不存在的页面）`);
+    }
+    const slug = path.basename(f).replace(/\.md$/, '');
+    const en = enGuides[slug];   // 键 = 文件名（与 guides.en.json / validate 同一口径），不是 zh
+    if (!en || !en.lead) throw new Error(`${tag}: guides.en.json 缺「${slug}」的英文 lead（R2 中英同步）`);
+    g.leadEn = en.lead;
+    g.pointsEn = en.points || null;
+    g.mythEn = en.myth || null;
+    g.factEn = en.fact || null;
+    Object.defineProperty(g, '__file', { value: f, enumerable: false, writable: true });
+    GUIDES.push(g);
+  }
+  GUIDES.sort((a, b) => Number(a.station) - Number(b.station) || a.kind.localeCompare(b.kind) || Number(a.ord) - Number(b.ord));
+  const gSeen = new Set();
+  for (const g of GUIDES) {
+    const key = `${g.zh}`;
+    if (gSeen.has(key)) throw new Error(`指南标题重复：${key}`);
+    gSeen.add(key);
+  }
+}
+if (GUIDES.length) console.log(`  · 微型指南：${GUIDES.length} 篇（${GUIDES.map((g) => `${g.zh}·第${g.station}站`).join(' · ')}）`);
+
 /* ---------- 等价校验（硬门禁） ----------
  * 拿旧产物作基准逐字段比。**不等就退出，不写文件**——
  * 写出一个字段有差的产物，页面会静默少词或丢 refs，比构建失败更难查。
@@ -382,6 +431,22 @@ fs.writeFileSync(path.join(outDir, 'paths.js'),
   ` * 每条：id / ord / zh / en / span / lead / steps（有序 slug）/ checkpoint。\n */\n` +
   `var PATHS = ` + JSON.stringify(PATHS, null, 1) + ';\n', 'utf8');
 
+/* S24：指南产物（首页导览条读它；指南页本身已由 build 直接渲染成静态 HTML）。
+ * 只导出渲染需要的字段，正文（body）不进产物 —— 页面从 frontmatter 渲染。 */
+if (GUIDES.length) {
+  fs.writeFileSync(path.join(outDir, 'guides.js'),
+    `/* AI 名词地图 · 微型指南（S24）\n * **这是产物，不要手改。** 源在 guides/*.md 的 frontmatter。\n` +
+    ` * 每篇：id（slug=文件名）/ zh / en / kind / station / ord / span / lead / points / myth / fact。\n */\n` +
+    `var GUIDES = ` + JSON.stringify(GUIDES.map((g) => ({
+      id: path.basename(g.__file).replace(/\.md$/, ''),
+      zh: g.zh, en: g.en, kind: g.kind, station: Number(g.station), ord: Number(g.ord), span: Number(g.span),
+      lead: { zh: g.lead, en: g.leadEn },
+      points: g.points || null, pointsEn: g.pointsEn || null,
+      myth: g.myth || null, mythEn: g.mythEn || null,
+      fact: g.fact || null, factEn: g.factEn || null,
+    })), null, 1) + ';\n', 'utf8');
+}
+
 console.log('构建完成：' + total + ' 词 / ' + out.length + ' 层 → ' + path.relative(repoRoot, outFile));
 
 if (ACCEPT) {
@@ -424,6 +489,8 @@ if (fs.existsSync(path.dirname(deployDir))) {
     ['dims.js', path.join(repoRoot, 'dims.js')],
     // S23：学习路径（paths/*.json 校验后合并成一份产物，首页导览条消费）
     ['paths.js', path.join(outDir, 'paths.js')],
+    // S24：微型指南（guides/*.md frontmatter 校验后合并成一份产物，首页导览条消费）
+    ['guides.js', path.join(outDir, 'guides.js')],
   ];
   const synced = [];
   let changed = 0;
@@ -593,25 +660,25 @@ const TABBAR = SHELL.tabbar('learn');
    * 不依赖抽屉（.drawer）作用域下的类，避免「类名在别的容器里没样式」。 */
   const TP_CSS = `<style>
 .tp-wrap{max-width:52rem;margin:0 auto}
-.tp-crumbs{font-size:.82rem;opacity:.7;margin:1.6rem 0 .4rem;display:flex;gap:.5rem;flex-wrap:wrap}
+.tp-crumbs{font-size:var(--fs-micro);opacity:.7;margin:1.6rem 0 .4rem;display:flex;gap:.5rem;flex-wrap:wrap}
 .tp-crumbs a{text-decoration:none;border-bottom:1px dotted currentColor}
 /* ⚠ 2026-10-10：删掉本地的 clamp(1.6rem,4vw,2.3rem) —— 词条页主标因此只有 36.8px，
    比全站其余页面小近 10px。现一律继承 brand.css 的 h1（--display-sub / --lh-tight / 800）。 */
 .tp h1{margin:.6rem 0 .3rem}
-.tp-en{opacity:.65;font-size:1rem;margin:0 0 .9rem}
+.tp-en{opacity:.65;font-size:var(--fs-base);margin:0 0 .9rem}
 .tp-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 1.8rem;padding:0;list-style:none}
-.tp-tag{border:1px solid var(--line,rgba(127,127,127,.28));border-radius:999px;padding:.14rem .62rem;font-size:.76rem;opacity:.9}
+.tp-tag{border:1px solid var(--line,rgba(127,127,127,.28));border-radius:999px;padding:.14rem .62rem;font-size:var(--fs-micro);opacity:.9}
 .tp-sec{margin:1.7rem 0}
-.tp-lab{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;opacity:.55;margin-bottom:.45rem}
+.tp-lab{font-size:var(--fs-micro);letter-spacing:.09em;text-transform:uppercase;opacity:.55;margin-bottom:.45rem}
 .tp-p{line-height:1.9;margin:.5rem 0}
 .tp-li{line-height:1.9;margin:.5rem 0;padding-left:1.05rem;position:relative}
 .tp-li::before{content:'·';position:absolute;left:.15rem;opacity:.5}
 .tp-refs{list-style:none;padding:0;margin:.5rem 0}
 .tp-refs li{margin:.45rem 0;line-height:1.7}
 .tp-refs a{text-decoration:none;border-bottom:1px solid var(--line,rgba(127,127,127,.35))}
-.tp-pn{display:flex;justify-content:space-between;gap:1rem;margin:3rem 0 1rem;padding-top:1.4rem;border-top:1px solid var(--line,rgba(127,127,127,.25));font-size:.9rem}
+.tp-pn{display:flex;justify-content:space-between;gap:1rem;margin:3rem 0 1rem;padding-top:1.4rem;border-top:1px solid var(--line,rgba(127,127,127,.25));font-size:var(--fs-xs)}
 .tp-pn a{text-decoration:none;max-width:46%}
-.tp-pn .tp-ph{opacity:.55;display:block;font-size:.75rem}
+.tp-pn .tp-ph{opacity:.55;display:block;font-size:var(--fs-micro)}
 @media(max-width:520px){.tp-pn{flex-direction:column}.tp-pn a{max-width:100%}}
 </style>`;
 
@@ -903,12 +970,150 @@ ${TABBAR}
     }
   }
 
-  /* sitemap：1（地图）+ 词条页 + 路径页。
+  /* ═══ S24（2026-10-19）· 指南页：learn.specul/guide/<slug>/index.html ═══
+   * slug 与词条同一规则 = 文件名去 .md（URL 稳定身份，zh 是展示名）。
+   * 版式：文章骨架复用词条页既有的 tp-* 内联样式（learn 既有模式，不新写第二套）；
+   * 指南**新**的版式件（卡片 .t-guidecard、误区块 .t-myth）全部在共享层 brand.css
+   * （宪章 1）——本文件不写任何指南专属样式。 */
+  const DEPLOY_GUIDE = path.join(learnDir, 'guide');
+  const wantGuideSlugs = new Set();
+  let guidePages = 0;
+  /* meta description 与 pathDesc 同一套路：lead → 第一条要点/误区 → 站名，拼到够长为止。 */
+  const guideDesc = (g) => {
+    let out = plainTxt(g.lead);
+    const first = g.kind === 'guide' ? (g.points[0] || '') : plainTxt(g.myth);
+    const parts = [first, `学 AI 第${g.station}站微型指南`];
+    for (const x of parts) { if (!x) continue; out += ' ' + x; if (esc(out).length >= 70) break; }
+    if (esc(out).length > 158) out = out.slice(0, 120).replace(/[\s,，、;；:：\-—]+$/, '') + '…';
+    return out;
+  };
+  const guideJsonLd = (g, slug) => g.kind === 'guide' ? JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: g.zh,
+    description: plainTxt(g.lead),
+    url: `https://learn.specul.com/guide/${ENC(slug)}/`,
+    inLanguage: 'zh-Hans',
+    step: g.points.map((p, i) => ({ '@type': 'HowToStep', position: i + 1, name: plainTxt(p) })),
+  }) : JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    name: g.zh,
+    description: plainTxt(g.lead),
+    url: `https://learn.specul.com/guide/${ENC(slug)}/`,
+    inLanguage: 'zh-Hans',
+  });
+  for (const g of GUIDES) {
+    const slug = path.basename(g.__file).replace(/\.md$/, '');
+    wantGuideSlugs.add(slug);
+    const lv = META.levels[String(g.station)] || {};
+    const refs = (g.refs || []).map((r) =>
+      `      <li>${bi(r[0], r[2])} <a href="${esc(r[1])}" target="_blank" rel="noopener">↗</a></li>`).join('\n');
+    let bodySec = '';
+    if (g.kind === 'guide') {
+      const liZh = g.points.map((p) => `      <p class="tp-li">${escMd(p)}</p>`).join('\n');
+      const liEn = (g.pointsEn && g.pointsEn.length ? g.pointsEn : g.points).map((p) => `      <p class="tp-li" data-en>${escMd(p)}</p>`).join('\n');
+      bodySec = `        <div class="tp-sec">
+          <div class="tp-lab">${bi('怎么做', 'How to')}</div>
+<span data-zh>
+${liZh}
+</span>
+<span data-en>
+${liEn}
+</span>
+        </div>`;
+    } else {
+      bodySec = `        <div class="t-myth">
+          <p class="t-myth-said">${bi(g.myth, g.mythEn || g.myth)}</p>
+          <p class="t-myth-fact">${bi(g.fact, g.factEn || g.fact)}</p>
+        </div>`;
+    }
+    const linked = (g.terms || []).length
+      ? `        <div class="tp-sec">
+          <div class="tp-lab">${bi('先懂这几个词', 'Terms behind this')}</div>
+          <p class="tp-p">${g.terms.map((s) => `<a class="t-guidechip" href="../../term/${ENC(s)}/">${esc(s)}</a>`).join(' ')}</p>
+        </div>\n`
+      : '';
+    const otherGuides = GUIDES.filter((q) => q !== g)
+      .map((q) => `<a href="../${path.basename(q.__file).replace(/\.md$/, '')}/">${bi(q.zh, q.en)}</a>`).join(' · ');
+    const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(g.zh)} · 学 AI 微型指南 | 投机取巧</title>
+  <meta name="description" content="${esc(guideDesc(g))}" />
+  <link rel="canonical" href="https://learn.specul.com/guide/${ENC(slug)}/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="学 AI" />
+  <meta property="og:url" content="https://learn.specul.com/guide/${ENC(slug)}/" />
+  <meta property="og:title" content="${esc(g.zh)} · 学 AI 微型指南" />
+  <meta property="og:description" content="${esc(guideDesc(g))}" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="${FAVICON}" />
+  <link rel="stylesheet" href="../../brand.css" />
+  <link rel="stylesheet" href="../../learn.css" />
+  <style>:root { --accent: var(--gold); }</style>
+${TP_CSS}
+  <script type="application/ld+json">${guideJsonLd(g, slug)}</script>
+</head>
+<body class="brand-ambient has-tabbar" style="--accent:var(--gold)">
+${HEADER('learn')}
+  <main id="main">
+    <div class="container">
+      <article class="tp tp-wrap">
+        <nav class="tp-crumbs" aria-label="面包屑">
+          <a href="../../"><span data-zh>← 名词地图</span><span data-en>← Term map</span></a>
+          <span aria-hidden="true">·</span>
+          <a href="../../#layer-${esc(String(g.station))}">${bi(`第${g.station}站 · ${lv.name || ''}`, `Station ${g.station} · ${lv.shortEn || lv.nameEn || ''}`)}</a>
+          <span aria-hidden="true">·</span>
+          <span>${bi('微型指南', 'Guide')}</span>
+        </nav>
+        <h1>${bi(g.zh, g.en)}</h1>
+        <p class="tp-en">${bi(`微型指南 · 约 ${g.span} 分钟`, `Guide · about ${g.span} min`)}</p>
+        <p class="tp-p"><span data-zh>${escMd(g.lead)}</span><span data-en>${escMd(g.leadEn)}</span></p>
+${bodySec}
+${linked}
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('出处', 'Sources')}</div>
+          <ul class="tp-refs">
+${refs}
+          </ul>
+        </div>
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('其他指南', 'Other guides')}</div>
+          <p class="tp-p">${otherGuides || '—'}</p>
+        </div>
+      </article>
+    </div>
+  </main>
+${FOOTER}
+${TABBAR}
+  <script src="../../brand.js"></script>
+</body>
+</html>
+`;
+    const dir = path.join(DEPLOY_GUIDE, slug);
+    const file = path.join(dir, 'index.html');
+    const old = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+    if (old !== html) { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(file, html, 'utf8'); guidePages++; }
+  }
+  let guideRemoved = 0;
+  if (fs.existsSync(DEPLOY_GUIDE)) {
+    for (const e of fs.readdirSync(DEPLOY_GUIDE, { withFileTypes: true })) {
+      if (!e.isDirectory() || wantGuideSlugs.has(e.name)) continue;
+      fs.rmSync(path.join(DEPLOY_GUIDE, e.name), { recursive: true, force: true });
+      guideRemoved++;
+    }
+  }
+
+  /* sitemap：1（地图）+ 词条页 + 路径页 + 指南页。
    * ⚠ 不写 lastmod —— 它推不出来（与 www/llms.txt 同一个理由：不能从内容推导的日期
    *   会让「产物 == 数据」这类比对失去意义）。changefreq / priority 是声明性字段，可以写。 */
   const urls = ['https://learn.specul.com/'];
   for (const { t } of flat) urls.push(`https://learn.specul.com/term/${ENC(slugOf(t))}/`);
   for (const p of PATHS) urls.push(`https://learn.specul.com/path/${p.id}/`);
+  for (const slug of wantGuideSlugs) urls.push(`https://learn.specul.com/guide/${ENC(slug)}/`);
   const sm = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u, i) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><priority>${i === 0 ? '1.0' : '0.7'}</priority></url>`).join('\n')}
@@ -917,5 +1122,5 @@ ${urls.map((u, i) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><prio
   const smFile = path.join(learnDir, 'sitemap.xml');
   const smOld = fs.existsSync(smFile) ? fs.readFileSync(smFile, 'utf8') : null;
   if (smOld !== sm) { fs.writeFileSync(smFile, sm, 'utf8'); }
-  console.log(`词条页：${pageTotal} 个（写入 ${pageChanged} · 清理孤儿 ${removed}）· 路径页：${PATHS.length} 个（写入 ${pathPages} · 清理孤儿 ${pathRemoved}）· sitemap ${urls.length} 条${smOld === sm ? '（未变）' : '（已更新）'}`);
+  console.log(`词条页：${pageTotal} 个（写入 ${pageChanged} · 清理孤儿 ${removed}）· 路径页：${PATHS.length} 个（写入 ${pathPages} · 清理孤儿 ${pathRemoved}）· 指南页：${GUIDES.length} 个（写入 ${guidePages} · 清理孤儿 ${guideRemoved}）· sitemap ${urls.length} 条${smOld === sm ? '（未变）' : '（已更新）'}`);
 }
