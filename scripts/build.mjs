@@ -656,31 +656,12 @@ ${SHELL.drawer(cur)}`;
      现在 learn 与其余五站共用 _sites/_template/shell.mjs 一处实现。 */
 const TABBAR = SHELL.tabbar('learn');
 
-  /* 词条页自带的一小段样式：只用 brand.css 的变量（带兜底值），
-   * 不依赖抽屉（.drawer）作用域下的类，避免「类名在别的容器里没样式」。 */
-  const TP_CSS = `<style>
-.tp-wrap{max-width:52rem;margin:0 auto}
-.tp-crumbs{font-size:var(--fs-micro);opacity:.7;margin:1.6rem 0 .4rem;display:flex;gap:.5rem;flex-wrap:wrap}
-.tp-crumbs a{text-decoration:none;border-bottom:1px dotted currentColor}
-/* ⚠ 2026-10-10：删掉本地的 clamp(1.6rem,4vw,2.3rem) —— 词条页主标因此只有 36.8px，
-   比全站其余页面小近 10px。现一律继承 brand.css 的 h1（--display-sub / --lh-tight / 800）。 */
-.tp h1{margin:.6rem 0 .3rem}
-.tp-en{opacity:.65;font-size:var(--fs-base);margin:0 0 .9rem}
-.tp-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 1.8rem;padding:0;list-style:none}
-.tp-tag{border:1px solid var(--line,rgba(127,127,127,.28));border-radius:999px;padding:.14rem .62rem;font-size:var(--fs-micro);opacity:.9}
-.tp-sec{margin:1.7rem 0}
-.tp-lab{font-size:var(--fs-micro);letter-spacing:.09em;text-transform:uppercase;opacity:.55;margin-bottom:.45rem}
-.tp-p{line-height:1.9;margin:.5rem 0}
-.tp-li{line-height:1.9;margin:.5rem 0;padding-left:1.05rem;position:relative}
-.tp-li::before{content:'·';position:absolute;left:.15rem;opacity:.5}
-.tp-refs{list-style:none;padding:0;margin:.5rem 0}
-.tp-refs li{margin:.45rem 0;line-height:1.7}
-.tp-refs a{text-decoration:none;border-bottom:1px solid var(--line,rgba(127,127,127,.35))}
-.tp-pn{display:flex;justify-content:space-between;gap:1rem;margin:3rem 0 1rem;padding-top:1.4rem;border-top:1px solid var(--line,rgba(127,127,127,.25));font-size:var(--fs-xs)}
-.tp-pn a{text-decoration:none;max-width:46%}
-.tp-pn .tp-ph{opacity:.55;display:block;font-size:var(--fs-micro)}
-@media(max-width:520px){.tp-pn{flex-direction:column}.tp-pn a{max-width:100%}}
-</style>`;
+  /* ⚠ S26（2026-10-19）：词条页版式 TP_CSS 已整体搬入 learn.specul/learn.css（站级真相源）。
+   * 原来它以内联 <style> 出现在 209 个产物页里（约 328KB），而 ui-core 只扫首页内联——
+   * 词条页/指南页里的它不在任何尺子管辖内；路径页用了 .tp-* 类却连内联都没有，
+   * 一直是**裸渲染**（类名有、样式无）。搬进站级 CSS 后产物页版式内联归零、
+   * 三种页型（词条/路径/指南）共用同一份定义，改一处全站生效。
+   * 这里不再写任何版式样式；页面里只剩 :root{--accent} 的值注入（不是版式）。 */
 
   const DEPLOY_TERM = path.join(learnDir, 'term');
   let pageChanged = 0, pageTotal = 0;
@@ -762,7 +743,6 @@ const TABBAR = SHELL.tabbar('learn');
   <link rel="stylesheet" href="../../brand.css" />
   <link rel="stylesheet" href="../../learn.css" />
   <style>:root { --accent: var(--cyan); }</style>
-${TP_CSS}
   <!-- B5：词条页的结构性数据（DefinedTerm） -->
   <script type="application/ld+json">${termJsonLd(t, slug, layer.name)}</script>
 </head>
@@ -848,7 +828,7 @@ ${TABBAR}
   /* ═══ S23（2026-10-19）· 路径页：learn.specul/path/<id>/index.html ═══
    * 一条路径一个静态页（可分享、可被搜索引擎收录），步骤链到既有词条页。
    * 版式类全部走共享层 brand.css 的 .t-path* / .t-check（宪章 1）——
-   * 本文件不写任何路径专属样式；TP_CSS 只服务词条页，路径页不碰它。
+   * 本文件不写任何路径专属样式；路径页复用的 .tp-* 骨架类住在 learn.css（S26 起）。
    * ⚠ 孤儿清理与词条页同理：paths/ 删了一条，产物页必须一起删，
    *   否则 sitemap 与门禁都会继续看见一条已退役的路径。 */
   const DEPLOY_PATH = path.join(learnDir, 'path');
@@ -1055,7 +1035,6 @@ ${liEn}
   <link rel="stylesheet" href="../../brand.css" />
   <link rel="stylesheet" href="../../learn.css" />
   <style>:root { --accent: var(--gold); }</style>
-${TP_CSS}
   <script type="application/ld+json">${guideJsonLd(g, slug)}</script>
 </head>
 <body class="brand-ambient has-tabbar" style="--accent:var(--gold)">
