@@ -141,5 +141,16 @@
       "Trust the known-limitations section: failure modes the maker admits are worth more than \"state-of-the-art\".",
       "Compare vendors only on equal terms: same benchmark, same settings, or the numbers are not comparable."
     ]
+  },
+  "怎么判断 AI 新闻是不是炒作": {
+    "lead": "AI news is usually more optimistic than the facts. This guide gives you a checking order: read it before deciding what to believe.",
+    "points": [
+      "Find the original source first: a paper, an official announcement, or just a demo video. The longer the retelling chain, the more distortion accumulates.",
+      "Separate \"demo\" from \"average\": cherry-picked success cases are not everyday performance. Ask what the success rate is.",
+      "Ask about the measuring stick before reading numbers: only same-benchmark, same-setting comparisons count. A score jump after switching benchmarks is not progress.",
+      "Check the publisher's motive: a company mid-fundraise and an independent evaluator do not word things with the same reliability.",
+      "Look for independent replication. Results only the publisher measured itself should be treated as unconfirmed.",
+      "Discount timelines: \"next year\" and \"will replace X in a few years\" are predictions, not facts."
+    ]
   }
 }

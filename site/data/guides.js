@@ -125,6 +125,39 @@ var GUIDES = [
   "factEn": null
  },
  {
+  "id": "怎么判断 AI 新闻是不是炒作",
+  "zh": "怎么判断 AI 新闻是不是炒作",
+  "en": "How to Tell if AI News Is Hype",
+  "kind": "guide",
+  "station": 2,
+  "ord": 3,
+  "span": 6,
+  "lead": {
+   "zh": "AI 新闻十有八九比事实更乐观。这份指南给你一套核对顺序，看完一条消息再决定信不信。",
+   "en": "AI news is usually more optimistic than the facts. This guide gives you a checking order: read it before deciding what to believe."
+  },
+  "points": [
+   "先找原始出处：论文、官方公告还是演示视频。转述链越长，失真越多。",
+   "分清「演示」与「平均」：挑出来的成功案例不代表日常表现，问一句成功率是多少。",
+   "看数字先问口径：同一基准、同一设置才能比。换了基准的涨分不是进步。",
+   "看发布方动机：融资期的公司和评测机构，措辞的可靠性不一样。",
+   "查有没有独立复现。只有发布者自己测过的结果，先按未证实处理。",
+   "时间表打折：「明年实现」「几年后取代」是预测，不是事实。"
+  ],
+  "pointsEn": [
+   "Find the original source first: a paper, an official announcement, or just a demo video. The longer the retelling chain, the more distortion accumulates.",
+   "Separate \"demo\" from \"average\": cherry-picked success cases are not everyday performance. Ask what the success rate is.",
+   "Ask about the measuring stick before reading numbers: only same-benchmark, same-setting comparisons count. A score jump after switching benchmarks is not progress.",
+   "Check the publisher's motive: a company mid-fundraise and an independent evaluator do not word things with the same reliability.",
+   "Look for independent replication. Results only the publisher measured itself should be treated as unconfirmed.",
+   "Discount timelines: \"next year\" and \"will replace X in a few years\" are predictions, not facts."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
   "id": "它说得笃定，所以可信",
   "zh": "它说得笃定，所以可信",
   "en": "Confident Tone Means Correct",
