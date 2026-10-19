@@ -4366,6 +4366,207 @@ var TERMS = [
     ],
     "whyEn": "The value of 'number one on X' depends on how much headroom that benchmark still has. Rank gaps on a saturated board can be meaningless.",
     "slug": "评测饱和"
+   },
+   {
+    "zh": "扩散模型怎么生成",
+    "en": "How Diffusion Models Generate",
+    "purpose": "生图主流方法在原理层长什么样：加噪、去噪、预测噪声。",
+    "def": [
+     "训练分两个过程。前向过程把真图一步步加噪，直到变成纯噪声。",
+     "反向过程学的是去噪：每一步预测当前图里混进了多少噪声。",
+     "生成时从一片随机噪声出发，按学到的去噪步骤一步步「擦」出图像。",
+     "DDPM（Ho 等，2020）把这套做法确立为主流方法。",
+     "潜扩散模型（LDM，2021）把扩散搬进 VAE 压缩后的潜空间。算力大幅下降，今天多数生图模型是这一支。"
+    ],
+    "why": "第二站的「扩散模型」告诉你它是什么；这一条告诉你它为什么这样工作。生图要迭代多步、「步数」是个参数，都从这里来。",
+    "refs": [
+     [
+      "DDPM 原论文《Denoising Diffusion Probabilistic Models》（arXiv）",
+      "https://arxiv.org/abs/2006.11239",
+      "Denoising Diffusion Probabilistic Models (arXiv 2006.11239)"
+     ],
+     [
+      "潜扩散模型（LDM）原论文",
+      "https://arxiv.org/abs/2112.10752",
+      "High-Resolution Image Synthesis with Latent Diffusion Models (arXiv 2112.10752)"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 31,
+    "alias": [],
+    "purposeEn": "What the mainstream image-generation method looks like at the principle level: add noise, remove noise, predict noise.",
+    "defEn": [
+     "Training has two processes. The forward process adds noise to a real image step by step until it is pure noise.",
+     "The reverse process learns denoising: at each step it predicts how much noise the current image contains.",
+     "Generation starts from random noise and 'erases' an image by following the learned denoising steps.",
+     "DDPM (Ho et al., 2020) established this recipe as the mainstream method.",
+     "Latent diffusion (LDM, 2021) runs the diffusion inside a VAE-compressed latent space, cutting compute sharply. Most image models today are this branch."
+    ],
+    "whyEn": "The station-2 entry 'diffusion model' tells you what it is; this one tells you why it works that way. The many iterations and the 'steps' parameter both come from here.",
+    "slug": "扩散模型怎么生成"
+   },
+   {
+    "zh": "视频生成是怎么做的",
+    "en": "How Video Generation Works",
+    "purpose": "视频生成不是「逐帧生图」那么简单：时间一致性才是难点。",
+    "def": [
+     "视频扩散模型在图像扩散的基础上加入时间维度，让相邻帧保持连贯。",
+     "《Video Diffusion Models》（Ho 等，2022）是早期代表作。先建空间模型，再加时序层。",
+     "难点在一致性：物体移动、镜头运动都要跨帧连贯，模型常在这里出错。",
+     "时长与一致性是当前主要限制。这也是它比生图更不成熟的原因。"
+    ],
+    "why": "选视频工具时，能生成多长、稳不稳，比画面好不好看更能区分产品。",
+    "refs": [
+     [
+      "《Video Diffusion Models》论文（arXiv）",
+      "https://arxiv.org/abs/2204.03458",
+      "Video Diffusion Models (arXiv 2204.03458)"
+     ],
+     [
+      "OpenAI Sora 官方页",
+      "https://openai.com/index/sora/",
+      "OpenAI Sora (official)"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 32,
+    "alias": [],
+    "purposeEn": "Video generation is not simply 'generate one frame at a time': temporal consistency is the hard part.",
+    "defEn": [
+     "Video diffusion models add a temporal dimension on top of image diffusion so neighbouring frames stay coherent.",
+     "Video Diffusion Models (Ho et al., 2022) is an early landmark. Build the spatial model first, then add temporal layers.",
+     "The difficulty is consistency — object motion and camera motion must stay coherent across frames, and models fail here most often.",
+     "Duration and consistency are the current limits. That is why it is less mature than image generation."
+    ],
+    "whyEn": "When choosing a video tool, 'how long can it generate, how stable is it' separates products better than 'does the picture look good'.",
+    "slug": "视频生成是怎么做的"
+   },
+   {
+    "zh": "语音克隆是怎么做的",
+    "en": "How Voice Cloning Works",
+    "purpose": "几秒录音就能合成某人声音：原理是「声纹向量」与「读文本」分开训练。",
+    "def": [
+     "说话人编码器先把几秒参考录音压成一个固定长度的声纹向量。",
+     "语音合成模型读文本时以这个向量为条件，输出带该音色的语音。",
+     "2018 年 Google 的做法确立了这条路：编码器与合成器分开训练，互不拖累。",
+     "YourTTS（2021）把它做成开源零样本。几秒录音即可克隆，不需要微调，还能跨语言。",
+     "这是滥用风险最高的生成能力之一。中国《生成式 AI 服务管理暂行办法》第十二条要求生成内容按深度合成规定加标识。"
+    ],
+    "why": "接到「像某某人的声音」的需求时要知道三件事。技术上很容易。合规上有标识义务，伦理上需要本人同意。",
+    "refs": [
+     [
+      "Jia 等《Transfer Learning from Speaker Verification to Multispeaker TTS》（NeurIPS 2018，arXiv）",
+      "https://arxiv.org/abs/1806.04558",
+      "Transfer Learning from Speaker Verification to Multispeaker TTS (NeurIPS 2018)"
+     ],
+     [
+      "YourTTS 论文（零样本多说话人 TTS，arXiv）",
+      "https://arxiv.org/abs/2112.02418",
+      "YourTTS: Towards Zero-Shot Multi-Speaker TTS (arXiv 2112.02418)"
+     ],
+     [
+      "《生成式人工智能服务管理暂行办法》全文（国家网信办）",
+      "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm",
+      "Interim Measures for Generative AI Services (CAC, full text)"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "guard",
+    "level": 4,
+    "layer": "四",
+    "ord": 33,
+    "alias": [],
+    "purposeEn": "A few seconds of recording is enough to synthesise someone's voice: the principle is training 'voiceprint vector' and 'reading text' separately.",
+    "defEn": [
+     "A speaker encoder first compresses a few seconds of reference audio into a fixed-length voice embedding.",
+     "The synthesis model conditions on that vector while reading text, producing audio in that timbre.",
+     "Google's 2018 approach established the path: encoder and synthesizer are trained independently, so neither drags the other down.",
+     "YourTTS (2021) made it open-source and zero-shot: no fine-tuning, a few seconds of audio to clone, and it works across languages.",
+     "This is among the highest-abuse-risk generation capabilities. Article 12 of China's Interim Measures for Generative AI Services requires generated content to carry deep-synthesis labelling."
+    ],
+    "whyEn": "When someone asks for 'a voice like so-and-so', you need to know it is technically easy, carries a labelling obligation under regulation, and ethically requires that person's consent.",
+    "slug": "语音克隆是怎么做的"
+   },
+   {
+    "zh": "语音识别是怎么听的",
+    "en": "How Speech Recognition Works",
+    "purpose": "把话转成文字的主流做法：弱监督大规模训练，一个模型听多种口音。",
+    "def": [
+     "Whisper（OpenAI，2022）用 68 万小时网络音视频做弱监督训练。一套模型覆盖多语言与多口音。",
+     "它把语音识别变成「翻译式」任务：音频进编码器，文字像解码输出一样逐词生成。",
+     "弱监督的代价：训练数据没有人工校对，转写在专业词、口音边缘上会出错。",
+     "评测口径是词错率（WER）：错词数除以总词数，越低越好。"
+    ],
+    "why": "语音功能的错误率直接决定后续理解质量。知道它是「统计转写」而不是「听懂」，才知道要在哪一环兜底。",
+    "refs": [
+     [
+      "Whisper 论文《Robust Speech Recognition via Large-Scale Weak Supervision》（arXiv）",
+      "https://arxiv.org/abs/2212.04356",
+      "Robust Speech Recognition via Large-Scale Weak Supervision (arXiv 2212.04356)"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 34,
+    "alias": [],
+    "purposeEn": "The mainstream way to turn speech into text: large-scale weak supervision, one model for many accents.",
+    "defEn": [
+     "Whisper (OpenAI, 2022) trains on 680,000 hours of web audio-video with weak supervision; one model covers many languages and accents.",
+     "It turns recognition into a translation-style task: audio goes into an encoder, text comes out as decoded output word by word.",
+     "The cost of weak supervision: training data has no human proofreading, so transcripts fail on specialist terms and accent edges.",
+     "The evaluation metric is word error rate (WER): wrong words divided by total words — lower is better."
+    ],
+    "whyEn": "The error rate of the speech stage directly determines the quality of everything after it. Knowing it is statistical transcription rather than understanding tells you where to add a safety net.",
+    "slug": "语音识别是怎么听的"
+   },
+   {
+    "zh": "文字怎么变成声音",
+    "en": "How Text Becomes Speech",
+    "purpose": "现代 TTS 的原理：端到端一步出波形，节奏是「猜」出来的分布。",
+    "def": [
+     "老式 TTS 分两步：先把文字转成频谱图，再用声码器还原成波形。两步分开训练，误差会叠加。",
+     "FastSpeech 2（2020）用非自回归方式并行生成频谱，训练提速三倍。",
+     "VITS（2021）把两步合成一个端到端模型，直接从文字生成波形。人耳评测接近真人录音。",
+     "「一对多」是核心难点：同一句话可以有多种语速和语调。VITS 用随机时长预测器把这种变化建模成分布，而不是取平均。",
+     "取平均的代价就是「机器人腔」。"
+    ],
+    "why": "合成语音「不像真人」时，问题多半在节奏建模，不在音质或采样率。",
+    "refs": [
+     [
+      "FastSpeech 2 论文（arXiv）",
+      "https://arxiv.org/abs/2006.04558",
+      "FastSpeech 2: Fast and High-Quality End-to-End Text to Speech (arXiv 2006.04558)"
+     ],
+     [
+      "VITS 论文（端到端语音合成，arXiv）",
+      "https://arxiv.org/abs/2106.06103",
+      "Conditional VAE with Adversarial Learning for End-to-End TTS (arXiv 2106.06103)"
+     ]
+    ],
+    "domain": "media",
+    "purposeTag": "learn",
+    "level": 4,
+    "layer": "四",
+    "ord": 35,
+    "alias": [],
+    "purposeEn": "How modern TTS works end to end: one model outputs the waveform, and rhythm is a distribution it samples rather than an average.",
+    "defEn": [
+     "Old-style TTS had two stages: text to spectrogram, then a vocoder back to waveform. Training them separately lets errors compound.",
+     "FastSpeech 2 (2020) generates spectrograms in parallel with a non-autoregressive model, a 3x training speed-up over FastSpeech.",
+     "VITS (2021) merges the two stages into one end-to-end model that generates waveform directly from text, with human listening tests close to real recordings.",
+     "The one-to-many mapping is the core difficulty: the same sentence can be spoken at many speeds and intonations. VITS models that variation as a distribution with a stochastic duration predictor instead of averaging it.",
+     "Averaging is exactly what produces the 'robotic' sound."
+    ],
+    "whyEn": "When synthesised speech 'doesn't sound human', the problem is usually in rhythm modelling, not audio quality or sample rate.",
+    "slug": "文字怎么变成声音"
    }
   ]
  },
