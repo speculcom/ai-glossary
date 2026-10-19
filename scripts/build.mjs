@@ -323,6 +323,44 @@ if (fs.existsSync(guidesDir)) {
 }
 if (GUIDES.length) console.log(`  · 微型指南：${GUIDES.length} 篇（${GUIDES.map((g) => `${g.zh}·第${g.station}站`).join(' · ')}）`);
 
+/* ═══ S39（2026-10-19）· 编年史与版图 atlas/atlas.json 加载 + 构建期校验 ═══
+ * 真相源是一份 JSON（不是 md）：这一页没有「正文」概念，整页都是结构化条目。
+ * 构建期校验照 guides 的套路做**构建必需**的那部分：
+ *   · 三段式 ref（R5 的载体，缺了页面就出现无出处的论断）
+ *   · links 必须命中既有词条 slug（缺了会链到不存在的页面）
+ *   · 中英字段成对（R2，同一份 JSON 里并存，不需要独立英文文件） */
+const atlasFile = path.join(repoRoot, 'atlas', 'atlas.json');
+let ATLAS = null;
+if (fs.existsSync(atlasFile)) {
+  ATLAS = JSON.parse(fs.readFileSync(atlasFile, 'utf8'));
+  const aTag = 'atlas/atlas.json';
+  if (!ATLAS.zh || !ATLAS.en || !ATLAS.lead || !ATLAS.lead.zh || !ATLAS.lead.en) throw new Error(`${aTag}: 缺 zh/en 标题或 lead（R2 中英同步）`);
+  for (const key of ['timeline', 'orgs', 'terms']) {
+    if (!Array.isArray(ATLAS[key]) || !ATLAS[key].length) throw new Error(`${aTag}: ${key} 不能为空`);
+  }
+  const checkRef = (r, where) => {
+    if (!Array.isArray(r) || r.length !== 3 || !r[0] || !/^https?:\/\//.test(r[1]) || !r[2]) {
+      throw new Error(`${aTag}: ${where} 的 ref 必须是三段式 [中文标签, URL, 英文标签]（R5）`);
+    }
+  };
+  for (const [i, ev] of ATLAS.timeline.entries()) {
+    if (!ev.date || !ev.zh || !ev.en || !ev.note || !ev.note.zh || !ev.note.en) throw new Error(`${aTag}: timeline[${i}] 缺 date/zh/en/note 字段`);
+    checkRef(ev.ref, `timeline[${i}]（${ev.zh}）`);
+  }
+  for (const [i, o] of ATLAS.orgs.entries()) {
+    if (!o.name || !Number.isInteger(o.founded) || !/^https?:\/\//.test(o.url || '') || !o.zh || !o.en) throw new Error(`${aTag}: orgs[${i}] 缺 name/founded/url/zh/en 字段`);
+  }
+  for (const [i, tm] of ATLAS.terms.entries()) {
+    if (!tm.zh || !tm.en || !tm.note || !tm.note.zh || !tm.note.en) throw new Error(`${aTag}: terms[${i}] 缺 zh/en/note 字段`);
+    checkRef(tm.ref, `terms[${i}]（${tm.zh}）`);
+  }
+  if (!Array.isArray(ATLAS.links) || !ATLAS.links.length) throw new Error(`${aTag}: links 不能为空（版图页要链回词条）`);
+  for (const s of ATLAS.links) {
+    if (!slugSet.has(s)) throw new Error(`${aTag}: links「${s}」不是任何词条的 slug（会链到不存在的页面）`);
+  }
+  console.log(`  · 编年史与版图：时间线 ${ATLAS.timeline.length} 条 · 公司 ${ATLAS.orgs.length} 家 · 术语演变 ${ATLAS.terms.length} 条 · 互链 ${ATLAS.links.length} 个`);
+}
+
 /* ---------- 等价校验（硬门禁） ----------
  * 拿旧产物作基准逐字段比。**不等就退出，不写文件**——
  * 写出一个字段有差的产物，页面会静默少词或丢 refs，比构建失败更难查。
@@ -1087,13 +1125,118 @@ ${TABBAR}
     }
   }
 
-  /* sitemap：1（地图）+ 词条页 + 路径页 + 指南页。
+  /* ═══ S39（2026-10-19）· 编年史与版图页：learn.specul/atlas/index.html ═══
+   * 一页三栏：时间线 / 公司版图 / 术语演变。数据全部来自 atlas/atlas.json（真相源）。
+   * 版式：文章骨架复用 .tp-*（住 learn.css）；版图页**新**的版式件
+   * （.t-atlas-tl / .t-atlas-org 等）全部在共享层 brand.css（宪章 1）——
+   * 本文件不写任何版图专属样式。术语演变借用 .t-atlas-tl：左槽放英文名。 */
+  let atlasWritten = 0;
+  if (ATLAS) {
+    const atlasDesc = (() => {
+      let out = plainTxt(ATLAS.lead.zh);
+      const parts = [
+        `时间线 ${ATLAS.timeline.length} 条 · 公司 ${ATLAS.orgs.length} 家 · 术语演变 ${ATLAS.terms.length} 条`,
+        '学 AI 编年史与版图',
+      ];
+      for (const x of parts) { if (!x) continue; out += ' ' + x; if (esc(out).length >= 70) break; }
+      if (esc(out).length > 158) out = out.slice(0, 120).replace(/[\s,，、;；:：\-—]+$/, '') + '…';
+      return out;
+    })();
+    const tlItem = (dateSlot, titleZh, titleEn, noteZh, noteEn, ref) =>
+      `        <li>${dateSlot ? `<span class="t-atlas-date">${esc(dateSlot)}</span>` : ''}<div class="t-atlas-ev">` +
+      `<h3>${bi(titleZh, titleEn)}</h3><p>${bi(noteZh, noteEn)} ` +
+      `<a href="${esc(ref[1])}" target="_blank" rel="noopener">${bi(ref[0], ref[2])} ↗</a></p></div></li>`;
+    const timelineHtml = ATLAS.timeline.map((ev) => tlItem(ev.date, ev.zh, ev.en, ev.note.zh, ev.note.en, ev.ref)).join('\n');
+    const termsHtml = ATLAS.terms.map((tm) => tlItem(null, tm.zh, tm.en, tm.note.zh, tm.note.en, tm.ref)).join('\n');
+    const orgsHtml = ATLAS.orgs.map((o) =>
+      `        <div class="t-atlas-org"><h3>${esc(o.name)}</h3>` +
+      `<span class="t-atlas-founded">${bi(`创立 ${o.founded}`, `founded ${o.founded}`)}</span>` +
+      `<p>${bi(o.zh, o.en)} <a href="${esc(o.url)}" target="_blank" rel="noopener">官网 ↗</a></p></div>`).join('\n');
+    const chipsHtml = ATLAS.links.map((s) => `<a class="t-guidechip" href="../term/${ENC(s)}/">${esc(s)}</a>`).join(' ');
+    const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(ATLAS.zh)} | 投机取巧</title>
+  <meta name="description" content="${esc(atlasDesc)}" />
+  <link rel="canonical" href="https://learn.specul.com/atlas/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="学 AI" />
+  <meta property="og:url" content="https://learn.specul.com/atlas/" />
+  <meta property="og:title" content="${esc(ATLAS.zh)}" />
+  <meta property="og:description" content="${esc(atlasDesc)}" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="${FAVICON}" />
+  <link rel="stylesheet" href="../brand.css" />
+  <link rel="stylesheet" href="../learn.css" />
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    name: ATLAS.zh,
+    alternateName: ATLAS.en,
+    description: plainTxt(ATLAS.lead.zh),
+    url: 'https://learn.specul.com/atlas/',
+    inLanguage: 'zh-Hans',
+  })}</script>
+</head>
+<body class="brand-ambient has-tabbar">
+${HEADER('learn')}
+  <main id="main">
+    <div class="container">
+      <article class="tp tp-wrap">
+        <nav class="tp-crumbs" aria-label="面包屑">
+          <a href="../"><span data-zh>← 名词地图</span><span data-en>← Term map</span></a>
+          <span aria-hidden="true">·</span>
+          <span>${bi('编年史与版图', 'Chronicle & atlas')}</span>
+        </nav>
+        <h1>${bi(ATLAS.zh, ATLAS.en)}</h1>
+        <p class="tp-p"><span data-zh>${escMd(ATLAS.lead.zh)}</span><span data-en>${escMd(ATLAS.lead.en)}</span></p>
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('关键模型时间线', 'Timeline of key models')}</div>
+          <ol class="t-atlas-tl">
+${timelineHtml}
+          </ol>
+        </div>
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('公司版图', 'Company map')}</div>
+          <div class="t-grid t-grid-3">
+${orgsHtml}
+          </div>
+        </div>
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('术语演变', 'How the vocabulary changed')}</div>
+          <ol class="t-atlas-tl">
+${termsHtml}
+          </ol>
+        </div>
+        <div class="tp-sec">
+          <div class="tp-lab">${bi('先懂这几个词', 'Terms behind this')}</div>
+          <p class="tp-p">${chipsHtml}</p>
+        </div>
+      </article>
+    </div>
+  </main>
+${FOOTER}
+${TABBAR}
+  <script src="../brand.js"></script>
+</body>
+</html>
+`;
+    const atlasDir = path.join(learnDir, 'atlas');
+    const atlasFile2 = path.join(atlasDir, 'index.html');
+    const atlasOld = fs.existsSync(atlasFile2) ? fs.readFileSync(atlasFile2, 'utf8') : null;
+    if (atlasOld !== html) { fs.mkdirSync(atlasDir, { recursive: true }); fs.writeFileSync(atlasFile2, html, 'utf8'); atlasWritten = 1; }
+  }
+
+  /* sitemap：1（地图）+ 词条页 + 路径页 + 指南页 + 版图页（S39）。
    * ⚠ 不写 lastmod —— 它推不出来（与 www/llms.txt 同一个理由：不能从内容推导的日期
    *   会让「产物 == 数据」这类比对失去意义）。changefreq / priority 是声明性字段，可以写。 */
   const urls = ['https://learn.specul.com/'];
   for (const { t } of flat) urls.push(`https://learn.specul.com/term/${ENC(slugOf(t))}/`);
   for (const p of PATHS) urls.push(`https://learn.specul.com/path/${p.id}/`);
   for (const slug of wantGuideSlugs) urls.push(`https://learn.specul.com/guide/${ENC(slug)}/`);
+  if (ATLAS) urls.push('https://learn.specul.com/atlas/');
   const sm = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u, i) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><priority>${i === 0 ? '1.0' : '0.7'}</priority></url>`).join('\n')}
@@ -1102,5 +1245,5 @@ ${urls.map((u, i) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><prio
   const smFile = path.join(learnDir, 'sitemap.xml');
   const smOld = fs.existsSync(smFile) ? fs.readFileSync(smFile, 'utf8') : null;
   if (smOld !== sm) { fs.writeFileSync(smFile, sm, 'utf8'); }
-  console.log(`词条页：${pageTotal} 个（写入 ${pageChanged} · 清理孤儿 ${removed}）· 路径页：${PATHS.length} 个（写入 ${pathPages} · 清理孤儿 ${pathRemoved}）· 指南页：${GUIDES.length} 个（写入 ${guidePages} · 清理孤儿 ${guideRemoved}）· sitemap ${urls.length} 条${smOld === sm ? '（未变）' : '（已更新）'}`);
+  console.log(`词条页：${pageTotal} 个（写入 ${pageChanged} · 清理孤儿 ${removed}）· 路径页：${PATHS.length} 个（写入 ${pathPages} · 清理孤儿 ${pathRemoved}）· 指南页：${GUIDES.length} 个（写入 ${guidePages} · 清理孤儿 ${guideRemoved}）· 版图页：${ATLAS ? 1 : 0} 个（写入 ${atlasWritten}）· sitemap ${urls.length} 条${smOld === sm ? '（未变）' : '（已更新）'}`);
 }
