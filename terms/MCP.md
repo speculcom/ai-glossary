@@ -2,8 +2,8 @@
 zh: "MCP"
 en: "Model Context Protocol"
 alias: ["模型上下文协议"]
-purpose: "一套标准接口，让 AI 用统一的方式接外部工具和数据，不用为每个服务单独适配。"
-def: ["Anthropic 提出的开放协议，用统一规范描述「AI 可以调哪些工具、可以读哪些资源」。", "它的作用类似 AI 世界的 USB-C：接什么设备都能用同一套接口。"]
+purpose: "一套标准接口，让 AI 用统一的方式接外部工具和数据。不用为每个服务单独适配。"
+def: ["Anthropic 提出的开放协议。它用统一规范描述「AI 可以调哪些工具、可以读哪些资源」。", "它的作用类似 AI 世界的 USB-C：接什么设备都能用同一套接口。"]
 why: "如果你要给 AI 接数据，这是当前最省事、最通用的做法。本站 MCP 分区专讲这个。"
 refs:
   - ["MCP 是什么·9 份 server 档案", "https://agent.specul.com/tools/index.html", "What MCP is · 9 server profiles"]
@@ -18,9 +18,9 @@ ord: 3
 
 # MCP（Model Context Protocol）
 
-**解决什么问题**：一套标准接口，让 AI 用统一的方式接外部工具和数据，不用为每个服务单独适配。
+**解决什么问题**：一套标准接口，让 AI 用统一的方式接外部工具和数据。不用为每个服务单独适配。
 
-Anthropic 提出的开放协议，用统一规范描述「AI 可以调哪些工具、可以读哪些资源」。
+Anthropic 提出的开放协议。它用统一规范描述「AI 可以调哪些工具、可以读哪些资源」。
 
 它的作用类似 AI 世界的 USB-C：接什么设备都能用同一套接口。
 

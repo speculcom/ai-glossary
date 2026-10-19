@@ -2,7 +2,7 @@
 zh: "MLX"
 en: "MLX"
 purpose: "苹果芯片上的机器学习框架，由 Apple 研究团队开源。"
-def: ["官方描述：面向 Apple silicon 的机器学习数组框架，由 Apple 机器学习研究团队出品。", "特点是统一内存模型：数组驻留共享内存，CPU 与 GPU 上运算无需搬运数据。"]
+def: ["官方描述：面向 Apple silicon 的机器学习数组框架。由 Apple 机器学习研究团队出品。", "特点是统一内存模型：数组驻留共享内存，CPU 与 GPU 上运算无需搬运数据。"]
 why: "用 Mac 跑模型时值得知道它存在。官方并未声称统一内存能让 Mac 跑大模型。"
 refs:
   - ["MLX 官方仓库", "https://github.com/ml-explore/mlx", "MLX repository"]
@@ -17,7 +17,7 @@ ord: 23
 
 **解决什么问题**：苹果芯片上的机器学习框架，由 Apple 研究团队开源。
 
-官方描述：面向 Apple silicon 的机器学习数组框架，由 Apple 机器学习研究团队出品。
+官方描述：面向 Apple silicon 的机器学习数组框架。由 Apple 机器学习研究团队出品。
 
 特点是统一内存模型：数组驻留共享内存，CPU 与 GPU 上运算无需搬运数据。
 
