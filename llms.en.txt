@@ -6,7 +6,7 @@ For **people new to AI**: 185 terms arranged into six stations by "what to learn
 
 ## Size (computed from data — see the build scripts under `scripts/` and `_audit/gen-repo-docs.mjs`)
 
-185 terms arranged into six stations by "what to learn first" (Getting In / Hands On / Going Deeper / Under the Hood / Running It / Choosing Right); 3 curated learning paths with checkpoints; 24 short guides; 323 source entries; English coverage 185/185.
+185 terms arranged into six stations by "what to learn first" (Getting In / Hands On / Going Deeper / Under the Hood / Running It / Choosing Right); 3 curated learning paths with checkpoints; 33 short guides; 347 source entries; English coverage 185/185.
 
 ## Content map
 

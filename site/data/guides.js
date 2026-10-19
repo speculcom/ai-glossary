@@ -158,6 +158,39 @@ var GUIDES = [
   "factEn": null
  },
  {
+  "id": "怎么排查 AI 的数据泄露路径",
+  "zh": "怎么排查 AI 的数据泄露路径",
+  "en": "How to Trace AI Data Leak Paths",
+  "kind": "guide",
+  "station": 2,
+  "ord": 4,
+  "span": 8,
+  "lead": {
+   "zh": "数据离开你，通常不止一条路。这份指南把常见泄露路径逐条列出来，一条条查自己踩了哪几条。",
+   "en": "Data usually leaves you through more than one path. This guide lists the common leak paths one by one so you can check which ones you are on."
+  },
+  "points": [
+   "输入路径：粘贴进云端对话框的内容，已经离开你的设备。",
+   "训练路径：不少服务默认用对话改进模型，要去找关闭开关。",
+   "工具路径：接上的 server 能把内容带到它自己的服务端。",
+   "日志路径：会话历史、上传文件在对方服务器留存多久。",
+   "记忆路径：模型可能把训练里见过的内容复述出来。",
+   "恢复路径：删除入口和生效时间要提前确认，别指望立刻干净。"
+  ],
+  "pointsEn": [
+   "Input path: anything pasted into a cloud chat box has already left your device.",
+   "Training path: many services default to improving models with your conversations; find the opt-out switch.",
+   "Tool path: a connected server can carry content to its own backend.",
+   "Log path: how long chat history and uploaded files persist on the other side's servers.",
+   "Memory path: a model may repeat content it saw during training.",
+   "Recovery path: confirm the deletion entry point and effective time in advance; do not expect instant cleanliness."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
   "id": "它说得笃定，所以可信",
   "zh": "它说得笃定，所以可信",
   "en": "Confident Tone Means Correct",
@@ -270,6 +303,138 @@ var GUIDES = [
    "Bad at exact math: precise counts, multi-digit arithmetic, and tricky date conversions fail most often.",
    "Over-answering: it rarely says \"I do not know\", preferring a vague answer instead.",
    "Swayed by phrasing: the same question asked differently can produce a different answer."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么防提示注入",
+  "zh": "怎么防提示注入",
+  "en": "How to Guard Against Prompt Injection",
+  "kind": "guide",
+  "station": 3,
+  "ord": 3,
+  "span": 7,
+  "lead": {
+   "zh": "提示注入是让外部内容劫持 AI 的攻击。这份指南讲怎么给 AI 工具设防线，让它不把网页里的话当命令。",
+   "en": "Prompt injection is an attack where outside content hijacks an AI. This guide covers how to build defenses so your AI tool treats web pages as data, not commands."
+  },
+  "points": [
+   "把外部内容当数据，不当指令：网页、文档、邮件里可能藏着「忽略之前的指令」。",
+   "给最小权限：能读就只给读，能用一个目录就别给整个盘。",
+   "不可逆操作留人工确认：删除、转账、对外发消息，先问人再执行。",
+   "隔离会话：处理外部内容的会话，别和管密钥、管账户的会话混用。",
+   "装工具前查它能碰什么：MCP server 的权限声明要先读。",
+   "留执行日志：出问题时能回放它到底做了什么。"
+  ],
+  "pointsEn": [
+   "Treat outside content as data, not instructions: web pages, documents, and emails can hide \"ignore your previous instructions\".",
+   "Grant least privilege: if reading suffices, grant read-only; if one directory suffices, do not hand over the whole disk.",
+   "Keep a human gate on irreversible actions: deletions, transfers, and outbound messages ask a person first.",
+   "Isolate sessions: do not mix a session that processes outside content with one that holds keys or manages accounts.",
+   "Check what a tool can touch before installing it: read the MCP server's permission declarations.",
+   "Keep execution logs: when something goes wrong, you can replay what it actually did."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么给 AI 工具配权限",
+  "zh": "怎么给 AI 工具配权限",
+  "en": "How to Set Permissions for AI Tools",
+  "kind": "guide",
+  "station": 3,
+  "ord": 4,
+  "span": 7,
+  "lead": {
+   "zh": "AI 工具的危险程度，多半由你给它的权限决定。这份指南讲怎么给得刚好够用、又不过头。",
+   "en": "How dangerous an AI tool is is mostly decided by the permissions you give it. This guide covers granting exactly enough and no more."
+  },
+  "points": [
+   "先想它要干什么，再给权限：写代码给代码目录，别顺手给整个家目录。",
+   "读和写分开给：能只读完成任务的，就不给写。",
+   "划出禁区：密钥文件、账户配置、系统目录，明确不给。",
+   "开确认模式：删除、覆盖、对外发送这类操作，让工具先问再动。",
+   "定期收权：项目结束、任务换了，把之前开的权限收回来。",
+   "用受限模式跑实验：不信任的用法先关在沙箱里试。"
+  ],
+  "pointsEn": [
+   "Decide the job first, then the permissions: coding work gets the code directory, not your whole home directory.",
+   "Grant read and write separately: if the task completes read-only, do not grant write.",
+   "Mark off-limits zones: key files, account configs, and system directories are explicitly excluded.",
+   "Turn on confirmation mode: deletions, overwrites, and outbound sends must ask before acting.",
+   "Reclaim permissions regularly: when a project ends or the task changes, take back what you opened.",
+   "Run experiments in restricted mode: try untrusted usage inside a sandbox first."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么安全地用 MCP 工具",
+  "zh": "怎么安全地用 MCP 工具",
+  "en": "How to Use MCP Tools Safely",
+  "kind": "guide",
+  "station": 3,
+  "ord": 5,
+  "span": 7,
+  "lead": {
+   "zh": "MCP 让 AI 能碰你的文件和网页。工具本身不危险，危险的是它被喂了什么内容、被给了什么权限。",
+   "en": "MCP lets an AI touch your files and the web. The tools themselves are not the danger; what gets fed to them and what permissions they hold is."
+  },
+  "points": [
+   "只装需要的 server：每多一个工具，就多一条能出事的通道。",
+   "读权限声明：文件类 server 该限定目录，网页类该有安全警告。",
+   "把抓来的内容当数据：网页正文里可能藏着给 AI 的指令。",
+   "敏感目录不接：接文件 server 前，先确认密钥和账户配置不在里面。",
+   "看 server 是谁维护的：官方与第三方，可信度不同。",
+   "出事先断链：怀疑被注入时，先停工具再排查会话。"
+  ],
+  "pointsEn": [
+   "Install only the servers you need: every extra tool is one more channel something can go wrong through.",
+   "Read the permission declarations: file servers should scope to directories; fetch servers should carry security warnings.",
+   "Treat fetched content as data: web page text can contain instructions aimed at the AI.",
+   "Keep sensitive directories out: before connecting a file server, confirm keys and account configs are not inside.",
+   "Check who maintains the server: official and third-party carry different trust levels.",
+   "Cut the link first during an incident: if injection is suspected, stop the tool, then investigate the session."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么给 AI 内容做发布前检查",
+  "zh": "怎么给 AI 内容做发布前检查",
+  "en": "How to Run a Pre-Publication Check on AI Content",
+  "kind": "guide",
+  "station": 3,
+  "ord": 6,
+  "span": 7,
+  "lead": {
+   "zh": "AI 生成的内容发出去之前，有几类错误几乎必然出现。这份指南给一份发布前的检查清单。",
+   "en": "Before publishing AI-generated content, a few classes of error appear almost inevitably. This guide is the pre-publication checklist."
+  },
+  "points": [
+   "事实逐条回查：数字、日期、引文，AI 会编出看起来对的。",
+   "引文先验存在：论文编号、书名、链接，逐个打开确认。",
+   "敏感表述过一遍：涉及人、机构、法律的句子，换专业口径重写。",
+   "图片查标识：按中国《标识办法》要求加显式标识，元数据隐式标识别漏。",
+   "风格统一：AI 腔（排比、空总结）删掉，不然读者一眼看出是生成的。",
+   "留修改记录：哪些是 AI 写的、你改了什么，出问题能追溯。"
+  ],
+  "pointsEn": [
+   "Re-verify facts line by line: numbers, dates, and quotes — AI produces ones that look right.",
+   "Verify citations exist: paper IDs, book titles, links — open each one and confirm.",
+   "Run sensitive statements once more: sentences about people, organizations, or the law get rewritten in professional register.",
+   "Check image labels: add explicit labels per China's Labeling Measures; do not miss the implicit label in metadata.",
+   "Unify the voice: strip the AI register (parallel clauses, empty summaries) or readers will spot it instantly.",
+   "Keep a change record: which parts AI wrote and what you changed — traceable when something goes wrong."
   ],
   "myth": null,
   "mythEn": null,
@@ -474,6 +639,138 @@ var GUIDES = [
    "Read the license: commercial use, attribution duties, and whether derivatives must share the same license.",
    "Trust the known-limitations section: failure modes the maker admits are worth more than \"state-of-the-art\".",
    "Compare vendors only on equal terms: same benchmark, same settings, or the numbers are not comparable."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么查生成式 AI 合规义务",
+  "zh": "怎么查生成式 AI 合规义务",
+  "en": "How to Check Generative AI Compliance Duties",
+  "kind": "guide",
+  "station": 6,
+  "ord": 2,
+  "span": 8,
+  "lead": {
+   "zh": "在国内上线一个 AI 功能，合规不是玄学，是几条能核对的条文。这份指南按上线顺序讲先查什么。",
+   "en": "Launching an AI feature in China, compliance is not mysticism but a handful of checkable articles. This guide walks them in launch order."
+  },
+  "points": [
+   "先定性：服务面向不面向境内公众。面向公众的适用《生成式人工智能服务管理暂行办法》。",
+   "查训练数据来源：办法第七条要求「使用具有合法来源的数据和基础模型」。",
+   "查标识义务：生成的图片、视频要按深度合成规定加标识。",
+   "查要不要备案：具有舆论属性或社会动员能力的，要安全评估加算法备案。",
+   "查标识新规：《人工智能生成合成内容标识办法》2025 年 9 月 1 日施行，显式标识加元数据里的隐式标识。",
+   "拿不准就问法务：本站只讲条文写了什么，不替你下法律结论。"
+  ],
+  "pointsEn": [
+   "Classify first: does the service face the public in mainland China? If so, the Interim Measures for Generative AI Services apply.",
+   "Check training-data provenance: Article 7 requires \"lawfully sourced data and foundation models\".",
+   "Check labeling duties: generated images and video must carry labels per the deep-synthesis rules.",
+   "Check filing: services with public-opinion attributes or social mobilization capacity need security assessments and algorithm filing.",
+   "Check the new labeling rules: the Labeling Measures take effect 1 September 2025 — explicit labels plus implicit labels in file metadata.",
+   "When unsure, ask legal: this site states what the articles say, it does not hand down legal conclusions for you."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么对照 EU AI Act 自查",
+  "zh": "怎么对照 EU AI Act 自查",
+  "en": "How to Self-Check Against the EU AI Act",
+  "kind": "guide",
+  "station": 6,
+  "ord": 3,
+  "span": 8,
+  "lead": {
+   "zh": "欧盟 AI 法按风险分四档，义务按时间分批生效。这份指南讲怎么先给自己定性，再看撞上哪一档。",
+   "en": "The EU AI Act sorts AI into four risk tiers, with obligations taking effect in batches. This guide covers how to classify yourself and which tier you hit."
+  },
+  "points": [
+   "先定风险档：不可接受 / 高风险 / 透明性 / 最低。绝大多数应用落在最低档，无额外义务。",
+   "查禁用清单：社交评分、公共场所实时生物识别等九类做法被直接禁止。",
+   "透明性义务：聊天机器人要让人知道在和机器对话；生成内容要可识别，深度伪造要明显标注。",
+   "通用模型义务已生效：提供通用 AI 模型的厂商要处理透明度与版权要求。",
+   "高风险义务最重：风险评估、数据质量、日志、人工监督，一项都不能少。",
+   "时间线要盯：不同义务分批生效，同一产品在不同日期要满足不同要求。"
+  ],
+  "pointsEn": [
+   "Set your risk tier first: unacceptable / high / transparency / minimal. Most applications land in minimal, with no extra duties.",
+   "Check the ban list: nine practices are prohibited outright, including social scoring and real-time remote biometric identification in public spaces.",
+   "Transparency duties: chatbots must let people know they are talking to a machine; AI-generated content must be identifiable, and deepfakes visibly labeled.",
+   "General-purpose model duties are already live: GPAI providers face transparency and copyright requirements.",
+   "High-risk duties are the heaviest: risk assessment, data quality, logging, and human oversight, none optional.",
+   "Watch the timeline: obligations take effect in batches, so the same product must meet different requirements on different dates."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么查 AI 生成内容的版权风险",
+  "zh": "怎么查 AI 生成内容的版权风险",
+  "en": "How to Check Copyright Risk for AI-Generated Content",
+  "kind": "guide",
+  "station": 6,
+  "ord": 4,
+  "span": 8,
+  "lead": {
+   "zh": "AI 内容的版权有两头。喂进去的数据合不合法，生成出来的东西归不归你。这份指南讲两头各怎么查。",
+   "en": "AI content copyright has two ends: whether the data fed in is lawful, and whether what comes out belongs to you. This guide checks both ends."
+  },
+  "points": [
+   "输入侧查来源：中国办法要求「使用具有合法来源的数据和基础模型」。",
+   "输入侧查例外：欧盟《数字单一市场版权指令》为文本与数据挖掘设了例外，科研与商业口径不同。",
+   "输出侧别默认归属：AI 生成内容能不能受版权保护，各法域结论不同，先查当地口径。",
+   "商用前读厂商条款：模型使用条款对商用、竞品、输出归属各有规定。",
+   "留来源记录：素材从哪来、训练数据什么构成，纠纷时来源链第一。",
+   "诉讼还在进行：判例会变，重大商用决策找法务，别照新闻下结论。"
+  ],
+  "pointsEn": [
+   "Input side, check provenance: Chinese rules require \"lawfully sourced data and foundation models\".",
+   "Input side, check exceptions: the EU Directive on Copyright in the Digital Single Market sets text-and-data-mining exceptions, with research and commercial terms differing.",
+   "Output side, do not assume ownership: whether AI-generated content can be copyrighted differs by jurisdiction; check local practice first.",
+   "Before commercial use, read the vendor terms: model terms of use differ on commercial use, competing products, and output ownership.",
+   "Keep provenance records: where materials came from and what the training data was — the chain of provenance comes first in disputes.",
+   "Litigation is ongoing: case law changes; for major commercial decisions consult legal counsel, not news headlines."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么读开源模型的许可证",
+  "zh": "怎么读开源模型的许可证",
+  "en": "How to Read an Open-Model License",
+  "kind": "guide",
+  "station": 6,
+  "ord": 5,
+  "span": 8,
+  "lead": {
+   "zh": "「开源」不等于随便用。模型许可证里的条件，决定你能不能商用、要不要署名、衍生模型跟不跟同许可。",
+   "en": "\"Open source\" does not mean use however you like. The conditions in a model license decide whether you may use it commercially, attribute, and what derivatives inherit."
+  },
+  "points": [
+   "先分清开源软件许可和模型许可：后者常带额外条件，不能凭「开源」两个字推断。",
+   "查商用条款：有的许可禁止商用，有的设规模门槛。",
+   "查署名与声明：Apache 2.0 要求保留声明和 NOTICE。",
+   "查衍生模型义务：同许可（copyleft）要求改出来的模型沿用同一份许可。",
+   "查使用限制：不少模型许可禁止用于某些场景，违反即失效。",
+   "查许可继承：微调、量化、合并后的模型带哪份许可，本站模型档案逐仓记录。"
+  ],
+  "pointsEn": [
+   "Separate open-source software licenses from model licenses: the latter often carry extra conditions you cannot infer from the words \"open source\".",
+   "Check commercial terms: some licenses ban commercial use; others set a scale threshold.",
+   "Check attribution: Apache 2.0 requires keeping notices and the NOTICE file.",
+   "Check derivative duties: copyleft licenses require models you fine-tune to carry the same license.",
+   "Check use restrictions: many model licenses forbid certain use cases; violating them voids the license.",
+   "Check license inheritance: which license a fine-tuned, quantized, or merged model carries is recorded repo by repo in this site's model profiles."
   ],
   "myth": null,
   "mythEn": null,
