@@ -1,7 +1,7 @@
 {
  "_comment": "词条释义英文。键 = md 文件名（不含扩展名），必须与 _data/glossary/terms/ 的文件名一字不差。",
  "_fields": "purpose / def / why，对应源 md 的同名字段。缺字段时英文态回退中文（可接受降级）。",
- "_progress": "全部译完（116 个有释义的词条逐条人工翻译，六层全覆盖；INDEX.md 无释义不译）",
+ "_progress": "全部译完（200 个词条逐条人工翻译，六站全覆盖；INDEX.md 无释义不译）",
  "人工智能": {
   "purpose": "Let machines do what used to need human intelligence — see images, understand speech, write, and decide.",
   "def": [
@@ -1515,5 +1515,85 @@
    "Averaging is exactly what produces the 'robotic' sound."
   ],
   "why": "When synthesised speech 'doesn't sound human', the problem is usually in rhythm modelling, not audio quality or sample rate."
+ },
+ "监督学习": {
+  "purpose": "Give the machine practice questions with answers, so it learns to derive answers from inputs.",
+  "def": [
+   "Every training example carries the correct answer; the model learns to map input to answer.",
+   "Two classic task families: predicting a continuous number is regression, deciding a category is classification."
+  ],
+  "why": "Pretraining a large model is not this kind of learning. Telling them apart is how you understand how models are actually trained."
+ },
+ "无监督学习": {
+  "purpose": "No answers given — the machine finds structure in the data by itself.",
+  "def": [
+   "Training data carries no labels; the model discovers groupings, compressions or patterns on its own.",
+   "Clustering and dimensionality reduction are its two classic task families."
+  ],
+  "why": "Embeddings and data grouping often rest on it. It also explains why unlabeled data still has value."
+ },
+ "泛化": {
+  "purpose": "A model has truly learned only when it performs well on data it has never seen.",
+  "def": [
+   "Doing well on training data proves nothing; doing well on new data is what counts.",
+   "How it is measured: hold part of the data out of training and use it purely as an exam."
+  ],
+  "why": "Scores advertised by AI products only mean something if they come from unseen data. This is the first test of whether an evaluation is real."
+ },
+ "过拟合": {
+  "purpose": "Memorized the practice questions, then fails a different set of questions.",
+  "def": [
+   "The model memorises noise and details in the training data and gets worse on new data.",
+   "The classic signal: training score keeps climbing while the exam score turns downward."
+  ],
+  "why": "Inflated benchmarks and leaderboard games are usually tied to it. Treat \"99 on the training set\" with suspicion."
+ },
+ "训练集与测试集": {
+  "purpose": "Split the data into two piles: one to practice with, one kept for the exam.",
+  "def": [
+   "The training set is what the model learns from; the test set never takes part in training and is used only for evaluation.",
+   "A score reflects real ability only when it comes from the test set."
+  ],
+  "why": "The same model scores differently on different test sets. When comparing two models, first ask whether they sat the same exam."
+ },
+ "Ollama": {
+  "purpose": "A tool that runs an open model on your own computer with a single command.",
+  "def": [
+   "It packages download, quantisation and running into one command.",
+   "It ships its own model library — pick a name and run; it offers both a command line and an API."
+  ],
+  "why": "The lowest-threshold path to running models locally. If you want to see what a large model feels like on your own machine, start here."
+ },
+ "LM Studio": {
+  "purpose": "A local-model desktop app with a graphical interface — no command line needed.",
+  "def": [
+   "One desktop app: search models, download them and chat, all inside it.",
+   "It can also expose a local API so other programs connect to it."
+  ],
+  "why": "For people who do not want to install environments or type commands. It and Ollama are two entry points to the same thing."
+ },
+ "量化方法": {
+  "purpose": "Shrinking a model has more than one method, and the methods differ in results.",
+  "def": [
+   "GPTQ and AWQ are the two most common families of post-training quantisation.",
+   "Both calibrate with a small sample to decide which values keep their precision; AWQ picks the weights to keep by how much each matters to activations."
+  ],
+  "why": "Different quantisation tiers of the same model may come from different methods. Two files both labelled 4-bit need not be equal in quality."
+ },
+ "剪枝": {
+  "purpose": "Delete the unimportant connections in a model to make it smaller and faster.",
+  "def": [
+   "Removing weights close to zero makes the model smaller and inference faster.",
+   "Measured in the paper: structured pruning of a pretrained model can lose very little accuracy."
+  ],
+  "why": "It is a compression route complementary to quantisation. A model that will not fit locally is sometimes rescued by pruning."
+ },
+ "QLoRA": {
+  "purpose": "Quantise the model to 4-bit first, then fine-tune — one consumer GPU is enough.",
+  "def": [
+   "The model is quantised to 4-bit and frozen; only a small set of added parameters is trained.",
+   "Measured in the paper: a single 48GB GPU can fine-tune a 65-billion-parameter model."
+  ],
+  "why": "It moved \"fine-tuning a large model\" from the datacentre to the personal computer. If you want to train a model yourself, check it against your card first."
  }
 }

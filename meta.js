@@ -77,7 +77,7 @@ var META = {
    *   现在搬进这里，页面只读这一份 —— 同一句话存两处必然漂（本项目头号疾病）。
    * 英文态用 "Station N"（2026-10-18 定）：nextEn 写的就是 "Next station"、首页 lead 写的
    *   是 "six stations" —— 若标签还留 "Layer N"，同一页两套口径（本项目头号疾病）。
-   *   ⚠ 锚点 id 仍是 `layer-N`（185 个词条页的出链 + anchor-check 守它），名字改、锚点不改。 */
+   *   ⚠ 锚点 id 仍是 `layer-N`（200 个词条页的出链 + anchor-check 守它），名字改、锚点不改。 */
   levels: {
     '1': { name:'一', nameEn:'One', short:'进门', shortEn:'Getting In',
       desc:'不需要任何技术基础。先建立直觉，读完能跟人聊明白 AI 在做什么。',

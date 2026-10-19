@@ -1,4 +1,4 @@
-# 学 AI · 词条索引（185 词）
+# 学 AI · 词条索引（200 词）
 
 本目录是学 AI 站（`learn.specul.com`）的内容源，一词一文件。
 改完跑 `node scripts/build.mjs` 重新构建，再跑 `node scripts/validate.mjs` 校验。

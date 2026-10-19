@@ -1023,6 +1023,171 @@ var TERMS = [
     ],
     "whyEn": "'Passed the Turing test' is still a media favorite. Knowing it dates to 1950 and is no longer taken seriously by professional evaluation inoculates you against such headlines.",
     "slug": "图灵测试"
+   },
+   {
+    "zh": "监督学习",
+    "en": "Supervised Learning",
+    "purpose": "给机器带答案的练习题，让它学会从题目推答案。",
+    "def": [
+     "训练数据每条都带正确答案，模型学着从输入推出答案。",
+     "常见任务分两类：预测连续数值叫回归，判断类别叫分类。"
+    ],
+    "why": "大模型的预训练并不属于这一类。分清它，你才知道模型是怎么练出来的。",
+    "refs": [
+     [
+      "scikit-learn 监督学习官方教程",
+      "https://scikit-learn.org/stable/supervised_learning.html",
+      "scikit-learn supervised learning tutorial"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 31,
+    "alias": [],
+    "purposeEn": "Give the machine practice questions with answers, so it learns to derive answers from inputs.",
+    "defEn": [
+     "Every training example carries the correct answer; the model learns to map input to answer.",
+     "Two classic task families: predicting a continuous number is regression, deciding a category is classification."
+    ],
+    "whyEn": "Pretraining a large model is not this kind of learning. Telling them apart is how you understand how models are actually trained.",
+    "slug": "监督学习"
+   },
+   {
+    "zh": "无监督学习",
+    "en": "Unsupervised Learning",
+    "purpose": "不给答案，让机器自己在数据里找结构。",
+    "def": [
+     "训练数据没有标注答案，模型自己找分组、压缩或规律。",
+     "聚类和降维是它的两类经典任务。"
+    ],
+    "why": "嵌入向量、数据分群背后常用它。它也解释了为什么没标注的数据也有价值。",
+    "refs": [
+     [
+      "scikit-learn 无监督学习官方教程",
+      "https://scikit-learn.org/stable/unsupervised_learning.html",
+      "scikit-learn unsupervised learning tutorial"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "learn",
+    "level": 1,
+    "layer": "一",
+    "ord": 32,
+    "alias": [],
+    "purposeEn": "No answers given — the machine finds structure in the data by itself.",
+    "defEn": [
+     "Training data carries no labels; the model discovers groupings, compressions or patterns on its own.",
+     "Clustering and dimensionality reduction are its two classic task families."
+    ],
+    "whyEn": "Embeddings and data grouping often rest on it. It also explains why unlabeled data still has value.",
+    "slug": "无监督学习"
+   },
+   {
+    "zh": "泛化",
+    "en": "Generalization",
+    "alias": [
+     "举一反三"
+    ],
+    "purpose": "模型对没见过的数据也表现好，这才叫学会了。",
+    "def": [
+     "在训练数据上表现好不算数，在新数据上表现好才算。",
+     "衡量它的办法：留一部分数据不参与训练，专门用来考试。"
+    ],
+    "why": "AI 产品宣传的分数，只有来自没见过的数据才有意义。这是判断评测真假的第一关。",
+    "refs": [
+     [
+      "Google 机器学习速成课程 · 过拟合与泛化",
+      "https://developers.google.com/machine-learning/crash-course/overfitting",
+      "Google ML Crash Course: overfitting and generalization"
+     ],
+     [
+      "Google 机器学习速成课程",
+      "https://developers.google.com/machine-learning/crash-course",
+      "Google Machine Learning Crash Course"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 1,
+    "layer": "一",
+    "ord": 33,
+    "purposeEn": "A model has truly learned only when it performs well on data it has never seen.",
+    "defEn": [
+     "Doing well on training data proves nothing; doing well on new data is what counts.",
+     "How it is measured: hold part of the data out of training and use it purely as an exam."
+    ],
+    "whyEn": "Scores advertised by AI products only mean something if they come from unseen data. This is the first test of whether an evaluation is real.",
+    "slug": "泛化"
+   },
+   {
+    "zh": "过拟合",
+    "en": "Overfitting",
+    "purpose": "把练习题背熟了，换一套新题就不会做。",
+    "def": [
+     "模型记住了训练数据里的噪声和细节，在新数据上反而变差。",
+     "训练分数一路涨、考试分数掉头向下，是它的典型信号。"
+    ],
+    "why": "评测造假、榜单注水多半与它有关。看到「训练集上 99 分」要警惕。",
+    "refs": [
+     [
+      "Google 机器学习速成课程 · 过拟合",
+      "https://developers.google.com/machine-learning/crash-course/overfitting",
+      "Google ML Crash Course: overfitting"
+     ]
+    ],
+    "domain": "concept",
+    "purposeTag": "judge",
+    "level": 1,
+    "layer": "一",
+    "ord": 34,
+    "alias": [],
+    "purposeEn": "Memorized the practice questions, then fails a different set of questions.",
+    "defEn": [
+     "The model memorises noise and details in the training data and gets worse on new data.",
+     "The classic signal: training score keeps climbing while the exam score turns downward."
+    ],
+    "whyEn": "Inflated benchmarks and leaderboard games are usually tied to it. Treat \"99 on the training set\" with suspicion.",
+    "slug": "过拟合"
+   },
+   {
+    "zh": "训练集与测试集",
+    "en": "Training Set, Test Set",
+    "alias": [
+     "训练数据",
+     "测试数据"
+    ],
+    "purpose": "把数据分成两堆：一堆用来练，一堆留着考试。",
+    "def": [
+     "训练集供模型学习；测试集不参与训练，只用来评估。",
+     "分数只有来自测试集，才反映真实水平。"
+    ],
+    "why": "同一模型在不同测试集上分数会不同。比较两个模型，先问它们考的是不是同一张卷。",
+    "refs": [
+     [
+      "scikit-learn 模型选择与评估官方文档",
+      "https://scikit-learn.org/stable/model_selection.html",
+      "scikit-learn model selection and evaluation"
+     ],
+     [
+      "Google 机器学习速成课程 · 过拟合",
+      "https://developers.google.com/machine-learning/crash-course/overfitting",
+      "Google ML Crash Course: overfitting"
+     ]
+    ],
+    "domain": "data",
+    "purposeTag": "judge",
+    "level": 1,
+    "layer": "一",
+    "ord": 35,
+    "purposeEn": "Split the data into two piles: one to practice with, one kept for the exam.",
+    "defEn": [
+     "The training set is what the model learns from; the test set never takes part in training and is used only for evaluation.",
+     "A score reflects real ability only when it comes from the test set."
+    ],
+    "whyEn": "The same model scores differently on different test sets. When comparing two models, first ask whether they sat the same exam.",
+    "slug": "训练集与测试集"
    }
   ]
  },
@@ -5370,6 +5535,164 @@ var TERMS = [
     ],
     "whyEn": "Answers \"can I run this without a graphics card\". Yes, but expect tokens per second, not per millisecond.",
     "slug": "CPU 推理"
+   },
+   {
+    "zh": "Ollama",
+    "en": "Ollama",
+    "purpose": "一条命令就在自己电脑上跑起开源模型的工具。",
+    "def": [
+     "把下载、量化、运行打包成一个命令的本地推理工具。",
+     "它自带模型库，选个名字就能跑，也有命令行和接口。"
+    ],
+    "why": "本地跑模型门槛最低的一条路。想试试大模型在自己机器上什么样，从它开始最省事。",
+    "refs": [
+     [
+      "Ollama 官网",
+      "https://ollama.com/",
+      "Ollama official site"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "apply",
+    "level": 5,
+    "layer": "五",
+    "ord": 26,
+    "alias": [],
+    "purposeEn": "A tool that runs an open model on your own computer with a single command.",
+    "defEn": [
+     "It packages download, quantisation and running into one command.",
+     "It ships its own model library — pick a name and run; it offers both a command line and an API."
+    ],
+    "whyEn": "The lowest-threshold path to running models locally. If you want to see what a large model feels like on your own machine, start here.",
+    "slug": "Ollama"
+   },
+   {
+    "zh": "LM Studio",
+    "en": "LM Studio",
+    "purpose": "带图形界面的本地模型应用，不用碰命令行。",
+    "def": [
+     "一个桌面应用：在里面搜模型、下载模型、开聊天。",
+     "它也能开一个本地接口，让别的程序连上来用。"
+    ],
+    "why": "给不想装环境、不想敲命令的人。它和 Ollama 是同一件事的两种入口。",
+    "refs": [
+     [
+      "LM Studio 官网",
+      "https://lmstudio.ai/",
+      "LM Studio official site"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "apply",
+    "level": 5,
+    "layer": "五",
+    "ord": 27,
+    "alias": [],
+    "purposeEn": "A local-model desktop app with a graphical interface — no command line needed.",
+    "defEn": [
+     "One desktop app: search models, download them and chat, all inside it.",
+     "It can also expose a local API so other programs connect to it."
+    ],
+    "whyEn": "For people who do not want to install environments or type commands. It and Ollama are two entry points to the same thing.",
+    "slug": "LM Studio"
+   },
+   {
+    "zh": "量化方法",
+    "en": "Quantization Methods (GPTQ, AWQ)",
+    "alias": [
+     "GPTQ",
+     "AWQ"
+    ],
+    "purpose": "把模型压小不是只有一种做法，不同方法效果不同。",
+    "def": [
+     "GPTQ 和 AWQ 是最常见的两族训练后量化方法。",
+     "它们都靠少量样本校准，决定哪些数值该保留精度。AWQ 按激活值的重要性挑选保留的权重。"
+    ],
+    "why": "同一个模型的不同量化档，可能出自不同方法。同名 4-bit 文件，质量未必一样。",
+    "refs": [
+     [
+      "GPTQ 论文",
+      "https://arxiv.org/abs/2210.17323",
+      "GPTQ paper"
+     ],
+     [
+      "AWQ 论文",
+      "https://arxiv.org/abs/2306.00978",
+      "AWQ paper"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "apply",
+    "level": 5,
+    "layer": "五",
+    "ord": 28,
+    "purposeEn": "Shrinking a model has more than one method, and the methods differ in results.",
+    "defEn": [
+     "GPTQ and AWQ are the two most common families of post-training quantisation.",
+     "Both calibrate with a small sample to decide which values keep their precision; AWQ picks the weights to keep by how much each matters to activations."
+    ],
+    "whyEn": "Different quantisation tiers of the same model may come from different methods. Two files both labelled 4-bit need not be equal in quality.",
+    "slug": "量化方法"
+   },
+   {
+    "zh": "剪枝",
+    "en": "Pruning",
+    "purpose": "删掉模型里不重要的连接，让它变小变快。",
+    "def": [
+     "把权重接近零的连接去掉，模型更小、推理更快。",
+     "论文实测：对预训练模型做结构化剪枝，精度损失可以很小。"
+    ],
+    "why": "它和量化是两条互补的压缩路线。本地跑不动的模型，有时靠剪枝救回来。",
+    "refs": [
+     [
+      "剪枝有效性研究论文",
+      "https://arxiv.org/abs/1710.01878",
+      "To prune, or not to prune (paper)"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "apply",
+    "level": 5,
+    "layer": "五",
+    "ord": 29,
+    "alias": [],
+    "purposeEn": "Delete the unimportant connections in a model to make it smaller and faster.",
+    "defEn": [
+     "Removing weights close to zero makes the model smaller and inference faster.",
+     "Measured in the paper: structured pruning of a pretrained model can lose very little accuracy."
+    ],
+    "whyEn": "It is a compression route complementary to quantisation. A model that will not fit locally is sometimes rescued by pruning.",
+    "slug": "剪枝"
+   },
+   {
+    "zh": "QLoRA",
+    "en": "QLoRA",
+    "purpose": "把模型压到 4-bit 再微调，一张消费级显卡也能练。",
+    "def": [
+     "先把模型量化成 4-bit 冻结住，再只训练少量附加参数。",
+     "论文实测：单张 48GB 显卡就能微调 650 亿参数的模型。"
+    ],
+    "why": "它把「微调大模型」从机房拉到了个人电脑。想自己练模型，先看它够不够你的卡。",
+    "refs": [
+     [
+      "QLoRA 论文",
+      "https://arxiv.org/abs/2305.14314",
+      "QLoRA paper"
+     ]
+    ],
+    "domain": "infra",
+    "purposeTag": "apply",
+    "level": 5,
+    "layer": "五",
+    "ord": 30,
+    "alias": [],
+    "purposeEn": "Quantise the model to 4-bit first, then fine-tune — one consumer GPU is enough.",
+    "defEn": [
+     "The model is quantised to 4-bit and frozen; only a small set of added parameters is trained.",
+     "Measured in the paper: a single 48GB GPU can fine-tune a 65-billion-parameter model."
+    ],
+    "whyEn": "It moved \"fine-tuning a large model\" from the datacentre to the personal computer. If you want to train a model yourself, check it against your card first.",
+    "slug": "QLoRA"
    }
   ]
  },

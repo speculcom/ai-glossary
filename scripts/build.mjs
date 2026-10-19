@@ -716,7 +716,7 @@ const TABBAR = SHELL.tabbar('learn');
     const prev = flat[i - 1], next = flat[i + 1];
     const lv = META.levels[String(t.level)] || {};
     /* v7 §1.3（2026-10-18）：六层→六站。layer.name 读的就是 meta.js 的 short（站名）。
-     * ⚠ 锚点 id 仍是 layer-N（anchor-check 守它 + 185 个页面的出链），名字改、锚点不改。
+     * ⚠ 锚点 id 仍是 layer-N（anchor-check 守它 + 200 个页面的出链），名字改、锚点不改。
      * 英文态保留 "Layer N"：v7 的更名是中文叙事命名，英文用 Layer 更自然（meta.js 注释同口径）。 */
     const tagZh = `第${t.layer || layer.num}站 · ${layer.name}`;
     const tagEn = `Station ${t.level} · ${lv.shortEn || lv.nameEn || layer.name}`;
