@@ -109,5 +109,37 @@
     "lead": "A compatible interface does not mean a zero-cost migration.",
     "myth": "Switching models is just changing a name in the config.",
     "fact": "Switching means retesting behaviour, cost and compliance; a compatible interface does not make the migration free."
+  },
+  "怎么保护自己的数据": {
+    "lead": "Before handing material to an AI, be clear about where it goes and what it leaves behind. Six moves.",
+    "points": [
+      "Sort material by whether it may leave: personal identity, company secrets, and customer data are three different categories.",
+      "Do not accept terms you cannot read; check specifically whether your data is used for training.",
+      "Anonymize first: strip names, IDs, and contact details before pasting anything in.",
+      "For sensitive work, prefer local or private deployment so data never leaves your own network.",
+      "Afterwards, check retention: can the chat history and uploaded files be deleted, and how soon?",
+      "Set team rules: which materials may go into an AI, and which must stay in internal tools."
+    ]
+  },
+  "AI 常犯什么错": {
+    "lead": "AI mistakes follow fixed patterns. Recognizing these categories prevents most of them in advance.",
+    "points": [
+      "Inventing facts: it produces plausible-looking fake citations, numbers, and dates.",
+      "Agreeing with you: imply a wrong premise and it usually will not correct it, just build on it.",
+      "Bad at exact math: precise counts, multi-digit arithmetic, and tricky date conversions fail most often.",
+      "Over-answering: it rarely says \"I do not know\", preferring a vague answer instead.",
+      "Swayed by phrasing: the same question asked differently can produce a different answer."
+    ]
+  },
+  "怎么读模型卡": {
+    "lead": "A model card is the manufacturer's spec sheet for a model. This guide covers which sections to read and which claims to discount.",
+    "points": [
+      "Start with intended-use and limitations: what the maker says it is and is not good for beats marketing copy.",
+      "When reading benchmarks, first ask which ones were tested; a score without a benchmark is no score.",
+      "Read the training-data section: the data mix determines which biases it may carry.",
+      "Read the license: commercial use, attribution duties, and whether derivatives must share the same license.",
+      "Trust the known-limitations section: failure modes the maker admits are worth more than \"state-of-the-art\".",
+      "Compare vendors only on equal terms: same benchmark, same settings, or the numbers are not comparable."
+    ]
   }
 }

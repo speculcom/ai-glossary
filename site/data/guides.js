@@ -92,6 +92,39 @@ var GUIDES = [
   "factEn": null
  },
  {
+  "id": "怎么保护自己的数据",
+  "zh": "怎么保护自己的数据",
+  "en": "How to Protect Your Data",
+  "kind": "guide",
+  "station": 2,
+  "ord": 2,
+  "span": 6,
+  "lead": {
+   "zh": "把资料交给 AI 之前，先想清楚它会去哪里、会留下什么。这份指南讲六个动作。",
+   "en": "Before handing material to an AI, be clear about where it goes and what it leaves behind. Six moves."
+  },
+  "points": [
+   "先分清资料能不能出门：个人身份、公司机密、客户数据各算一类。",
+   "看不懂的条款别默认同意，重点看数据会不会用于训练。",
+   "能匿名化就先匿名化：去掉姓名、编号、联系方式再贴进去。",
+   "敏感场景优先选本地或私有部署，数据不出自己的网。",
+   "用完检查留存：对话记录和上传文件能不能删、多久删。",
+   "给团队定规矩：哪些资料能进 AI，哪些必须走内部工具。"
+  ],
+  "pointsEn": [
+   "Sort material by whether it may leave: personal identity, company secrets, and customer data are three different categories.",
+   "Do not accept terms you cannot read; check specifically whether your data is used for training.",
+   "Anonymize first: strip names, IDs, and contact details before pasting anything in.",
+   "For sensitive work, prefer local or private deployment so data never leaves your own network.",
+   "Afterwards, check retention: can the chat history and uploaded files be deleted, and how soon?",
+   "Set team rules: which materials may go into an AI, and which must stay in internal tools."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
   "id": "它说得笃定，所以可信",
   "zh": "它说得笃定，所以可信",
   "en": "Confident Tone Means Correct",
@@ -173,6 +206,37 @@ var GUIDES = [
    "Demand sources for key numbers; treat numbers without sources as assumptions.",
    "Self-review catches only a fraction of errors; cross-checking (different source, different tool) is what works.",
    "The more specific the domain (local law, your own data), the more a human must check — general models don't have these facts."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "AI 常犯什么错",
+  "zh": "AI 常犯什么错",
+  "en": "What AI Gets Wrong",
+  "kind": "guide",
+  "station": 3,
+  "ord": 2,
+  "span": 6,
+  "lead": {
+   "zh": "AI 的错误有固定套路。认出这几类，就能提前防住大半。",
+   "en": "AI mistakes follow fixed patterns. Recognizing these categories prevents most of them in advance."
+  },
+  "points": [
+   "编造事实：它会给出看似合理的假引用、假数字、假日期。",
+   "顺着你说：你暗示一个错误前提，它多半不纠正，直接往下推。",
+   "算不准：精确计数、多位数算术、复杂日期换算最容易错。",
+   "答得太满：它很少说「我不知道」，宁可给一个含糊的答案。",
+   "被措辞带偏：同一问题换个问法，答案可能不同。"
+  ],
+  "pointsEn": [
+   "Inventing facts: it produces plausible-looking fake citations, numbers, and dates.",
+   "Agreeing with you: imply a wrong premise and it usually will not correct it, just build on it.",
+   "Bad at exact math: precise counts, multi-digit arithmetic, and tricky date conversions fail most often.",
+   "Over-answering: it rarely says \"I do not know\", preferring a vague answer instead.",
+   "Swayed by phrasing: the same question asked differently can produce a different answer."
   ],
   "myth": null,
   "mythEn": null,
@@ -349,6 +413,39 @@ var GUIDES = [
   "mythEn": "If the API is OpenAI-compatible, switching over gives the same behaviour.",
   "fact": "兼容保证的是请求与响应的形状；参数默认值、报错行为和输出质量各家不同。",
   "factEn": "Compatibility covers the shape of requests and responses; parameter defaults, error behaviour and output quality differ between implementations."
+ },
+ {
+  "id": "怎么读模型卡",
+  "zh": "怎么读模型卡",
+  "en": "How to Read a Model Card",
+  "kind": "guide",
+  "station": 6,
+  "ord": 1,
+  "span": 6,
+  "lead": {
+   "zh": "模型卡是厂商给模型的说明书。这份指南讲读它时该看哪几栏、哪些话要打折。",
+   "en": "A model card is the manufacturer's spec sheet for a model. This guide covers which sections to read and which claims to discount."
+  },
+  "points": [
+   "先看用途与限制栏：官方写明「适合什么、不适合什么」，比宣传语可靠。",
+   "看评测栏时先问「在哪些基准上测的」，没有基准的分数等于没有分数。",
+   "看训练数据栏：数据构成决定它可能带哪些偏见。",
+   "看许可栏：能不能商用、要不要署名、衍生模型要不要同许可。",
+   "看已知局限栏：厂商主动写的失败场景，比「效果拔群」更值得信。",
+   "对比多家时只比同口径：同一基准、同一设置，否则数字没有可比性。"
+  ],
+  "pointsEn": [
+   "Start with intended-use and limitations: what the maker says it is and is not good for beats marketing copy.",
+   "When reading benchmarks, first ask which ones were tested; a score without a benchmark is no score.",
+   "Read the training-data section: the data mix determines which biases it may carry.",
+   "Read the license: commercial use, attribution duties, and whether derivatives must share the same license.",
+   "Trust the known-limitations section: failure modes the maker admits are worth more than \"state-of-the-art\".",
+   "Compare vendors only on equal terms: same benchmark, same settings, or the numbers are not comparable."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
  },
  {
   "id": "预览版不能用于生产",
