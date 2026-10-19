@@ -251,5 +251,71 @@
       "Unify the voice: strip the AI register (parallel clauses, empty summaries) or readers will spot it instantly.",
       "Keep a change record: which parts AI wrote and what you changed — traceable when something goes wrong."
     ]
+  },
+  "怎么给文档做分块": {
+    "lead": "The first step of retrieval-augmented generation is cutting documents into chunks. How well you cut decides whether answers can be found at all.",
+    "points": [
+      "Cut by meaning, not by character count: never slice a complete argument in half.",
+      "Chunks too small: context is lost, and even a hit cannot support a full answer.",
+      "Chunks too large: one chunk mixes several topics, and the similarity signal gets diluted.",
+      "A few hundred to a thousand characters is a common starting point; tune by results, do not trust a fixed value.",
+      "Overlap adjacent chunks: sharing a few sentences prevents information from breaking at the boundary.",
+      "Keep structural information: store titles, sections, and page numbers as metadata so retrieval can filter on them."
+    ]
+  },
+  "怎么给检索结果重排": {
+    "lead": "Vector retrieval does the coarse pass; reranking does the fine pass. The two-stage combo beats single-stage retrieval on recall quality.",
+    "points": [
+      "Coarse pass retrieves wide: pull dozens of candidates, not just the top three.",
+      "Fine pass switches models: a reranker compares query and candidate item by item, finer than vector distance.",
+      "Reranking has a cost: more candidates means slower and pricier; set the candidate count by your latency budget.",
+      "Check language support of the reranker: not every reranking model handles Chinese.",
+      "Tune top-k: fewer final items beats more — irrelevant chunks drag the answer off course.",
+      "Measure the two stages separately: coarse recall and fine ranking are scored apart, so you know which stage drags."
+    ]
+  },
+  "怎么做混合检索": {
+    "lead": "Vector search is good at similar meaning; keyword search is good at exact matches. Hybrid search merges the results of both paths.",
+    "points": [
+      "Give exact terms to keywords: model numbers, IDs, and names — vector search misses them, keyword search does not.",
+      "Give fuzzy phrasing to vectors: a reworded question still hits, which keywords cannot do.",
+      "Fuse the two result lists: reciprocal rank fusion (RRF) merges by rank, not by force-adding scores.",
+      "Scores cannot be added directly: cosine similarity and BM25 scores have different scales; adding them skews results.",
+      "Check native support: hybrid queries are built into Qdrant and Weaviate.",
+      "Hybrid still needs reranking: fusion only merges candidates; the fine pass is still a reranker's job."
+    ]
+  },
+  "怎么挑 embedding 模型": {
+    "lead": "The embedding model decides how \"similar in meaning\" is computed. Pick it wrong and retrieval, reranking, and answering all suffer.",
+    "points": [
+      "Check language support first: for Chinese tasks, read scores on Chinese or multilingual benchmarks; a good English leaderboard says nothing about Chinese.",
+      "Weigh dimensions against cost: higher dimensions usually mean pricier storage and compute; estimate by data volume.",
+      "Screen with benchmarks like MTEB, then test on your own data; the leaderboard is only a starting point.",
+      "Queries and documents must use the same model: vectors from different models have no meaningful distance.",
+      "Mind normalization: some models require normalized outputs before cosine similarity is valid.",
+      "Switching models means rebuilding the index: old and new vectors are incompatible; migration means recomputing everything."
+    ]
+  },
+  "怎么评测 RAG 的效果": {
+    "lead": "A RAG failure can come from retrieval or from generation. Evaluate them separately, or you will fix the wrong part.",
+    "points": [
+      "Build an eval set first: real questions with gold answers; a few dozen is enough to start.",
+      "Retrieval side, measure recall: did the chunk that should be found make it into the candidates?",
+      "Generation side, measure faithfulness: can every sentence in the answer be supported by the retrieved chunks?",
+      "Measure answer relevance separately: on-topic answers with wrong grounding are still a problem.",
+      "Automate with a framework like RAGAS, then spot-check by hand to calibrate its scoring.",
+      "Break scores down by scenario: average scores hide the weak spots of specific question types."
+    ]
+  },
+  "什么时候不该用 RAG": {
+    "lead": "RAG is not the default. It fits \"knowledge changes, citations required\"; it hurts other scenarios, and forcing it makes things worse.",
+    "points": [
+      "Small, stable knowledge: put it straight in the context; a retrieval layer is needless complexity.",
+      "Exact arithmetic or reasoning required: retrieval does not help; the limit is the model itself.",
+      "Poor document quality: garbage in, garbage out — fix the documents before talking about retrieval.",
+      "Tight latency budget: retrieval plus reranking plus generation is a long chain; weigh it for real-time use.",
+      "Strict consistency required: two runs of the same question may retrieve differently; assess this for compliance settings.",
+      "Try the baseline first: ask without retrieval; if it is good enough, do not build RAG."
+    ]
   }
 }

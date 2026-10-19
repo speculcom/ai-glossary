@@ -191,6 +191,204 @@ var GUIDES = [
   "factEn": null
  },
  {
+  "id": "怎么给文档做分块",
+  "zh": "怎么给文档做分块",
+  "en": "How to Chunk Documents for Retrieval",
+  "kind": "guide",
+  "station": 2,
+  "ord": 5,
+  "span": 7,
+  "lead": {
+   "zh": "检索增强第一步是把文档切成块。块切得好不好，直接决定后面找不找得到答案。",
+   "en": "The first step of retrieval-augmented generation is cutting documents into chunks. How well you cut decides whether answers can be found at all."
+  },
+  "points": [
+   "按语义切，不按字数切：一个完整论点别被拦腰切断。",
+   "块太小：上下文丢失，检索命中也答不全。",
+   "块太大：一个块混多个主题，相似度被稀释。",
+   "常见起点是几百到一千字，再用效果调，不迷信固定值。",
+   "块之间留重叠：相邻块共享几句话，防止边界处信息断裂。",
+   "保留结构信息：标题、章节、页码存进元数据，检索时能过滤。"
+  ],
+  "pointsEn": [
+   "Cut by meaning, not by character count: never slice a complete argument in half.",
+   "Chunks too small: context is lost, and even a hit cannot support a full answer.",
+   "Chunks too large: one chunk mixes several topics, and the similarity signal gets diluted.",
+   "A few hundred to a thousand characters is a common starting point; tune by results, do not trust a fixed value.",
+   "Overlap adjacent chunks: sharing a few sentences prevents information from breaking at the boundary.",
+   "Keep structural information: store titles, sections, and page numbers as metadata so retrieval can filter on them."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么给检索结果重排",
+  "zh": "怎么给检索结果重排",
+  "en": "How to Rerank Retrieval Results",
+  "kind": "guide",
+  "station": 2,
+  "ord": 6,
+  "span": 7,
+  "lead": {
+   "zh": "向量检索先粗筛，重排再精筛。两阶段配合，比只靠一步检索的召回质量高。",
+   "en": "Vector retrieval does the coarse pass; reranking does the fine pass. The two-stage combo beats single-stage retrieval on recall quality."
+  },
+  "points": [
+   "粗筛多取：向量检索先取回几十条候选，别只取前三。",
+   "精筛换模型：重排模型逐条比对查询与候选，比向量距离更细。",
+   "重排有成本：候选越多越慢越贵，按延迟预算定候选数。",
+   "看重排模型的语种支持：不是所有重排模型都支持中文。",
+   "调 top-k：最终喂给模型的条数宁少勿滥，无关块会带偏回答。",
+   "评测两阶段分别量：粗筛召回率和精筛排序分开看，才知道哪阶段拖后腿。"
+  ],
+  "pointsEn": [
+   "Coarse pass retrieves wide: pull dozens of candidates, not just the top three.",
+   "Fine pass switches models: a reranker compares query and candidate item by item, finer than vector distance.",
+   "Reranking has a cost: more candidates means slower and pricier; set the candidate count by your latency budget.",
+   "Check language support of the reranker: not every reranking model handles Chinese.",
+   "Tune top-k: fewer final items beats more — irrelevant chunks drag the answer off course.",
+   "Measure the two stages separately: coarse recall and fine ranking are scored apart, so you know which stage drags."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么做混合检索",
+  "zh": "怎么做混合检索",
+  "en": "How to Do Hybrid Search",
+  "kind": "guide",
+  "station": 2,
+  "ord": 7,
+  "span": 7,
+  "lead": {
+   "zh": "向量检索擅长意思相近，关键词检索擅长精确匹配。混合检索把两条路的结果合起来。",
+   "en": "Vector search is good at similar meaning; keyword search is good at exact matches. Hybrid search merges the results of both paths."
+  },
+  "points": [
+   "精确词交给关键词：型号、编号、人名，向量检索容易漏，关键词不会。",
+   "模糊问法交给向量：换个说法也能命中，这是关键词做不到的。",
+   "两路结果要融合：常用倒数排名融合（RRF），按名次合并而不是按分数硬加。",
+   "分数不可直接相加：向量相似度和 BM25 分数量纲不同，硬加会偏。",
+   "看数据库是否原生支持：混合查询在 Qdrant、Weaviate 里是现成功能。",
+   "混合后仍需重排：融合只是合并候选，精筛还是要重排模型。"
+  ],
+  "pointsEn": [
+   "Give exact terms to keywords: model numbers, IDs, and names — vector search misses them, keyword search does not.",
+   "Give fuzzy phrasing to vectors: a reworded question still hits, which keywords cannot do.",
+   "Fuse the two result lists: reciprocal rank fusion (RRF) merges by rank, not by force-adding scores.",
+   "Scores cannot be added directly: cosine similarity and BM25 scores have different scales; adding them skews results.",
+   "Check native support: hybrid queries are built into Qdrant and Weaviate.",
+   "Hybrid still needs reranking: fusion only merges candidates; the fine pass is still a reranker's job."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么挑 embedding 模型",
+  "zh": "怎么挑 embedding 模型",
+  "en": "How to Choose an Embedding Model",
+  "kind": "guide",
+  "station": 2,
+  "ord": 8,
+  "span": 8,
+  "lead": {
+   "zh": "embedding 模型决定「意思相近」怎么算。挑错模型，后面检索、重排、回答全跟着吃亏。",
+   "en": "The embedding model decides how \"similar in meaning\" is computed. Pick it wrong and retrieval, reranking, and answering all suffer."
+  },
+  "points": [
+   "先看语种支持：中文任务要在中文或多语基准上看分数，英文榜好看不等于中文好用。",
+   "看维度与成本：维度高通常存储和计算更贵，按数据量估。",
+   "用 MTEB 这类基准初筛，再用自己数据实测，榜单只是起点。",
+   "查询与文档要同模型：混用不同模型算的向量，距离没有意义。",
+   "注意归一化口径：有的模型输出要归一化才能用余弦相似度。",
+   "换模型要重建索引：旧向量和新向量不兼容，迁移等于重算一遍。"
+  ],
+  "pointsEn": [
+   "Check language support first: for Chinese tasks, read scores on Chinese or multilingual benchmarks; a good English leaderboard says nothing about Chinese.",
+   "Weigh dimensions against cost: higher dimensions usually mean pricier storage and compute; estimate by data volume.",
+   "Screen with benchmarks like MTEB, then test on your own data; the leaderboard is only a starting point.",
+   "Queries and documents must use the same model: vectors from different models have no meaningful distance.",
+   "Mind normalization: some models require normalized outputs before cosine similarity is valid.",
+   "Switching models means rebuilding the index: old and new vectors are incompatible; migration means recomputing everything."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "怎么评测 RAG 的效果",
+  "zh": "怎么评测 RAG 的效果",
+  "en": "How to Evaluate a RAG System",
+  "kind": "guide",
+  "station": 2,
+  "ord": 9,
+  "span": 8,
+  "lead": {
+   "zh": "RAG 出问题可能出在检索，也可能出在生成。评测要分开量，不然修错地方。",
+   "en": "A RAG failure can come from retrieval or from generation. Evaluate them separately, or you will fix the wrong part."
+  },
+  "points": [
+   "先备评测集：真实问题加标准答案，几十条就够起步。",
+   "检索侧量召回：该找到的块有没有进候选，这是第一道关。",
+   "生成侧量忠实度：回答里的每句话能不能被检索到的块支撑。",
+   "答案相关性单独量：答得对题但依据错，也是问题。",
+   "用 RAGAS 这类框架自动评，人工抽查校准它的判分。",
+   "分场景看分数：不同问题类型分开统计，平均分掩盖短板。"
+  ],
+  "pointsEn": [
+   "Build an eval set first: real questions with gold answers; a few dozen is enough to start.",
+   "Retrieval side, measure recall: did the chunk that should be found make it into the candidates?",
+   "Generation side, measure faithfulness: can every sentence in the answer be supported by the retrieved chunks?",
+   "Measure answer relevance separately: on-topic answers with wrong grounding are still a problem.",
+   "Automate with a framework like RAGAS, then spot-check by hand to calibrate its scoring.",
+   "Break scores down by scenario: average scores hide the weak spots of specific question types."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
+  "id": "什么时候不该用 RAG",
+  "zh": "什么时候不该用 RAG",
+  "en": "When Not to Use RAG",
+  "kind": "guide",
+  "station": 2,
+  "ord": 10,
+  "span": 7,
+  "lead": {
+   "zh": "RAG 不是默认选项。它适合「知识会变、要出处」的场景，不适合另一些场景，硬上反而更差。",
+   "en": "RAG is not the default. It fits \"knowledge changes, citations required\"; it hurts other scenarios, and forcing it makes things worse."
+  },
+  "points": [
+   "知识量小且稳定：直接放进上下文更简单，检索层是多余复杂度。",
+   "要求精确算术或推理：检索帮不上，问题在模型本身。",
+   "文档质量差：垃圾进垃圾出，先修文档再谈检索。",
+   "延迟预算紧：检索加重排加生成，链路长，实时场景要掂量。",
+   "需要严格一致性：同一问题两次检索结果可能不同，合规场景要评估。",
+   "先试基线：不加检索直接问，效果够好就不用搭 RAG。"
+  ],
+  "pointsEn": [
+   "Small, stable knowledge: put it straight in the context; a retrieval layer is needless complexity.",
+   "Exact arithmetic or reasoning required: retrieval does not help; the limit is the model itself.",
+   "Poor document quality: garbage in, garbage out — fix the documents before talking about retrieval.",
+   "Tight latency budget: retrieval plus reranking plus generation is a long chain; weigh it for real-time use.",
+   "Strict consistency required: two runs of the same question may retrieve differently; assess this for compliance settings.",
+   "Try the baseline first: ask without retrieval; if it is good enough, do not build RAG."
+  ],
+  "myth": null,
+  "mythEn": null,
+  "fact": null,
+  "factEn": null
+ },
+ {
   "id": "它说得笃定，所以可信",
   "zh": "它说得笃定，所以可信",
   "en": "Confident Tone Means Correct",
