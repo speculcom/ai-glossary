@@ -731,6 +731,11 @@ var TERMS = [
       "GPT-3 论文（语料与方法学问题见 §2.2）",
       "https://arxiv.org/abs/2005.14165",
       "GPT-3 paper (corpus and methodological issues, §2.2)"
+     ],
+     [
+      "从业者深版：数据与算力专题（AI 模型站）",
+      "https://models.specul.com/guides/data-compute.html",
+      "Practitioner deep-dive: data & compute guide (AI Models site)"
      ]
     ],
     "domain": "data",
@@ -2024,6 +2029,11 @@ var TERMS = [
       "导航站的算力与芯片分类",
       "https://nav.specul.com/",
       "Nav directory: compute & chips"
+     ],
+     [
+      "从业者深版：数据与算力专题（AI 模型站）",
+      "https://models.specul.com/guides/data-compute.html",
+      "Practitioner deep-dive: data & compute guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -3734,6 +3744,11 @@ var TERMS = [
       "算力与芯片相关站点",
       "https://nav.specul.com/",
       "Nav: compute & chips sites"
+     ],
+     [
+      "从业者深版：数据与算力专题（AI 模型站）",
+      "https://models.specul.com/guides/data-compute.html",
+      "Practitioner deep-dive: data & compute guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -5025,6 +5040,11 @@ var TERMS = [
       "Megatron-LM 论文",
       "https://arxiv.org/abs/1909.08053",
       "Megatron-LM (arXiv paper)"
+     ],
+     [
+      "从业者深版：开源训练栈专题（AI 模型站）",
+      "https://models.specul.com/guides/training-stack.html",
+      "Practitioner deep-dive: open training stack guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -5279,6 +5299,11 @@ var TERMS = [
       "vLLM 官方文档首页",
       "https://docs.vllm.ai/en/latest/",
       "vLLM documentation"
+     ],
+     [
+      "从业者深版：开源训练栈专题（AI 模型站）",
+      "https://models.specul.com/guides/training-stack.html",
+      "Practitioner deep-dive: open training stack guide (AI Models site)"
      ]
     ],
     "domain": "infra",

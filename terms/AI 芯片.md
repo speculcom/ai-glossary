@@ -7,6 +7,7 @@ def: ["为矩阵运算优化的处理器，通常指各类 AI 专用加速硬件
 why: "它决定了你能把多大的模型塞进多少钱的设备里。"
 refs:
   - ["导航站的算力与芯片分类", "https://nav.specul.com/", "Nav directory: compute & chips"]
+  - ["从业者深版：数据与算力专题（AI 模型站）", "https://models.specul.com/guides/data-compute.html", "Practitioner deep-dive: data & compute guide (AI Models site)"]
 domain: "infra"
 purposeTag: "learn"
 level: 2
