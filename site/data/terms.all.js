@@ -1454,6 +1454,11 @@ var TERMS = [
       "InstructGPT（RLHF 论文）",
       "https://arxiv.org/abs/2203.02155",
       "Training LMs to follow instructions with human feedback"
+     ],
+     [
+      "从业者深版：偏好对齐专题（AI 模型站）",
+      "https://models.specul.com/guides/alignment.html",
+      "Practitioner deep-dive: preference alignment (AI Models site)"
      ]
     ],
     "domain": "concept",
@@ -3696,6 +3701,11 @@ var TERMS = [
       "Hugging Face 课程（Transformer）",
       "https://huggingface.co/learn/nlp-course/chapter1/4",
       "How do Transformers work? (Hugging Face NLP course)"
+     ],
+     [
+      "从业者深版：预训练专题（AI 模型站）",
+      "https://models.specul.com/guides/pretraining.html",
+      "Practitioner deep-dive: pre-training (AI Models site)"
      ]
     ],
     "domain": "concept",
@@ -4005,6 +4015,11 @@ var TERMS = [
       "DPO 论文（免 RL 的对齐方法）",
       "https://arxiv.org/abs/2305.18290",
       "Direct Preference Optimization (paper)"
+     ],
+     [
+      "从业者深版：SFT 与偏好对齐专题（AI 模型站）",
+      "https://models.specul.com/guides/sft.html",
+      "Practitioner deep-dives: SFT and alignment (AI Models site)"
      ]
     ],
     "domain": "concept",
@@ -4037,6 +4052,11 @@ var TERMS = [
       "Hinton 等人《Distilling the Knowledge in a Neural Network》",
       "https://arxiv.org/abs/1503.02531",
       "Distilling the Knowledge in a Neural Network (paper)"
+     ],
+     [
+      "从业者深版：蒸馏专题（AI 模型站）",
+      "https://models.specul.com/guides/distillation.html",
+      "Practitioner deep-dive: distillation (AI Models site)"
      ]
     ],
     "domain": "concept",
@@ -6341,9 +6361,9 @@ var TERMS = [
     "why": "**按单价选模型容易出错**——同样便宜，消耗量不同的模型总成本可能相反。",
     "refs": [
      [
-      "官方定价逐条核实",
+      "官方档位与额度核实",
       "https://agent.specul.com/harness/crewai.html",
-      "Pricing verified item by item"
+      "Plans and quotas verified item by item"
      ],
      [
       "提示词缓存如何降本",
