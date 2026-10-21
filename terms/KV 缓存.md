@@ -7,6 +7,7 @@ why: "这是本地部署时最常见的 OOM（显存不够）原因。上下文�
 refs:
   - ["vLLM 前缀缓存设计", "https://docs.vllm.ai/en/stable/design/prefix_caching/", "Automatic Prefix Caching – vLLM design docs"]
   - ["vLLM KV 缓存管理", "https://docs.vllm.ai/en/latest/design/hybrid_kv_cache_manager/", "Hybrid KV Cache Manager – vLLM design docs"]
+  - ["从业者深版：跑起来深水专题（AI 模型站）", "https://models.specul.com/guides/serving-deep-dive.html", "Practitioner deep-dive: serving deep dive guide (AI Models site)"]
 domain: "infra"
 purposeTag: "learn"
 level: 4

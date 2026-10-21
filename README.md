@@ -366,6 +366,6 @@ ai-glossary/
 | 编年史与版图 | 18 条时间线 · 12 家公司 · 5 条术语演变 |
 | 领域（domain） | concept 56 · infra 34 · choice 33 · agent 25 · media 19 · model 14 · dev 10 · data 9 |
 | 用途（purposeTag） | learn 80 · apply 49 · guard 36 · judge 35 |
-| 出处条目（refs） | 416 条 |
+| 出处条目（refs） | 423 条 |
 | 英文覆盖 | 200 / 200 |
 <!-- STATS:END -->

@@ -6,6 +6,7 @@ def: ["Kwon 等人的定义：受操作系统虚拟内存与分页技术启发�
 why: "vLLM 快的真正原因。理解了它，才明白显存要算的是缓存而不只是权重。"
 refs:
   - ["Kwon 等《Efficient Memory Management for LLM Serving with PagedAttention》", "https://arxiv.org/abs/2309.06180", "PagedAttention paper (SOSP 2023)"]
+  - ["从业者深版：跑起来深水专题（AI 模型站）", "https://models.specul.com/guides/serving-deep-dive.html", "Practitioner deep-dive: serving deep dive guide (AI Models site)"]
 domain: "infra"
 purposeTag: "learn"
 level: 5

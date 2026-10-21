@@ -3649,6 +3649,11 @@ var TERMS = [
       "vLLM KV 缓存管理",
       "https://docs.vllm.ai/en/latest/design/hybrid_kv_cache_manager/",
       "Hybrid KV Cache Manager – vLLM design docs"
+     ],
+     [
+      "从业者深版：跑起来深水专题（AI 模型站）",
+      "https://models.specul.com/guides/serving-deep-dive.html",
+      "Practitioner deep-dive: serving deep dive guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -4825,6 +4830,11 @@ var TERMS = [
       "按显存倒推选档位（千问 3.8）",
       "https://models.specul.com/series/qwen3-8/#b0",
       "Choosing by VRAM, backwards (Qwen3.8)"
+     ],
+     [
+      "从业者深版：GPU 事实与成本数学（AI 模型站）",
+      "https://models.specul.com/guides/gpu-cost-math.html",
+      "Practitioner deep-dive: GPU facts & cost math (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -4855,6 +4865,11 @@ var TERMS = [
       "五档量化规则的说明",
       "https://models.specul.com/",
       "The five quantisation tiers explained"
+     ],
+     [
+      "从业者深版：GPU 事实与成本数学（AI 模型站）",
+      "https://models.specul.com/guides/gpu-cost-math.html",
+      "Practitioner deep-dive: GPU facts & cost math (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -4974,6 +4989,11 @@ var TERMS = [
       "vLLM 官方文档",
       "https://docs.vllm.ai/en/latest/",
       "vLLM documentation"
+     ],
+     [
+      "从业者深版：跑起来深水专题（AI 模型站）",
+      "https://models.specul.com/guides/serving-deep-dive.html",
+      "Practitioner deep-dive: serving deep dive guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -5239,6 +5259,11 @@ var TERMS = [
       "vLLM 官方文档首页",
       "https://docs.vllm.ai/en/latest/",
       "vLLM documentation"
+     ],
+     [
+      "从业者深版：跑起来深水专题（AI 模型站）",
+      "https://models.specul.com/guides/serving-deep-dive.html",
+      "Practitioner deep-dive: serving deep dive guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -5378,6 +5403,11 @@ var TERMS = [
       "vLLM 官方文档首页",
       "https://docs.vllm.ai/en/latest/",
       "vLLM documentation"
+     ],
+     [
+      "从业者深版：跑起来深水专题（AI 模型站）",
+      "https://models.specul.com/guides/serving-deep-dive.html",
+      "Practitioner deep-dive: serving deep dive guide (AI Models site)"
      ]
     ],
     "domain": "infra",
@@ -5438,6 +5468,11 @@ var TERMS = [
       "Kwon 等《Efficient Memory Management for LLM Serving with PagedAttention》",
       "https://arxiv.org/abs/2309.06180",
       "PagedAttention paper (SOSP 2023)"
+     ],
+     [
+      "从业者深版：跑起来深水专题（AI 模型站）",
+      "https://models.specul.com/guides/serving-deep-dive.html",
+      "Practitioner deep-dive: serving deep dive guide (AI Models site)"
      ]
     ],
     "domain": "infra",

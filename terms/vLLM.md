@@ -6,6 +6,7 @@ def: ["面向生产的高吞吐推理引擎，通过连续批处理等手段提�
 why: "个人本地部署用不上它。但如果你要给别人提供 API，就需要这一类工具。"
 refs:
   - ["vLLM 官方文档", "https://docs.vllm.ai/en/latest/", "vLLM documentation"]
+  - ["从业者深版：跑起来深水专题（AI 模型站）", "https://models.specul.com/guides/serving-deep-dive.html", "Practitioner deep-dive: serving deep dive guide (AI Models site)"]
 domain: "infra"
 purposeTag: "learn"
 level: 5
